@@ -4,16 +4,12 @@ This document serves as a reference point for rules, roles and tasks for all to 
 
 ## Roles
 
-- Git Master
-- Scrum Master
-- Other roles?
-
-Tim 
-Davey
-Loes
-Yori
-Rick
-Luc
+Davey: Scrum Monkey, Environmental Monkey
+Loes: Game Design Monkey, Communication Monkey
+Rick: Puzzle/ Level Design Monkey, Art Monkey
+Tim: Code Monkey King (focus on hand tracking)
+Luc: UI/UX Monkey, Code Monkey
+Yori: Code Monkey, Notulist Monkey
 
 ## Rules
 
@@ -27,22 +23,20 @@ Luc
 4. Be honest about everyones work. Be constructive, but fair.
 
 ## Documentation
-
-- Choose between Google docs or Word
+- Google docs 
 
 ## Communication
 
 ### Internal
-
 Discord
 
+### Stakeholder
+MS Teams
+
 ## Daily Tasks
-
-- Stand up
-
-## Weekly Tasks
-
-- 
+- Be here between 9:00-10:00
+- Stand up on site 10:15 - 10:30
+- Stand up online 10:00
 
 ## Git use
 
@@ -77,15 +71,24 @@ Discord
     - Create card
     - Link
 
-## Suggestions
+## Definition of Done
+- Code: 
+    - Code follows code convention
+    - Approved by at least one member besides the creator
+- Design:
+    - Backup design choices with analysis
+    - Approved by all group members (pitch design)
+- Total:
+    - Approved by the Product Owner
+    - Merge from dev to main has been approved by 2 group members
+    - Playtested thoroughly
 
-Non binding, but should always be discussed.
-
+## Agile
 - Scrum
 - Delivery Dates | `2 Weeks`
+- Sprint start and end on wednesday
 
 ## Unity Packages
-
 - XR Hands
     - Gestures
 - Open XR
