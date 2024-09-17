@@ -3,13 +3,12 @@
 This document serves as a reference point for rules, roles and tasks for all to reference.
 
 ## Roles
-
-Davey: Scrum Monkey, Environmental Monkey
-Loes: Game Design Monkey, Communication Monkey
-Rick: Puzzle/ Level Design Monkey, Art Monkey
-Tim: Code Monkey King (focus on hand tracking)
-Luc: UI/UX Monkey, Code Monkey
-Yori: Code Monkey, Notulist Monkey
+- Davey: Scrum Monkey, Environmental Monkey
+- Loes: Game Design Monkey, Communication Monkey
+- Rick: Puzzle/ Level Design Monkey, Art Monkey
+- Tim: Code Monkey King (focus on hand tracking)
+- Luc: UI/UX Monkey, Code Monkey
+- Yori: Code Monkey, Notulist Monkey
 
 ## Rules
 
