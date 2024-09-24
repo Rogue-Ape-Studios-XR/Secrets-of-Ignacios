@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c3d9ed3f67bfcd4283f4153121c7767, type: 3}
-  m_Name: Testy Boy
+  m_Name: Testy Boy 1
   m_EditorClassIdentifier: 
   _name: Start
-  _leftHandGesture: 0
-  _rightHandGesture: 0
-  _xHandDistance: 0.2
-  _yHandDistance: 0.2
-  _zHandDistance: 0.2
+  _leftHandGesture: 4
+  _rightHandGesture: 4
+  _xHandDistance: 0.1
+  _yHandDistance: 0.1
+  _zHandDistance: 0.1
