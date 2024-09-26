@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3d9ed3f67bfcd4283f4153121c7767, type: 3}
   m_Name: Testy Boy 2
   m_EditorClassIdentifier: 
-  _name: Start
+  _name: Start 2
   _leftHandGesture: 1
   _rightHandGesture: 1
-  _xHandDistance: 0.1
-  _yHandDistance: 0.1
-  _zHandDistance: 0.1
+  _xHandDistance: 2
+  _yHandDistance: 2
+  _zHandDistance: 2
