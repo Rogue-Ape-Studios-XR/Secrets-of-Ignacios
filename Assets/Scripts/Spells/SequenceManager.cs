@@ -19,8 +19,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private HandShape _leftHandShape;
         private HandShape _rightHandShape;
         private bool _gestureValidated = false;
+        private bool _sequenceStarted = false;
 
         internal event Action OnSequenceCreated;
+        internal event Action OnReset;
 
         internal List<Gesture> ValidatedGestures => _validatedGestures;
 
@@ -39,6 +41,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             if (_leftHandActive && _rightHandActive && !_gestureValidated && _currentGesture != null)
                 HandDistanceCheck(_currentGesture);
+            else if (_leftHandActive && _rightHandActive && !_gestureValidated && _currentGesture == null)
+                print(_currentGesture);
         }
 
         public void CheckGestures()
@@ -46,7 +50,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             if (_leftHandActive && _rightHandActive && _currentGesture == null)
             {
                 foreach (var gesture in _allGestures)
-                    if (_leftHandShape == gesture._leftHandGesture && _rightHandShape == gesture._rightHandGesture)
+                    if (_leftHandShape == gesture._leftHandShape && _rightHandShape == gesture._rightHandShape)
                     {
                         _currentGesture = gesture;
                         break;
@@ -60,14 +64,25 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             if (_currentGesture != null)
             {
-                if (_validatedGestures.Count == 0 || _validatedGestures[^1] != _currentGesture)
+                if (_currentGesture._name == "Start" && _leftHandActive && _rightHandActive)
+                {
+                    _validatedGestures.Clear();
+                    OnReset?.Invoke();
+                    _sequenceStarted = true;
+                }
+
+                if (_validatedGestures.Count == 0 && _sequenceStarted ||
+                    _validatedGestures[^1] != _currentGesture && _sequenceStarted)
                 {
                     _validatedGestures.Add(_currentGesture);
                     Debug.Log("Validated Gesture: " + _currentGesture._name);
                 }
 
                 if (_validatedGestures.Count == 3)
+                {
+                    _sequenceStarted = false;
                     OnSequenceCreated?.Invoke();
+                }
 
                 _currentGesture = null;
                 _gestureValidated = false;

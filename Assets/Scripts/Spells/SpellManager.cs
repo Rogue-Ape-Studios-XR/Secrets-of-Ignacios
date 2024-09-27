@@ -14,11 +14,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void OnEnable()
         {
             _gestureManager.OnSequenceCreated += ValidateSequence;
+            _gestureManager.OnReset += HandleReset;
         }
 
         private void OnDestroy()
         {
             _gestureManager.OnSequenceCreated -= ValidateSequence;
+            _gestureManager.OnReset -= HandleReset;
         }
 
         private void SetSpell(Spell spell)
@@ -37,7 +39,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                 }
         }
 
-        internal void ResetSpell()
+        internal void HandleReset()
         {
             _currentSpell = null;
             _canCast = false;
