@@ -437,10 +437,49 @@ MonoBehaviour:
   m_Background: {fileID: 0}
   m_GesturePerformed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: SetRightHandShape
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Fire
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: CheckGestures
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: TurnOffRightHandShape
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
   m_StaticGestures:
@@ -2257,7 +2296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &803973018239175758
 Transform:
   m_ObjectHideFlags: 0
@@ -10505,10 +10544,49 @@ MonoBehaviour:
   m_Background: {fileID: 0}
   m_GesturePerformed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: SetLeftHandShape
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Fire
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: CheckGestures
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: TurnOffLeftHandShape
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
   m_StaticGestures:
@@ -12273,7 +12351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7677589809073781274
 Transform:
   m_ObjectHideFlags: 0
@@ -14407,7 +14485,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2120701802162296653}
   - component: {fileID: 5767098699624714714}
-  - component: {fileID: 6687020767228789206}
   m_Layer: 0
   m_Name: Left Hand
   m_TagString: Untagged
@@ -14467,18 +14544,6 @@ MonoBehaviour:
   m_TrackingChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6687020767228789206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8887431107072434935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a14fbc4c5ab928458b5f32d6fd2dfe1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8892620632528642169
 GameObject:
   m_ObjectHideFlags: 0
