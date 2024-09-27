@@ -54,6 +54,7 @@ namespace RogueApeStudios.SecretsOfIgnacios
         private void OnEnable()
         {
             _rb.AddForce(gameObject.transform.forward*_speed);
+            _impactEffect.Stop();
         }
         // Update is called once per frame
         void FixedUpdate()
@@ -65,7 +66,7 @@ namespace RogueApeStudios.SecretsOfIgnacios
         private void OnCollisionEnter(Collision collision)
         {
 
-            _impactEffect.enabled = true;
+            _impactEffect.Play();
             _spellEffect.Stop();
             _rb.isKinematic = true;
             _collider.enabled = false;
