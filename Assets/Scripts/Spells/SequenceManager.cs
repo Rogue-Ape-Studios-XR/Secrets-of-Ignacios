@@ -41,8 +41,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             if (_leftHandActive && _rightHandActive && !_gestureValidated && _currentGesture != null)
                 HandDistanceCheck(_currentGesture);
-            else if (_leftHandActive && _rightHandActive && !_gestureValidated && _currentGesture == null)
-                print(_currentGesture);
         }
 
         public void CheckGestures()
