@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b57abb06a1e4b49bdc41681f47c71f, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  _name: Testy Boy
+  _elementType: 0
+  _gestureSequence:
+  - {fileID: 11400000, guid: 98105de35a6f47945a9bc17659aae264, type: 2}
+  - {fileID: 11400000, guid: 6c6e9117b77522e48bf8288bb53e515c, type: 2}
+  - {fileID: 11400000, guid: 4fae163ba39953f47a92ac450dba3702, type: 2}
+  _handColor: {r: 1, g: 0.4013605, b: 0, a: 0}
+  _handEffect: {fileID: 0}
+  _castEffect: {fileID: 0}
