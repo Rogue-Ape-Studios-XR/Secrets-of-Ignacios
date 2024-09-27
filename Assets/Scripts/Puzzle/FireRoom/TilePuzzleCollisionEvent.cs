@@ -2,23 +2,11 @@ using RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom;
 using System;
 using UnityEngine;
 
-namespace RogueApeStudios.SecretsOfIgnacios
+namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
 {
     public class TilePuzzleCollisionEvent : MonoBehaviour
     {
         [SerializeField] private TilePuzzleSequenceChecker _tilePuzzleSequenceChecker;
-
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-            
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            
-        }
 
         private void OnTriggerEnter(Collider collider)
         {

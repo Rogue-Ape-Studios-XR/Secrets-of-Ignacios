@@ -8,22 +8,17 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
         [SerializeField] private List<GameObject> _tileSequence;
         private List<GameObject> _tileCollisions = new();
 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         internal void AddAndValidate(GameObject tile)
         {
             AddTileToList(tile);
-            CheckSequence();
+            if (_tileCollisions.Count == _tileSequence.Count)
+            {
+                //victory
+            }
+            else
+            {
+                CheckSequence();
+            }
         }
 
         private void AddTileToList(GameObject tile)
@@ -42,6 +37,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
             {
                 //incorrect
                 Debug.Log("Faal");
+                _tileCollisions.Clear();
             }
         }
     }
