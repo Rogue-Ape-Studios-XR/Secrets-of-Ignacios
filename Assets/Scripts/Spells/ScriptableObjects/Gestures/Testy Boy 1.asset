@@ -18,3 +18,4 @@ MonoBehaviour:
   _xHandDistance: 2
   _yHandDistance: 2
   _zHandDistance: 2
+  _color: {r: 0, g: 1, b: 0.9836073, a: 1}

@@ -3847,6 +3847,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rightHand: {fileID: 8827492844492106989}
   _leftHand: {fileID: 6679902487617635372}
+  _rightHandMaterial: {fileID: 2100000, guid: 61d033f3a51f40647a5458ea14f3b4af, type: 2}
+  _leftHandMaterial: {fileID: 2100000, guid: 61d033f3a51f40647a5458ea14f3b4af, type: 2}
   _allGestures:
   - {fileID: 11400000, guid: 98105de35a6f47945a9bc17659aae264, type: 2}
   - {fileID: 11400000, guid: 6c6e9117b77522e48bf8288bb53e515c, type: 2}
@@ -3865,9 +3867,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eccb514a7aeb7c4eb130e0b7b09069e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gestureManager: {fileID: 7497934956184238321}
+  _rightHandMaterial: {fileID: 2100000, guid: 61d033f3a51f40647a5458ea14f3b4af, type: 2}
+  _leftHandMaterial: {fileID: 2100000, guid: 61d033f3a51f40647a5458ea14f3b4af, type: 2}
   _availableSpells:
   - {fileID: 11400000, guid: 1ef0e2ff34d668d4cb4aa300a7fdcca8, type: 2}
-  _gestureManager: {fileID: 7497934956184238321}
 --- !u!1 &2268672708825686388
 GameObject:
   m_ObjectHideFlags: 0
