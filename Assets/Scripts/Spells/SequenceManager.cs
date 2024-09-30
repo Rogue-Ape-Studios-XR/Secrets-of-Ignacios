@@ -89,7 +89,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                 if (_validatedGestures.Count == 3)
                 {
                     OnSequenceCreated?.Invoke();
-                    _currentGesture = null;
+                    _sequenceStarted = false;
                     ValidatedGestures.Clear();
                 }
 
@@ -118,7 +118,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             try
             {
-                if (_validatedGestures.Count < 3)
+                if (_validatedGestures.Count < 3 && _validatedGestures.Count > 0)
                 {
                     float delay = 1;
 
