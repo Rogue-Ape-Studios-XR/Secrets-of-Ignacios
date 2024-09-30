@@ -23,7 +23,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private HandShape _leftHandShape;
         private HandShape _rightHandShape;
         private bool _gestureValidated = false;
-        private bool _sequenceStarted = false;
+        [SerializeField] private bool _sequenceStarted = false;
 
         internal event Action OnSequenceCreated;
         internal event Action OnReset;
@@ -71,15 +71,17 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             if (_currentGesture != null)
             {
-                if (_currentGesture._name == "Start" && _leftHandActive && _rightHandActive)
+                if (_currentGesture._name == "Start" && _leftHandActive && _rightHandActive &&
+                    _currentGesture._leftHandShape == HandShape.Start && _currentGesture._rightHandShape == HandShape.Start)
                 {
+                    print("Why you do thiesssss");
                     _validatedGestures.Clear();
                     OnReset?.Invoke();
                     _sequenceStarted = true;
                 }
-
-                if (_validatedGestures.Count == 0 && _sequenceStarted ||
-                    _validatedGestures[^1] != _currentGesture && _sequenceStarted)
+                print($"{_validatedGestures.Count} {_sequenceStarted}");
+                if (_sequenceStarted && _validatedGestures.Count == 0 ||
+                    _sequenceStarted && _validatedGestures[^1] != _currentGesture)
                 {
                     _validatedGestures.Add(_currentGesture);
                     ChangeColor(_cancellationTokenSource.Token);
@@ -88,8 +90,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
                 if (_validatedGestures.Count == 3)
                 {
-                    _sequenceStarted = false;
                     OnSequenceCreated?.Invoke();
+                    _sequenceStarted = false;
+                    _currentGesture = null;
+                    ValidatedGestures.Clear();
                 }
 
                 _currentGesture = null;
@@ -117,12 +121,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             try
             {
-                HandShape handShape = _validatedGestures[^1]._rightHandShape;
+                float delay = 1;
 
                 _rightHandMaterial.SetColor("_MainColor", _currentGesture._color);
                 _leftHandMaterial.SetColor("_MainColor", _currentGesture._color);
 
-                await UniTask.WaitForSeconds(1, cancellationToken: token);
+                await UniTask.WaitForSeconds(delay, cancellationToken: token);
 
                 _rightHandMaterial.SetColor("_MainColor", defaultColor);
                 _leftHandMaterial.SetColor("_MainColor", defaultColor);
