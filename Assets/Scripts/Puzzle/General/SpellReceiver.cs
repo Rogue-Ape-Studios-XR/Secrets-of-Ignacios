@@ -19,7 +19,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle
         void HandleSpellReceived(GameObject spell)
         {
             //get the spell name
-            SpellData spelldata = spell.GetComponentInChildren<SpellData>(); 
+            SpellData spelldata = spell.GetComponentInChildren<SpellData>();
+            Debug.Log(spelldata.spellName);
             OnSpellReceived.Invoke(spelldata.spellName);
         }
     }

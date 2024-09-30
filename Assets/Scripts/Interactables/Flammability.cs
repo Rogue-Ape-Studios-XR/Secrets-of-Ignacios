@@ -14,12 +14,14 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables
 
         [SerializeField] internal VisualEffect _burningEffect;
 
-        private void Awake()
+        internal event Action<bool> OnIgnitionToggle;
+
+        internal virtual void Awake()
         {
             _spellReceiver.OnSpellReceived += HandleSpellReceived;
         }
 
-        private void OnDestroy()
+        internal virtual void OnDestroy()
         {
             _spellReceiver.OnSpellReceived -= HandleSpellReceived;
         }
@@ -32,6 +34,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables
                 case "Debug":
                     // Logic for casting a fire spell
                     OnFire();
+                    OnIgnitionToggle?.Invoke(_isOnFire);
                     break;
                 /*case SpellType.Water:
                     // Logic for casting a water spell

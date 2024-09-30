@@ -22,5 +22,15 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables
             base._isOnFire = true;
             base._burningEffect.Play();
         }
+
+/*        internal override void Awake()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        internal override void OnDestroy()
+        {
+            throw new System.NotImplementedException();
+        }*/
     }
 }
