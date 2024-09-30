@@ -10,19 +10,20 @@ namespace RogueApeStudios.SecretsOfIgnacios.Teleport
 
         [SerializeField] private TeleportationProvider _teleportationProvider; 
         // This is the "Teleport" gameobject under the "Locomotion" gameobject in the XROrigin
+        [SerializeField] private GameObject _interactorObject;
 
         private bool _isTeleportActive = false;
 
         private void Start()
         {
-            _teleportInteractor.gameObject.SetActive(false);
+            _interactorObject.SetActive(false);
         }
 
         public void ActivateTeleport()
         {
             if (!_isTeleportActive)
             {
-                _teleportInteractor.gameObject.SetActive(true);
+                _interactorObject.SetActive(true);
                 _isTeleportActive = true;
             }
         }
@@ -31,7 +32,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Teleport
         {
             if (_isTeleportActive)
             {
-                _teleportInteractor.gameObject.SetActive(false);
+                _interactorObject.SetActive(false);
                 _isTeleportActive = false;
             }
         }
