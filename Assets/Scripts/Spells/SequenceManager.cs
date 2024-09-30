@@ -74,24 +74,21 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                 if (_currentGesture._name == "Start" && _leftHandActive && _rightHandActive &&
                     _currentGesture._leftHandShape == HandShape.Start && _currentGesture._rightHandShape == HandShape.Start)
                 {
-                    print("Why you do thiesssss");
                     _validatedGestures.Clear();
                     OnReset?.Invoke();
                     _sequenceStarted = true;
                 }
-                print($"{_validatedGestures.Count} {_sequenceStarted}");
+
                 if (_sequenceStarted && _validatedGestures.Count == 0 ||
                     _sequenceStarted && _validatedGestures[^1] != _currentGesture)
                 {
                     _validatedGestures.Add(_currentGesture);
                     ChangeColor(_cancellationTokenSource.Token);
-                    Debug.Log("Validated Gesture: " + _currentGesture._name);
                 }
 
                 if (_validatedGestures.Count == 3)
                 {
                     OnSequenceCreated?.Invoke();
-                    _sequenceStarted = false;
                     _currentGesture = null;
                     ValidatedGestures.Clear();
                 }
@@ -121,15 +118,23 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             try
             {
-                float delay = 1;
+                if (_validatedGestures.Count < 3)
+                {
+                    float delay = 1;
 
-                _rightHandMaterial.SetColor("_MainColor", _currentGesture._color);
-                _leftHandMaterial.SetColor("_MainColor", _currentGesture._color);
+                    _rightHandMaterial.SetColor("_MainColor", _currentGesture._color);
+                    _leftHandMaterial.SetColor("_MainColor", _currentGesture._color);
 
-                await UniTask.WaitForSeconds(delay, cancellationToken: token);
+                    await UniTask.WaitForSeconds(delay, cancellationToken: token);
 
-                _rightHandMaterial.SetColor("_MainColor", defaultColor);
-                _leftHandMaterial.SetColor("_MainColor", defaultColor);
+                    _rightHandMaterial.SetColor("_MainColor", defaultColor);
+                    _leftHandMaterial.SetColor("_MainColor", defaultColor);
+                }
+                else
+                {
+                    _rightHandMaterial.SetColor("_MainColor", _currentGesture._color);
+                    _leftHandMaterial.SetColor("_MainColor", _currentGesture._color);
+                }
             }
             catch (OperationCanceledException)
             {

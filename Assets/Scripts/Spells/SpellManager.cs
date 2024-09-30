@@ -62,7 +62,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                     _currentSpell = null;
                     _canCast = false;
                     SpellWrongIndication(_cancellationTokenSource.Token);
-
                 }
         }
 
@@ -79,7 +78,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
                     _rightHandMaterial.SetColor("_MainColor", Color.red);
                     _leftHandMaterial.SetColor("_MainColor", Color.red);
-                    print("wrong");
+
                     await UniTask.WaitForSeconds(delay, cancellationToken: token);
 
                     _rightHandMaterial.SetColor("_MainColor", defaultColor);
