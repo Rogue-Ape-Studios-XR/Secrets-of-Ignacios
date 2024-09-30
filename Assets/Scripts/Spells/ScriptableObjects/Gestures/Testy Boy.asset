@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Testy Boy
   m_EditorClassIdentifier: 
   _name: Start
-  _leftHandGesture: 0
-  _rightHandGesture: 0
+  _leftHandShape: 0
+  _rightHandShape: 0
   _xHandDistance: 2
   _yHandDistance: 2
   _zHandDistance: 2
+  _color: {r: 1, g: 1, b: 1, a: 0}

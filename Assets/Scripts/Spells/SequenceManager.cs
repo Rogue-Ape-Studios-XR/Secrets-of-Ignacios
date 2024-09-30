@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -9,6 +10,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
     {
         [SerializeField] private Transform _rightHand;
         [SerializeField] private Transform _leftHand;
+        [SerializeField] private Material _rightHandMaterial;
+        [SerializeField] private Material _leftHandMaterial;
         [SerializeField] private List<Gesture> _allGestures;
         [SerializeField] private bool _leftHandActive = false; // Only serialized for testing purposes
         [SerializeField] private bool _rightHandActive = false; // Only serialized for testing purposes
@@ -16,6 +19,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private readonly List<Gesture> _validatedGestures = new();
         private CancellationTokenSource _cancellationTokenSource;
         private Gesture _currentGesture;
+        private Color defaultColor;
         private HandShape _leftHandShape;
         private HandShape _rightHandShape;
         private bool _gestureValidated = false;
@@ -29,6 +33,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void Awake()
         {
             _cancellationTokenSource = new CancellationTokenSource();
+        }
+
+        private void Start()
+        {
+            defaultColor = _rightHandMaterial.GetColor("_MainColor");
         }
 
         private void OnDestroy()
@@ -73,6 +82,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                     _validatedGestures[^1] != _currentGesture && _sequenceStarted)
                 {
                     _validatedGestures.Add(_currentGesture);
+                    ChangeColor(_cancellationTokenSource.Token);
                     Debug.Log("Validated Gesture: " + _currentGesture._name);
                 }
 
@@ -100,6 +110,26 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             {
                 _gestureValidated = true;
                 OnDistanceValidated();
+            }
+        }
+
+        private async void ChangeColor(CancellationToken token)
+        {
+            try
+            {
+                HandShape handShape = _validatedGestures[^1]._rightHandShape;
+
+                _rightHandMaterial.SetColor("_MainColor", _currentGesture._color);
+                _leftHandMaterial.SetColor("_MainColor", _currentGesture._color);
+
+                await UniTask.WaitForSeconds(1, cancellationToken: token);
+
+                _rightHandMaterial.SetColor("_MainColor", defaultColor);
+                _leftHandMaterial.SetColor("_MainColor", defaultColor);
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.LogError("ChangeColor was canceled");
             }
         }
 
