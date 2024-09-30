@@ -23,7 +23,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private HandShape _leftHandShape;
         private HandShape _rightHandShape;
         private bool _gestureValidated = false;
-        [SerializeField] private bool _sequenceStarted = false;
+        private bool _sequenceStarted = false;
 
         internal event Action OnSequenceCreated;
         internal event Action OnReset;
