@@ -8,8 +8,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables
 
         private void Start()
         {
-            base._burningEffect.Stop();
-            base._getsDestroyed = false;
+            _burningEffect.Stop();
+            _getsDestroyed = false;
 
             if (_startsOnFire)
             {
@@ -19,18 +19,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables
 
         internal override void OnFire()
         {
-            base._isOnFire = true;
-            base._burningEffect.Play();
+            _isOnFire = true;
+            _burningEffect.Play();
         }
-
-/*        internal override void Awake()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        internal override void OnDestroy()
-        {
-            throw new System.NotImplementedException();
-        }*/
     }
 }
