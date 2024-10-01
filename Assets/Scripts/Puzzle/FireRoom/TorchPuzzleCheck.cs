@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using RogueApeStudios.SecretsOfIgnacios.Interactables;
 using System.Collections.Generic;
+using RogueApeStudios.SecretsOfIgnacios.Interactables.Fire;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
