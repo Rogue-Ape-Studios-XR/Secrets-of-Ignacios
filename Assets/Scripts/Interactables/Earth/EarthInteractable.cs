@@ -4,10 +4,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 	{
 		internal override void Awake()
 		{
+			_spellReceiver.OnSpellReceived -= HandleSpellReceived;
 		}
 
 		internal override void OnDestroy()
 		{
+			_spellReceiver.OnSpellReceived -= HandleSpellReceived;
 		}
 
 		internal override void HandleSpellReceived(string spellType)
