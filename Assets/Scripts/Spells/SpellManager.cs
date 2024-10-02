@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using RogueApeStudios.SecretsOfIgnacios.Gestures;
 using System;
 using System.Linq;
 using System.Threading;
@@ -9,14 +10,18 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
     internal class SpellManager : MonoBehaviour
     {
         [SerializeField] private SequenceManager _gestureManager;
-        [SerializeField] private Material _rightHandMaterial;
-        [SerializeField] private Material _leftHandMaterial;
+        [SerializeField] private Transform _rightHand;
+        [SerializeField] private Transform _leftHand;
+        [SerializeField] private Renderer _rightHandMaterial;
+        [SerializeField] private Renderer _leftHandMaterial;
         [SerializeField] private Spell[] _availableSpells;
 
         private Spell _currentSpell;
+        private Spell _lastSpell;
         private CancellationTokenSource _cancellationTokenSource;
-        private Color defaultColor;
-        private bool _canCast = false;
+        private Color _defaultColor;
+        private bool _canCastRightHand = false;
+        private bool _canCastLeftHand = false;
 
         private void Awake()
         {
@@ -25,7 +30,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         private void Start()
         {
-            defaultColor = _rightHandMaterial.GetColor("_MainColor");
+            _defaultColor = _rightHandMaterial.materials[1].GetColor("_MainColor");
         }
 
         private void OnEnable()
@@ -46,6 +51,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void SetSpell(Spell spell)
         {
             _currentSpell = spell;
+            _lastSpell = spell;
+            _canCastRightHand = true;
+            _canCastLeftHand = true;
         }
 
         public void ValidateSequence()
@@ -60,7 +68,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                 else
                 {
                     _currentSpell = null;
-                    _canCast = false;
+                    _canCastRightHand = false;
                     SpellWrongIndication(_cancellationTokenSource.Token);
                 }
         }
@@ -76,13 +84,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                 {
                     await UniTask.WaitForSeconds(delay, cancellationToken: token);
 
-                    _rightHandMaterial.SetColor("_MainColor", Color.red);
-                    _leftHandMaterial.SetColor("_MainColor", Color.red);
+                    _rightHandMaterial.materials[1].SetColor("_MainColor", Color.red);
+                    _leftHandMaterial.materials[1].SetColor("_MainColor", Color.red);
 
                     await UniTask.WaitForSeconds(delay, cancellationToken: token);
 
-                    _rightHandMaterial.SetColor("_MainColor", defaultColor);
-                    _leftHandMaterial.SetColor("_MainColor", defaultColor);
+                    _rightHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
+                    _leftHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
                 }
             }
             catch (OperationCanceledException)
@@ -91,10 +99,36 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             }
         }
 
+        public void CastRightHandSpell()
+        {
+            if (_canCastRightHand)
+            {
+                var rightHandSpell = Instantiate(_currentSpell._spellPrefab, _rightHand.position, _rightHand.rotation);
+                _canCastRightHand = false;
+
+                if (!_canCastLeftHand)
+                    HandleReset();
+            }
+        }
+
+        public void CastLeftHandSpell()
+        {
+            if (_canCastLeftHand)
+            {
+                var leftHandSpell = Instantiate(_currentSpell._spellPrefab, _leftHand.position, _leftHand.rotation);
+                _canCastLeftHand = false;
+
+                if (!_canCastRightHand)
+                    HandleReset();
+            }
+        }
+
         internal void HandleReset()
         {
             _currentSpell = null;
-            _canCast = false;
+            _canCastRightHand = false;
+            _canCastLeftHand = false;
         }
     }
 }
+
