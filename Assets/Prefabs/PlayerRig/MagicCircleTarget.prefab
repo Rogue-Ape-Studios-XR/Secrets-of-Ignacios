@@ -45,3 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handpositions: []
+  _aheadValue: -0.2
+  _upValue: 0.2
