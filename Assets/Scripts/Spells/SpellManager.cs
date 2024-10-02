@@ -23,6 +23,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private bool _canCastRightHand = false;
         private bool _canCastLeftHand = false;
 
+        public static event Action<bool> OnSpellValidation;
+
         private void Awake()
         {
             _cancellationTokenSource = new CancellationTokenSource();
@@ -37,6 +39,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             _gestureManager.OnSequenceCreated += ValidateSequence;
             _gestureManager.OnReset += HandleReset;
+            _gestureManager.OnQuickCast += HandleOnQuickCast;
         }
 
         private void OnDestroy()
@@ -64,13 +67,17 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                 {
                     SetSpell(spell);
                     Debug.Log("HEEEEEEEEEEEEEEEEEEY" + spell.name);
+                    break;
                 }
                 else
                 {
                     _currentSpell = null;
                     _canCastRightHand = false;
+                    _canCastLeftHand = false;
                     SpellWrongIndication(_cancellationTokenSource.Token);
                 }
+
+            OnSpellValidation?.Invoke(_canCastRightHand);
         }
 
         private async void SpellWrongIndication(CancellationToken token)
@@ -128,6 +135,17 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             _currentSpell = null;
             _canCastRightHand = false;
             _canCastLeftHand = false;
+
+            _rightHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
+            _leftHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
+        }
+
+        private void HandleOnQuickCast()
+        {
+            print("oi cunt");
+            _currentSpell = _lastSpell;
+            _rightHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._handColor);
+            _leftHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._handColor);
         }
     }
 }

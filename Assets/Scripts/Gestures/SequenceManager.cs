@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using RogueApeStudios.SecretsOfIgnacios.Spells;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -24,20 +25,23 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         private HandShape _rightHandShape;
         private bool _gestureValidated = false;
         private bool _sequenceStarted = false;
+        [SerializeField] private bool _canQuickCast = false;
 
         internal event Action OnSequenceCreated;
         internal event Action OnReset;
+        internal event Action OnQuickCast;
 
         internal List<Gesture> ValidatedGestures => _validatedGestures;
 
         private void Awake()
         {
             _cancellationTokenSource = new CancellationTokenSource();
+            SpellManager.OnSpellValidation += HandleOnSpellValidated;
+            _defaultColor = _rightHandMaterial.materials[1].GetColor("_MainColor");
         }
 
         private void Start()
         {
-            _defaultColor = _rightHandMaterial.materials[1].GetColor("_MainColor");
         }
 
         private void OnDestroy()
@@ -77,6 +81,15 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
                     _validatedGestures.Clear();
                     OnReset?.Invoke();
                     _sequenceStarted = true;
+                    _canQuickCast = false;
+                }
+                else if (_canQuickCast && _currentGesture._name == "Quick Cast" && _leftHandActive &&
+                    _rightHandActive && _currentGesture._leftHandShape == HandShape.QuickCast &&
+                    _currentGesture._rightHandShape == HandShape.QuickCast)
+                {
+                    print("the else if cunt");
+                    _validatedGestures.Clear();
+                    OnQuickCast?.Invoke();
                 }
 
                 if (_sequenceStarted && _validatedGestures.Count == 0 ||
@@ -140,6 +153,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
             {
                 Debug.LogError("ChangeColor was canceled");
             }
+        }
+
+        private void HandleOnSpellValidated(bool value)
+        {
+            _canQuickCast = value;
         }
 
         public void SetRightHandShape(string handShape)

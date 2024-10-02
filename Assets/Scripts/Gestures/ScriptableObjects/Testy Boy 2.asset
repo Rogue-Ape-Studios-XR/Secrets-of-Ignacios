@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Testy Boy 2
   m_EditorClassIdentifier: 
   _name: Start 2
-  _leftHandShape: 1
-  _rightHandShape: 1
+  _leftHandShape: 2
+  _rightHandShape: 2
   _xHandDistance: 2
   _yHandDistance: 2
   _zHandDistance: 2
