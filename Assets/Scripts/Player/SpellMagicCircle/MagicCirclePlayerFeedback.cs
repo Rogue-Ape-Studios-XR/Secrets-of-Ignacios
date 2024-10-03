@@ -1,4 +1,4 @@
-using RogueApeStudios.SecretsOfIgnacios.Spells;
+using RogueApeStudios.SecretsOfIgnacios.Gestures;
 using UnityEngine;
 using UnityEngine.VFX;
 
