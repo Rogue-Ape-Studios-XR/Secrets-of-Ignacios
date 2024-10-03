@@ -1,17 +1,18 @@
 using Cysharp.Threading.Tasks;
+using RogueApeStudios.SecretsOfIgnacios.Spells;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-namespace RogueApeStudios.SecretsOfIgnacios.Spells
+namespace RogueApeStudios.SecretsOfIgnacios.Gestures
 {
     internal class SequenceManager : MonoBehaviour
     {
         [SerializeField] private Transform _rightHand;
         [SerializeField] private Transform _leftHand;
-        [SerializeField] private Material _rightHandMaterial;
-        [SerializeField] private Material _leftHandMaterial;
+        [SerializeField] private Renderer _rightHandMaterial;
+        [SerializeField] private Renderer _leftHandMaterial;
         [SerializeField] private List<Gesture> _allGestures;
         [SerializeField] private bool _leftHandActive = false; // Only serialized for testing purposes
         [SerializeField] private bool _rightHandActive = false; // Only serialized for testing purposes
@@ -19,25 +20,25 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private readonly List<Gesture> _validatedGestures = new();
         private CancellationTokenSource _cancellationTokenSource;
         private Gesture _currentGesture;
-        private Color defaultColor;
+        private Color _defaultColor;
         private HandShape _leftHandShape;
         private HandShape _rightHandShape;
         private bool _gestureValidated = false;
         private bool _sequenceStarted = false;
+        [SerializeField] private bool _canQuickCast = false;
 
         internal event Action OnSequenceCreated;
         internal event Action OnReset;
+        internal event Action OnQuickCast;
+        internal event Action<Gesture> OnGestureRecoginsed;
 
         internal List<Gesture> ValidatedGestures => _validatedGestures;
 
         private void Awake()
         {
             _cancellationTokenSource = new CancellationTokenSource();
-        }
-
-        private void Start()
-        {
-            defaultColor = _rightHandMaterial.GetColor("_MainColor");
+            SpellManager.OnSpellValidation += HandleOnSpellValidated;
+            _defaultColor = _rightHandMaterial.materials[1].GetColor("_MainColor");
         }
 
         private void OnDestroy()
@@ -77,20 +78,30 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                     _validatedGestures.Clear();
                     OnReset?.Invoke();
                     _sequenceStarted = true;
+                    _canQuickCast = false;
+                }
+                else if (_canQuickCast && _currentGesture._name == "Quick Cast" && _leftHandActive &&
+                    _rightHandActive && _currentGesture._leftHandShape == HandShape.QuickCast &&
+                    _currentGesture._rightHandShape == HandShape.QuickCast)
+                {
+                    _validatedGestures.Clear();
+                    OnQuickCast?.Invoke();
                 }
 
                 if (_sequenceStarted && _validatedGestures.Count == 0 ||
-                    _sequenceStarted && _validatedGestures[^1] != _currentGesture)
+                    _sequenceStarted && _validatedGestures[^1] != _currentGesture &&
+                    _rightHandShape != HandShape.QuickCast && _leftHandShape != HandShape.QuickCast)
                 {
                     _validatedGestures.Add(_currentGesture);
                     ChangeColor(_cancellationTokenSource.Token);
+                    OnGestureRecoginsed?.Invoke(_currentGesture);
                 }
 
                 if (_validatedGestures.Count == 3)
                 {
                     OnSequenceCreated?.Invoke();
                     _sequenceStarted = false;
-                    ValidatedGestures.Clear();
+                    _validatedGestures.Clear();
                 }
 
                 _currentGesture = null;
@@ -122,24 +133,29 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                 {
                     float delay = 1;
 
-                    _rightHandMaterial.SetColor("_MainColor", _currentGesture._color);
-                    _leftHandMaterial.SetColor("_MainColor", _currentGesture._color);
+                    _rightHandMaterial.materials[1].SetColor("_MainColor", _currentGesture._color);
+                    _leftHandMaterial.materials[1].SetColor("_MainColor", _currentGesture._color);
 
                     await UniTask.WaitForSeconds(delay, cancellationToken: token);
 
-                    _rightHandMaterial.SetColor("_MainColor", defaultColor);
-                    _leftHandMaterial.SetColor("_MainColor", defaultColor);
+                    _rightHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
+                    _leftHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
                 }
                 else
                 {
-                    _rightHandMaterial.SetColor("_MainColor", _currentGesture._color);
-                    _leftHandMaterial.SetColor("_MainColor", _currentGesture._color);
+                    _rightHandMaterial.materials[1].SetColor("_MainColor", _currentGesture._color);
+                    _leftHandMaterial.materials[1].SetColor("_MainColor", _currentGesture._color);
                 }
             }
             catch (OperationCanceledException)
             {
                 Debug.LogError("ChangeColor was canceled");
             }
+        }
+
+        private void HandleOnSpellValidated(bool value)
+        {
+            _canQuickCast = value;
         }
 
         public void SetRightHandShape(string handShape)

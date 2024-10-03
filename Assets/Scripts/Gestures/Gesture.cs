@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace RogueApeStudios.SecretsOfIgnacios.Spells
+namespace RogueApeStudios.SecretsOfIgnacios.Gestures
 {
     [CreateAssetMenu(fileName = "Gesture", menuName = "Scriptable Objects/Gesture")]
     internal class Gesture : ScriptableObject
