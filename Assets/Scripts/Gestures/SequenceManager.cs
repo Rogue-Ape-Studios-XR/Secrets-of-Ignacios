@@ -89,7 +89,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
                 }
 
                 if (_sequenceStarted && _validatedGestures.Count == 0 ||
-                    _sequenceStarted && _validatedGestures[^1] != _currentGesture)
+                    _sequenceStarted && _validatedGestures[^1] != _currentGesture &&
+                    _rightHandShape != HandShape.QuickCast && _leftHandShape != HandShape.QuickCast)
                 {
                     _validatedGestures.Add(_currentGesture);
                     ChangeColor(_cancellationTokenSource.Token);
