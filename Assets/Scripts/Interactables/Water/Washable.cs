@@ -6,12 +6,12 @@ using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
 {
-    internal abstract class Washable : WaterInteractable 
+    internal class Washable : WaterInteractable 
     {
         [SerializeField] private Renderer _noise; //when used: _noise.material.[name of shader graph]
         [SerializeField] private bool _cleaned;
 
-        private float _grimeMax;
+        [SerializeField] private float _grimeMax;
         private float _grimeAmountRemoved;
 
         private async void Wash(CancellationToken token)
@@ -23,7 +23,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
                     //something with _noise
                     _grimeAmountRemoved++;
                     await UniTask.WaitForSeconds(1, cancellationToken: token);
-                    //after tasks
+                    Debug.Log(_grimeAmountRemoved);
                 }
                 if (_grimeAmountRemoved >= _grimeMax)
                 {
