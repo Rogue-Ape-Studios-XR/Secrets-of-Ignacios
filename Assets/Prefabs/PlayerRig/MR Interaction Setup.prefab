@@ -3845,16 +3845,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc079f58c05b87c45829978c2e1a97a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rightHand: {fileID: 8827492844492106989}
+  _rightHand: {fileID: 6679902487617635372}
   _leftHand: {fileID: 6679902487617635372}
-  _rightHandMaterial: {fileID: 2100000, guid: 61d033f3a51f40647a5458ea14f3b4af, type: 2}
-  _leftHandMaterial: {fileID: 2100000, guid: 61d033f3a51f40647a5458ea14f3b4af, type: 2}
+  _rightHandMaterial: {fileID: 5190050596421826637}
+  _leftHandMaterial: {fileID: 6425639629858156003}
   _allGestures:
   - {fileID: 11400000, guid: 98105de35a6f47945a9bc17659aae264, type: 2}
   - {fileID: 11400000, guid: 6c6e9117b77522e48bf8288bb53e515c, type: 2}
   - {fileID: 11400000, guid: 4fae163ba39953f47a92ac450dba3702, type: 2}
   _leftHandActive: 0
   _rightHandActive: 0
+  _canQuickCast: 0
 --- !u!114 &7230881327965378576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3868,8 +3869,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gestureManager: {fileID: 7497934956184238321}
-  _rightHandMaterial: {fileID: 2100000, guid: 61d033f3a51f40647a5458ea14f3b4af, type: 2}
-  _leftHandMaterial: {fileID: 2100000, guid: 61d033f3a51f40647a5458ea14f3b4af, type: 2}
+  _rightHand: {fileID: 6679902487617635372}
+  _leftHand: {fileID: 8827492844492106989}
+  _rightHandMaterial: {fileID: 5190050596421826637}
+  _leftHandMaterial: {fileID: 6425639629858156003}
   _availableSpells:
   - {fileID: 11400000, guid: 1ef0e2ff34d668d4cb4aa300a7fdcca8, type: 2}
 --- !u!1 &2268672708825686388
