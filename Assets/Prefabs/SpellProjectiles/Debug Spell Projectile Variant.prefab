@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6663393229627177917}
   - component: {fileID: 4707550687980857747}
   - component: {fileID: 2509719072014168454}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DebugSpellImpact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,11 +192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7478003267815051674, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7478003267815051674, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
