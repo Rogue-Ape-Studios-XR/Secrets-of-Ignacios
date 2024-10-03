@@ -431,7 +431,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8121273555303013067}
-  - component: {fileID: 3109534288825644322}
+  - component: {fileID: 3919579633022511349}
   m_Layer: 0
   m_Name: Bookholder
   m_TagString: Untagged
@@ -455,7 +455,7 @@ Transform:
   - {fileID: 4310412430176867925}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3109534288825644322
+--- !u!114 &3919579633022511349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -9,20 +9,10 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
         [SerializeField]
         private GameObject _grimiore;
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
 
         public void SummonGrimiore()
         {
+            Debug.Log(_grimioreActive + "pre");
             if (!_grimioreActive)
             {
                 _grimioreActive = true;
@@ -33,14 +23,7 @@ namespace RogueApeStudios.SecretsOfIgnacios
                 _grimioreActive = false;
                 _grimiore.SetActive(false);
             }
-            Debug.Log("YES!");
-        }
-
-        public void LockGrimiorePos()
-        {
-            Rigidbody _grimiorebody = _grimiore.GetComponent<Rigidbody>();
-
-            _grimiorebody.constraints = RigidbodyConstraints.FreezeAll;
+            Debug.Log(_grimioreActive + "after");
         }
     }
 }
