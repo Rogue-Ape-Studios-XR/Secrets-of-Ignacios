@@ -25,12 +25,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Fire
 		internal override void Awake()
 		{
 			base.Awake();
-			_cancellationTokenSource = new CancellationTokenSource();
+			_cancellationTokenSource = new();
 		}
 
 		private void Start()
 		{
 			_burningEffect.Stop();
+			//_dousingEffect.Stop();
 			_destructionEffect.Stop();
 		}
 
@@ -72,5 +73,15 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Fire
 
 			gameObject.SetActive(false);
 		}
-	}
+
+        internal override void OnDouse()
+        {
+            _isOnFire = false;
+			_cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Dispose();
+            _cancellationTokenSource = new();
+            _burningEffect.Stop();
+            //_dousingEffect.Play();
+        }
+    }
 }

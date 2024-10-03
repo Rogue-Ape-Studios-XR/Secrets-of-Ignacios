@@ -9,6 +9,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Fire
 		private void Start()
 		{
 			_burningEffect.Stop();
+			//_dousingEffect.Stop();
 			_getsDestroyed = false;
 
 			if (_startsOnFire) OnFire();
@@ -19,5 +20,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Fire
 			_isOnFire = true;
 			_burningEffect.Play();
 		}
-	}
+
+        internal override void OnDouse()
+        {
+            _isOnFire = false;
+			_burningEffect.Stop();
+			//_dousingEffect.Play();
+        }
+    }
 }

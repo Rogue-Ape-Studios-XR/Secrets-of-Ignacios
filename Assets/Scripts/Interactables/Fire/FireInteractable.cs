@@ -10,6 +10,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Fire
 		[SerializeField] internal bool _isOnFire;
 
 		[SerializeField] internal VisualEffect _burningEffect;
+		[SerializeField] internal VisualEffect _dousingEffect;
 
 		internal override void Awake()
 		{
@@ -25,7 +26,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Fire
 
 		internal override void HandleSpellReceived(string spellType)
 		{
-			Debug.Log("Some spell hit");
+			Debug.Log("Some fire spell hit");
 			switch (spellType)
 			{
 				case "Debug":
@@ -33,14 +34,17 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Fire
 					OnFire();
 					OnIgnitionToggle?.Invoke(_isOnFire);
 					break;
-				/*case SpellType.Water:
-				    // Logic for casting a water spell
-				    Debug.Log("Casting a water spell!");
-				    break;*/
+				case "Water":
+					// Logic for casting a water spell
+					OnDouse();
+                    OnIgnitionToggle?.Invoke(!_isOnFire);
+                    break;
 				default: throw new NotImplementedException();
 			}
 		}
 
 		internal abstract void OnFire();
+
+		internal abstract void OnDouse();
 	}
 }
