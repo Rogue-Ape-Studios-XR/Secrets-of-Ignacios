@@ -320,6 +320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1627867995309482397}
   - component: {fileID: 2679004764471249565}
+  - component: {fileID: 7464679244188683982}
   m_Layer: 0
   m_Name: MagicCircleTarget
   m_TagString: Untagged
@@ -359,3 +360,18 @@ MonoBehaviour:
   _handpositions: []
   _aheadValue: -0.2
   _upValue: 0.2
+--- !u!114 &7464679244188683982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5919199373544353438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7640b0b189726914b90b8f40504c974b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _magicCircle: {fileID: 3117025215003157655}
+  _boolControls: {fileID: 2684278107010345546}
+  _colorControls: {fileID: 2169457918647813433}

@@ -1,4 +1,5 @@
 using RogueApeStudios.SecretsOfIgnacios.Gestures;
+using RogueApeStudios.SecretsOfIgnacios.Spells;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -18,15 +19,20 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
         [SerializeField] private VisualEffect _magicCircle;
         [SerializeField] private GameObject _boolControls;
         [SerializeField] private LineRenderer _colorControls;
+        [SerializeField] private SequenceManager _sequenceManager;
 
         private void Start()
         {
             //sub to the gesture recognized and spell recognized events
             _magicCircle.Stop();
+            SpellManager.OnSpellValidation += HandleSpellRecognized;
+            _sequenceManager.OnGestureRecognised += HandleGestureRecognized;
         }
         private void OnDestroy()
         {
             //unsubscribe
+            SpellManager.OnSpellValidation -= HandleSpellRecognized;
+
         }
 
         void HandleGestureRecognized(Gesture gesture)
@@ -34,6 +40,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
             switch (gesture._rightHandShape)
             {
                 case HandShape.Start:
+                    _boolControls.SetActive(true);
                     _magicCircle.Play();
                     break;
                 case HandShape.Fire:
@@ -50,7 +57,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
             _colorControls.startColor = gesture._color;
         }
 
-        void HandleSpellRecognized()
+        void HandleSpellRecognized(bool recognized)
         {
             _boolControls.SetActive(false);
         }

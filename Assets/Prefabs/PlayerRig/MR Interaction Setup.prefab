@@ -2297,7 +2297,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &803973018239175758
 Transform:
   m_ObjectHideFlags: 0
@@ -2342,7 +2342,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Fire
+          m_StringArgument: QuickCast
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 7497934956184238321}
@@ -6009,7 +6009,20 @@ MonoBehaviour:
   m_Background: {fileID: 0}
   m_GesturePerformed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7230881327965378576}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SpellManager,
+          Assembly-CSharp
+        m_MethodName: CastLeftHandSpell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls: []
@@ -7128,7 +7141,20 @@ MonoBehaviour:
   m_Background: {fileID: 0}
   m_GesturePerformed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7230881327965378576}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SpellManager,
+          Assembly-CSharp
+        m_MethodName: CastRightHandSpell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls: []
@@ -12376,7 +12402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7677589809073781274
 Transform:
   m_ObjectHideFlags: 0
@@ -12421,7 +12447,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Fire
+          m_StringArgument: QuickCast
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 7497934956184238321}
@@ -14982,6 +15008,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagicCircleTarget
       objectReference: {fileID: 0}
+    - target: {fileID: 7464679244188683982, guid: d8dd01e69874c55419be69ed19e20ab3, type: 3}
+      propertyPath: _sequenceManager
+      value: 
+      objectReference: {fileID: 7497934956184238321}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

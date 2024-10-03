@@ -18,6 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 98105de35a6f47945a9bc17659aae264, type: 2}
   - {fileID: 11400000, guid: 6c6e9117b77522e48bf8288bb53e515c, type: 2}
   - {fileID: 11400000, guid: 4fae163ba39953f47a92ac450dba3702, type: 2}
-  _handColor: {r: 1, g: 0.38039216, b: 0.10980392, a: 1}
+  _handColor: {r: 1, g: 0, b: 1, a: 1}
   _handEffect: {fileID: 0}
-  _spellPrefab: {fileID: 3305913590308694742, guid: ef9990a54c4d15c4fb7b03a05168a955, type: 3}
+  _spellPrefab: {fileID: 3129924456754848524, guid: 166c15f1b3d2772499909dbbbeca9225, type: 3}
