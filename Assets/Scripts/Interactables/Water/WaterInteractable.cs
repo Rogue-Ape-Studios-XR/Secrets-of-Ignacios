@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
@@ -7,15 +8,20 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
 	{
 		[SerializeField] internal bool _isSplashed;
 
-		internal override void Awake()
+        internal CancellationTokenSource _cancellationTokenSource;
+
+        internal override void Awake()
 		{
 			_spellReceiver.OnSpellReceived += HandleSpellReceived;
-		}
+            _cancellationTokenSource = new CancellationTokenSource();
+        }
 
 		internal override void OnDestroy()
 		{
 			_spellReceiver.OnSpellReceived -= HandleSpellReceived;
-		}
+            _cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Dispose();
+        }
 
 		internal override void HandleSpellReceived(string spellType)
 		{
