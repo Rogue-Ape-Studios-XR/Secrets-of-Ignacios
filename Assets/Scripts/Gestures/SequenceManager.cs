@@ -30,6 +30,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         internal event Action OnSequenceCreated;
         internal event Action OnReset;
         internal event Action OnQuickCast;
+        internal event Action<Gesture> OnGestureRecoginsed;
 
         internal List<Gesture> ValidatedGestures => _validatedGestures;
 
@@ -38,10 +39,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
             _cancellationTokenSource = new CancellationTokenSource();
             SpellManager.OnSpellValidation += HandleOnSpellValidated;
             _defaultColor = _rightHandMaterial.materials[1].GetColor("_MainColor");
-        }
-
-        private void Start()
-        {
         }
 
         private void OnDestroy()
@@ -87,7 +84,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
                     _rightHandActive && _currentGesture._leftHandShape == HandShape.QuickCast &&
                     _currentGesture._rightHandShape == HandShape.QuickCast)
                 {
-                    print("the else if cunt");
                     _validatedGestures.Clear();
                     OnQuickCast?.Invoke();
                 }
@@ -97,13 +93,14 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
                 {
                     _validatedGestures.Add(_currentGesture);
                     ChangeColor(_cancellationTokenSource.Token);
+                    OnGestureRecoginsed?.Invoke(_currentGesture);
                 }
 
                 if (_validatedGestures.Count == 3)
                 {
                     OnSequenceCreated?.Invoke();
                     _sequenceStarted = false;
-                    ValidatedGestures.Clear();
+                    _validatedGestures.Clear();
                 }
 
                 _currentGesture = null;

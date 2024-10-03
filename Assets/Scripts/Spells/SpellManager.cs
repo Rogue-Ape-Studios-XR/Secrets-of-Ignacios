@@ -142,10 +142,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         private void HandleOnQuickCast()
         {
-            print("oi cunt");
             _currentSpell = _lastSpell;
             _rightHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._handColor);
             _leftHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._handColor);
+            _canCastLeftHand = true;
+            _canCastRightHand = true;
         }
     }
 }
