@@ -21,14 +21,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Wind
 		{
 			// If there are any issues, you can wrap this in an if (!_isBlown).
 			// This is not done so if the player casts multiple spells, it won't stop with the logic of only 1
-			Debug.Log("hit the turning thingamajig");
 			_isBlown = true;
 
 			_startRotation = _targetTransform.rotation;
 			_targetRotation = _startRotation * Quaternion.Euler(_rotationDegrees);
 			_elapsedTime = 0f;
-
-			Debug.Log("object is turning");
 		}
 
 		private void Turn()
