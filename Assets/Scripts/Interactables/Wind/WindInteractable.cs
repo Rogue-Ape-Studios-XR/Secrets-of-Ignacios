@@ -5,27 +5,27 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Wind
 {
 	internal abstract class WindInteractable : Interactables
 	{
-		[SerializeField] internal bool isBlown;
+		[SerializeField] internal bool _isBlown;
+		internal event Action<bool> onBlown;
 
 		internal override void Awake()
 		{
-			_spellReceiver.OnSpellReceived -= HandleSpellReceived;
+			_spellReceiver.OnSpellReceived += HandleSpellReceived;
 		}
 
 		internal override void OnDestroy()
 		{
 			_spellReceiver.OnSpellReceived -= HandleSpellReceived;
 		}
-		
-		internal event Action<bool> onBlown; 
 
 		internal override void HandleSpellReceived(string spellType)
 		{
-			Debug.Log("Some spell hit");
+			Debug.Log("Some wind spell hit");
 			switch (spellType)
 			{
 				case "Debug":
-					// Logic for casting a fire spell
+					Blown();
+					onBlown?.Invoke(_isBlown);
 					break;
 				case "Wind":
 					// Implement the spinning of the fan. Boxes and things are not required, as the wind spell will have force
@@ -33,7 +33,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Wind
 				default: throw new NotImplementedException();
 			}
 		}
-		
-		internal abstract void HandleBlown();
+
+		internal abstract void Blown();
 	}
 }

@@ -1,6 +1,9 @@
 namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Wind
 {
-	internal abstract class Blowable : WindInteractable
+	internal class Blowable : WindInteractable
 	{
+		internal override void Blown()
+		{
+		}
 	}
 }
