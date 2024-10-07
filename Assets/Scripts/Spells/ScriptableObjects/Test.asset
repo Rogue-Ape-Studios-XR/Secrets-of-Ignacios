@@ -20,4 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4fae163ba39953f47a92ac450dba3702, type: 2}
   _handColor: {r: 1, g: 0, b: 1, a: 1}
   _handEffect: {fileID: 0}
-  _spellPrefab: {fileID: 3129924456754848524, guid: 166c15f1b3d2772499909dbbbeca9225, type: 3}
+  _spellPrefab: {fileID: 8070988747970441051, guid: 9f087b21d92a7ae4abe0f370dd9af610, type: 3}
