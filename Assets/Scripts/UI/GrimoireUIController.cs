@@ -5,25 +5,39 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
     public class GrimoireUIController : MonoBehaviour
     {
-        private bool _grimioreActive = false;
+        private bool _grimoireActive = false;
 
         [SerializeField]
-        private GameObject _grimiore;
+        private GameObject _grimoire;
 
-        public void SummonGrimiore()
+
+        [SerializeField]
+        private GameObject[] _chapters;
+
+        public void ActivateChapter(int chapterNum)
         {
-            Debug.Log(_grimioreActive + "pre");
-            if (!_grimioreActive)
+            foreach (var chapter in _chapters)
             {
-                _grimioreActive = true;
-                _grimiore.SetActive(true);
+                chapter.SetActive(false);
             }
-            else if (_grimioreActive) 
+
+            _chapters[chapterNum].SetActive(true);
+        }
+
+        public void Summongrimoire()
+        {
+            Debug.Log(_grimoireActive + "pre");
+            if (!_grimoireActive)
             {
-                _grimioreActive = false;
-                _grimiore.SetActive(false);
+                _grimoireActive = true;
+                _grimoire.SetActive(true);
             }
-            Debug.Log(_grimioreActive + "after");
+            else if (_grimoireActive) 
+            {
+                _grimoireActive = false;
+                _grimoire.SetActive(false);
+            }
+            Debug.Log(_grimoireActive + "after");
         }
     }
 }
