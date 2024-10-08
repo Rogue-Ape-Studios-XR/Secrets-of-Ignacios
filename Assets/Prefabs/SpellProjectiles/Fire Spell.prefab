@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3798447849508435429, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: spellName
-      value: Fire
+      value: Debug
       objectReference: {fileID: 0}
     - target: {fileID: 7032622482946899860, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: m_CastShadows
