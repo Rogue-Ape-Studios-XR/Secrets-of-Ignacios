@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4699868179033251582}
   - component: {fileID: 2017005002149781722}
   - component: {fileID: 7793881457639446833}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LineVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7982635085923934042}
   - component: {fileID: 4461769695645286581}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right Fist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2469236834265895319}
   - component: {fileID: 8770413119732379739}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule Collider Proximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +556,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8561299942844612040}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_RingTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -588,7 +588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6894548675061550524}
   - component: {fileID: 5548772075370079016}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left Thumbs Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -693,7 +693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 943970304849763552}
   - component: {fileID: 4652225804743071118}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Select Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,7 +775,7 @@ GameObject:
   - component: {fileID: 2188744857104400787}
   - component: {fileID: 1794487525221627615}
   - component: {fileID: 7481838956266530515}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1182,7 +1182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7408405937719011761}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_IndexIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1214,7 +1214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 663169943139196896}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_MiddleIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1251,7 +1251,7 @@ GameObject:
   - component: {fileID: 4948944004474267562}
   - component: {fileID: 9128143558490076023}
   - component: {fileID: 2556649420626753896}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hand Near-Far Interactor Affordances
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1570,7 +1570,7 @@ GameObject:
   - component: {fileID: 8163480006147260615}
   - component: {fileID: 3581851226937748077}
   - component: {fileID: 435366751688371391}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1654,7 +1654,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4483027679339704671}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_ThumbTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1685,7 +1685,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7009030537780244490}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_ThumbDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1717,7 +1717,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3907308017654829435}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1750,7 +1750,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4728622326317418627}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_RingIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1783,7 +1783,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7082259024034082459}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Camera Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1820,7 +1820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2743514084001592169}
   - component: {fileID: 1318626512074598419}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Aim Pose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1924,7 +1924,7 @@ GameObject:
   - component: {fileID: 7391158270395462128}
   - component: {fileID: 1623540624849804299}
   - component: {fileID: 6750230034678188807}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Contact Spawn Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2026,7 +2026,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9157195510070000343}
   - component: {fileID: 3300231704329183452}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left Grab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2091,7 +2091,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8350320714478564520}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_IndexTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2126,7 +2126,7 @@ GameObject:
   - component: {fileID: 2359862356793298544}
   - component: {fileID: 8646657446293059884}
   - component: {fileID: 8357224505866542057}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Contact Spawn Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2227,7 +2227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 715760565008124961}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_IndexIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2259,7 +2259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8526433207752511165}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_ThumbTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2291,13 +2291,13 @@ GameObject:
   m_Component:
   - component: {fileID: 803973018239175758}
   - component: {fileID: 6109382720091990401}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right thumbs Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &803973018239175758
 Transform:
   m_ObjectHideFlags: 0
@@ -2342,7 +2342,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Fire
+          m_StringArgument: QuickCast
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 7497934956184238321}
@@ -2396,7 +2396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2246792290369042000}
   - component: {fileID: 1892263472700284217}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule Collider Proximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2450,7 +2450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4390878734969387446}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_LittleDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2483,7 +2483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1270200064421022137}
   - component: {fileID: 6513433330826206197}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule  Collider Proximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2537,7 +2537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5500966891449118473}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_LittleMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2569,7 +2569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6757797963881911293}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_LittleTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2600,7 +2600,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4059899672652674919}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_RingMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2633,7 +2633,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1164550398380572284}
   - component: {fileID: 6317593083690587607}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'Capsule Collider Distal '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2687,7 +2687,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 596732146704213639}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_LittleIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2720,7 +2720,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8499689209985921086}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_LittleProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2754,7 +2754,7 @@ GameObject:
   - component: {fileID: 6814564642718055079}
   - component: {fileID: 6454390485174713821}
   - component: {fileID: 4697737335693250036}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2838,7 +2838,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3934438318131261073}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_ThumbTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2869,7 +2869,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 201181967754953009}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_LittleDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2901,7 +2901,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7253727477036148951}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_LittleIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2935,7 +2935,7 @@ GameObject:
   - component: {fileID: 90217518668563379}
   - component: {fileID: 8452011291666608873}
   - component: {fileID: 3460948469494399907}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Locomotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2999,7 +2999,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1817903700306105645}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_Palm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3034,7 +3034,7 @@ GameObject:
   - component: {fileID: 7304432167975859511}
   - component: {fileID: 6274588932111773185}
   - component: {fileID: 3144571708904751489}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hand Poke Interactor Affordances
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3277,7 +3277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2299353636879642778}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_Palm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3314,7 +3314,7 @@ GameObject:
   - component: {fileID: 7800348835535742031}
   - component: {fileID: 1077797562843705454}
   - component: {fileID: 2739351151696291528}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -3584,7 +3584,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2234494697770287831}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gesture Detection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3617,7 +3617,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7702745662034416281}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_RingProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3659,7 +3659,7 @@ GameObject:
   - component: {fileID: 2298006216016455073}
   - component: {fileID: 7497934956184238321}
   - component: {fileID: 7230881327965378576}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3885,7 +3885,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5197924883874786701}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_IndexMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3917,7 +3917,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2509782977884649975}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_MiddleDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3949,7 +3949,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1829623219393699707}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_IndexProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3983,7 +3983,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6679902487617635372}
   - component: {fileID: 3581357896987327226}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Palm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4084,7 +4084,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8225042862602384655}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_ThumbMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4117,7 +4117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8827492844492106989}
   - component: {fileID: 4180800289528635574}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Palm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4219,7 +4219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5953487531524085833}
   - component: {fileID: 3414714601953762366}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right Shaka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4358,7 +4358,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6184592761200950832}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_MiddleDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4390,7 +4390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5932806821581514148}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_LittleIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4423,7 +4423,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3029571781359024392}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_ThumbMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4456,7 +4456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4162308625383620399}
   - component: {fileID: 2033909407382177547}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Goal Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4526,7 +4526,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1842642041144351202}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_IndexMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4559,7 +4559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8747553456606194348}
   - component: {fileID: 2374896209943036946}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pinch Grab Pose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4662,7 +4662,7 @@ GameObject:
   - component: {fileID: 6601493166804099205}
   - component: {fileID: 3072338852968009010}
   - component: {fileID: 1935829221803961213}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LineVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5048,7 +5048,7 @@ GameObject:
   - component: {fileID: 4176578161322657661}
   - component: {fileID: 2737502241315740420}
   - component: {fileID: 5906132365184452660}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5136,7 +5136,7 @@ GameObject:
   - component: {fileID: 1532278786610899755}
   - component: {fileID: 7807667811978149756}
   - component: {fileID: 1226662544577268845}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pinch Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5480,7 +5480,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3914359972875567066}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_MiddleDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5512,7 +5512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7203851482673622544}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_MiddleProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5545,7 +5545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2639520702055385958}
   - component: {fileID: 3967654407685295827}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Aim Pose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5646,7 +5646,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8821781045246709427}
   - component: {fileID: 2045197209297319151}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Select Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5725,7 +5725,7 @@ GameObject:
   - component: {fileID: 8346226640128312360}
   - component: {fileID: 6739995696785977288}
   - component: {fileID: 2535441320353010555}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hand Poke Interactor Affordances
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5969,7 +5969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8764651189613054441}
   - component: {fileID: 3612751110403967225}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6009,7 +6009,20 @@ MonoBehaviour:
   m_Background: {fileID: 0}
   m_GesturePerformed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7230881327965378576}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SpellManager,
+          Assembly-CSharp
+        m_MethodName: CastLeftHandSpell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls: []
@@ -6034,7 +6047,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2155226524219312315}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_MiddleTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6066,7 +6079,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6825476533162774423}
   - component: {fileID: 7164852972708166672}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Climb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6119,7 +6132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5393375357991205102}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_IndexDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6152,7 +6165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7913221649465808499}
   - component: {fileID: 5988931658273920683}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: UI Press Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6227,7 +6240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5884384873414327383}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_LittleTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6259,7 +6272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7141654408275513191}
   - component: {fileID: 7936616341921118308}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left Custom Gesture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6325,7 +6338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4176997782626130665}
   - component: {fileID: 526449313831910810}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'Capsule Collider Distal '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6379,7 +6392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3388357696255236677}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_RingMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6411,7 +6424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2526799516824507732}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_RingDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6444,7 +6457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 278951039292291422}
   - component: {fileID: 4523859256477783162}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: XR Interaction Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6493,7 +6506,7 @@ GameObject:
   - component: {fileID: 6502411613708334565}
   - component: {fileID: 3040131712395170288}
   - component: {fileID: 5773398203042526824}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Near-Far Interactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6794,7 +6807,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3726433473562519768}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_LittleProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6827,7 +6840,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1838953700057676067}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_MiddleTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6858,7 +6871,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6539779339458677588}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_ThumbMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6891,7 +6904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5904734033657979020}
   - component: {fileID: 2045322111101852881}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pinch Grab Pose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6991,7 +7004,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3079233921794311140}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_ThumbProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7023,7 +7036,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6241207513059895673}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_IndexDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7055,7 +7068,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5848041696083721515}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_LittleMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7088,7 +7101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4660229007976106719}
   - component: {fileID: 5566758130611152677}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7128,7 +7141,20 @@ MonoBehaviour:
   m_Background: {fileID: 0}
   m_GesturePerformed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7230881327965378576}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SpellManager,
+          Assembly-CSharp
+        m_MethodName: CastRightHandSpell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls: []
@@ -7157,7 +7183,7 @@ GameObject:
   - component: {fileID: 379181493542147624}
   - component: {fileID: 7221274008043917755}
   - component: {fileID: 6240511566454298329}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pinch Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7502,7 +7528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7159260901322080218}
   - component: {fileID: 6823802787998538178}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right Grab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7567,7 +7593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3110064146303105530}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_RingDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7599,7 +7625,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7251434596496375619}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_ThumbDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7631,7 +7657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3641678713231235278}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_LittleDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7666,7 +7692,7 @@ GameObject:
   - component: {fileID: 2362046309988094773}
   - component: {fileID: 6934040986637906934}
   - component: {fileID: 1671940751189201385}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Grab Move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7854,7 +7880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2930196724182065360}
   - component: {fileID: 2594712102204565655}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right Palm Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7958,7 +7984,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2259685487427074678}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_Wrist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7996,7 +8022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1590371830648178293}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_LittleMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8029,7 +8055,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2448924966869622747}
   - component: {fileID: 6871263031645462612}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule Collider Proximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8085,7 +8111,7 @@ GameObject:
   - component: {fileID: 8095642319148082370}
   - component: {fileID: 6425639629858156003}
   - component: {fileID: 6035579984572450890}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8211,7 +8237,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6900894997821805838}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_MiddleMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8246,7 +8272,7 @@ GameObject:
   - component: {fileID: 7062238182517401927}
   - component: {fileID: 7353783752177058582}
   - component: {fileID: 4439666763414632387}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pinch Point Stabilized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8363,7 +8389,7 @@ GameObject:
   - component: {fileID: 2325521341806446387}
   - component: {fileID: 1517721869693633144}
   - component: {fileID: 4714720884282283435}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Poke Interactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8517,7 +8543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6450656561928427583}
   - component: {fileID: 826147429513967006}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Input Action Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8563,7 +8589,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7301007244471542021}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_ThumbDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8595,7 +8621,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2987281485204314611}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_Palm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8626,7 +8652,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1704397177986694226}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_IndexTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8657,7 +8683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7065791189661036009}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_MiddleTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8689,7 +8715,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6991994151167794063}
   - component: {fileID: 8855639527676933629}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hand Visualizer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8741,7 +8767,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1775807014207304377}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_RingIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8777,7 +8803,7 @@ GameObject:
   - component: {fileID: 8886773063843473943}
   - component: {fileID: 8235313893598116848}
   - component: {fileID: 6018849544852685168}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Near-Far Interactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9078,7 +9104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 505278474911238564}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_LittleMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9110,7 +9136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5235609620040656991}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_ThumbProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9143,7 +9169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2415327075373595921}
   - component: {fileID: 3753558961625378894}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'Capsule Collider Distal '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9202,7 +9228,7 @@ GameObject:
   - component: {fileID: 5527395055442744025}
   - component: {fileID: 1702542132124240617}
   - component: {fileID: 2175542092483518852}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hand Near-Far Interactor Affordances
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9519,7 +9545,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3907854021581714024}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_IndexProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9552,7 +9578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4908904258409784320}
   - component: {fileID: 8964196977702409836}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'Capsule Collider Distal '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9607,7 +9633,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1402414507562890965}
   - component: {fileID: 6963899329244305258}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: UI Press Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9685,7 +9711,7 @@ GameObject:
   - component: {fileID: 1910542987595519342}
   - component: {fileID: 986804992301216605}
   - component: {fileID: 203243792146690551}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Material Affordance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9876,7 +9902,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8088530481971940718}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_MiddleProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9909,7 +9935,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1574543583355789155}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_RingTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9942,7 +9968,7 @@ GameObject:
   - component: {fileID: 6632196473738815328}
   - component: {fileID: 7325166509597495359}
   - component: {fileID: 4899331684001703117}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Climb Teleport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10041,7 +10067,7 @@ GameObject:
   - component: {fileID: 1216309416917865899}
   - component: {fileID: 814598707855529412}
   - component: {fileID: 2749839224552765565}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10464,7 +10490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9054948518412086624}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_LittleTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10495,7 +10521,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4136913991491650105}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_RingIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10529,7 +10555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7680856411004066732}
   - component: {fileID: 479715235178758188}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left Fist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10633,7 +10659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8223723930515397819}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_RingProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10666,7 +10692,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3529347096327579602}
   - component: {fileID: 1933920675514181356}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10750,7 +10776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6303884875493229976}
   - component: {fileID: 4775226172242530499}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left Shaka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10890,7 +10916,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2018927052204060340}
   - component: {fileID: 5961269425162538309}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hands Smoothing Post Processor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10935,7 +10961,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9171365868948682134}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_RingDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10968,7 +10994,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8493546711570069676}
   - component: {fileID: 67695746335568104}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11036,7 +11062,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7243708132834303056}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_Palm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11068,7 +11094,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5974163532849675189}
   - component: {fileID: 1130116991349906331}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right Thumbs Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11172,7 +11198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2290160100037155449}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_Wrist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11209,7 +11235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6213196114877383768}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_MiddleDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11243,7 +11269,7 @@ GameObject:
   - component: {fileID: 4532239178521904679}
   - component: {fileID: 4894323521595923878}
   - component: {fileID: 6564782222159849180}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: RightAncherPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11327,7 +11353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1572668773543955011}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_RingDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11361,7 +11387,7 @@ GameObject:
   - component: {fileID: 1692469512066035382}
   - component: {fileID: 6258392765538933521}
   - component: {fileID: 2864194195175856493}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Object Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11432,7 +11458,7 @@ GameObject:
   m_Component:
   - component: {fileID: 608116305050873076}
   - component: {fileID: 162822414730505616}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule Collider Proximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11487,7 +11513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7078313689503982654}
   - component: {fileID: 7546589105599626391}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'Capsule Collider Distal '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11542,7 +11568,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3273738744343033713}
   - component: {fileID: 8432173739363942967}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Box Collider Wrist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11594,7 +11620,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2648120388659167916}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_IndexDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11626,7 +11652,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6591353749637797716}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_IndexMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11658,7 +11684,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8815623814738792123}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_Wrist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11696,7 +11722,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3300806295010922410}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_LittleDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11728,7 +11754,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2627004128011850079}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_RingProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11760,7 +11786,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3987633171321420212}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_IndexProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11792,7 +11818,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 570632928539096917}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_MiddleProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11824,7 +11850,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5281501172693036710}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MR Interaction Setup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11864,7 +11890,7 @@ GameObject:
   m_Component:
   - component: {fileID: 164593417415275925}
   - component: {fileID: 9066534058620281131}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left Palm Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11968,7 +11994,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9187601348336827713}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_IndexTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11999,7 +12025,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8454235845447599137}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_MiddleIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12031,7 +12057,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1949679949794610340}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_MiddleMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12065,7 +12091,7 @@ GameObject:
   - component: {fileID: 2952337428658897554}
   - component: {fileID: 2202862721857579211}
   - component: {fileID: 552486913350686942}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: 'LeftAncherPoint '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12150,7 +12176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2651132107967690488}
   - component: {fileID: 8913235373729890300}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule  Collider Proximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12204,7 +12230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5665603971372885315}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12237,7 +12263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4797065292270974006}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_RingTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12268,7 +12294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5344318416662896057}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_Wrist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12305,7 +12331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8434132624036991035}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_MiddleTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12336,7 +12362,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4714068970220094874}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_RingProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12370,13 +12396,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7677589809073781274}
   - component: {fileID: 127738346036267410}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left thumbs Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7677589809073781274
 Transform:
   m_ObjectHideFlags: 0
@@ -12421,7 +12447,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Fire
+          m_StringArgument: QuickCast
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 7497934956184238321}
@@ -12476,7 +12502,7 @@ GameObject:
   - component: {fileID: 2801262275313939103}
   - component: {fileID: 4878056288716980778}
   - component: {fileID: 6717613588328766981}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Poke Interactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12630,7 +12656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5202638857314376812}
   - component: {fileID: 5048055611547393229}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule Collider Proximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12684,7 +12710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2838556885830338022}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_MiddleIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12717,7 +12743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7531238530672531741}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pinch Visual Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12748,7 +12774,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7394518518492228031}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_MiddleMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12780,7 +12806,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5227790009385418667}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_ThumbTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12811,7 +12837,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4581359877606058064}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_MiddleProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12846,7 +12872,7 @@ GameObject:
   - component: {fileID: 6557863085751553315}
   - component: {fileID: 4578441460391482512}
   - component: {fileID: 7920514766384246268}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Turn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12967,7 +12993,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2182941353578230121}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_LittleTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12998,7 +13024,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4920880080403926340}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_RingTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13029,7 +13055,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7046515508776799882}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_RingIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13061,7 +13087,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1472436147554437612}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_LittleIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13093,7 +13119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4816347286206558127}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_MiddleMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13125,7 +13151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8547035236707459080}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_IndexTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13156,7 +13182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8341098284415235955}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_ThumbMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13188,7 +13214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3800067514351445694}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_IndexMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13220,7 +13246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1791479952236657875}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_LittleProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13252,7 +13278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6660951613832637772}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_ThumbProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13284,7 +13310,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8373906032110319439}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_IndexIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13316,7 +13342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 807974457269489610}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_IndexDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13349,7 +13375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9166727932756093357}
   - component: {fileID: 656888460390560171}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Box Collider Wrist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13405,7 +13431,7 @@ GameObject:
   - component: {fileID: 4891524721652920320}
   - component: {fileID: 5937602534095655699}
   - component: {fileID: 1510166725607783372}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right Hand Interaction Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13568,7 +13594,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2139427074953952796}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_IndexIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13600,7 +13626,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7482434736245593207}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_RingMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13632,7 +13658,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8554480062276657951}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_ThumbProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13664,7 +13690,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9219073926781561875}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pinch Visual Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13695,7 +13721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7547846434280313259}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_IndexProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13728,7 +13754,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6961986361593251618}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: R_ThumbDistal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13761,7 +13787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2216464953729241993}
   - component: {fileID: 4004607944275691505}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Teleportation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13807,7 +13833,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8941054626247643414}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_LittleProximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13843,7 +13869,7 @@ GameObject:
   - component: {fileID: 6146274415588308398}
   - component: {fileID: 1080276850294054268}
   - component: {fileID: 7654974463948258651}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Material Affordance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14035,7 +14061,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4354565227094313598}
   - component: {fileID: 2743843643252813948}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'Capsule Collider Distal '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14090,7 +14116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2233509630758033243}
   - component: {fileID: 1975738940232639165}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule Collider Proximal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14147,7 +14173,7 @@ GameObject:
   - component: {fileID: 2253107459488260936}
   - component: {fileID: 5626035919737842681}
   - component: {fileID: 6006479471567387265}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AR Session
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14228,7 +14254,7 @@ GameObject:
   - component: {fileID: 1158801503494246107}
   - component: {fileID: 4997126438688654480}
   - component: {fileID: 1512489570835735890}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left Hand Interaction Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14394,7 +14420,7 @@ GameObject:
   - component: {fileID: 8408019052366709160}
   - component: {fileID: 7351973918076219337}
   - component: {fileID: 8554932074751697819}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pinch Point Stabilized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14510,7 +14536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2120701802162296653}
   - component: {fileID: 5767098699624714714}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14578,7 +14604,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8532185343920208668}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_RingMetacarpal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14612,7 +14638,7 @@ GameObject:
   - component: {fileID: 2741220274207723612}
   - component: {fileID: 5190050596421826637}
   - component: {fileID: 492725901621178862}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14738,7 +14764,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8726284378124545816}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: L_MiddleIntermediate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14772,7 +14798,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3198078521802350655}
   - component: {fileID: 1160010190392396999}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right Custom Gesture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14892,6 +14918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Teleport Interactor
       objectReference: {fileID: 0}
+    - target: {fileID: 2761784063978902507, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14978,10 +15008,26 @@ PrefabInstance:
       propertyPath: '_handpositions.Array.data[1]'
       value: 
       objectReference: {fileID: 6679902487617635372}
+    - target: {fileID: 2684278107010345546, guid: d8dd01e69874c55419be69ed19e20ab3, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771558422745629776, guid: d8dd01e69874c55419be69ed19e20ab3, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5919199373544353438, guid: d8dd01e69874c55419be69ed19e20ab3, type: 3}
       propertyPath: m_Name
       value: MagicCircleTarget
       objectReference: {fileID: 0}
+    - target: {fileID: 5919199373544353438, guid: d8dd01e69874c55419be69ed19e20ab3, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464679244188683982, guid: d8dd01e69874c55419be69ed19e20ab3, type: 3}
+      propertyPath: _sequenceManager
+      value: 
+      objectReference: {fileID: 7497934956184238321}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

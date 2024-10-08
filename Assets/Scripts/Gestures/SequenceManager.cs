@@ -30,7 +30,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         internal event Action OnSequenceCreated;
         internal event Action OnReset;
         internal event Action OnQuickCast;
-        internal event Action<Gesture> OnGestureRecoginsed;
+        internal event Action<Gesture> OnGestureRecognised;
 
         internal List<Gesture> ValidatedGestures => _validatedGestures;
 
@@ -94,7 +94,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
                 {
                     _validatedGestures.Add(_currentGesture);
                     ChangeColor(_cancellationTokenSource.Token);
-                    OnGestureRecoginsed?.Invoke(_currentGesture);
+                    OnGestureRecognised?.Invoke(_currentGesture);
                 }
 
                 if (_validatedGestures.Count == 3)
