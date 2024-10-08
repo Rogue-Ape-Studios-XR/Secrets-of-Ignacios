@@ -23,10 +23,32 @@ namespace RogueApeStudios.SecretsOfIgnacios
             _cancellationTokenSource = new CancellationTokenSource();
         }
 
+        /*
+         Spell should:
+        -Have a certain velocity (gravity is set in rigidbody)
+        -Play VFX upon impact
+        -Disable self upon impact
+         */
+
+        private void OnEnable()
+        {
+            print(transform.rotation);
+            _rb.linearVelocity = transform.forward * _speed;
+            _impactEffect.Stop();
+        }
+
         private void OnDestroy()
         {
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
+        }
+
+
+        // Update is called once per frame
+        void FixedUpdate()
+        {
+            //move the projectile
+            //rb.linearVelocity = gameObject.transform.forward * speed;
         }
 
         private async void DestroyAfterDone(CancellationToken token)
@@ -40,27 +62,6 @@ namespace RogueApeStudios.SecretsOfIgnacios
             {
                 Debug.LogError("Destruction was Canceled...");
             }
-        }
-
-
-
-        /*
-         Spell should:
-        -Have a certain velocity (gravity is set in rigidbody)
-        -Play VFX upon impact
-        -Disable self upon impact
-         */
-
-        private void OnEnable()
-        {
-            _rb.AddForce(transform.forward * _speed);
-            _impactEffect.Stop();
-        }
-        // Update is called once per frame
-        void FixedUpdate()
-        {
-            //move the projectile
-            //rb.linearVelocity = gameObject.transform.forward * speed;
         }
 
         private void OnCollisionEnter(Collision collision)

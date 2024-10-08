@@ -9,11 +9,17 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 {
     internal class SpellManager : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private SequenceManager _gestureManager;
+
+        [Header("Hand Objects")]
         [SerializeField] private Transform _rightHand;
         [SerializeField] private Transform _leftHand;
         [SerializeField] private Renderer _rightHandMaterial;
         [SerializeField] private Renderer _leftHandMaterial;
+
+        [Header("Spells")]
+        [SerializeField] private Vector3 _spellRotationOffset;
         [SerializeField] private Spell[] _availableSpells;
 
         private Spell _currentSpell;
@@ -66,7 +72,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                     spell._gestureSequence.SequenceEqual(_gestureManager.ValidatedGestures))
                 {
                     SetSpell(spell);
-                    Debug.Log("HEEEEEEEEEEEEEEEEEEY" + spell.name);
                     break;
                 }
                 else
@@ -110,7 +115,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             if (_canCastRightHand)
             {
+                Quaternion spellRotation = Quaternion.Euler(_rightHand.rotation.x + _spellRotationOffset.x,
+                    _rightHand.rotation.y + _spellRotationOffset.y,
+                    _rightHand.rotation.z + _spellRotationOffset.z);
                 var rightHandSpell = Instantiate(_currentSpell._spellPrefab, _rightHand.position, _rightHand.rotation);
+                Debug.Log($"Right: {rightHandSpell.transform.rotation.eulerAngles} Palm: {_rightHand.rotation.eulerAngles}");
                 _canCastRightHand = false;
                 _rightHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
 
@@ -123,7 +132,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             if (_canCastLeftHand)
             {
+                Quaternion spellRotation = Quaternion.Euler(_leftHand.rotation.x + _spellRotationOffset.x,
+                   _leftHand.rotation.y + _spellRotationOffset.y,
+                   _leftHand.rotation.z + _spellRotationOffset.z);
                 var leftHandSpell = Instantiate(_currentSpell._spellPrefab, _leftHand.position, _leftHand.rotation);
+                Debug.Log($"Left: {leftHandSpell.transform.rotation.eulerAngles} Palm: {_leftHand.rotation.eulerAngles}");
+
                 _canCastLeftHand = false;
                 _leftHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
 
