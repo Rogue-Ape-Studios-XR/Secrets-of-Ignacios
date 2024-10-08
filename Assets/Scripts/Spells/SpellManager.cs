@@ -112,6 +112,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             {
                 var rightHandSpell = Instantiate(_currentSpell._spellPrefab, _rightHand.position, _rightHand.rotation);
                 _canCastRightHand = false;
+                _rightHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
 
                 if (!_canCastLeftHand)
                     HandleReset();
@@ -124,6 +125,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             {
                 var leftHandSpell = Instantiate(_currentSpell._spellPrefab, _leftHand.position, _leftHand.rotation);
                 _canCastLeftHand = false;
+                _leftHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
 
                 if (!_canCastRightHand)
                     HandleReset();

@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
-using System.Threading;
 using System;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -34,7 +34,7 @@ namespace RogueApeStudios.SecretsOfIgnacios
             try
             {
                 await UniTask.WaitForSeconds(5, cancellationToken: token);
-                Destroy(gameObject);        
+                Destroy(gameObject);
             }
             catch (OperationCanceledException)
             {
@@ -53,7 +53,7 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
         private void OnEnable()
         {
-            _rb.AddForce(gameObject.transform.forward*_speed);
+            _rb.AddForce(transform.forward * _speed);
             _impactEffect.Stop();
         }
         // Update is called once per frame
@@ -70,7 +70,7 @@ namespace RogueApeStudios.SecretsOfIgnacios
             _spellEffect.Stop();
             _rb.isKinematic = true;
             _collider.enabled = false;
-            DestroyAfterDone(_cancellationTokenSource.Token); 
+            DestroyAfterDone(_cancellationTokenSource.Token);
             //gameObject.SetActive(false);
         }
 
