@@ -4162,11 +4162,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gestureManager: {fileID: 7497934956184238321}
-  _rightHand: {fileID: 6679902487617635372}
-  _leftHand: {fileID: 8827492844492106989}
+  _rightHand: {fileID: 4028798923375598415}
+  _leftHand: {fileID: 6592100252739011824}
   _rightHandMaterial: {fileID: 5190050596421826637}
   _leftHandMaterial: {fileID: 6425639629858156003}
-  _spellRotationOffset: {x: 0, y: 0, z: 0}
   _availableSpells:
   - {fileID: 11400000, guid: 1ef0e2ff34d668d4cb4aa300a7fdcca8, type: 2}
 --- !u!1 &2268672708825686388

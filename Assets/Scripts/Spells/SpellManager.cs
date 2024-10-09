@@ -19,7 +19,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [SerializeField] private Renderer _leftHandMaterial;
 
         [Header("Spells")]
-        [SerializeField] private Vector3 _spellRotationOffset;
         [SerializeField] private Spell[] _availableSpells;
 
         private Spell _currentSpell;
