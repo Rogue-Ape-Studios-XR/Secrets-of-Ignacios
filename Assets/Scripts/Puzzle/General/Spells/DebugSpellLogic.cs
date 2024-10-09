@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
-using System.Threading;
 using System;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -23,27 +23,6 @@ namespace RogueApeStudios.SecretsOfIgnacios
             _cancellationTokenSource = new CancellationTokenSource();
         }
 
-        private void OnDestroy()
-        {
-            _cancellationTokenSource.Cancel();
-            _cancellationTokenSource.Dispose();
-        }
-
-        private async void DestroyAfterDone(CancellationToken token)
-        {
-            try
-            {
-                await UniTask.WaitForSeconds(5, cancellationToken: token);
-                Destroy(gameObject);        
-            }
-            catch (OperationCanceledException)
-            {
-                Debug.LogError("Destruction was Canceled...");
-            }
-        }
-
-
-
         /*
          Spell should:
         -Have a certain velocity (gravity is set in rigidbody)
@@ -53,14 +32,36 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
         private void OnEnable()
         {
-            _rb.AddForce(gameObject.transform.forward*_speed);
+            print(transform.rotation);
+            _rb.linearVelocity = transform.forward * _speed;
             _impactEffect.Stop();
         }
+
+        private void OnDestroy()
+        {
+            _cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Dispose();
+        }
+
+
         // Update is called once per frame
         void FixedUpdate()
         {
             //move the projectile
             //rb.linearVelocity = gameObject.transform.forward * speed;
+        }
+
+        private async void DestroyAfterDone(CancellationToken token)
+        {
+            try
+            {
+                await UniTask.WaitForSeconds(5, cancellationToken: token);
+                Destroy(gameObject);
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.LogError("Destruction was Canceled...");
+            }
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -70,7 +71,7 @@ namespace RogueApeStudios.SecretsOfIgnacios
             _spellEffect.Stop();
             _rb.isKinematic = true;
             _collider.enabled = false;
-            DestroyAfterDone(_cancellationTokenSource.Token); 
+            DestroyAfterDone(_cancellationTokenSource.Token);
             //gameObject.SetActive(false);
         }
 

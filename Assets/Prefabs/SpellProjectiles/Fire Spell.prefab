@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da289921d0eca0c4fa3b8a95ec952ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 400
+  _speed: 20
   _rb: {fileID: 5844587212469913053}
   _impactEffect: {fileID: 536045659030046037}
   _spellEffect: {fileID: 6548903672083399023}

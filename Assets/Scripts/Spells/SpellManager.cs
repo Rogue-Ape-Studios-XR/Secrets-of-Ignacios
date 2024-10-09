@@ -9,11 +9,16 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 {
     internal class SpellManager : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private SequenceManager _gestureManager;
+
+        [Header("Hand Objects")]
         [SerializeField] private Transform _rightHand;
         [SerializeField] private Transform _leftHand;
         [SerializeField] private Renderer _rightHandMaterial;
         [SerializeField] private Renderer _leftHandMaterial;
+
+        [Header("Spells")]
         [SerializeField] private Spell[] _availableSpells;
 
         private Spell _currentSpell;
@@ -66,7 +71,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                     spell._gestureSequence.SequenceEqual(_gestureManager.ValidatedGestures))
                 {
                     SetSpell(spell);
-                    Debug.Log("HEEEEEEEEEEEEEEEEEEY" + spell.name);
                     break;
                 }
                 else
@@ -111,7 +115,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             if (_canCastRightHand)
             {
                 var rightHandSpell = Instantiate(_currentSpell._spellPrefab, _rightHand.position, _rightHand.rotation);
+
                 _canCastRightHand = false;
+                _rightHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
 
                 if (!_canCastLeftHand)
                     HandleReset();
@@ -123,7 +129,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             if (_canCastLeftHand)
             {
                 var leftHandSpell = Instantiate(_currentSpell._spellPrefab, _leftHand.position, _leftHand.rotation);
+
                 _canCastLeftHand = false;
+                _leftHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
 
                 if (!_canCastRightHand)
                     HandleReset();
