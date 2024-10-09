@@ -132,7 +132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &911699450549561719
 Transform:
   m_ObjectHideFlags: 0
@@ -256,11 +256,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3658040868349184220, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.49999994
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3658040868349184220, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.86602545
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3658040868349184220, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: m_LocalRotation.y
@@ -272,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3658040868349184220, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 120
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3658040868349184220, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da289921d0eca0c4fa3b8a95ec952ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0.1
+  _speed: 20
   _rb: {fileID: 5844587212469913053}
   _impactEffect: {fileID: 536045659030046037}
   _spellEffect: {fileID: 6548903672083399023}
