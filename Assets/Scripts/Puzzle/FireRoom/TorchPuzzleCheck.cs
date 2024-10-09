@@ -8,9 +8,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
     public class TorchPuzzleCheck : MonoBehaviour
     {
         [SerializeField] private List<PersistentFire> _torches;
+        [SerializeField] private Animator _animator;
 
         private void Awake()
         {
+            
             foreach (var torch in _torches)
             {
                 torch.OnIgnitionToggle += TorchCheck;
@@ -38,7 +40,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
 
             if (count == 3)
             {
-                Debug.Log("Door opens");
+                _animator.SetTrigger("DoorOpen");
             }
         }
     }
