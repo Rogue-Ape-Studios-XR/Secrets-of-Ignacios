@@ -136,7 +136,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.Movement
         {
             if (_movementEnabled)
             {
-                MoveVisual();
+                //MoveVisual();
                 Move();
             }
         }
@@ -170,13 +170,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.Movement
             Vector3 moveDirection;
 
             if (_rightHandActive || _rightHandActive && _leftHandActive)
-                moveDirection = _rightBall.position - _rightAncherPoint.position;
+                moveDirection = _rightHand.position - _rightAncherPoint.position;
             else if (_leftHandActive)
                 moveDirection = _leftBall.position - _leftAncherPoint.position;
             else
                 return;
 
-            moveDirection.y = 0;  
+            moveDirection.y = 0;
 
             moveDirection.Normalize();
             _player.Move(_speed * Time.deltaTime * moveDirection);
@@ -202,6 +202,22 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.Movement
         public void DisableMovementLeft()
         {
             _leftHandActive = false;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other is not null && other.tag is "Joystick")
+            {
+                _movementEnabled = true;
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other is not null && other.tag is "Joystick")
+            {
+                _movementEnabled = false;
+            }
         }
     }
 }
