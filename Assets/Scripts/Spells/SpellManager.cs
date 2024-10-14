@@ -30,6 +30,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         public static event Action<bool> OnSpellValidation;
 
+        internal bool CanCastRightHand => _canCastRightHand;
+        internal bool CanCastLeftHand => _canCastLeftHand;
+
         private void Awake()
         {
             _cancellationTokenSource = new CancellationTokenSource();
