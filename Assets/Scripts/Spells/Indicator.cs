@@ -34,39 +34,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                 UpdateBeam(_leftLineRenderer, _leftIndicatorTransform, ref _leftIsGrowing, ref _leftCurrentLength);
         }
 
-        //private void UpdateBeam(LineRenderer lineRenderer, Transform indicatorTransform, ref bool isGrowing, ref float currentLength)
-        //{
-        //    lineRenderer.SetPosition(0, indicatorTransform.position);
-
-        //    Vector3 direction = indicatorTransform.forward;
-
-        //    if (Physics.Raycast(indicatorTransform.position, direction, out RaycastHit hit, currentLength + 0.1f))
-        //    {
-        //        if (isGrowing)
-        //        {
-        //            isGrowing = false;
-        //            currentLength = Vector3.Distance(indicatorTransform.position, hit.point);
-        //            lineRenderer.SetPosition(1, hit.point);
-        //        }
-        //        else
-        //        {
-        //            currentLength = Vector3.Distance(indicatorTransform.position, hit.point);
-        //            lineRenderer.SetPosition(1, hit.point);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (!isGrowing)
-        //            isGrowing = true;
-        //    }
-
-        //    if (isGrowing && currentLength < _maxGrowth)
-        //    {
-        //        currentLength += _growthSpeed * Time.deltaTime;
-        //        lineRenderer.SetPosition(1, indicatorTransform.position + direction * currentLength);
-        //    }
-        //}
-
         private void UpdateBeam(LineRenderer lineRenderer, Transform indicatorTransform, ref bool isGrowing, ref float currentLength)
         {
             Vector3 direction = indicatorTransform.forward;
