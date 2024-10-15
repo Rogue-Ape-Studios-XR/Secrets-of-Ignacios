@@ -18,11 +18,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
         {
             try
             {
-                for (int i = 0; i < _grimeMax && _cleaned == false; i++)
+                for (int i = 0; i < _grimeMax && !_cleaned && _isSplashed; i++)
                 {
                     //something with _noise
                     _grimeAmountRemoved++;
-                    await UniTask.WaitForSeconds(1, cancellationToken: token);
+                    await UniTask.WaitForSeconds(_spellInterval, cancellationToken: token);
+                    _isSplashed = false;
                     Debug.Log(_grimeAmountRemoved);
                 }
                 if (_grimeAmountRemoved >= _grimeMax)

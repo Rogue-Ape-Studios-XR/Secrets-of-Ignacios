@@ -7,6 +7,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
 	internal abstract class WaterInteractable : Interactables
 	{
 		[SerializeField] internal bool _isSplashed;
+        [SerializeField] internal float _spellInterval = 0.5f;
 
         internal CancellationTokenSource _cancellationTokenSource;
 
