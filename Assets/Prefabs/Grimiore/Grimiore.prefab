@@ -42,18 +42,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 8432888887242488514}
     m_Modifications:
     - target: {fileID: 4310412430176867925, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.015
-      objectReference: {fileID: 0}
-    - target: {fileID: 4310412430176867925, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.03699994
-      objectReference: {fileID: 0}
-    - target: {fileID: 4310412430176867925, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.021
-      objectReference: {fileID: 0}
-    - target: {fileID: 4310412430176867925, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.5720614
       objectReference: {fileID: 0}
@@ -74,10 +62,6 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4310412430176867925, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4310412430176867925, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -72
       objectReference: {fileID: 0}
@@ -91,7 +75,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8121273555303013067, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.026
       objectReference: {fileID: 0}
     - target: {fileID: 8121273555303013067, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
       propertyPath: m_LocalPosition.z
@@ -125,8 +109,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3109534288825644322, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -156,17 +139,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 8432888887242488514}
     m_Modifications:
     - target: {fileID: 5710474081281425321, guid: d6fa7fbe32c9f47478fb7f69e73bef6f, type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 7753937113500089644}
-    - target: {fileID: 5710474081281425321, guid: d6fa7fbe32c9f47478fb7f69e73bef6f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3312950970038618059}
-    - target: {fileID: 5710474081281425321, guid: d6fa7fbe32c9f47478fb7f69e73bef6f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Summongrimoire
-      objectReference: {fileID: 0}
     - target: {fileID: 6607578425893544870, guid: d6fa7fbe32c9f47478fb7f69e73bef6f, type: 3}
       propertyPath: m_Name
       value: Bracelet Holder (1)
@@ -221,14 +196,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8432888887242488514, guid: d6fa7fbe32c9f47478fb7f69e73bef6f, type: 3}
   m_PrefabInstance: {fileID: 2580789350190903500}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7753937113500089644 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5209339331069513184, guid: d6fa7fbe32c9f47478fb7f69e73bef6f, type: 3}
-  m_PrefabInstance: {fileID: 2580789350190903500}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -16,6 +16,7 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
         public void ActivateChapter(int chapterNum)
         {
+            Debug.Log(chapterNum);
             foreach (var chapter in _chapters)
             {
                 chapter.SetActive(false);
@@ -26,7 +27,6 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
         public void Summongrimoire()
         {
-            Debug.Log(_grimoireActive + "pre");
             if (!_grimoireActive)
             {
                 _grimoireActive = true;
@@ -37,7 +37,6 @@ namespace RogueApeStudios.SecretsOfIgnacios
                 _grimoireActive = false;
                 _grimoire.SetActive(false);
             }
-            Debug.Log(_grimoireActive + "after");
         }
     }
 }

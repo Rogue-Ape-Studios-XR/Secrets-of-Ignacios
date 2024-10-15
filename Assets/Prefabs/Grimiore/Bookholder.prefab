@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Air spelll
+  m_text: Air spell
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -147,7 +147,8 @@ GameObject:
   - component: {fileID: 6221036230880338742}
   - component: {fileID: 1385465623787183402}
   - component: {fileID: 580342560742712543}
-  - component: {fileID: 3974783812879462355}
+  - component: {fileID: 2290216760342130896}
+  - component: {fileID: 2804111530190107484}
   m_Layer: 5
   m_Name: WaterTab
   m_TagString: Untagged
@@ -213,7 +214,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3974783812879462355
+--- !u!65 &2290216760342130896
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488702151135120461}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 40, y: 40, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2804111530190107484
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,7 +244,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 488702151135120461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 03183f580ca61cf4c98ac25878b160dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -1513,7 +1535,7 @@ GameObject:
   - component: {fileID: 5669966306058847543}
   - component: {fileID: 4917292701891606489}
   m_Layer: 5
-  m_Name: Tabs right
+  m_Name: TabsElemental
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1755,7 +1777,8 @@ GameObject:
   - component: {fileID: 5791035928379371851}
   - component: {fileID: 5953454095100051735}
   - component: {fileID: 5965570608059976743}
-  - component: {fileID: 5332686803611202058}
+  - component: {fileID: 6805010303543139471}
+  - component: {fileID: 1655989201904261751}
   m_Layer: 5
   m_Name: FireTab
   m_TagString: Untagged
@@ -1821,7 +1844,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5332686803611202058
+--- !u!65 &6805010303543139471
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3223408128937334888}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 40, y: 40, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1655989201904261751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1830,7 +1874,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3223408128937334888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 03183f580ca61cf4c98ac25878b160dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -2248,8 +2292,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3502245697886784751}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.02, z: 0.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.015, y: -0.03699994, z: 0.021}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2262,7 +2306,7 @@ Transform:
   - {fileID: 2868262703554772218}
   - {fileID: 6681435243402453791}
   m_Father: {fileID: 8121273555303013067}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &900283220951685616
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2527,7 +2571,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fire spelll
+  m_text: Fire spell
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2663,7 +2707,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Water spelll
+  m_text: Water spell
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2824,7 +2868,7 @@ GameObject:
   - component: {fileID: 4759573218386493650}
   - component: {fileID: 3670886309992150343}
   m_Layer: 5
-  m_Name: Tabs left
+  m_Name: TabsBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3675,7 +3719,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Earth spelll
+  m_text: Earth spell
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4508,7 +4552,8 @@ GameObject:
   - component: {fileID: 1371901989869467475}
   - component: {fileID: 2638994773653758803}
   - component: {fileID: 7144732600677624810}
-  - component: {fileID: 9147727248350892481}
+  - component: {fileID: 8384572772713977261}
+  - component: {fileID: 703288787029198106}
   m_Layer: 5
   m_Name: TeleportTab
   m_TagString: Untagged
@@ -4574,7 +4619,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9147727248350892481
+--- !u!114 &8384572772713977261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4583,7 +4628,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6865173708318364185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 03183f580ca61cf4c98ac25878b160dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -4631,6 +4676,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!65 &703288787029198106
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865173708318364185}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 40, y: 40, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6945505924836736528
 GameObject:
   m_ObjectHideFlags: 0
@@ -4979,7 +5045,8 @@ GameObject:
   - component: {fileID: 2391646113136014461}
   - component: {fileID: 8609664259917626163}
   - component: {fileID: 6951523529951747135}
-  - component: {fileID: 8122955500653455482}
+  - component: {fileID: 3457279365408480348}
+  - component: {fileID: 561850794045612004}
   m_Layer: 5
   m_Name: AirTab
   m_TagString: Untagged
@@ -5045,7 +5112,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8122955500653455482
+--- !u!65 &3457279365408480348
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466724147968437853}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 40, y: 40, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &561850794045612004
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5054,7 +5142,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7466724147968437853}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 03183f580ca61cf4c98ac25878b160dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -5113,7 +5201,8 @@ GameObject:
   - component: {fileID: 5107904994771884441}
   - component: {fileID: 1240527686265932806}
   - component: {fileID: 8699911491523431287}
-  - component: {fileID: 7341705749100777981}
+  - component: {fileID: 1730777306127255621}
+  - component: {fileID: 7931144950744802181}
   m_Layer: 5
   m_Name: StartTab
   m_TagString: Untagged
@@ -5179,7 +5268,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7341705749100777981
+--- !u!114 &1730777306127255621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5188,7 +5277,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7605448490501355308}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 03183f580ca61cf4c98ac25878b160dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -5236,6 +5325,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!65 &7931144950744802181
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7605448490501355308}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 40, y: 40, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7790027234902803820
 GameObject:
   m_ObjectHideFlags: 0
@@ -5531,7 +5641,8 @@ GameObject:
   - component: {fileID: 5311244381852046352}
   - component: {fileID: 9222832082920691992}
   - component: {fileID: 5648385151503442326}
-  - component: {fileID: 7107297616984407123}
+  - component: {fileID: 8725317998415395391}
+  - component: {fileID: 4663099311586192595}
   m_Layer: 5
   m_Name: EarthTab
   m_TagString: Untagged
@@ -5597,7 +5708,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7107297616984407123
+--- !u!65 &8725317998415395391
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7963140510435768035}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 40, y: 40, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4663099311586192595
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5606,7 +5738,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7963140510435768035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 03183f580ca61cf4c98ac25878b160dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
