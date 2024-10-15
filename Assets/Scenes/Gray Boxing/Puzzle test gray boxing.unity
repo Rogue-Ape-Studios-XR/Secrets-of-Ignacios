@@ -51849,6 +51849,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8800755743607117948, guid: f54b72d1ca1c50e4b8f9d09bce0d2452, type: 3}
+      propertyPath: _spawnObjectOnBurnt
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800755743607117948, guid: f54b72d1ca1c50e4b8f9d09bce0d2452, type: 3}
       propertyPath: '_containedObjects.Array.data[0]'
       value: 
       objectReference: {fileID: 6083968201090594414}
