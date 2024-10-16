@@ -16,7 +16,6 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
         public void ActivateChapter(int chapterNum)
         {
-            Debug.Log(chapterNum);
             foreach (var chapter in _chapters)
             {
                 chapter.SetActive(false);
