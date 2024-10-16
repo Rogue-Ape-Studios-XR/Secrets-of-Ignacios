@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Spell
   - FingerTip
+  - UIButtonTab
+  - UIButtonBracelet
   layers:
   - Default
   - TransparentFX

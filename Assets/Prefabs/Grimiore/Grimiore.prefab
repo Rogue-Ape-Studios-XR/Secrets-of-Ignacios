@@ -43,27 +43,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4310412430176867925, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5720614
+      value: 0.49640012
       objectReference: {fileID: 0}
     - target: {fileID: 4310412430176867925, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5720614
+      value: 0.77919215
       objectReference: {fileID: 0}
     - target: {fileID: 4310412430176867925, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.4156269
+      value: 0.32275194
       objectReference: {fileID: 0}
     - target: {fileID: 4310412430176867925, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.4156269
+      value: -0.20561565
       objectReference: {fileID: 0}
     - target: {fileID: 4310412430176867925, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
+      value: 115
       objectReference: {fileID: 0}
     - target: {fileID: 4310412430176867925, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -72
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 5874849092007701839, guid: 9ac367e5c53df6145891aad66ccf3a33, type: 3}
       propertyPath: m_Name
@@ -138,8 +138,8 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8432888887242488514}
     m_Modifications:
-    - target: {fileID: 5710474081281425321, guid: d6fa7fbe32c9f47478fb7f69e73bef6f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    - target: {fileID: 1080227113577364307, guid: d6fa7fbe32c9f47478fb7f69e73bef6f, type: 3}
+      propertyPath: _bookcontroller
       value: 
       objectReference: {fileID: 3312950970038618059}
     - target: {fileID: 6607578425893544870, guid: d6fa7fbe32c9f47478fb7f69e73bef6f, type: 3}
