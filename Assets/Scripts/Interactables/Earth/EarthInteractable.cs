@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
@@ -6,8 +5,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 	internal abstract class EarthInteractable : Interactables
 	{
 		[SerializeField] internal bool _isTouched;
-		internal event Action<bool> onTouched;
-		
+		[SerializeField] internal bool _isGrowSpellActive;
+		[SerializeField] internal bool _isShrinkSpellActive;
+
 		internal override void Awake()
 		{
 			_spellReceiver.OnSpellReceived += HandleSpellReceived;
@@ -18,6 +18,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 			_spellReceiver.OnSpellReceived -= HandleSpellReceived;
 		}
 
+		//Basically serves as the oncollisionenter as this is an empty gameobject 
 		internal override void HandleSpellReceived(string spellType)
 		{
 			Debug.Log("Earth spell hit");
@@ -26,11 +27,16 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 			{
 				case "Debug":
 					Touched();
-					onTouched?.Invoke(_isTouched);
-					break;	
-				case "Earth":
+					//Use the editor for this
+					//Select the boolean isgrowspellactive or isshrinkspellactive before it hits!
+					break;
+				case "Grow":
+					_isGrowSpellActive = true;
 					Touched();
-					onTouched?.Invoke(_isTouched);
+					break;
+				case "Shrink":
+					_isShrinkSpellActive = true;
+					Touched();
 					break;
 			}
 		}

@@ -1,66 +1,78 @@
-using System;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 {
-    internal class Resizable : EarthInteractable
-    {
-        [SerializeField] private Vector3 _initialScale;
-        [SerializeField] private Transform _targetObject;
-        [SerializeField] private Vector3[] _premadeSizes;
-        [SerializeField] private bool _usesPremadeSizes;
-        [SerializeField, Range(0f, 2f)] private float _resizeValue;
+	internal class Resizable : EarthInteractable
+	{
+		[SerializeField] private Vector3 _initialSize;
+		[SerializeField] private Vector3 _shrinkSize;
+		[SerializeField] private Vector3 _growSize;
 
-        internal override void Awake()
-        {
-            base.Awake();
-            _initialScale = _targetObject.localScale;
-           
-        }
+		[SerializeField] private Transform _targetObject;
 
-        internal override void Touched()
-        {
-            _isTouched = true;
-            _targetObject.localScale = _initialScale;
-        }
+		[SerializeField] private bool _shrunk;
+		[SerializeField] private bool _grown;
 
-        private void OnValidate()
-        {
-            ResizeObjectInEditor();
-        }
+		internal override void Awake()
+		{
+			//Sorry, but this was necessary for now, if you have something better, feel free to say so :)
 
-        //Just for testing atm, still trying to figure out how the hell I do this
-        private void ResizeObjectInEditor()
-        {
-            if (_targetObject == null) return;
+			base.Awake();
+			_initialSize = _targetObject.localScale;
 
-            Vector3 newScale = _initialScale * _resizeValue;
+			if (_shrunk)
+				_targetObject.localScale = _shrinkSize;
+			else if (_grown)
+				_targetObject.localScale = _growSize;
+		}
 
-            if (_usesPremadeSizes && _premadeSizes.Length > 0)
-            {
-                newScale = FindClosestPremadeSize(newScale);
-            }
+		internal override void Touched()
+		{
+			ResizeObject();
+		}
 
-            _targetObject.localScale = newScale;
-        }
+		private void ResizeObject()
+		{
+			if (_isGrowSpellActive && !_grown)
+				GrowObject();
 
-        //Doesn't work properly yet
-        private Vector3 FindClosestPremadeSize(Vector3 targetScale)
-        {
-            Vector3 closestSize = _premadeSizes[0];
-            float closestDistance = Vector3.Distance(targetScale, closestSize);
+			else if (_isShrinkSpellActive && !_shrunk)
+				ShrinkObject();
+		}
 
-            foreach (Vector3 size in _premadeSizes)
-            {
-                float distance = Vector3.Distance(targetScale, size);
-                if (distance < closestDistance)
-                {
-                    closestSize = size;
-                    closestDistance = distance;
-                }
-            }
+		private void GrowObject()
+		{
+			if (_shrunk)
+			{
+				_targetObject.localScale = _initialSize;
+				_shrunk = false;
+			}
+			else
+			{
+				_targetObject.localScale = _growSize;
+				_grown = true;
+			}
 
-            return closestSize;
-        }
-    }
+			_isGrowSpellActive = false;
+			_isTouched = false;
+		}
+
+		private void ShrinkObject()
+		{
+			if (_grown)
+			{
+				_targetObject.localScale = _initialSize;
+				_grown = false;
+			}
+
+			else
+			{
+				_targetObject.localScale = _shrinkSize;
+				_shrunk = true;
+			}
+
+			_isShrinkSpellActive = false;
+			_isTouched = false;
+		}
+	}
 }
