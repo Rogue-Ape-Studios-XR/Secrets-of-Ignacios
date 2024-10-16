@@ -8,7 +8,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.HeadDetection
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag("Player"))
+            if (other.gameObject.layer != 3)
             {
                 BlackBox.SetActive(true);
             }
@@ -16,7 +16,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.HeadDetection
 
         private void OnTriggerExit(Collider other)
         {
-            if (!other.CompareTag("Player"))
+            if (other.gameObject.layer != 3)
             {
                 BlackBox.SetActive(false);
             }
