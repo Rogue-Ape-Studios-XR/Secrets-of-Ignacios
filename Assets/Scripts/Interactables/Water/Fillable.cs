@@ -10,29 +10,23 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
         [SerializeField] private bool _filled;
 
         [SerializeField] private float _contentMax;
-        private float _contentFilled;
+        [SerializeField] private float _contentFilled;
 
         private async void Fill(CancellationToken token)
         {
             try
             {
-                /*for (int i = 0; i < _contentMax && _filled == false; i++)
+                for (int i = 0; i < _contentMax && !_filled && _isSplashed; i++)
                 {
                     _contentFilled++;
-                    await UniTask.WaitForSeconds(1, cancellationToken: token);
+                    await UniTask.WaitForSeconds(_spellInterval, cancellationToken: token);
+                    _isSplashed = false;
                     Debug.Log(_contentFilled);
                 }
                 if (_contentFilled >= _contentMax)
                 {
                     _filled = true;
-                }*/
-                while (_contentFilled < _contentMax)
-                {
-                    _contentFilled++;
-                    await UniTask.WaitForSeconds(1, cancellationToken: token);
-                    Debug.Log(_contentFilled);
                 }
-                _filled = true;
             }
             catch (OperationCanceledException)
             {

@@ -12,17 +12,18 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
         [SerializeField] private bool _cleaned;
 
         [SerializeField] private float _grimeMax;
-        private float _grimeAmountRemoved;
+        [SerializeField] private float _grimeAmountRemoved;
 
         private async void Wash(CancellationToken token)
         {
             try
             {
-                for (int i = 0; i < _grimeMax && _cleaned == false; i++)
+                for (int i = 0; i < _grimeMax && !_cleaned && _isSplashed; i++)
                 {
                     //something with _noise
                     _grimeAmountRemoved++;
-                    await UniTask.WaitForSeconds(1, cancellationToken: token);
+                    await UniTask.WaitForSeconds(_spellInterval, cancellationToken: token);
+                    _isSplashed = false;
                     Debug.Log(_grimeAmountRemoved);
                 }
                 if (_grimeAmountRemoved >= _grimeMax)
