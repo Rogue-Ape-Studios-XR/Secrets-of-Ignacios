@@ -54,7 +54,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 			}
 
 			_isGrowSpellActive = false;
-			_isTouched = false;
 		}
 
 		private void ShrinkObject()
@@ -72,7 +71,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 			}
 
 			_isShrinkSpellActive = false;
-			_isTouched = false;
 		}
 	}
 }

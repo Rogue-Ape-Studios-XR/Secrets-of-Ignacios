@@ -4,7 +4,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 {
 	internal abstract class EarthInteractable : Interactables
 	{
-		[SerializeField] internal bool _isTouched;
 		[SerializeField] internal bool _isGrowSpellActive;
 		[SerializeField] internal bool _isShrinkSpellActive;
 
