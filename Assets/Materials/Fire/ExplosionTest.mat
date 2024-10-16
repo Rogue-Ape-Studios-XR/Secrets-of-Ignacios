@@ -56,7 +56,7 @@ Material:
     - _Colour_Amount: 10
     - _Cull: 0
     - _DstBlend: 0
-    - _Explosion_Progress: 0
+    - _Explosion_Progress: 1.68
     - _Fire_Complexity: 1
     - _Fire_Intensity: 0.6
     - _Fire_Speed: 0.3
