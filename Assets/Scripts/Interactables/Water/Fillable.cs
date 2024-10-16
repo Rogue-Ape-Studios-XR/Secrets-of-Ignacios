@@ -10,7 +10,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
         [SerializeField] private bool _filled;
 
         [SerializeField] private float _contentMax;
-        private float _contentFilled;
+        [SerializeField] private float _contentFilled;
 
         private async void Fill(CancellationToken token)
         {

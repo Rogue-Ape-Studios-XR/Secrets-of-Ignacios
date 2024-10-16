@@ -12,7 +12,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
         [SerializeField] private bool _cleaned;
 
         [SerializeField] private float _grimeMax;
-        private float _grimeAmountRemoved;
+        [SerializeField] private float _grimeAmountRemoved;
 
         private async void Wash(CancellationToken token)
         {
