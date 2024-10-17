@@ -4,15 +4,16 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.Movement
 {
     internal class AlternateMovement : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private CharacterController _player;
-        [SerializeField] private Transform _rightHand;
-        [SerializeField] private Transform _leftHand;
-
-        [Header("Visual")]
+        [SerializeField] private Transform _rightThumbTip;
+        [SerializeField] private Transform _leftThumbTip;
         [SerializeField] private Transform _rightAncherPoint;
         [SerializeField] private Transform _leftAncherPoint;
-        [SerializeField] private Transform _rightBall;
-        [SerializeField] private Transform _leftBall;
+
+        [Header("Visuals")]
+        [SerializeField] private GameObject _rightVisual;
+        [SerializeField] private GameObject _leftVisual;
 
         [Header("Variables")]
         [SerializeField] private float _maxBallDistance = 0.1f;
@@ -25,33 +26,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.Movement
         void Update()
         {
             if (_movementEnabled)
-            {
-                //MoveVisual();
                 Move();
-            }
-        }
-
-        private void MoveVisual()
-        {
-            if (_rightHandActive || _rightHandActive && _leftHandActive)
+            else if (_rightVisual.activeSelf && _leftVisual.activeSelf || _rightVisual.activeSelf || _leftVisual.activeSelf)
             {
-                Vector3 rightHandDirection = _rightHand.position - _rightAncherPoint.position;
-                rightHandDirection.y = 0;
-
-                if (rightHandDirection.magnitude > _maxBallDistance)
-                    rightHandDirection = rightHandDirection.normalized * _maxBallDistance;
-
-                _rightBall.position = _rightAncherPoint.position + rightHandDirection;
-            }
-            else if (_leftHandActive)
-            {
-                Vector3 leftHandDirection = _leftHand.position - _leftAncherPoint.position;
-                leftHandDirection.y = 0;
-
-                if (leftHandDirection.magnitude > _maxBallDistance)
-                    leftHandDirection = leftHandDirection.normalized * _maxBallDistance;
-
-                _leftBall.position = _leftAncherPoint.position + leftHandDirection;
+                _rightVisual.SetActive(false);
+                _leftVisual.SetActive(false);
             }
         }
 
@@ -60,11 +39,21 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.Movement
             Vector3 moveDirection;
 
             if (_rightHandActive || _rightHandActive && _leftHandActive)
-                moveDirection = _rightHand.position - _rightAncherPoint.position;
+            {
+                _rightVisual.SetActive(true);
+                moveDirection = _rightThumbTip.position - _rightAncherPoint.position;
+            }
             else if (_leftHandActive)
-                moveDirection = _leftBall.position - _leftAncherPoint.position;
+            {
+                _leftVisual.SetActive(true);
+                moveDirection = _leftThumbTip.position - _leftAncherPoint.position;
+            }
             else
-                return;
+            {
+                _rightVisual.SetActive(false);
+                _leftVisual.SetActive(false);
+                moveDirection = Vector3.zero;
+            }
 
             moveDirection.y = 0;
 
