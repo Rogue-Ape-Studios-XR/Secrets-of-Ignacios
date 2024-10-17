@@ -45,8 +45,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Wind
         internal override void Blown()
         {
             _currentSpeed = Mathf.Min(_currentSpeed + _hitForce, _maxSpeed);
-            _isSpinning = true;
-            OnSpinning?.Invoke(_isSpinning);
+
+            if (!_isSpinning)
+            {
+                _isSpinning = true;
+                OnSpinning?.Invoke(_isSpinning);
+            }
         }
     }
 }
