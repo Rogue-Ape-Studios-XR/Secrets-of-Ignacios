@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Spells
 {
@@ -11,6 +12,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
     {
         [Header("References")]
         [SerializeField] private SequenceManager _gestureManager;
+        [SerializeField] private Renderer _rendererRight;
+        [SerializeField] private Renderer _rendererLeft;
+        [SerializeField] private VisualEffect _chargeEffectRight;
+        [SerializeField] private VisualEffect _chargeEffectLeft;
 
         [Header("Hand Objects")]
         [SerializeField] private Transform _rightHand;
@@ -20,6 +25,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         [Header("Spells")]
         [SerializeField] private Spell[] _availableSpells;
+
+        [Header("Casting Mode")]
+        [SerializeField] private bool _timerAim = false;
+        [SerializeField] private float _castTimer = 1;
 
         private Spell _currentSpell;
         private Spell _lastSpell;
@@ -41,6 +50,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void Start()
         {
             _defaultColor = _rightHandMaterial.materials[1].GetColor("_MainColor");
+            _chargeEffectLeft.Stop();
+            _chargeEffectRight.Stop();
         }
 
         private void OnEnable()
@@ -113,31 +124,62 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             }
         }
 
-        public void CastRightHandSpell()
+        private void Cast(ref bool handCanCast, ref Renderer handMaterial, Transform hand)
         {
-            if (_canCastRightHand)
-            {
-                var rightHandSpell = Instantiate(_currentSpell._spellPrefab, _rightHand.position, _rightHand.rotation);
+            var spell = Instantiate(_currentSpell._spellPrefab, hand.position, hand.rotation);
 
-                _canCastRightHand = false;
-                _rightHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
+            handCanCast = false;
+            handMaterial.materials[1].SetColor("_MainColor", _defaultColor);
 
-                if (!_canCastLeftHand)
-                    HandleReset();
-            }
+            if (!_canCastLeftHand)
+                HandleReset();
         }
 
-        public void CastLeftHandSpell()
+        public async void CastRightHandSpell()
         {
-            if (_canCastLeftHand)
+            try
             {
-                var leftHandSpell = Instantiate(_currentSpell._spellPrefab, _leftHand.position, _leftHand.rotation);
+                if (_timerAim && _canCastRightHand)
+                {
+                    _rendererRight.enabled = true;
+                    _chargeEffectRight.Play();
+                    await UniTask.WaitForSeconds(_castTimer, cancellationToken: _cancellationTokenSource.Token);
+                    _rendererRight.enabled = false;
+                }
+                else
+                    _rendererLeft.enabled = false;
 
-                _canCastLeftHand = false;
-                _leftHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
+                if (_canCastRightHand)
+                    Cast(ref _canCastRightHand, ref _rightHandMaterial, _rightHand);
 
-                if (!_canCastRightHand)
-                    HandleReset();
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.LogError("CastRightHandSpell was Canceled");
+            }
+
+        }
+
+        public async void CastLeftHandSpell()
+        {
+            try
+            {
+                if (_timerAim && _canCastLeftHand)
+                {
+                    _rendererLeft.enabled = true;
+                    _chargeEffectLeft.Play();
+                    await UniTask.WaitForSeconds(_castTimer, cancellationToken: _cancellationTokenSource.Token);
+                    _rendererLeft.enabled = false;
+                }
+                else
+                    _rendererLeft.enabled = false;
+
+                if (_canCastLeftHand)
+                    Cast(ref _canCastLeftHand, ref _leftHandMaterial, _leftHand);
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.LogError("CastLeftHandSpell was Canceled");
             }
         }
 
