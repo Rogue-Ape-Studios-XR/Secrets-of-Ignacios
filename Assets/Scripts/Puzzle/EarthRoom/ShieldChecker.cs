@@ -11,7 +11,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
         [SerializeField] private bool _checkForGrown;
         [SerializeField] private bool _shieldFits;
         //Each shield is different so you should add the correct shield here
-        [SerializeField] private GameObject _TargetShield;
+        [SerializeField] private GameObject _targetShield;
         
         public bool ShieldFits => _shieldFits;
         //Action so it doesn't need to constantly verify in update
@@ -19,7 +19,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(_shieldTag) && other.TryGetComponent(out Resizable resizable) && other.gameObject == _TargetShield)
+            if (other.CompareTag(_shieldTag) && other.TryGetComponent(out Resizable resizable) && other.gameObject == _targetShield)
             {
                 bool previousState = _shieldFits;
 
