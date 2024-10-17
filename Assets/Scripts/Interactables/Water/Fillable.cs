@@ -7,7 +7,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
 {
     internal class Fillable : WaterInteractable
     {
-        [SerializeField] private bool _filled;
+        [SerializeField] internal bool _filled;
 
         [SerializeField] private float _contentMax;
         [SerializeField] private float _contentFilled;
