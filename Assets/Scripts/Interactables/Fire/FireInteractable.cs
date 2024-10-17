@@ -12,6 +12,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Fire
 		[SerializeField] internal VisualEffect _burningEffect;
 		[SerializeField] internal VisualEffect _dousingEffect;
 
+		internal event Action<bool> OnIgnitionToggle;
+		
 		internal override void Awake()
 		{
 			_spellReceiver.OnSpellReceived += HandleSpellReceived;
@@ -22,7 +24,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Fire
 			_spellReceiver.OnSpellReceived -= HandleSpellReceived;
 		}
 
-		internal event Action<bool> OnIgnitionToggle;
 
 		internal override void HandleSpellReceived(string spellType)
 		{

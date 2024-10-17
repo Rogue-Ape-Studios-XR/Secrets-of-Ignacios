@@ -30,7 +30,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
             }
             catch (OperationCanceledException)
             {
-                Debug.LogError("Cleaning was Canceled");
+                Debug.LogError("Fill was Canceled");
             }
         }
 

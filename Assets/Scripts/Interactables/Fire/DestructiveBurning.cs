@@ -10,7 +10,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Fire
 	internal class DestructiveBurning : FireInteractable
 	{
 		[Header("Burn Settings")] [SerializeField]
-		private float burnTime = 1;
+		private float _burnTime = 1;
 
 		[Header("Visual Effects")] [SerializeField]
 		private VisualEffect _destructionEffect;
@@ -47,7 +47,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Fire
 			try
 			{
 				_burningEffect.Play();
-				await UniTask.WaitForSeconds(burnTime, cancellationToken: token);
+				await UniTask.WaitForSeconds(_burnTime, cancellationToken: token);
 				OnBurnt();
 			}
 			catch (OperationCanceledException)
