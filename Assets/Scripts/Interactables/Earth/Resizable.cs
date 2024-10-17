@@ -12,7 +12,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 
 		[SerializeField] private bool _shrunk;
 		[SerializeField] private bool _grown;
-
+		
+		public bool Shrunk => _shrunk;
+        public bool Grown => _grown;
+        
 		internal override void Awake()
 		{
 			//Sorry, but this was necessary for now, if you have something better, feel free to say so :)
