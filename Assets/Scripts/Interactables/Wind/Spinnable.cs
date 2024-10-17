@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Wind
@@ -18,6 +19,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Wind
 
         internal bool IsSpinning => _isSpinning;
 
+        internal event Action<bool> OnSpinning;
 
         void FixedUpdate()
         {
@@ -34,13 +36,17 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Wind
                 _spinnableTransform.Rotate(_rotationAxis, _currentSpeed * Time.deltaTime);
             }
             else if (!_isBlown && _currentSpeed <= 0f && _isSpinning)
+            {
                 _isSpinning = false;
+                OnSpinning?.Invoke(_isSpinning);
+            }
         }
 
         internal override void Blown()
         {
             _currentSpeed = Mathf.Min(_currentSpeed + _hitForce, _maxSpeed);
             _isSpinning = true;
+            OnSpinning?.Invoke(_isSpinning);
         }
     }
 }
