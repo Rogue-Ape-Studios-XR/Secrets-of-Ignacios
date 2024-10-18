@@ -8,6 +8,7 @@ TagManager:
   - FingerTip
   - UIButtonTab
   - UIButtonBracelet
+  - WindSpell
   layers:
   - Default
   - TransparentFX
