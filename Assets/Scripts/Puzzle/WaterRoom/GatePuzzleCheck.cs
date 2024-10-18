@@ -15,7 +15,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.WaterRoom
 
             foreach (var vase in _vases)
             {
-                vase.OnSplashToggle += VaseCheck;
+                vase.onFilled += VaseCheck;
                 
             }
         }
@@ -24,7 +24,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.WaterRoom
         {
             foreach (var vase in _vases)
             {
-                vase.OnSplashToggle -= VaseCheck;
+                vase.onFilled -= VaseCheck;
             }
         }
 
