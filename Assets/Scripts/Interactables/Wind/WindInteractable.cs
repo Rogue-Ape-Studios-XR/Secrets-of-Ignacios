@@ -7,7 +7,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Wind
     {
         [SerializeField] internal bool _isBlown;
 
-        internal event Action<bool> OnBlown;
+        internal event Action<bool> onBlown;
 
         internal override void Awake()
         {
@@ -26,12 +26,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Wind
             {
                 case "Debug":
                     Blown();
-                    OnBlown?.Invoke(_isBlown);
+                    onBlown?.Invoke(_isBlown);
                     break;
                 case "Wind":
                     // Implement the spinning of the fan. Boxes and things are not required, as the wind spell will have force
                     Blown();
-                    OnBlown?.Invoke(_isBlown);
+                    onBlown?.Invoke(_isBlown);
                     break;
                 default: throw new NotImplementedException();
             }
