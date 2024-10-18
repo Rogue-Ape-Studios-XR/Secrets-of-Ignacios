@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41b57abb06a1e4b49bdc41681f47c71f, type: 3}
-  m_Name: Test
+  m_Name: Fire
   m_EditorClassIdentifier: 
-  _name: Testy Boy
+  _name: Fire
   _elementType: 0
   _gestureSequence:
   - {fileID: 11400000, guid: 98105de35a6f47945a9bc17659aae264, type: 2}
   - {fileID: 11400000, guid: 6c6e9117b77522e48bf8288bb53e515c, type: 2}
   - {fileID: 11400000, guid: 4fae163ba39953f47a92ac450dba3702, type: 2}
-  _handColor: {r: 1, g: 0, b: 1, a: 1}
+  _handColor: {r: 1, g: 0.3810822, b: 0.10849059, a: 0.5372549}
   _handEffect: {fileID: 0}
   _spellPrefab: {fileID: 8070988747970441051, guid: 9f087b21d92a7ae4abe0f370dd9af610, type: 3}
+  _castType: 0

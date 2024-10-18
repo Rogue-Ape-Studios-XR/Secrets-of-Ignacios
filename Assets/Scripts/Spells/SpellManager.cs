@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.XR;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Spells
 {
@@ -36,6 +37,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private Color _defaultColor;
         private bool _canCastRightHand = false;
         private bool _canCastLeftHand = false;
+
+        private bool _isCastingLeft = false;
+        private bool _isCastingRight = false;
 
         public static event Action<bool> OnSpellValidation;
 
@@ -77,6 +81,27 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             _canCastRightHand = true;
             _canCastLeftHand = true;
         }
+
+        public void StopRightCast()
+        {
+            if (_currentSpell != null && _currentSpell._castType == CastTypes.Automatic && _isCastingRight)
+            {
+                _canCastRightHand = false;
+                _rightHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
+                _isCastingRight = false;
+            }
+        }
+
+        public void StopLeftCast()
+        {
+            if (_currentSpell != null && _currentSpell._castType == CastTypes.Automatic && _isCastingLeft) { 
+                _canCastLeftHand = false;
+                _leftHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
+                _isCastingLeft = false;
+            }
+        }
+
+
 
         public void ValidateSequence()
         {
@@ -124,12 +149,51 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             }
         }
 
-        private void Cast(ref bool handCanCast, ref Renderer handMaterial, Transform hand)
-        {
-            var spell = Instantiate(_currentSpell._spellPrefab, hand.position, hand.rotation);
 
-            handCanCast = false;
-            handMaterial.materials[1].SetColor("_MainColor", _defaultColor);
+        private async void RightRepeatedCast(Transform hand, CancellationToken token)
+        {
+            while (_canCastRightHand)
+            {
+                Instantiate(_currentSpell._spellPrefab, hand.position, hand.rotation);
+                await UniTask.WaitForSeconds(0.02f, cancellationToken: token);
+                _isCastingRight = true;
+            }
+        }
+
+
+        private async void LeftRepeatedCast(Transform hand, CancellationToken token)
+        {
+            while (_canCastLeftHand)
+            {
+                Instantiate(_currentSpell._spellPrefab, hand.position, hand.rotation);
+                await UniTask.WaitForSeconds(0.03f, cancellationToken: token);
+                _isCastingLeft = true;
+            }
+        }
+
+        private void Cast(ref bool handCanCast, ref Renderer handMaterial, Transform hand, bool isRightHand)
+        {
+
+            switch (_currentSpell._castType)
+            {
+                case CastTypes.SingleFire:
+                    var spell = Instantiate(_currentSpell._spellPrefab, hand.position, hand.rotation);
+                    handCanCast = false;
+                    handMaterial.materials[1].SetColor("_MainColor", _defaultColor);
+                    break;
+                case CastTypes.Automatic:
+                    if(isRightHand)
+                        RightRepeatedCast(hand, _cancellationTokenSource.Token);
+                    else
+                        LeftRepeatedCast(hand, _cancellationTokenSource.Token);
+
+                    break;
+                default: throw new NotImplementedException("Cast type not implemented (how did we even get here)");
+                
+            }
+
+
+
 
             if (!_canCastLeftHand)
                 HandleReset();
@@ -139,7 +203,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             try
             {
-                if (_timerAim && _canCastRightHand)
+                if (_timerAim && _canCastRightHand && _currentSpell._castType == CastTypes.SingleFire)
                 {
                     _rendererRight.enabled = true;
                     _chargeEffectRight.Play();
@@ -147,10 +211,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                     _rendererRight.enabled = false;
                 }
                 else
-                    _rendererLeft.enabled = false;
+                    _rendererRight.enabled = false;
 
                 if (_canCastRightHand)
-                    Cast(ref _canCastRightHand, ref _rightHandMaterial, _rightHand);
+                    Cast(ref _canCastRightHand, ref _rightHandMaterial, _rightHand, true);
 
             }
             catch (OperationCanceledException)
@@ -164,7 +228,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             try
             {
-                if (_timerAim && _canCastLeftHand)
+                if (_timerAim && _canCastLeftHand && _currentSpell._castType == CastTypes.SingleFire)
                 {
                     _rendererLeft.enabled = true;
                     _chargeEffectLeft.Play();
@@ -175,7 +239,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                     _rendererLeft.enabled = false;
 
                 if (_canCastLeftHand)
-                    Cast(ref _canCastLeftHand, ref _leftHandMaterial, _leftHand);
+                    Cast(ref _canCastLeftHand, ref _leftHandMaterial, _leftHand, false);
             }
             catch (OperationCanceledException)
             {

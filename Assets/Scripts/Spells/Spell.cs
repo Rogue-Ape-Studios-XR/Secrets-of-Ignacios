@@ -14,5 +14,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [SerializeField] internal Color _handColor;
         [SerializeField] internal VisualEffect _handEffect;
         [SerializeField] internal GameObject _spellPrefab;
+        [SerializeField] internal CastTypes _castType;
     }
 }
