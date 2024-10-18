@@ -23,7 +23,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
                     _contentFilled++;
                     await UniTask.WaitForSeconds(_spellInterval, cancellationToken: token);
                     _isSplashed = false;
-                    //Debug.Log(_contentFilled);
                 }
                 if (_contentFilled >= _contentMax)
                 {

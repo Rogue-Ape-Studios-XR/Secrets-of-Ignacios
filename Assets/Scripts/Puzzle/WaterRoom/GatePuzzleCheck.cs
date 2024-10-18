@@ -33,7 +33,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.WaterRoom
             int count = 0;
             foreach (var vase in _vases)
             {
-                if (vase._filled /*&& vase.transform.localScale.x == 1f*/)
+                if (vase._filled /*&& if vase state is default*/)
                 {
                     count++;
                 }

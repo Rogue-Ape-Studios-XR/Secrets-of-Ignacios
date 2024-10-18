@@ -11,8 +11,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
 
         internal CancellationTokenSource _cancellationTokenSource;
 
-        //internal event Action<bool> OnSplashToggle;
-
         internal override void Awake()
 		{
 			_spellReceiver.OnSpellReceived += HandleSpellReceived;
@@ -34,7 +32,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
                 case "Water":
 					// Logic for casting a water spell
 					Splashed();
-                    //OnSplashToggle?.Invoke(_isSplashed);
                     break;
 
                 default: throw new NotImplementedException();

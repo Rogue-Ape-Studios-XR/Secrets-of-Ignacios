@@ -24,7 +24,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
                     _grimeAmountRemoved++;
                     await UniTask.WaitForSeconds(_spellInterval, cancellationToken: token);
                     _isSplashed = false;
-                    Debug.Log(_grimeAmountRemoved);
                 }
                 if (_grimeAmountRemoved >= _grimeMax)
                 {
