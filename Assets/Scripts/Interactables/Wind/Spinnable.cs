@@ -19,7 +19,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Wind
 
         internal bool IsSpinning => _isSpinning;
 
-        internal event Action<bool> OnSpinning;
+        internal event Action<bool> onSpinning;
 
         void FixedUpdate()
         {
@@ -38,7 +38,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Wind
             else if (!_isBlown && _currentSpeed <= 0f && _isSpinning)
             {
                 _isSpinning = false;
-                OnSpinning?.Invoke(_isSpinning);
+                onSpinning?.Invoke(_isSpinning);
             }
         }
 
@@ -49,7 +49,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Wind
             if (!_isSpinning)
             {
                 _isSpinning = true;
-                OnSpinning?.Invoke(_isSpinning);
+                onSpinning?.Invoke(_isSpinning);
             }
         }
     }
