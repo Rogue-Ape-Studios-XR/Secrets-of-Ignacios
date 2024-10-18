@@ -37,13 +37,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
             }
 
             if (_allShieldsFit)
-            {
                 Debug.Log("All shields fit");
-            }
             else
-            {
                 Debug.Log("Not all shields fit");
-            }
         }
     }
 }

@@ -40,9 +40,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
                 }
 
                 if (previousState != _shieldFits)
-                {
                     onShieldFitChanged?.Invoke();
-                }
+                
+                if (_shieldFits)
+                    //Just disable for now, could have an extra statement checking if the user still has it grabbed
+                    _targetShield.SetActive(false);
             }
         }
     }
