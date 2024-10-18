@@ -153,7 +153,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private async void RightRepeatedCast(Transform hand, CancellationToken token)
         {
             while (_canCastRightHand)
-            //for (int i = 0; i < 25; i++)
             {
                 Instantiate(_currentSpell._spellPrefab, hand.position, hand.rotation);
                 await UniTask.WaitForSeconds(0.02f, cancellationToken: token);
@@ -165,7 +164,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private async void LeftRepeatedCast(Transform hand, CancellationToken token)
         {
             while (_canCastLeftHand)
-            //for (int i = 0; i < 25; i++)
             {
                 Instantiate(_currentSpell._spellPrefab, hand.position, hand.rotation);
                 await UniTask.WaitForSeconds(0.03f, cancellationToken: token);
