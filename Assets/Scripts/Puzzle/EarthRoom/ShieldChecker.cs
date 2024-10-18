@@ -27,15 +27,18 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
                 {
                     case (true, false):
                         Debug.Log("Shield is shrunk");
-                        _shieldFits = true;
+                        _shieldFits = _checkForShrunk;
                         break;
                     case (false, true):
                         Debug.Log("Shield is grown");
-                        _shieldFits = true;
+                        _shieldFits = _checkForGrown;
                         break;
                     case (false, false):
                         Debug.Log("Shield is regular size");
-                        _shieldFits = true;
+                        _shieldFits = !_checkForShrunk && !_checkForGrown;
+                        break;
+                    default:
+                        _shieldFits = false;
                         break;
                 }
 
