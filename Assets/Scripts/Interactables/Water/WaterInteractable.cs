@@ -29,7 +29,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
             Debug.Log("Some water spell hit");
             switch (spellType)
             {
-                case "Debug":
+                case "Water":
 					// Logic for casting a water spell
 					Splashed();
                     break;

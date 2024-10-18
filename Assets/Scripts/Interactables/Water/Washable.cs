@@ -9,7 +9,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
     internal class Washable : WaterInteractable 
     {
         [SerializeField] private Renderer _noise; //when used: _noise.material.[name of shader graph]
-        [SerializeField] private bool _cleaned;
+        [SerializeField] internal bool _cleaned;
 
         [SerializeField] private float _grimeMax;
         [SerializeField] private float _grimeAmountRemoved;
@@ -24,7 +24,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
                     _grimeAmountRemoved++;
                     await UniTask.WaitForSeconds(_spellInterval, cancellationToken: token);
                     _isSplashed = false;
-                    Debug.Log(_grimeAmountRemoved);
                 }
                 if (_grimeAmountRemoved >= _grimeMax)
                 {

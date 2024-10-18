@@ -7,10 +7,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
 {
     internal class Fillable : WaterInteractable
     {
-        [SerializeField] private bool _filled;
+        [SerializeField] internal bool _filled;
 
         [SerializeField] private float _contentMax;
         [SerializeField] private float _contentFilled;
+
+        internal event Action<bool> onFilled;
 
         private async void Fill(CancellationToken token)
         {
@@ -21,11 +23,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
                     _contentFilled++;
                     await UniTask.WaitForSeconds(_spellInterval, cancellationToken: token);
                     _isSplashed = false;
-                    Debug.Log(_contentFilled);
                 }
                 if (_contentFilled >= _contentMax)
                 {
                     _filled = true;
+                    onFilled?.Invoke(_filled);
                 }
             }
             catch (OperationCanceledException)
