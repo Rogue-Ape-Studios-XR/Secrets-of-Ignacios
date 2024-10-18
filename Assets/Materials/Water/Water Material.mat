@@ -42,7 +42,7 @@ Material:
     - _QueueControl: 1
     - _QueueOffset: 0
     - _Scroll_Speed: 0.2
-    - _Vertex_Displacement: 0.03
+    - _Vertex_Displacement: 0.08
     m_Colors:
     - _Water_Color: {r: 0.36935562, g: 0.5771535, b: 0.7471698, a: 0.043137256}
   m_BuildTextureStacks: []
