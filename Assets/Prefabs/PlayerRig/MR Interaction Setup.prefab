@@ -542,7 +542,10 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 0.75
+        m_Name: Anim Time
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -727,7 +730,20 @@ MonoBehaviour:
         m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7230881327965378576}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SpellManager,
+          Assembly-CSharp
+        m_MethodName: StopLeftCast
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
   m_StaticGestures:
@@ -4364,8 +4380,9 @@ MonoBehaviour:
   _leftHandMaterial: {fileID: 6425639629858156003}
   _availableSpells:
   - {fileID: 11400000, guid: 1ef0e2ff34d668d4cb4aa300a7fdcca8, type: 2}
+  - {fileID: 11400000, guid: b5cf79cb31aa9ab47a2729a448a8cc9f, type: 2}
   _timerAim: 1
-  _castTimer: 1
+  _castTimer: 0.75
 --- !u!114 &8102834240813083181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4876,7 +4893,10 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 0.75
+        m_Name: Anim Time
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -5834,7 +5854,20 @@ MonoBehaviour:
         m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7230881327965378576}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SpellManager,
+          Assembly-CSharp
+        m_MethodName: StopRightCast
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
   m_StaticGestures:

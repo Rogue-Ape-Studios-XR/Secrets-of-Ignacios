@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b35524bd8c54d294ba8fe2c0e00596f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 15
   _rb: {fileID: 3196270206387038077}
   _waterVisual: {fileID: 5350993736482756274}
   _impactEffect: {fileID: 3502750337542612733}
