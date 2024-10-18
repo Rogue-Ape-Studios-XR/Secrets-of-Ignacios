@@ -2983,7 +2983,6 @@ GameObject:
   - component: {fileID: 1865150447239359247}
   - component: {fileID: 1865150447238297013}
   - component: {fileID: 1802785240098012057}
-  - component: {fileID: 3359078917308677187}
   - component: {fileID: 6463518724994791243}
   - component: {fileID: 4154798670972264816}
   m_Layer: 0
@@ -3083,23 +3082,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43401602442143996, guid: ed3e62e17a5f5d64ba6d3c0d2d8b5f14, type: 2}
---- !u!114 &3359078917308677187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865150447240443907}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01618537abfa7dc499e00300d5e43001, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fans:
-  - {fileID: 2167240953612514872}
-  - {fileID: 642797126199624078}
-  - {fileID: 4083765977702287681}
-  _animator: {fileID: 6463518724994791243}
 --- !u!95 &6463518724994791243
 Animator:
   serializedVersion: 7
@@ -3134,9 +3116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abfed07beaa4f164e9acc1f20ad02850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
-  _sequenceChecker: {fileID: 0}
-  _animationTrigger: 
+  _animator: {fileID: 6463518724994791243}
+  _sequenceChecker: {fileID: 7750182364687385177}
+  _animationTrigger: DoorOpen
 --- !u!1 &1915054469317366603
 GameObject:
   m_ObjectHideFlags: 0
@@ -14389,6 +14371,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3082045349378714488}
+  - component: {fileID: 7750182364687385177}
   m_Layer: 0
   m_Name: PipeSequence
   m_TagString: Untagged
@@ -14417,6 +14400,24 @@ Transform:
   - {fileID: 8919463589584427215}
   m_Father: {fileID: 4227338046134809433}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7750182364687385177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7834611868908378136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4815f8da827d184db2129568ba49809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sequence:
+  - {fileID: 3068815407855546772}
+  - {fileID: 5105043968930716734}
+  - {fileID: 3518022599629546247}
+  - {fileID: 4369756427697298443}
+  - {fileID: 2229803939819454532}
 --- !u!1 &7847081606141840441
 GameObject:
   m_ObjectHideFlags: 0
@@ -15431,9 +15432,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abfed07beaa4f164e9acc1f20ad02850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
-  _sequenceChecker: {fileID: 0}
-  _animationTrigger: 
+  _animator: {fileID: 6905295777775835719}
+  _sequenceChecker: {fileID: 5666740310161415057}
+  _animationTrigger: IsBlown
 --- !u!95 &6905295777775835719
 Animator:
   serializedVersion: 7
@@ -15611,8 +15612,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be559abdaf1661b4b8e7364a384eb50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sequenceChecker: {fileID: 0}
-  _tags: []
+  _sequenceChecker: {fileID: 5666740310161415057}
+  _tags:
+  - WindSpell
 --- !u!114 &5666740310161415057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15625,7 +15627,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4815f8da827d184db2129568ba49809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sequence: []
+  _sequence:
+  - {fileID: 8658775900665252205}
 --- !u!1 &8671191232366042294
 GameObject:
   m_ObjectHideFlags: 0
