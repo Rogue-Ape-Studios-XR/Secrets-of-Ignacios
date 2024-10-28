@@ -28,22 +28,21 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
 
         private void CheckGateStatus()
         {
-            if (AreAllBlocksGrown())
-                //Later implementation of Loes' animation
+            if (AreAllBlocksInState(ResizeState.Grown))
+               //Later implementation of Loes' animation 
                 Debug.Log("Open the gate");
         }
 
-        private bool AreAllBlocksGrown()
+        private bool AreAllBlocksInState(ResizeState requiredState)
         {
             foreach (var resizable in _resizableBlocks)
             {
-                if (resizable == null || !resizable.Grown)
+                if (resizable == null || resizable.CurrentState != requiredState)
                 {
-                    Debug.Log("Not all are grown");
+                    Debug.Log("Not all blocks are in the required state: " + requiredState);
                     return false;
                 }
             }
-
             return true;
         }
     }
