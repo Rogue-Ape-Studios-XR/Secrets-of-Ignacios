@@ -4,47 +4,34 @@ using System;
 using System.Linq;
 using System.Threading;
 using UnityEngine;
-using UnityEngine.VFX;
-using UnityEngine.XR;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Spells
 {
+    /*Remove the r/l can cast bools from this class, it should not be needed here, 
+    with the event the right and left can cast can be set in the cast class and should be able to manage it by itself*/
+
     internal class SpellManager : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private SequenceManager _gestureManager;
-        [SerializeField] private Renderer _rendererRight;
-        [SerializeField] private Renderer _rendererLeft;
-        [SerializeField] private VisualEffect _chargeEffectRight;
-        [SerializeField] private VisualEffect _chargeEffectLeft;
+        [SerializeField] private SequenceManager _sequenceManager;
 
         [Header("Hand Objects")]
-        [SerializeField] private Transform _rightHand;
-        [SerializeField] private Transform _leftHand;
         [SerializeField] private Renderer _rightHandMaterial;
         [SerializeField] private Renderer _leftHandMaterial;
 
         [Header("Spells")]
         [SerializeField] private Spell[] _availableSpells;
 
-        [Header("Casting Mode")]
-        [SerializeField] private bool _timerAim = false;
-        [SerializeField] private float _castTimer = 1;
 
         private Spell _currentSpell;
         private Spell _lastSpell;
         private CancellationTokenSource _cancellationTokenSource;
         private Color _defaultColor;
-        private bool _canCastRightHand = false;
-        private bool _canCastLeftHand = false;
-
-        private bool _isCastingLeft = false;
-        private bool _isCastingRight = false;
 
         public static event Action<bool> OnSpellValidation;
 
-        internal bool CanCastRightHand => _canCastRightHand;
-        internal bool CanCastLeftHand => _canCastLeftHand;
+        internal Spell CurrentSpell => _currentSpell;
+        internal Color DefaultColor => _defaultColor;
 
         private void Awake()
         {
@@ -54,73 +41,53 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void Start()
         {
             _defaultColor = _rightHandMaterial.materials[1].GetColor("_MainColor");
-            _chargeEffectLeft.Stop();
-            _chargeEffectRight.Stop();
         }
 
         private void OnEnable()
         {
-            _gestureManager.OnSequenceCreated += ValidateSequence;
-            _gestureManager.OnReset += HandleReset;
-            _gestureManager.OnQuickCast += HandleOnQuickCast;
+            _sequenceManager.OnSequenceCreated += ValidateSequence;
+            _sequenceManager.OnReset += HandleReset;
+            _sequenceManager.OnQuickCast += HandleOnQuickCast;
         }
 
         private void OnDestroy()
         {
-            _gestureManager.OnSequenceCreated -= ValidateSequence;
-            _gestureManager.OnReset -= HandleReset;
+            _sequenceManager.OnSequenceCreated -= ValidateSequence;
+            _sequenceManager.OnReset -= HandleReset;
 
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
+        }
+
+        public void ValidateSequence()
+        {
+            bool spellFound = false;
+
+            foreach (var spell in _availableSpells)
+                if (spell._gestureSequence.Count == _sequenceManager.ValidatedGestures.Count &&
+                    spell._gestureSequence.SequenceEqual(_sequenceManager.ValidatedGestures))
+                {
+                    SetSpell(spell);
+                    spellFound = true;
+                    break;
+                }
+
+            if (!spellFound)
+            {
+                _currentSpell = null;
+                SpellWrongIndication(_cancellationTokenSource.Token);
+            }
+
+            OnSpellValidation?.Invoke(spellFound);
         }
 
         private void SetSpell(Spell spell)
         {
             _currentSpell = spell;
             _lastSpell = spell;
-            _canCastRightHand = true;
-            _canCastLeftHand = true;
-        }
 
-        public void StopRightCast()
-        {
-            if (_currentSpell != null && _currentSpell._castType == CastTypes.Automatic && _isCastingRight)
-            {
-                _canCastRightHand = false;
-                _rightHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
-                _isCastingRight = false;
-            }
-        }
-
-        public void StopLeftCast()
-        {
-            if (_currentSpell != null && _currentSpell._castType == CastTypes.Automatic && _isCastingLeft) { 
-                _canCastLeftHand = false;
-                _leftHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
-                _isCastingLeft = false;
-            }
-        }
-
-
-
-        public void ValidateSequence()
-        {
-            foreach (var spell in _availableSpells)
-                if (spell._gestureSequence.Count == _gestureManager.ValidatedGestures.Count &&
-                    spell._gestureSequence.SequenceEqual(_gestureManager.ValidatedGestures))
-                {
-                    SetSpell(spell);
-                    break;
-                }
-                else
-                {
-                    _currentSpell = null;
-                    _canCastRightHand = false;
-                    _canCastLeftHand = false;
-                    SpellWrongIndication(_cancellationTokenSource.Token);
-                }
-
-            OnSpellValidation?.Invoke(_canCastRightHand);
+            _rightHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._handColor);
+            _leftHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._handColor);
         }
 
         private async void SpellWrongIndication(CancellationToken token)
@@ -149,121 +116,24 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             }
         }
 
-
-        private async void RightRepeatedCast(Transform hand, CancellationToken token)
-        {
-            while (_canCastRightHand)
-            {
-                Instantiate(_currentSpell._spellPrefab, hand.position, hand.rotation);
-                await UniTask.WaitForSeconds(0.02f, cancellationToken: token);
-                _isCastingRight = true;
-            }
-        }
-
-
-        private async void LeftRepeatedCast(Transform hand, CancellationToken token)
-        {
-            while (_canCastLeftHand)
-            {
-                Instantiate(_currentSpell._spellPrefab, hand.position, hand.rotation);
-                await UniTask.WaitForSeconds(0.03f, cancellationToken: token);
-                _isCastingLeft = true;
-            }
-        }
-
-        private void Cast(ref bool handCanCast, ref Renderer handMaterial, Transform hand, bool isRightHand)
-        {
-
-            switch (_currentSpell._castType)
-            {
-                case CastTypes.SingleFire:
-                    var spell = Instantiate(_currentSpell._spellPrefab, hand.position, hand.rotation);
-                    handCanCast = false;
-                    handMaterial.materials[1].SetColor("_MainColor", _defaultColor);
-                    break;
-                case CastTypes.Automatic:
-                    if(isRightHand)
-                        RightRepeatedCast(hand, _cancellationTokenSource.Token);
-                    else
-                        LeftRepeatedCast(hand, _cancellationTokenSource.Token);
-
-                    break;
-                default: throw new NotImplementedException("Cast type not implemented (how did we even get here)");
-                
-            }
-
-
-
-
-            if (!_canCastLeftHand)
-                HandleReset();
-        }
-
-        public async void CastRightHandSpell()
-        {
-            try
-            {
-                if (_timerAim && _canCastRightHand && _currentSpell._castType == CastTypes.SingleFire)
-                {
-                    _rendererRight.enabled = true;
-                    _chargeEffectRight.Play();
-                    await UniTask.WaitForSeconds(_castTimer, cancellationToken: _cancellationTokenSource.Token);
-                    _rendererRight.enabled = false;
-                }
-                else
-                    _rendererRight.enabled = false;
-
-                if (_canCastRightHand)
-                    Cast(ref _canCastRightHand, ref _rightHandMaterial, _rightHand, true);
-
-            }
-            catch (OperationCanceledException)
-            {
-                Debug.LogError("CastRightHandSpell was Canceled");
-            }
-
-        }
-
-        public async void CastLeftHandSpell()
-        {
-            try
-            {
-                if (_timerAim && _canCastLeftHand && _currentSpell._castType == CastTypes.SingleFire)
-                {
-                    _rendererLeft.enabled = true;
-                    _chargeEffectLeft.Play();
-                    await UniTask.WaitForSeconds(_castTimer, cancellationToken: _cancellationTokenSource.Token);
-                    _rendererLeft.enabled = false;
-                }
-                else
-                    _rendererLeft.enabled = false;
-
-                if (_canCastLeftHand)
-                    Cast(ref _canCastLeftHand, ref _leftHandMaterial, _leftHand, false);
-            }
-            catch (OperationCanceledException)
-            {
-                Debug.LogError("CastLeftHandSpell was Canceled");
-            }
-        }
-
         internal void HandleReset()
         {
             _currentSpell = null;
-            _canCastRightHand = false;
-            _canCastLeftHand = false;
 
             _rightHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
             _leftHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
+
+            OnSpellValidation?.Invoke(false);
         }
 
         private void HandleOnQuickCast()
         {
             _currentSpell = _lastSpell;
+
             _rightHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._handColor);
             _leftHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._handColor);
-            _canCastLeftHand = true;
-            _canCastRightHand = true;
+
+            OnSpellValidation?.Invoke(true);
         }
     }
 }
