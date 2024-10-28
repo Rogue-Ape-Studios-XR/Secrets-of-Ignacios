@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
@@ -13,6 +14,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 		[SerializeField] private bool _shrunk;
 		[SerializeField] private bool _grown;
 
+		internal event Action onSizeChanged;
+		
+		public bool Shrunk => _shrunk;
+        public bool Grown => _grown;
+        
 		internal override void Awake()
 		{
 			//Sorry, but this was necessary for now, if you have something better, feel free to say so :)
@@ -54,6 +60,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 			}
 
 			_isGrowSpellActive = false;
+            onSizeChanged?.Invoke();
 		}
 
 		private void ShrinkObject()
@@ -71,6 +78,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 			}
 
 			_isShrinkSpellActive = false;
+            onSizeChanged?.Invoke();
 		}
 	}
 }
