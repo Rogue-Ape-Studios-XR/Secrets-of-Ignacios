@@ -25,19 +25,34 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 
         internal override void Touched()
         {
-            ResizeObject();
-        }
+            if (_isGrowSpellActive)
+            {
+                switch (_currentState)
+                {
+                    case ResizeState.Default:
+                        ChangeState(ResizeState.Grown, _growSize);
+                        break;
 
-        private void ResizeObject()
-        {
-            if (_currentState == ResizeState.Shrunk)
-            {
-                ChangeState(ResizeState.Default, _defaultSize);
+                    case ResizeState.Shrunk:
+                        ChangeState(ResizeState.Default, _defaultSize);
+                        break;
+
+                }
             }
-            else if (_currentState == ResizeState.Default)
+            else if (_isShrinkSpellActive)
             {
-                ChangeState(ResizeState.Grown, _growSize);
+                switch (_currentState)
+                {
+                    case ResizeState.Default:
+                        ChangeState(ResizeState.Shrunk, _shrinkSize);
+                        break;
+
+                    case ResizeState.Grown:
+                        ChangeState(ResizeState.Default, _defaultSize);
+                        break;
+                }
             }
+               
         }
 
         private void ChangeState(ResizeState newState, Vector3 newSize)
@@ -45,6 +60,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
             _targetObject.localScale = newSize;
             _currentState = newState;
             onSizeChanged?.Invoke();
+
+            _isGrowSpellActive = false;
+            _isShrinkSpellActive = false;
         }
 
         private void SetObjectScale()
