@@ -5,8 +5,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 {
 	internal class Resizable : EarthInteractable
 	{
-		[SerializeField] private Vector3 _initialSize;
 		[SerializeField] private Vector3 _shrinkSize;
+		[SerializeField] private Vector3  _defaultSize;
 		[SerializeField] private Vector3 _growSize;
 
 		[SerializeField] private Transform _targetObject;
@@ -22,14 +22,14 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 		internal override void Awake()
 		{
 			//Sorry, but this was necessary for now, if you have something better, feel free to say so :)
-
 			base.Awake();
-			_initialSize = _targetObject.localScale;
-
+			
 			if (_shrunk)
 				_targetObject.localScale = _shrinkSize;
 			else if (_grown)
 				_targetObject.localScale = _growSize;
+			else
+				_targetObject.localScale = _defaultSize;
 		}
 
 		internal override void Touched()
@@ -50,7 +50,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 		{
 			if (_shrunk)
 			{
-				_targetObject.localScale = _initialSize;
+				_targetObject.localScale = _defaultSize;
 				_shrunk = false;
 			}
 			else
@@ -67,7 +67,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 		{
 			if (_grown)
 			{
-				_targetObject.localScale = _initialSize;
+				_targetObject.localScale = _defaultSize;
 				_grown = false;
 			}
 
