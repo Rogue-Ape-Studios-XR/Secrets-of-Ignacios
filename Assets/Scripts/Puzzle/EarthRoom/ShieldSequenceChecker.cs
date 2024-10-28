@@ -6,7 +6,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
     public class ShieldSequenceChecker : MonoBehaviour
     {
         [SerializeField] private List<ShieldChecker> _shieldCheckers;
-        [SerializeField] private bool _allShieldsFit;
+        [SerializeField] private bool _allShieldsFit = true;
 
         private void OnEnable()
         {
@@ -28,9 +28,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
 
         private void CheckAllShields()
         {
-            //It's true by default when checked initially (will be set false in the foreach, so no need to worry about early puzzle clears)
-            _allShieldsFit = true;
-
             foreach (var shieldChecker in _shieldCheckers)
             {
                 if (!shieldChecker.ShieldFits)
