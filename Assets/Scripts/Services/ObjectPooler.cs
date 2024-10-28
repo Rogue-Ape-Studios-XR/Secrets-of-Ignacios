@@ -17,7 +17,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Services
             _serviceLocator.RegisterService(this);
 
             foreach (var spell in _spells)
-                CreatePool(spell._elementType.ToString(), spell._spellPrefab, /*spell._poolSize*/1);
+                CreatePool(spell._elementType.ToString(), spell._spellPrefab, spell._poolSize);
         }
 
         private void CreatePool(string projectileType, GameObject prefab, int initialSize)
