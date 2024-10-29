@@ -18,7 +18,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.Movement
         [Header("Variables")]
         [SerializeField] private float _maxBallDistance = 0.1f;
         [SerializeField] private float _speed = 3f;
+        [SerializeField] private float _gravityValue = -0.1f;
 
+        private Vector3 _playerVelocity;
         private bool _movementEnabled = false;
         private bool _rightHandActive = false;
         private bool _leftHandActive = false;
@@ -32,6 +34,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.Movement
                 _rightVisual.SetActive(false);
                 _leftVisual.SetActive(false);
             }
+
+            AddGravity();
         }
 
         private void Move()
@@ -59,6 +63,16 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.Movement
 
             moveDirection.Normalize();
             _player.Move(_speed * Time.deltaTime * moveDirection);
+        }
+
+        private void AddGravity()
+        {
+            if (!_player.isGrounded)
+                _playerVelocity.y += _gravityValue * Time.deltaTime;
+            else if (_player.isGrounded && _playerVelocity.y is not 0)
+                _playerVelocity.y = 0f;
+
+            _player.Move(_playerVelocity);
         }
 
         public void EnableMovementRight()
