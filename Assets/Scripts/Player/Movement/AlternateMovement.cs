@@ -3,32 +3,15 @@ using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Player.Movement
 {
-    [Serializable]
-    internal struct Hand
-    {
-        [SerializeField] internal Transform _thumbTip;
-        [SerializeField] internal Transform _ancherPoint;
-        [SerializeField] internal GameObject _visual;
-    }
-
     internal class AlternateMovement : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private CharacterController _player;
-        [SerializeField] private Transform _rightThumbTip;
-        [SerializeField] private Transform _leftThumbTip;
-        [SerializeField] private Transform _rightAncherPoint;
-        [SerializeField] private Transform _leftAncherPoint;
         [SerializeField] private Transform _camera;
         [SerializeField] private Hand _rightHand;
         [SerializeField] private Hand _leftHand;
 
-        [Header("Visuals")]
-        [SerializeField] private GameObject _rightVisual;
-        [SerializeField] private GameObject _leftVisual;
-
-        [Header("Variables")]
-        [SerializeField] private float _maxBallDistance = 0.1f;
+        [Header("Movement Settings")]
         [SerializeField] private float _speed = 3f;
         [SerializeField] private float _gravityValue = -0.1f;
 
@@ -37,75 +20,55 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.Movement
 
         private Vector3 _playerVelocity;
         private bool _movementEnabled = false;
-        private bool _rightHandActive = false;
-        private bool _leftHandActive = false;
-        private bool _gravityActive = true;
 
-        void Update()
+        private void Update()
         {
-
-            if (_forwardMovement)
+            if (_movementEnabled)
             {
-                if (_movementEnabled)
+                if (_forwardMovement)
                     ForwardMove();
-            }
-            else
-            {
-                if (_movementEnabled)
+                else
                     AlternateMove();
-                else if (_rightVisual.activeSelf && _leftVisual.activeSelf || _rightVisual.activeSelf || _leftVisual.activeSelf)
-                {
-                    _rightVisual.SetActive(false);
-                    _leftVisual.SetActive(false);
-                }
             }
+            else if (_rightHand._joystickVisual.activeSelf || _leftHand._joystickVisual.activeSelf)
+                DisableHandVisuals();
 
-            if (_gravityActive)
-                AddGravity();
+            AddGravity();
         }
 
         private void AlternateMove()
         {
-            Vector3 moveDirection;
+            Vector3 moveDirection = Vector3.zero;
 
-            if (_rightHandActive || _rightHandActive && _leftHandActive)
+            if (_rightHand._active || _rightHand._active && _leftHand._active)
             {
-                _rightHand._visual.SetActive(true);
+                _rightHand.ShowVisual();
                 moveDirection = _rightHand._thumbTip.position - _rightHand._ancherPoint.position;
             }
-            else if (_leftHandActive)
+            else if (_leftHand._active)
             {
-                _leftHand._visual.SetActive(true);
+                _leftHand.ShowVisual();
                 moveDirection = _leftHand._thumbTip.position - _leftHand._ancherPoint.position;
             }
             else
-            {
-                _rightHand._visual.SetActive(false);
-                _leftHand._visual.SetActive(false);
-                moveDirection = Vector3.zero;
-            }
+                DisableHandVisuals();
 
             moveDirection.y = 0;
-
-            moveDirection.Normalize();
-            _player.Move(_speed * Time.deltaTime * moveDirection);
+            _player.Move(_speed * Time.deltaTime * moveDirection.normalized);
         }
 
         private void ForwardMove()
         {
             Vector3 moveDirection = _camera.forward;
-
             moveDirection.y = 0;
-
-            moveDirection.Normalize();
-            _player.Move(_speed * Time.deltaTime * moveDirection);
+            _player.Move(_speed * Time.deltaTime * moveDirection.normalized);
         }
 
         private void AddGravity()
         {
             if (!_player.isGrounded)
                 _playerVelocity.y += _gravityValue * Time.deltaTime;
-            else if (_player.isGrounded && _playerVelocity.y is not 0)
+            else if (_player.isGrounded && _playerVelocity.y != 0)
                 _playerVelocity.y = 0f;
 
             _player.Move(_playerVelocity);
@@ -113,25 +76,66 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.Movement
 
         public void EnableMovementRight()
         {
-            _movementEnabled = true;
-            _rightHandActive = true;
+            if (!_forwardMovement)
+            {
+                _movementEnabled = true;
+                _rightHand._active = true;
+            }
         }
 
         public void EnableMovementLeft()
         {
-            _movementEnabled = true;
-            _leftHandActive = true;
+            if (!_forwardMovement)
+            {
+                _movementEnabled = true;
+                _leftHand._active = true;
+            }
         }
 
         public void DisableMovementRight()
         {
-            _rightHandActive = false;
-        }
+            _rightHand._active = false;
 
+            if (!_leftHand._active)
+                _movementEnabled = false;
+        }
         public void DisableMovementLeft()
         {
-            _leftHandActive = false;
+            _leftHand._active = false;
+
+            if (!_rightHand._active)
+                _movementEnabled = false;
+        }
+
+        public void EnableMovementForward()
+        {
+            if (_forwardMovement)
+                _movementEnabled = true;
+        }
+
+        public void DisableMovementForward()
+        {
+            if (_forwardMovement)
+                _movementEnabled = false;
+        }
+
+        private void DisableHandVisuals()
+        {
+            _rightHand.HideVisual();
+            _leftHand.HideVisual();
+        }
+
+        [Serializable]
+        private class Hand
+        {
+            [SerializeField] internal Transform _thumbTip;
+            [SerializeField] internal Transform _ancherPoint;
+            [SerializeField] internal GameObject _joystickVisual;
+
+            internal bool _active = false;
+
+            internal void ShowVisual() => _joystickVisual.SetActive(true);
+            internal void HideVisual() => _joystickVisual.SetActive(false);
         }
     }
 }
-
