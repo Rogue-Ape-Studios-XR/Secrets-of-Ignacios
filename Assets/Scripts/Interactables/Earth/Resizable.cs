@@ -3,82 +3,76 @@ using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
 {
-	internal class Resizable : EarthInteractable
-	{
-		[SerializeField] private Vector3 _initialSize;
-		[SerializeField] private Vector3 _shrinkSize;
-		[SerializeField] private Vector3 _growSize;
+    internal class Resizable : EarthInteractable
+    {
+        [SerializeField] private Vector3 _shrinkSize;
+        [SerializeField] private Vector3 _defaultSize;
+        [SerializeField] private Vector3 _growSize;
 
-		[SerializeField] private Transform _targetObject;
+        [SerializeField] private Transform _targetObject;
 
-		[SerializeField] private bool _shrunk;
-		[SerializeField] private bool _grown;
+        [SerializeField] private ResizeState _currentState = ResizeState.Default;
 
-		internal event Action onSizeChanged;
-		
-		public bool Shrunk => _shrunk;
-        public bool Grown => _grown;
-        
-		internal override void Awake()
-		{
-			//Sorry, but this was necessary for now, if you have something better, feel free to say so :)
+        internal event Action onSizeChanged;
 
-			base.Awake();
-			_initialSize = _targetObject.localScale;
+        public ResizeState CurrentState => _currentState;
 
-			if (_shrunk)
-				_targetObject.localScale = _shrinkSize;
-			else if (_grown)
-				_targetObject.localScale = _growSize;
-		}
+        internal override void Awake()
+        {
+            base.Awake();
+            SetObjectScale();
+        }
 
-		internal override void Touched()
-		{
-			ResizeObject();
-		}
+        internal override void Touched()
+        {
+            if (_isGrowSpellActive)
+            {
+                switch (_currentState)
+                {
+                    case ResizeState.Default:
+                        ChangeState(ResizeState.Grown, _growSize);
+                        break;
 
-		private void ResizeObject()
-		{
-			if (_isGrowSpellActive && !_grown)
-				GrowObject();
+                    case ResizeState.Shrunk:
+                        ChangeState(ResizeState.Default, _defaultSize);
+                        break;
 
-			else if (_isShrinkSpellActive && !_shrunk)
-				ShrinkObject();
-		}
+                }
+            }
+            else if (_isShrinkSpellActive)
+            {
+                switch (_currentState)
+                {
+                    case ResizeState.Default:
+                        ChangeState(ResizeState.Shrunk, _shrinkSize);
+                        break;
 
-		private void GrowObject()
-		{
-			if (_shrunk)
-			{
-				_targetObject.localScale = _initialSize;
-				_shrunk = false;
-			}
-			else
-			{
-				_targetObject.localScale = _growSize;
-				_grown = true;
-			}
+                    case ResizeState.Grown:
+                        ChangeState(ResizeState.Default, _defaultSize);
+                        break;
+                }
+            }
+               
+        }
 
-			_isGrowSpellActive = false;
+        private void ChangeState(ResizeState newState, Vector3 newSize)
+        {
+            _targetObject.localScale = newSize;
+            _currentState = newState;
             onSizeChanged?.Invoke();
-		}
 
-		private void ShrinkObject()
-		{
-			if (_grown)
-			{
-				_targetObject.localScale = _initialSize;
-				_grown = false;
-			}
+            _isGrowSpellActive = false;
+            _isShrinkSpellActive = false;
+        }
 
-			else
-			{
-				_targetObject.localScale = _shrinkSize;
-				_shrunk = true;
-			}
-
-			_isShrinkSpellActive = false;
-            onSizeChanged?.Invoke();
-		}
-	}
+        private void SetObjectScale()
+        {
+            _targetObject.localScale = _currentState switch
+            {
+                ResizeState.Shrunk => _shrinkSize,
+                ResizeState.Grown => _growSize,
+                _ => _defaultSize,
+            };
+        }
+    }
 }
