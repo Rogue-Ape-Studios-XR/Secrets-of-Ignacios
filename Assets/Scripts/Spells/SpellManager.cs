@@ -7,9 +7,6 @@ using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Spells
 {
-    /*Remove the r/l can cast bools from this class, it should not be needed here, 
-    with the event the right and left can cast can be set in the cast class and should be able to manage it by itself*/
-
     internal class SpellManager : MonoBehaviour
     {
         [Header("References")]
