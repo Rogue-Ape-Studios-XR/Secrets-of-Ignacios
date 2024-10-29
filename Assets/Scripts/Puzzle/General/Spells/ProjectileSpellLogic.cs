@@ -26,10 +26,18 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.General.Spells
 
         private ObjectPooler _objectPooler;
         private CancellationTokenSource _cancellationTokenSource;
+        private bool _collided = false;
 
         private void Awake()
         {
             _cancellationTokenSource = new CancellationTokenSource();
+        }
+
+        private void OnEnable()
+        {
+            ResetProjectile(true);
+            _rb.linearVelocity = transform.forward * _speed;
+            ReturnAfterTime(5, _cancellationTokenSource.Token);
         }
 
         private void Start()
@@ -44,29 +52,20 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.General.Spells
         -Disable self upon impact
          */
 
-        private void OnEnable()
-        {
-            ResetProjectile(true);
-            _rb.linearVelocity = transform.forward * _speed;
-        }
-
         private void OnDestroy()
         {
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
         }
 
-        private async void ReturnAfterDone(CancellationToken token, bool collided)
+        private async void ReturnAfterDone(CancellationToken token)
         {
             try
             {
                 ResetProjectile(false);
                 _visual.SetActive(false);
 
-                if (collided)
-                    await UniTask.WaitUntil(() => _impactEffect.aliveParticleCount == 0, cancellationToken: token);
-                else
-                    await UniTask.WaitForSeconds(5, cancellationToken: token);
+                await UniTask.WaitUntil(() => _impactEffect.aliveParticleCount == 0, cancellationToken: token);
 
                 _objectPooler.ReturnProjectile(_pool.ToString(), gameObject);
             }
@@ -90,8 +89,17 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.General.Spells
                 _impactEffect.Play();
             }
 
+            _collided = false;
             _collider.enabled = enabled;
             _rb.isKinematic = !enabled;
+        }
+
+        private async void ReturnAfterTime(float time, CancellationToken token)
+        {
+            await UniTask.WaitForSeconds(time, cancellationToken: token);
+
+            if (_collided)
+                _objectPooler.ReturnProjectile(_pool.ToString(), gameObject);
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -103,7 +111,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.General.Spells
                 _impactEffectTransform.RotateAround(_impactEffect.transform.position, _impactEffect.transform.right, 90);
             }
 
-            ReturnAfterDone(_cancellationTokenSource.Token, true);
+            _collided = true;
+            ReturnAfterDone(_cancellationTokenSource.Token);
         }
     }
 }
