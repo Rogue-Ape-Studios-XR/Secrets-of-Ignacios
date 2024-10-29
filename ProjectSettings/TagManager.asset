@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Spell
+  - FingerTip
+  - UIButtonTab
+  - UIButtonBracelet
+  - WindSpell
   - Joystick
   layers:
   - Default
