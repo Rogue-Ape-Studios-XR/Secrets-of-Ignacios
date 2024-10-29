@@ -98,7 +98,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.General.Spells
         {
             await UniTask.WaitForSeconds(time, cancellationToken: token);
 
-            if (_collided)
+            if (!_collided)
                 _objectPooler.ReturnProjectile(_pool.ToString(), gameObject);
         }
 
