@@ -4,20 +4,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 {
     public class Indicator : MonoBehaviour
     {
-        [Header("Right Hand")]
-        [SerializeField] private LineRenderer _rightLineRenderer;
-        [SerializeField] private Transform _rightIndicatorTransform;
-
-        [Header("Left Hand")]
-        [SerializeField] private LineRenderer _leftLineRenderer;
-        [SerializeField] private Transform _leftIndicatorTransform;
+        [Header("References")]
+        [SerializeField] private Cast _cast;
 
         [Header("Grow Settings")]
         [SerializeField] private float _growthSpeed = 10f;
         [SerializeField] private float _maxGrowth = 100f;
-
-        [Header("References")]
-        [SerializeField] private SpellManager _spellManager;
 
         private bool _rightIsGrowing = true;
         private bool _leftIsGrowing = true;
@@ -27,11 +19,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         private void FixedUpdate()
         {
-            if (_rightLineRenderer.enabled)
-                UpdateBeam(_rightLineRenderer, _rightIndicatorTransform, ref _rightIsGrowing, ref _rightCurrentLength);
+            if (_cast._rightHandData._lineRenderer.enabled)
+                UpdateBeam(_cast._rightHandData._lineRenderer, _cast._rightHandData._handTransform,
+                    ref _rightIsGrowing, ref _rightCurrentLength);
 
-            if (_leftLineRenderer.enabled)
-                UpdateBeam(_leftLineRenderer, _leftIndicatorTransform, ref _leftIsGrowing, ref _leftCurrentLength);
+            if (_cast._leftHandData._lineRenderer.enabled)
+                UpdateBeam(_cast._leftHandData._lineRenderer, _cast._leftHandData._handTransform,
+                    ref _leftIsGrowing, ref _leftCurrentLength);
         }
 
         private void UpdateBeam(LineRenderer lineRenderer, Transform indicatorTransform, ref bool isGrowing, ref float currentLength)
@@ -83,9 +77,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         public void ToggleRightIndicator(bool active)
         {
-            if (_spellManager.CanCastRightHand)
+            if (_cast._rightHandData._canCast)
             {
-                _rightLineRenderer.enabled = active;
+                _cast._rightHandData._lineRenderer.enabled = active;
                 _rightIsGrowing = active;
 
                 if (!active)
@@ -95,9 +89,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         public void ToggleLeftIndicator(bool active)
         {
-            if (_spellManager.CanCastLeftHand)
+            if (_cast._leftHandData._canCast)
             {
-                _leftLineRenderer.enabled = active;
+                _cast._leftHandData._lineRenderer.enabled = active;
                 _leftIsGrowing = active;
 
                 if (!active)

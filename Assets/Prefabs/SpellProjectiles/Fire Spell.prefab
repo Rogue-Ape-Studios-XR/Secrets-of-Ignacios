@@ -195,8 +195,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2593679753423491339, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2845344996756061240}
+      addedObject: {fileID: -3956091526621324825}
   m_SourcePrefab: {fileID: 100100000, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
+--- !u!1 &2725080624313539881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8515777054025704313, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
+  m_PrefabInstance: {fileID: 6052680116970847824}
+  m_PrefabAsset: {fileID: 0}
 --- !u!135 &3762832415988281290 stripped
 SphereCollider:
   m_CorrespondingSourceObject: {fileID: 7478003267815051674, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
@@ -205,11 +210,6 @@ SphereCollider:
 --- !u!54 &5844587212469913053 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 208103903912442765, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
-  m_PrefabInstance: {fileID: 6052680116970847824}
-  m_PrefabAsset: {fileID: 0}
---- !u!2083052967 &6548903672083399023 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 656700148542717759, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
   m_PrefabInstance: {fileID: 6052680116970847824}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7006625438043567756 stripped
@@ -222,7 +222,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2593679753423491339, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
   m_PrefabInstance: {fileID: 6052680116970847824}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2845344996756061240
+--- !u!114 &-3956091526621324825
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,11 +231,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8070988747970441051}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da289921d0eca0c4fa3b8a95ec952ecc, type: 3}
+  m_Script: {fileID: 11500000, guid: b35524bd8c54d294ba8fe2c0e00596f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 20
   _rb: {fileID: 5844587212469913053}
-  _impactEffect: {fileID: 536045659030046037}
-  _spellEffect: {fileID: 6548903672083399023}
   _collider: {fileID: 3762832415988281290}
+  _visual: {fileID: 2725080624313539881}
+  _impactEffect: {fileID: 536045659030046037}
+  _impactShouldRotate: 0
+  _impactEffectTransform: {fileID: 6572896174446554556}
+  _speed: 20

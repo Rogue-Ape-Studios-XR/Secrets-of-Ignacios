@@ -10,10 +10,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
     {
         [SerializeField] internal string _name;
         [SerializeField] internal ElementType _elementType;
-        [SerializeField] internal List<Gesture> _gestureSequence;
-        [SerializeField] internal Color _handColor;
+        [SerializeField] internal CastTypes _castType;
+        [SerializeField] internal int _poolSize;
         [SerializeField] internal VisualEffect _handEffect;
         [SerializeField] internal GameObject _spellPrefab;
-        [SerializeField] internal CastTypes _castType;
+        [SerializeField] internal Color _handColor;
+        [SerializeField] internal List<Gesture> _gestureSequence;
     }
 }

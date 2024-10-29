@@ -715,10 +715,10 @@ MonoBehaviour:
   m_GesturePerformed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7230881327965378576}
-        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SpellManager,
+      - m_Target: {fileID: 8835238771455875545}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.Cast,
           Assembly-CSharp
-        m_MethodName: CastLeftHandSpell
+        m_MethodName: CastLeftSpell
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -731,8 +731,8 @@ MonoBehaviour:
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7230881327965378576}
-        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SpellManager,
+      - m_Target: {fileID: 8835238771455875545}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.Cast,
           Assembly-CSharp
         m_MethodName: StopLeftCast
         m_Mode: 1
@@ -4152,11 +4152,10 @@ GameObject:
   - component: {fileID: 1911686223851326274}
   - component: {fileID: 775311096909459014}
   - component: {fileID: 2195321514442957150}
-  - component: {fileID: 2689936858842697568}
-  - component: {fileID: 2239736285808810276}
   - component: {fileID: 2298006216016455073}
   - component: {fileID: 7497934956184238321}
   - component: {fileID: 7230881327965378576}
+  - component: {fileID: 8835238771455875545}
   - component: {fileID: 8102834240813083181}
   m_Layer: 3
   m_Name: XR Origin (XR Rig)
@@ -4267,51 +4266,6 @@ MonoBehaviour:
   m_MotionControllerModeEnded:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2689936858842697568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2206119915425468259}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9b3d17eeb2e6bc47ada81d8f7f638d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_GazeInteractor: {fileID: 0}
-  m_FallbackDivergence: 60
-  m_HideCursorWithNoActiveRays: 1
-  m_RayInteractors:
-  - m_Interactor: {fileID: 0}
-    m_TeleportRay: 0
-  - m_Interactor: {fileID: 0}
-    m_TeleportRay: 1
-  - m_Interactor: {fileID: 0}
-    m_TeleportRay: 0
-  - m_Interactor: {fileID: 0}
-    m_TeleportRay: 1
-  m_AimAssistRequiredAngle: 30
-  m_AimAssistRequiredSpeed: 0.25
-  m_AimAssistPercent: 0.8
-  m_AimAssistMaxSpeedPercent: 10
---- !u!114 &2239736285808810276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2206119915425468259}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <trackablesChanged>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
-  m_PlanePrefab: {fileID: 5982963534685165758, guid: b08aa487cadd25e48bd9a7c9c00d7680, type: 3}
-  m_DetectionMode: 1
 --- !u!114 &2298006216016455073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4369,18 +4323,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eccb514a7aeb7c4eb130e0b7b09069e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gestureManager: {fileID: 7497934956184238321}
-  _rendererRight: {fileID: 7870111497397786493}
-  _rendererLeft: {fileID: 4282778161722499494}
-  _chargeEffectRight: {fileID: 4188001325657448324}
-  _chargeEffectLeft: {fileID: 5225205899516816616}
-  _rightHand: {fileID: 4028798923375598415}
-  _leftHand: {fileID: 6592100252739011824}
+  _sequenceManager: {fileID: 7497934956184238321}
   _rightHandMaterial: {fileID: 5190050596421826637}
   _leftHandMaterial: {fileID: 6425639629858156003}
   _availableSpells:
   - {fileID: 11400000, guid: 1ef0e2ff34d668d4cb4aa300a7fdcca8, type: 2}
   - {fileID: 11400000, guid: b5cf79cb31aa9ab47a2729a448a8cc9f, type: 2}
+--- !u!114 &8835238771455875545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2206119915425468259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c195232a0c1eae147b6409eabde46644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spellManager: {fileID: 7230881327965378576}
+  _pooler: {fileID: 0}
+  _rightHandData:
+    _handTransform: {fileID: 4028798923375598415}
+    _chargeEffect: {fileID: 4188001325657448324}
+    _lineRenderer: {fileID: 7870111497397786493}
+    _renderer: {fileID: 5190050596421826637}
+  _leftHandData:
+    _handTransform: {fileID: 6592100252739011824}
+    _chargeEffect: {fileID: 5225205899516816616}
+    _lineRenderer: {fileID: 4282778161722499494}
+    _renderer: {fileID: 6425639629858156003}
   _timerAim: 1
   _castTimer: 0.75
 --- !u!114 &8102834240813083181
@@ -4395,13 +4367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c7d693aa37545478137b73c8bd31f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rightLineRenderer: {fileID: 7870111497397786493}
-  _rightIndicatorTransform: {fileID: 4028798923375598415}
-  _leftLineRenderer: {fileID: 4282778161722499494}
-  _leftIndicatorTransform: {fileID: 6592100252739011824}
-  _growthSpeed: 10
+  _cast: {fileID: 8835238771455875545}
+  _growthSpeed: 100
   _maxGrowth: 1000
-  _spellManager: {fileID: 7230881327965378576}
 --- !u!1 &2268672708825686388
 GameObject:
   m_ObjectHideFlags: 0
@@ -5197,77 +5165,6 @@ Transform:
   - {fileID: 6660951613832637772}
   m_Father: {fileID: 5344318416662896057}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2755631924658249663
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4162308625383620399}
-  - component: {fileID: 2033909407382177547}
-  m_Layer: 3
-  m_Name: Goal Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &4162308625383620399
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2755631924658249663}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5281501172693036710}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2033909407382177547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2755631924658249663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59d2ad3359f96894eb8454c9f9f292fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StepList:
-  - stepObject: {fileID: 0}
-    buttonText: Continue
-    includeSkipButton: 1
-  - stepObject: {fileID: 0}
-    buttonText: Continue
-    includeSkipButton: 1
-  - stepObject: {fileID: 0}
-    buttonText: Continue
-    includeSkipButton: 1
-  - stepObject: {fileID: 0}
-    buttonText: Done
-    includeSkipButton: 0
-  m_StepButtonTextField: {fileID: 0}
-  m_SkipButton: {fileID: 0}
-  m_LearnButton: {fileID: 0}
-  m_LearnModal: {fileID: 0}
-  m_LearnModalButton: {fileID: 0}
-  m_CoachingUIParent: {fileID: 0}
-  m_FadeMaterial: {fileID: 0}
-  m_PassthroughToggle: {fileID: 0}
-  m_GoalPanelLazyFollow: {fileID: 0}
-  m_TapTooltip: {fileID: 0}
-  m_VideoPlayer: {fileID: 0}
-  m_VideoPlayerToggle: {fileID: 0}
-  m_ARPlaneManager: {fileID: 2239736285808810276}
-  m_ObjectSpawner: {fileID: 2864194195175856493}
 --- !u!1 &2770965351787068864
 GameObject:
   m_ObjectHideFlags: 0
@@ -5839,10 +5736,10 @@ MonoBehaviour:
   m_GesturePerformed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7230881327965378576}
-        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SpellManager,
+      - m_Target: {fileID: 8835238771455875545}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.Cast,
           Assembly-CSharp
-        m_MethodName: CastRightHandSpell
+        m_MethodName: CastRightSpell
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5855,8 +5752,8 @@ MonoBehaviour:
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7230881327965378576}
-        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SpellManager,
+      - m_Target: {fileID: 8835238771455875545}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.Cast,
           Assembly-CSharp
         m_MethodName: StopRightCast
         m_Mode: 1
@@ -12734,78 +12631,6 @@ Transform:
   - {fileID: 4920880080403926340}
   m_Father: {fileID: 4728622326317418627}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6258730766276531723
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1692469512066035382}
-  - component: {fileID: 6258392765538933521}
-  - component: {fileID: 2864194195175856493}
-  m_Layer: 3
-  m_Name: Object Spawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1692469512066035382
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6258730766276531723}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5281501172693036710}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6258392765538933521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6258730766276531723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91d226c518cb4c0cacf828b2e93b7a4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ObjectSelectorDropdown: {fileID: 0}
-  m_DestroyObjectsButton: {fileID: 0}
---- !u!114 &2864194195175856493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6258730766276531723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 956dd6cf70eaca449a45b6a95b96c8c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CameraToFace: {fileID: 0}
-  m_ObjectPrefabs:
-  - {fileID: 5765088748426752163, guid: 7905da53b462883428142bc5e46defb2, type: 3}
-  - {fileID: 1667034717825686887, guid: 694c0248895d1024fbf819260b222c1e, type: 3}
-  - {fileID: 4998762802436478141, guid: c91164437053b8c4292f18f8e3502896, type: 3}
-  - {fileID: 8296084503836613672, guid: d88f78aa5ae6bd3468af8bb24cce04c7, type: 3}
-  m_SpawnVisualizationPrefab: {fileID: 1882492882186723134, guid: dee56e90383dc594393798dea96faedc, type: 3}
-  m_SpawnOptionIndex: -1
-  m_OnlySpawnInView: 1
-  m_ViewportPeriphery: 0.2
-  m_ApplyRandomAngleAtSpawn: 0
-  m_SpawnAngleRange: 45
-  m_SpawnAsChildren: 1
 --- !u!1 &6279092903766715085
 GameObject:
   m_ObjectHideFlags: 0
@@ -13287,7 +13112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5281501172693036710}
   m_Layer: 3
-  m_Name: MR Interaction Setup
+  m_Name: PlayerRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13310,9 +13135,6 @@ Transform:
   - {fileID: 278951039292291422}
   - {fileID: 8163480006147260615}
   - {fileID: 3557549356505478538}
-  - {fileID: 1480321153489408015}
-  - {fileID: 4162308625383620399}
-  - {fileID: 1692469512066035382}
   - {fileID: 2234494697770287831}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15597,86 +15419,6 @@ CapsuleCollider:
   m_Height: 0.05
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &8706470822589624757
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1480321153489408015}
-  - component: {fileID: 2253107459488260936}
-  - component: {fileID: 5626035919737842681}
-  - component: {fileID: 6006479471567387265}
-  m_Layer: 3
-  m_Name: AR Session
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1480321153489408015
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8706470822589624757}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5281501172693036710}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2253107459488260936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8706470822589624757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3859a92a05d4f5d418cb6ca605290e74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AttemptUpdate: 1
-  m_MatchFrameRate: 1
-  m_TrackingMode: 2
---- !u!114 &5626035919737842681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8706470822589624757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa850fbd5b8aded44846f96e35f1a9f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6006479471567387265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8706470822589624757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50683c4e5e46e814ab4894621ca6e251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PermissionId: com.oculus.permission.USE_SCENE
-  m_PermissionDenied:
-    m_PersistentCalls:
-      m_Calls: []
-  m_PermissionGranted:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &8763645580700920395
 GameObject:
   m_ObjectHideFlags: 0
