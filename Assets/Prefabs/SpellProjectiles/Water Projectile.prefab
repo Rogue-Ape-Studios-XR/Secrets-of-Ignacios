@@ -222,7 +222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 656700148542717759, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 656700148542717759, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Overridden
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 3196270206387038077}
   _collider: {fileID: 5295969203895668074}
-  _visual: {fileID: 5350993736482756274}
+  _visual: {fileID: 6383330925988577161}
   _impactEffect: {fileID: 3502750337542612733}
   _impactShouldRotate: 1
   _impactEffectTransform: {fileID: 6357116642201060856}
@@ -344,5 +344,10 @@ Rigidbody:
 --- !u!135 &5295969203895668074 stripped
 SphereCollider:
   m_CorrespondingSourceObject: {fileID: 7478003267815051674, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
+  m_PrefabInstance: {fileID: 3366506368236231920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6383330925988577161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8515777054025704313, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
   m_PrefabInstance: {fileID: 3366506368236231920}
   m_PrefabAsset: {fileID: 0}
