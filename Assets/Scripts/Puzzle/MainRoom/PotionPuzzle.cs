@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RogueApeStudios.SecretsOfIgnacios
+namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
 {
     public class PotionPuzzle : MonoBehaviour
     {

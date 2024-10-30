@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace RogueApeStudios.SecretsOfIgnacios
+namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
 {
     public class DragonDoorPuzzle : MonoBehaviour
     {
