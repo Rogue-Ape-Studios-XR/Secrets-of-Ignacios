@@ -42,7 +42,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Air_Thickness: 0.34
+    - _Air_Speed: 0.1
+    - _Air_Thickness: 0.32
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors: []
