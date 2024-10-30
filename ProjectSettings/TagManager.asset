@@ -11,6 +11,7 @@ TagManager:
   - WindSpell
   - Ingredient
   - Potion
+  - Joystick
   layers:
   - Default
   - TransparentFX
