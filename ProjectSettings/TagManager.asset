@@ -9,6 +9,8 @@ TagManager:
   - UIButtonTab
   - UIButtonBracelet
   - WindSpell
+  - Ingredient
+  - Potion
   layers:
   - Default
   - TransparentFX
