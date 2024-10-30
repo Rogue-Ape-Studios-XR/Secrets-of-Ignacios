@@ -1,5 +1,7 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using RogueApeStudios.SecretsOfIgnacios.Services;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
@@ -8,33 +10,31 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
     {
         [Header("Wind Force Settings")] 
         [SerializeField] private float _force = 10f;
-
         [SerializeField] private float _affectRadius = 10f;
         //This is how wide the cone will be, 180 would be fully around you
         [SerializeField] private float _angle = 45f;
         [SerializeField] private float _duration = 0.5f;
-
+        [SerializeField] private ElementType _pool;
+        
         [Header("Visual")] 
         //Currently disabled, will implement this later
         // [SerializeField] private VisualEffect _windEffect;
-
-        [SerializeField] private bool _castSpell;
-        
+        private ObjectPooler _objectPooler;
         private CancellationTokenSource _cancellationTokenSource;
+        
+        private void Start()
+        {
+            _objectPooler = ServiceLocator.GetService<ObjectPooler>();
+        }
 
         private void Awake()
         {
             _cancellationTokenSource = new CancellationTokenSource();
         }
 
-        private void FixedUpdate()
+        private void OnEnable()
         {
-            //Purely for debug to actually cast it atm
-            if (_castSpell)
-            {
-                _castSpell = false;
-                CastWindForce();
-            }
+            CastWindForce();
         }
 
         private void OnDestroy()
@@ -64,7 +64,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
                 Gizmos.DrawLine(transform.position + direction, transform.position + nextDirection);
             }
         }
-
+        
         private void CastWindForce()
         {
             ApplyWindForce(_cancellationTokenSource.Token).Forget();
@@ -101,6 +101,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
             }
 
             // _windEffect?.Stop();
+            ReturnToPool();
+        }
+
+        private void ReturnToPool()
+        {
+            _objectPooler.ReturnProjectile(_pool.ToString(), gameObject);
         }
     }
 }
