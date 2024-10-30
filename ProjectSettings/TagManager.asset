@@ -9,6 +9,7 @@ TagManager:
   - UIButtonTab
   - UIButtonBracelet
   - WindSpell
+  - Joystick
   layers:
   - Default
   - TransparentFX
