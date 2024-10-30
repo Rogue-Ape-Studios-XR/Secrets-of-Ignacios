@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4041656830858117725
 Transform:
   m_ObjectHideFlags: 0
@@ -208,6 +208,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 656700148542717759, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
+      propertyPath: m_Asset
+      value: 
+      objectReference: {fileID: 8926484042661614526, guid: 169a95af4b2399f4ebdf6783e571b34b, type: 3}
+    - target: {fileID: 656700148542717759, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 656700148542717759, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Name
+      value: Global Scale
+      objectReference: {fileID: 0}
+    - target: {fileID: 656700148542717759, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 656700148542717759, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2593679753423491339, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: m_Name
       value: Water Projectile
@@ -258,7 +278,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7032622482946899860, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032622482946899860, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7478003267815051674, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: m_Radius
@@ -266,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8515777054025704313, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -301,7 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 3196270206387038077}
   _collider: {fileID: 5295969203895668074}
-  _visual: {fileID: 5350993736482756274}
+  _visual: {fileID: 6383330925988577161}
   _impactEffect: {fileID: 3502750337542612733}
   _impactShouldRotate: 1
   _impactEffectTransform: {fileID: 6357116642201060856}
@@ -320,5 +344,10 @@ Rigidbody:
 --- !u!135 &5295969203895668074 stripped
 SphereCollider:
   m_CorrespondingSourceObject: {fileID: 7478003267815051674, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
+  m_PrefabInstance: {fileID: 3366506368236231920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6383330925988577161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8515777054025704313, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
   m_PrefabInstance: {fileID: 3366506368236231920}
   m_PrefabAsset: {fileID: 0}
