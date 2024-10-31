@@ -16,7 +16,7 @@ MonoBehaviour:
   - m_FingerID: 1
     m_Targets:
     - m_ShapeType: 0
-      m_UpperTolerance: 0.15
+      m_UpperTolerance: 0.25
       m_LowerTolerance: 0.15
       m_Tolerance: 0
       m_Desired: 0
@@ -38,6 +38,6 @@ MonoBehaviour:
     m_Targets:
     - m_ShapeType: 0
       m_UpperTolerance: 0.25
-      m_LowerTolerance: 0.25
+      m_LowerTolerance: 0.35
       m_Tolerance: 0
       m_Desired: 1
