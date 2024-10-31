@@ -1070,6 +1070,7 @@ GameObject:
   - component: {fileID: 2188744857104400787}
   - component: {fileID: 1794487525221627615}
   - component: {fileID: 7481838956266530515}
+  - component: {fileID: 2113318330598716745}
   m_Layer: 3
   m_Name: Left Hand
   m_TagString: Untagged
@@ -1098,6 +1099,7 @@ Transform:
   - {fileID: 8854845743619488235}
   - {fileID: 8827492844492106989}
   - {fileID: 2290160100037155449}
+  - {fileID: 180711831496649245}
   m_Father: {fileID: 7082259024034082459}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1237437852233347728
@@ -1468,6 +1470,22 @@ MonoBehaviour:
   m_HandMeshRenderer: {fileID: 6425639629858156003}
   m_ShowMeshWhenTrackingIsAcquired: 1
   m_HideMeshWhenTrackingIsLost: 1
+--- !u!114 &2113318330598716745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326016420069256752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 343e5dd98eb6eb34bb875eb6a0ef6083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _teleportInteractor: {fileID: 180711831496649232}
+  _teleportationProvider: {fileID: 4004607944275691505}
+  _interactorObject: {fileID: 180711831496649244}
+  _alternateMovement: {fileID: 2298006216016455073}
 --- !u!1 &419776804345969486
 GameObject:
   m_ObjectHideFlags: 0
@@ -3287,33 +3305,7 @@ MonoBehaviour:
         m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2749839224552765565}
-        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Teleport.HandleHandTeleport,
-          Assembly-CSharp
-        m_MethodName: TriggerTeleport
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2749839224552765565}
-        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Teleport.HandleHandTeleport,
-          Assembly-CSharp
-        m_MethodName: DeactivateTeleport
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
   m_StaticGestures:
@@ -6806,7 +6798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8764651189613054441
 Transform:
   m_ObjectHideFlags: 0
@@ -6841,10 +6833,23 @@ MonoBehaviour:
   m_GesturePerformed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7230881327965378576}
-        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SpellManager,
+      - m_Target: {fileID: 2113318330598716745}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Teleport.HandleHandTeleport,
           Assembly-CSharp
-        m_MethodName: CastLeftHandSpell
+        m_MethodName: TriggerTeleport
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2113318330598716745}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Teleport.HandleHandTeleport,
+          Assembly-CSharp
+        m_MethodName: DeactivateTeleport
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8218,7 +8223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4660229007976106719
 Transform:
   m_ObjectHideFlags: 0
@@ -8253,10 +8258,23 @@ MonoBehaviour:
   m_GesturePerformed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7230881327965378576}
-        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SpellManager,
+      - m_Target: {fileID: 2749839224552765565}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Teleport.HandleHandTeleport,
           Assembly-CSharp
-        m_MethodName: CastRightHandSpell
+        m_MethodName: TriggerTeleport
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2749839224552765565}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Teleport.HandleHandTeleport,
+          Assembly-CSharp
+        m_MethodName: DeactivateTeleport
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12696,12 +12714,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HandTrackingEvents: {fileID: 5767098699624714714}
-  m_HandShapeOrPose: {fileID: 11400000, guid: 8ecb1b2f675de454c8d5a427d3311887, type: 2}
+  m_HandShapeOrPose: {fileID: 11400000, guid: 3b1299e247227c744bb9a7af8b354090, type: 2}
   m_TargetTransform: {fileID: 0}
   m_Background: {fileID: 0}
   m_GesturePerformed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2113318330598716745}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Teleport.HandleHandTeleport,
+          Assembly-CSharp
+        m_MethodName: ActivateTeleport
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls: []
@@ -17067,6 +17098,100 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8432888887242488514, guid: 9894b23054eaf4c4db9c6e6db313937a, type: 3}
   m_PrefabInstance: {fileID: 2650717947460380103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2653138656975223287
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7952623078665530892}
+    m_Modifications:
+    - target: {fileID: 2761784063978902503, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_Handedness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761784063978902503, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_RayOriginTransform
+      value: 
+      objectReference: {fileID: 2290160100037155449}
+    - target: {fileID: 2761784063978902503, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_RaycastMask.m_Bits
+      value: 2147483936
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761784063978902506, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.388276
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761784063978902506, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.471441
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761784063978902506, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761784063978902506, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761784063978902506, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761784063978902506, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761784063978902506, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761784063978902506, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761784063978902506, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761784063978902506, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761784063978902507, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_Name
+      value: Teleport Interactor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761784063978902507, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c1800acf6366418a9b5f610249000331, type: 3}
+--- !u!114 &180711831496649232 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2761784063978902503, guid: c1800acf6366418a9b5f610249000331, type: 3}
+  m_PrefabInstance: {fileID: 2653138656975223287}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180711831496649244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &180711831496649244 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2761784063978902507, guid: c1800acf6366418a9b5f610249000331, type: 3}
+  m_PrefabInstance: {fileID: 2653138656975223287}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &180711831496649245 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2761784063978902506, guid: c1800acf6366418a9b5f610249000331, type: 3}
+  m_PrefabInstance: {fileID: 2653138656975223287}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3199422462783810679
 PrefabInstance:
