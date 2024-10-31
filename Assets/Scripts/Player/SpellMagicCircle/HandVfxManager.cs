@@ -97,8 +97,14 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
         void HandleSpellRecognized(bool recognized)
         {
-            _prefabContainerL.SetActive(true);
             //activate the second vfx and move the current vfx to the hands
+            _prefabContainerL.SetActive(true);
+            _prefabContainerR.transform.parent = _palmR.transform;
+            _prefabContainerL.transform.parent = _palmL.transform;
+            _prefabContainerR.transform.localPosition = Vector3.zero;
+            _prefabContainerL.transform.localPosition = Vector3.zero;
+
+
         }
 
     }
