@@ -83,10 +83,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             switch (_spellManager.CurrentSpell._castType)
             {
                 case CastTypes.SingleFire:
-                    _pooler.GetProjectile(_spellManager.CurrentSpell._elementType.ToString(),
-                    _spellManager.CurrentSpell._spellPrefab,
-                    handData._handTransform);
-                    handData._renderer.materials[1].SetColor("_MainColor", _spellManager.DefaultColor);
+                    SingleCast(handData);
                     break;
                 case CastTypes.Automatic:
                     RepeatedCast(handData);
@@ -94,6 +91,15 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                 default:
                     throw new NotImplementedException("Cast type not implemented.");
             }
+        }
+
+        private void SingleCast(HandData handData)
+        {
+            _pooler.GetProjectile(_spellManager.CurrentSpell._elementType.ToString(),
+                    _spellManager.CurrentSpell._spellPrefab,
+                    handData._handTransform);
+            handData._renderer.materials[1].SetColor("_MainColor", _spellManager.DefaultColor);
+            handData._canCast = false;
         }
 
         private async void RepeatedCast(HandData handData)
