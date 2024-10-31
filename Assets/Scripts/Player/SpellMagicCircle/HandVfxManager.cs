@@ -37,6 +37,7 @@ namespace RogueApeStudios.SecretsOfIgnacios
         {
             //unsubscribe
             SpellManager.OnSpellValidation -= HandleSpellRecognized;
+            _sequenceManager.OnGestureRecognised -= HandleGestureRecognized;
 
         }
 
