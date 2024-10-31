@@ -11,12 +11,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Teleport
     public class HandleHandTeleport : MonoBehaviour
     {
         [SerializeField] private XRRayInteractor _teleportInteractor;
-
         [SerializeField] private TeleportationProvider _teleportationProvider;
         // This is the "Teleport" gameobject under the "Locomotion" gameobject in the XROrigin
         [SerializeField] private GameObject _interactorObject;
         [SerializeField] private AlternateMovement _alternateMovement;
 
+        private float _enableMovementDelay = 0.1f;
         private bool _isTeleportActive = false;
         private CancellationTokenSource _cancellationTokenSource;
 
@@ -74,7 +74,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Teleport
         {
             try
             {
-                await UniTask.WaitForSeconds(0.1f, cancellationToken: token);
+                await UniTask.WaitForSeconds(_enableMovementDelay, cancellationToken: token);
                 _alternateMovement.enabled = true;
             }
             catch (OperationCanceledException)
