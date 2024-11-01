@@ -6,6 +6,7 @@ using System.Threading;
 using System;
 using UnityEngine.VFX;
 using NUnit.Framework.Internal;
+using UnityEngine.XR.Hands;
 
 
 namespace RogueApeStudios.SecretsOfIgnacios
@@ -15,20 +16,17 @@ namespace RogueApeStudios.SecretsOfIgnacios
         // Script should have a reference to two visual effects. These should enable and swap to the correct vfx on gesture recognized.
         // This VFX is not contained in the spell data as a prefab. Therefore it checks spell type.
         // Element is recognized on gesture 1 
+        // Refactor: Element prefab should be on Gesture. This allows for expandability. Earth can be overridden.
 
-        [SerializeField] private GameObject _heldFirePrefab;
-        [SerializeField] private GameObject _heldWaterPrefab;
-        [SerializeField] private GameObject _heldAirPrefab;
-        [SerializeField] private GameObject _heldEarthLPrefab; //this one is shrink
-        [SerializeField] private GameObject _heldEarthRPrefab; //this one is grow
 
-        [SerializeField] private GameObject _prefabContainerL; // a container for the vfx. This is the one moving. This will be disabled by the spell manager
+        [SerializeField] private GameObject _prefabContainerL; // a container for the vfx. This is the one moving. This can be turned off with the public function
         [SerializeField] private GameObject _prefabContainerR; 
         [SerializeField] private Transform  _palmL; 
         [SerializeField] private Transform  _palmR; 
         [SerializeField] private GameObject _magicCircleTarget; 
 
         [SerializeField] private SequenceManager _sequenceManager;
+        [SerializeField] private Cast _castscript;
 
 
         private VisualEffect _currentEffectL; 
@@ -52,6 +50,7 @@ namespace RogueApeStudios.SecretsOfIgnacios
             //unsubscribe
             SpellManager.OnSpellValidation -= HandleCastRecognized;
             _sequenceManager.OnGestureRecognised -= HandleElementRecognized;
+            //unsubscribe from cast script's cast finished event (event on cast not implemented)
         }
 
         void Start()
@@ -59,12 +58,14 @@ namespace RogueApeStudios.SecretsOfIgnacios
             //subscribe!
             SpellManager.OnSpellValidation += HandleCastRecognized;
             _sequenceManager.OnGestureRecognised += HandleElementRecognized;
+            //subscribe to cast script's cast finished event (event on cast not implemented)
         }
 
         void HandleElementRecognized(Gesture gesture)
         {
             GameObject r = null;
             GameObject l = null;
+            Debug.Log(gesture._rightHandShape);
             switch (gesture._rightHandShape)
             {
                 case HandShape.Start:
@@ -79,45 +80,21 @@ namespace RogueApeStudios.SecretsOfIgnacios
                     }
 
                     break;
-                case HandShape.Fire:
-                    //spawn fire vfx at circle
-                    r = Instantiate(_heldFirePrefab, _prefabContainerR.transform, false);
-                    l = Instantiate(_heldFirePrefab, _prefabContainerL.transform, false);
-                    _lastGesture = gesture;
-                    SetVFXContainerPositions();
-                    break;
-
-                /* because the other gestures aren't properly done yet, i'm commenting this out
-                case HandShape.Water:
-                    //spawn water vfx at circle
-                    r = Instantiate(_heldWaterPrefab, _prefabContainerR.transform, false);
-                    l = Instantiate(_heldWaterPrefab, _prefabContainerL.transform, false);
-                    _lastGesture = gesture;
-                    SetVFXContainerPositions();
-                    break;
-                case HandShape.Air:
-                    //spawn air vfx at circle
-                    r = Instantiate(_heldAirPrefab, _prefabContainerR.transform, false);
-                    l = Instantiate(_heldAirPrefab, _prefabContainerL.transform, false);
-                    _lastGesture = gesture;
-                    SetVFXContainerPositions();
-                    break;
-                case HandShape.Earth:
-                    //spawn earth vfx at circle
-                    r = Instantiate(_heldEarthRPrefab, _prefabContainerR.transform, false);
-                    l = Instantiate(_heldEarthLPrefab, _prefabContainerL.transform, false);
-                    _lastGesture = gesture;
-                    SetVFXContainerPositions();
-                    break;*/
                 case HandShape.QuickCast:
                     // effect should be at hands and play there instantly
-                    // kind of requires refactoring where the effect is on the gesture
-
+                    // This doesn't work since quick cast is aparrently a seperate thing.
                     break;
                 default:
+                    if (gesture._visualEffectPrefab != null)
+                    {
+                        r = Instantiate(gesture._visualEffectPrefab, _prefabContainerR.transform, false);
+                        l = Instantiate(gesture._visualEffectPrefab, _prefabContainerL.transform, false);
+                        _lastGesture = gesture;
+                        SetVFXContainerPositions();
+                    }
                     break;
             }
-            if (r != null && l != null) { //await the effect's destruction
+            if (r != null && l != null) { //This sets a timer on the visual effect to destroy when it is done playing.
                 DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, r);
                 DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, l);
 
@@ -141,6 +118,52 @@ namespace RogueApeStudios.SecretsOfIgnacios
             }
         }
 
+        private void HandleQuickCast() //will subscribe to quick cast event
+        {
+            if (_lastGesture != null && _lastGesture._visualEffectPrefab != null)
+            {
+                GameObject rr = Instantiate(_lastGesture._visualEffectPrefab, _prefabContainerR.transform, false);
+                GameObject ll = Instantiate(_lastGesture._visualEffectPrefab, _prefabContainerL.transform, false);
+                SetVFXContainerPositions();
+
+                DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, rr);
+                DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, ll);
+
+                //assign current effect
+                if (rr.TryGetComponent<VisualEffect>(out VisualEffect visualr))
+                {
+                    if (_currentEffectR != null)
+                    {
+                        _currentEffectR.Stop();
+                    }
+                    _currentEffectR = visualr;
+                }
+                if (ll.TryGetComponent<VisualEffect>(out VisualEffect visuall))
+                {
+                    if (_currentEffectL != null)
+                    {
+                        _currentEffectL.Stop();
+                    }
+                    _currentEffectL = visuall;
+                }
+
+                MoveVfxToHand(_cancellationTokenSource.Token, _prefabContainerR, _palmR);
+                MoveVfxToHand(_cancellationTokenSource.Token, _prefabContainerL, _palmL);
+            }
+        }
+
+        private void DisableHandVFX(Handedness hand)
+        {
+            if (hand == Handedness.Left && _currentEffectL != null)
+            {
+                _currentEffectL.Stop();
+            }
+            else if (hand == Handedness.Right && _currentEffectR != null)
+            {
+                _currentEffectR.Stop();
+            }
+        }
+
         private async void MoveVfxToHand(CancellationToken token, GameObject effect, Transform dest)
         {
             //remove transform so it goes to world
@@ -154,6 +177,13 @@ namespace RogueApeStudios.SecretsOfIgnacios
             // add new transform of hand
             effect.transform.parent = dest;
             effect.transform.localPosition = Vector3.zero;
+
+            //if last gesture was earth, stop the vfx (so the touch spell works)
+            if (_lastGesture != null && _lastGesture._rightHandShape == HandShape.Earth)
+            {
+                _currentEffectL.Stop();
+                _currentEffectR.Stop();
+            }
         }
 
         private async void DestroyVisualEffectWhenDone(CancellationToken token, GameObject effect)
@@ -162,15 +192,14 @@ namespace RogueApeStudios.SecretsOfIgnacios
             {
                 if (effect.TryGetComponent<VisualEffect>(out VisualEffect visual))
                 {
+                    // Destroy effect after it is done playing.
                     await UniTask.WaitUntil(() => visual.aliveParticleCount == 0, cancellationToken: token);
-                    // Do stuff after done
-                    // 
                     Destroy(effect);
                 }
             }
             catch (OperationCanceledException)
             {
-                Debug.LogError("Example was Canceled...");
+                Debug.LogError("Visual Effect wasn't destroyed (likely, the game went out of play mode)");
             }
         }
 

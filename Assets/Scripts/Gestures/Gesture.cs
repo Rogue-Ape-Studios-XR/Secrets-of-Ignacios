@@ -17,5 +17,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         [SerializeField] internal float _zHandDistance;
 
         [SerializeField] internal Color _color;
+        [SerializeField] internal GameObject _visualEffectPrefab;
     }
 }
