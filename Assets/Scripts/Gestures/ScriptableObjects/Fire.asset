@@ -19,3 +19,4 @@ MonoBehaviour:
   _yHandDistance: 2
   _zHandDistance: 2
   _color: {r: 1, g: 0.3810822, b: 0.10849059, a: 1}
+  _visualEffectPrefab: {fileID: 5106828958462051931, guid: 39b0c97698c5ff7418e906bffe393b15, type: 3}
