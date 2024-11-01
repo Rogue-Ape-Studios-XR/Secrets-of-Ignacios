@@ -17,7 +17,7 @@ MonoBehaviour:
   _castType: 0
   _poolSize: 4
   _handEffect: {fileID: 0}
-  _spellPrefab: {fileID: 6833058934814803971, guid: 8a3d4bb1e4f734e41a7de99158fa149f, type: 3}
+  _spellPrefab: {fileID: 2016962078072147876, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
   _handColor: {r: 0.099785805, g: 1, b: 0, a: 0}
   _gestureSequence:
   - {fileID: 11400000, guid: 98105de35a6f47945a9bc17659aae264, type: 2}
