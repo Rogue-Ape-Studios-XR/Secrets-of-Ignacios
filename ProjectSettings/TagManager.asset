@@ -12,6 +12,7 @@ TagManager:
   - Ingredient
   - Potion
   - Joystick
+  - Shield
   layers:
   - Default
   - TransparentFX
