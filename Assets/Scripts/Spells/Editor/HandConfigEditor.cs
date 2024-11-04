@@ -1,9 +1,8 @@
+using UnityEditor;
+using UnityEngine;
+
 namespace RogueApeStudios.SecretsOfIgnacios.Spells.Editor
 {
-    using RogueApeStudios.SecretsOfIgnacios.Spells;
-    using UnityEditor;
-    using UnityEngine;
-
     [CustomPropertyDrawer(typeof(HandConfig))]
     public class HandConfigEditor : PropertyDrawer
     {

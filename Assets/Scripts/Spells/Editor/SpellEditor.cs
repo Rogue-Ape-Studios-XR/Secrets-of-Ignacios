@@ -1,9 +1,9 @@
+using UnityEditor;
+
 namespace RogueApeStudios.SecretsOfIgnacios.Spells.Editor
 {
-    using UnityEditor;
-
     [CustomEditor(typeof(Spell))]
-    internal class SpellEditor : Editor
+    internal class SpellEditor : UnityEditor.Editor
     {
         SerializedProperty _nameProp;
         SerializedProperty _gestureSequenceProp;
