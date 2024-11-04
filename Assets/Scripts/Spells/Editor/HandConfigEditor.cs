@@ -18,7 +18,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.Editor
             float padding = 4f;
             float lineHeight = EditorGUIUtility.singleLineHeight + padding;
             float labelWidth = 100f;  // Label width
-            float valueWidth = position.width - labelWidth - padding;  // Value width
 
             // Draw header
             position.y += padding;
@@ -30,16 +29,15 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.Editor
             // Set label width for each field
             EditorGUIUtility.labelWidth = labelWidth;
 
-            var castType = (CastTypes)property.FindPropertyRelative("_castType").enumValueIndex;
-            var elementTypeRect = new Rect();
-            var castTypeRect = new Rect();
-            var positionRect = new Rect();
-            var handEffectRect = new Rect();
-            var spellPrefabRect = new Rect();
-            var handColorRect = new Rect();
-            var poolSizeRect = new Rect();
-            var chargeEffectRect = new Rect();
-
+            CastTypes castType = (CastTypes)property.FindPropertyRelative("_castType").enumValueIndex;
+            Rect positionRect = new();
+            Rect elementTypeRect;
+            Rect castTypeRect;
+            Rect handEffectRect;
+            Rect spellPrefabRect;
+            Rect handColorRect;
+            Rect poolSizeRect;
+            Rect chargeEffectRect;
 
             if (castType != CastTypes.Touch)
             {
@@ -88,7 +86,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.Editor
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             // Adjust height based on whether _position is shown
-            var castType = (CastTypes)property.FindPropertyRelative("_castType").enumValueIndex;
+            CastTypes castType = (CastTypes)property.FindPropertyRelative("_castType").enumValueIndex;
             int extraHeight = (castType == CastTypes.Touch) ? 9 : 8; // One extra line for the header
             return (EditorGUIUtility.singleLineHeight + 4f) * extraHeight;
         }
