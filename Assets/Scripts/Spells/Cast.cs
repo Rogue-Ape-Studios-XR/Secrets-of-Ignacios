@@ -4,6 +4,7 @@ using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.XR.Hands;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Spells
 {
@@ -19,6 +20,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [SerializeField] private bool _timerAim = true;
         [SerializeField] private float _castTimer = 0.75f;
 
+        internal event Action<Handedness> onSpellCastComplete;
+        
         private CancellationTokenSource _cancellationTokenSource;
 
         private void Awake()
@@ -100,6 +103,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                     handData._handTransform);
             handData._renderer.materials[1].SetColor("_MainColor", _spellManager.DefaultColor);
             handData._canCast = false;
+            
+            RemoveVFXFromHand(handData);
         }
 
         private async void RepeatedCast(HandData handData)
@@ -124,9 +129,22 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                 handData._isCasting = false;
                 handData._canCast = false;
                 handData._renderer.materials[1].SetColor("_MainColor", _spellManager.DefaultColor);
+                
+                RemoveVFXFromHand(handData);
             }
         }
 
+        private void RemoveVFXFromHand(HandData handData)
+        {
+            if (handData == null) return;
+            
+            Handedness handIdentifier = handData == _leftHandData ? Handedness.Left : Handedness.Right;
+
+            Debug.Log("invoking");
+            onSpellCastComplete?.Invoke(handIdentifier);
+        }
+        
+        
         private void HandleSpellValidation(bool canCast)
         {
             _rightHandData._canCast = canCast;
