@@ -42,14 +42,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             _cancellationTokenSource.Dispose();
         }
 
-        //private void FixedUpdate()
-        //{
-        //    if (_rightHandData._canCast && _rightHandData._isCasting)
-        //        _rightHandData._spellPrefab.position = _rightHandData._handTransform.position;
-        //    else if (_leftHandData._canCast && _leftHandData._isCasting)
-        //        _leftHandData._spellPrefab.position = _leftHandData._handTransform.position;
-        //}
-
         public void CastRightSpell() => CastSpell(_rightHandData);
         public void CastLeftSpell() => CastSpell(_leftHandData);
         public void StopRightCast() => StopCast(_rightHandData);
