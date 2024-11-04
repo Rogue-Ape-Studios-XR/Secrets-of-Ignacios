@@ -83,8 +83,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             _currentSpell = spell;
             _lastSpell = spell;
 
-            _rightHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._handColor);
-            _leftHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._handColor);
+            SetHandEffects(true);
         }
 
         private async void SpellWrongIndication(CancellationToken token)
@@ -103,8 +102,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
                     await UniTask.WaitForSeconds(delay, cancellationToken: token);
 
-                    _rightHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
-                    _leftHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
+                    SetHandEffects(false);
                 }
             }
             catch (OperationCanceledException)
@@ -117,8 +115,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             _currentSpell = null;
 
-            _rightHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
-            _leftHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
+            SetHandEffects(false);
 
             OnSpellValidation?.Invoke(false);
         }
@@ -127,10 +124,31 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             _currentSpell = _lastSpell;
 
-            _rightHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._handColor);
-            _leftHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._handColor);
+            SetHandEffects(true);
 
             OnSpellValidation?.Invoke(true);
+        }
+
+        private void SetHandEffects(bool isDefaultColor)
+        {
+            if (isDefaultColor)
+            {
+                if (_currentSpell._duoSpell)
+                {
+                    _rightHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._primaryConfig._handColor);
+                    _leftHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._secondaryConfig._handColor);
+                }
+                else
+                {
+                    _rightHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._primaryConfig._handColor);
+                    _leftHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._primaryConfig._handColor);
+                }
+            }
+            else
+            {
+                _rightHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
+                _leftHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
+            }
         }
     }
 }
