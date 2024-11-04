@@ -7,6 +7,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         Fire,
         Water,
         Earth,
-        Air
+        Air,
+        Touch,
+        Projectile
     }
 }
