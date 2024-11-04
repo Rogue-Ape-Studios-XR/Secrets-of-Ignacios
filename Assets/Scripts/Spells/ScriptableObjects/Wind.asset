@@ -18,8 +18,8 @@ MonoBehaviour:
   _poolSize: 4
   _handEffect: {fileID: 0}
   _spellPrefab: {fileID: 2016962078072147876, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
-  _handColor: {r: 0.099785805, g: 1, b: 0, a: 0}
+  _handColor: {r: 0.6732075, g: 0.8258867, b: 0.8415094, a: 0.4}
   _gestureSequence:
   - {fileID: 11400000, guid: 98105de35a6f47945a9bc17659aae264, type: 2}
-  - {fileID: 11400000, guid: 721de8335e99c8b42b0813ba9574f6b8, type: 2}
+  - {fileID: 11400000, guid: 77bbacdb0a9e3fc4dbb35a030fd13737, type: 2}
   - {fileID: 11400000, guid: 4fae163ba39953f47a92ac450dba3702, type: 2}
