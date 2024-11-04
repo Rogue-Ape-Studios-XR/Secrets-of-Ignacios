@@ -448,7 +448,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Fire
+          m_StringArgument: Earth
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 7497934956184238321}
@@ -1486,6 +1486,111 @@ MonoBehaviour:
   _teleportationProvider: {fileID: 4004607944275691505}
   _interactorObject: {fileID: 180711831496649244}
   _alternateMovement: {fileID: 2298006216016455073}
+--- !u!1 &409345922202398010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5959170315476630862}
+  - component: {fileID: 4980773536031977344}
+  m_Layer: 3
+  m_Name: Right Half Circle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5959170315476630862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409345922202398010}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8493546711570069676}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4980773536031977344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409345922202398010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf93899325d5df74eb9176e097ee3d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HandTrackingEvents: {fileID: 67695746335568104}
+  m_HandShapeOrPose: {fileID: 11400000, guid: a3af42476883b6d41aa7e41152602e51, type: 2}
+  m_TargetTransform: {fileID: 0}
+  m_Background: {fileID: 0}
+  m_GesturePerformed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: SetRightHandShape
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Projectile
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: CheckGestures
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_GestureEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: TurnOffRightHandShape
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_MinimumHoldTime: 0.2
+  m_GestureDetectionInterval: 0.1
+  m_StaticGestures:
+  - {fileID: 1130116991349906331}
+  - {fileID: 6109382720091990401}
+  - {fileID: 2594712102204565655}
+  - {fileID: 3414714601953762366}
+  - {fileID: 4980773536031977344}
+  - {fileID: 5566758130611152677}
+  - {fileID: 6823802787998538178}
+  - {fileID: 1160010190392396999}
+  m_Highlight: {fileID: 0}
 --- !u!1 &419776804345969486
 GameObject:
   m_ObjectHideFlags: 0
@@ -4256,6 +4361,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1330339360924753120}
   - {fileID: 7082259024034082459}
   - {fileID: 90217518668563379}
   - {fileID: 2018927052204060340}
@@ -4391,6 +4497,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6c6e9117b77522e48bf8288bb53e515c, type: 2}
   - {fileID: 11400000, guid: 4fae163ba39953f47a92ac450dba3702, type: 2}
   - {fileID: 11400000, guid: 2d3ec2156fe03464ebc4a33ca9057c7b, type: 2}
+  - {fileID: 11400000, guid: 03b56e3cddb3bd0459a6f7ffe917a300, type: 2}
+  - {fileID: 11400000, guid: 77bbacdb0a9e3fc4dbb35a030fd13737, type: 2}
+  - {fileID: 11400000, guid: 06d7681a10ade3e4bb59fa2832f059b6, type: 2}
   _leftHandActive: 0
   _rightHandActive: 0
   _canQuickCast: 0
@@ -4412,6 +4521,7 @@ MonoBehaviour:
   _availableSpells:
   - {fileID: 11400000, guid: 1ef0e2ff34d668d4cb4aa300a7fdcca8, type: 2}
   - {fileID: 11400000, guid: b5cf79cb31aa9ab47a2729a448a8cc9f, type: 2}
+  - {fileID: 11400000, guid: f61f98d50f2246747ae060fd2dcce8c6, type: 2}
 --- !u!114 &8835238771455875545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4485,6 +4595,111 @@ Transform:
   - {fileID: 1829623219393699707}
   m_Father: {fileID: 8815623814738792123}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2274847164822692677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 346621763650998004}
+  - component: {fileID: 5034100064053473571}
+  m_Layer: 3
+  m_Name: Left Palm Down
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &346621763650998004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2274847164822692677}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2120701802162296653}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5034100064053473571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2274847164822692677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf93899325d5df74eb9176e097ee3d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HandTrackingEvents: {fileID: 5767098699624714714}
+  m_HandShapeOrPose: {fileID: 11400000, guid: 52d50c9768a539641a652767b24f9406, type: 2}
+  m_TargetTransform: {fileID: 0}
+  m_Background: {fileID: 0}
+  m_GesturePerformed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Gestures.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: SetLeftHandShape
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Touch
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Gestures.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: CheckGestures
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_GestureEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Gestures.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: TurnOffLeftHandShape
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_MinimumHoldTime: 0.2
+  m_GestureDetectionInterval: 0.1
+  m_StaticGestures:
+  - {fileID: 5548772075370079016}
+  - {fileID: 127738346036267410}
+  - {fileID: 9066534058620281131}
+  - {fileID: 4775226172242530499}
+  - {fileID: 479715235178758188}
+  - {fileID: 3612751110403967225}
+  - {fileID: 3300231704329183452}
+  - {fileID: 5034100064053473571}
+  m_Highlight: {fileID: 0}
 --- !u!1 &2343763108153376471
 GameObject:
   m_ObjectHideFlags: 0
@@ -5946,6 +6161,111 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3092830935718196813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2797914238828575817}
+  - component: {fileID: 7563276076441158856}
+  m_Layer: 3
+  m_Name: Right palm down
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2797914238828575817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3092830935718196813}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8493546711570069676}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7563276076441158856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3092830935718196813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf93899325d5df74eb9176e097ee3d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HandTrackingEvents: {fileID: 67695746335568104}
+  m_HandShapeOrPose: {fileID: 11400000, guid: 52d50c9768a539641a652767b24f9406, type: 2}
+  m_TargetTransform: {fileID: 0}
+  m_Background: {fileID: 0}
+  m_GesturePerformed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: SetRightHandShape
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Touch
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: CheckGestures
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_GestureEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: TurnOffRightHandShape
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_MinimumHoldTime: 0.2
+  m_GestureDetectionInterval: 0.1
+  m_StaticGestures:
+  - {fileID: 1130116991349906331}
+  - {fileID: 6109382720091990401}
+  - {fileID: 2594712102204565655}
+  - {fileID: 3414714601953762366}
+  - {fileID: 7563276076441158856}
+  - {fileID: 5566758130611152677}
+  - {fileID: 6823802787998538178}
+  - {fileID: 1160010190392396999}
+  m_Highlight: {fileID: 0}
 --- !u!1 &3166566900138726538
 GameObject:
   m_ObjectHideFlags: 0
@@ -11818,7 +12138,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Fire
+          m_StringArgument: Earth
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 7497934956184238321}
@@ -12313,6 +12633,9 @@ Transform:
   - {fileID: 2930196724182065360}
   - {fileID: 5953487531524085833}
   - {fileID: 7982635085923934042}
+  - {fileID: 2657327806335938609}
+  - {fileID: 2797914238828575817}
+  - {fileID: 5959170315476630862}
   - {fileID: 3802315167592381367}
   - {fileID: 4660229007976106719}
   - {fileID: 2779395495928902406}
@@ -13589,6 +13912,111 @@ MonoBehaviour:
   - {fileID: 3300231704329183452}
   - {fileID: 7936616341921118308}
   m_Highlight: {fileID: 0}
+--- !u!1 &6570681322828963408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 288431732935368991}
+  - component: {fileID: 2407041250347314209}
+  m_Layer: 3
+  m_Name: Left Triangle Finger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &288431732935368991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570681322828963408}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2120701802162296653}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2407041250347314209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570681322828963408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf93899325d5df74eb9176e097ee3d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HandTrackingEvents: {fileID: 5767098699624714714}
+  m_HandShapeOrPose: {fileID: 11400000, guid: 125fb2331f2b5904c8d86f644d5609a7, type: 2}
+  m_TargetTransform: {fileID: 0}
+  m_Background: {fileID: 0}
+  m_GesturePerformed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Gestures.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: SetLeftHandShape
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Fire
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Gestures.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: CheckGestures
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_GestureEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Gestures.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: TurnOffLeftHandShape
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_MinimumHoldTime: 0.2
+  m_GestureDetectionInterval: 0.1
+  m_StaticGestures:
+  - {fileID: 5548772075370079016}
+  - {fileID: 127738346036267410}
+  - {fileID: 9066534058620281131}
+  - {fileID: 4775226172242530499}
+  - {fileID: 479715235178758188}
+  - {fileID: 3612751110403967225}
+  - {fileID: 3300231704329183452}
+  - {fileID: 2407041250347314209}
+  m_Highlight: {fileID: 0}
 --- !u!1 &6580792078370834693
 GameObject:
   m_ObjectHideFlags: 0
@@ -13770,6 +14198,111 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6775909233705519447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1803954637336764804}
+  - component: {fileID: 5556371125376982748}
+  m_Layer: 3
+  m_Name: Left Half Circle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1803954637336764804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6775909233705519447}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2120701802162296653}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5556371125376982748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6775909233705519447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf93899325d5df74eb9176e097ee3d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HandTrackingEvents: {fileID: 5767098699624714714}
+  m_HandShapeOrPose: {fileID: 11400000, guid: a3af42476883b6d41aa7e41152602e51, type: 2}
+  m_TargetTransform: {fileID: 0}
+  m_Background: {fileID: 0}
+  m_GesturePerformed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Gestures.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: SetLeftHandShape
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Projectile
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Gestures.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: CheckGestures
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_GestureEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Gestures.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: TurnOffLeftHandShape
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_MinimumHoldTime: 0.2
+  m_GestureDetectionInterval: 0.1
+  m_StaticGestures:
+  - {fileID: 5548772075370079016}
+  - {fileID: 127738346036267410}
+  - {fileID: 9066534058620281131}
+  - {fileID: 4775226172242530499}
+  - {fileID: 479715235178758188}
+  - {fileID: 3612751110403967225}
+  - {fileID: 3300231704329183452}
+  - {fileID: 5556371125376982748}
+  m_Highlight: {fileID: 0}
 --- !u!1 &6784460802936986113
 GameObject:
   m_ObjectHideFlags: 0
@@ -13825,6 +14358,111 @@ CapsuleCollider:
   m_Height: 0.03
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &6808009348153925220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2657327806335938609}
+  - component: {fileID: 385972879833308539}
+  m_Layer: 3
+  m_Name: Right Triangle Finger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2657327806335938609
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6808009348153925220}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8493546711570069676}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &385972879833308539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6808009348153925220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf93899325d5df74eb9176e097ee3d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HandTrackingEvents: {fileID: 67695746335568104}
+  m_HandShapeOrPose: {fileID: 11400000, guid: 125fb2331f2b5904c8d86f644d5609a7, type: 2}
+  m_TargetTransform: {fileID: 0}
+  m_Background: {fileID: 0}
+  m_GesturePerformed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: SetRightHandShape
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Fire
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: CheckGestures
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_GestureEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7497934956184238321}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.Spells.SequenceManager,
+          Assembly-CSharp
+        m_MethodName: TurnOffRightHandShape
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_MinimumHoldTime: 0.2
+  m_GestureDetectionInterval: 0.1
+  m_StaticGestures:
+  - {fileID: 1130116991349906331}
+  - {fileID: 6109382720091990401}
+  - {fileID: 2594712102204565655}
+  - {fileID: 3414714601953762366}
+  - {fileID: 385972879833308539}
+  - {fileID: 5566758130611152677}
+  - {fileID: 6823802787998538178}
+  - {fileID: 1160010190392396999}
+  m_Highlight: {fileID: 0}
 --- !u!1 &6812687137177197557
 GameObject:
   m_ObjectHideFlags: 0
@@ -16417,6 +17055,9 @@ Transform:
   - {fileID: 5955411447934967102}
   - {fileID: 282835790498240716}
   - {fileID: 7141654408275513191}
+  - {fileID: 288431732935368991}
+  - {fileID: 346621763650998004}
+  - {fileID: 1803954637336764804}
   m_Father: {fileID: 2234494697770287831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5767098699624714714
@@ -16932,6 +17573,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2684278107010345546, guid: d8dd01e69874c55419be69ed19e20ab3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117025215003157655, guid: d8dd01e69874c55419be69ed19e20ab3, type: 3}
+      propertyPath: m_PropertySheet.m_Bool.m_Array.Array.data[0].m_Value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3771558422745629776, guid: d8dd01e69874c55419be69ed19e20ab3, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -16956,6 +17605,11 @@ PrefabInstance:
 --- !u!4 &70582322262380896 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1627867995309482397, guid: d8dd01e69874c55419be69ed19e20ab3, type: 3}
+  m_PrefabInstance: {fileID: 1616118740803989757}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4920361910650166883 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5919199373544353438, guid: d8dd01e69874c55419be69ed19e20ab3, type: 3}
   m_PrefabInstance: {fileID: 1616118740803989757}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2650717947460380103
@@ -17270,4 +17924,82 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1388794778691495199, guid: 6e14063c58b3ed541a5aa84b76ab2439, type: 3}
   m_PrefabInstance: {fileID: 3199422462783810679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6783245633178822296
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3557549356505478538}
+    m_Modifications:
+    - target: {fileID: 4879730454490477013, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: _palmL
+      value: 
+      objectReference: {fileID: 8827492844492106989}
+    - target: {fileID: 4879730454490477013, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: _palmR
+      value: 
+      objectReference: {fileID: 6679902487617635372}
+    - target: {fileID: 4879730454490477013, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: _sequenceManager
+      value: 
+      objectReference: {fileID: 7497934956184238321}
+    - target: {fileID: 4879730454490477013, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: _magicCircleTarget
+      value: 
+      objectReference: {fileID: 4920361910650166883}
+    - target: {fileID: 5500229331436452472, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500229331436452472, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.36144
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500229331436452472, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500229331436452472, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500229331436452472, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500229331436452472, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500229331436452472, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500229331436452472, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500229331436452472, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500229331436452472, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952152519629313562, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: m_Name
+      value: Hand VFX Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+--- !u!4 &1330339360924753120 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5500229331436452472, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+  m_PrefabInstance: {fileID: 6783245633178822296}
   m_PrefabAsset: {fileID: 0}
