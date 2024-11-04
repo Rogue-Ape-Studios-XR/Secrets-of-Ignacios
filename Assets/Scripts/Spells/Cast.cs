@@ -39,7 +39,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         private void OnDestroy()
         {
-            SpellManager.OnSpellValidation += HandleSpellValidation;
+            SpellManager.OnSpellValidation -= HandleSpellValidation;
 
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
