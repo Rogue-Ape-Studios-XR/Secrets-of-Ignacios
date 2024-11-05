@@ -1,14 +1,13 @@
-using System;
-using System.Threading;
 using Cysharp.Threading.Tasks;
 using RogueApeStudios.SecretsOfIgnacios.Services;
+using System.Threading;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
 {
     public class RangedWindSpellLogic : MonoBehaviour
     {
-        [Header("Wind Force Settings")] 
+        [Header("Wind Force Settings")]
         [SerializeField] private float _force = 10f;
         [SerializeField] private float _affectRadius = 10f;
         [SerializeField] private float _angle = 45f;
@@ -16,8 +15,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
 
         [Header("Ignore Layers")]
         [SerializeField] private LayerMask _ignoreLayers; // Layers to ignore
-        
-        [Header("Visual")] 
+
+        [Header("Visual")]
         // Currently disabled, will implement this later
         // [SerializeField] private VisualEffect _windEffect;
         private ObjectPooler _objectPooler;
@@ -64,7 +63,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
                 Gizmos.DrawLine(transform.position + direction, transform.position + nextDirection);
             }
         }
-        
+
         private void CastWindForce()
         {
             ApplyWindForce(_cancellationTokenSource.Token).Forget();
@@ -107,7 +106,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
 
         private void ReturnToPool()
         {
-            _objectPooler.ReturnProjectile(_pool.ToString(), gameObject);
+            if (gameObject.activeSelf)
+                _objectPooler.ReturnObject(gameObject.name, gameObject);
         }
     }
 }

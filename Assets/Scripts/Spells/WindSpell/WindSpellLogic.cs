@@ -1,35 +1,33 @@
-using System;
-using System.Threading;
 using Cysharp.Threading.Tasks;
 using RogueApeStudios.SecretsOfIgnacios.Services;
+using System.Threading;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
 {
     public class WindForceSpell : MonoBehaviour
     {
-        [Header("Wind Force Settings")] 
+        [Header("Wind Force Settings")]
         [SerializeField] private float _force = 10f;
         [SerializeField] private float _affectRadius = 10f;
         //This is how wide the cone will be, 180 would be fully around you
         [SerializeField] private float _angle = 45f;
         [SerializeField] private float _duration = 0.5f;
-        [SerializeField] private ElementType _pool;
-        
-        [Header("Visual")] 
+
+        [Header("Visual")]
         //Currently disabled, will implement this later
         // [SerializeField] private VisualEffect _windEffect;
         private ObjectPooler _objectPooler;
         private CancellationTokenSource _cancellationTokenSource;
-        
-        private void Start()
-        {
-            _objectPooler = ServiceLocator.GetService<ObjectPooler>();
-        }
 
         private void Awake()
         {
             _cancellationTokenSource = new CancellationTokenSource();
+        }
+
+        private void Start()
+        {
+            _objectPooler = ServiceLocator.GetService<ObjectPooler>();
         }
 
         private void OnEnable()
@@ -64,7 +62,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
                 Gizmos.DrawLine(transform.position + direction, transform.position + nextDirection);
             }
         }
-        
+
         private void CastWindForce()
         {
             ApplyWindForce(_cancellationTokenSource.Token).Forget();
@@ -106,7 +104,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
 
         private void ReturnToPool()
         {
-            _objectPooler.ReturnProjectile(_pool.ToString(), gameObject);
+            if (gameObject.activeSelf)
+                _objectPooler.ReturnObject(gameObject.name, gameObject);
         }
     }
 }

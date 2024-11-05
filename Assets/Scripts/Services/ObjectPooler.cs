@@ -17,33 +17,54 @@ namespace RogueApeStudios.SecretsOfIgnacios.Services
             _serviceLocator.RegisterService(this);
 
             foreach (var spell in _spells)
-                CreatePool(spell._elementType.ToString(), spell._spellPrefab, spell._poolSize);
+            {
+                if (!spell._duoSpell)
+                    CreatePool(spell._primaryConfig._spellPrefab.name,
+                        spell._primaryConfig._spellPrefab,
+                        spell._primaryConfig._poolSize);
+                else
+                {
+                    CreatePool(spell._primaryConfig._spellPrefab.name,
+                        spell._primaryConfig._spellPrefab,
+                        spell._primaryConfig._poolSize);
+
+                    CreatePool(spell._secondaryConfig._spellPrefab.name,
+                        spell._secondaryConfig._spellPrefab,
+                        spell._secondaryConfig._poolSize);
+                }
+            }
+
         }
 
-        private void CreatePool(string projectileType, GameObject prefab, int initialSize)
+        private void CreatePool(string objectType, GameObject prefab, int initialSize)
         {
-            if (!_objectPools.ContainsKey(projectileType))
-            {
-                _objectPools[projectileType] = new();
+            string poolKey = objectType + "(Clone)";
 
-                for (int i = 0; i < initialSize; i++)
-                {
-                    GameObject projectile = GameObject.Instantiate(prefab, _poolParent);
-                    projectile.SetActive(false);
-                    _objectPools[projectileType].Enqueue(projectile);
-                }
+            if (!_objectPools.ContainsKey(poolKey))
+                _objectPools[poolKey] = new();
+
+            int currentCount = _objectPools[poolKey].Count;
+            int itemsToAdd = initialSize - currentCount;
+
+            for (int i = 0; i < itemsToAdd; i++)
+            {
+                GameObject projectile = GameObject.Instantiate(prefab, _poolParent);
+                projectile.SetActive(false);
+                _objectPools[poolKey].Enqueue(projectile);
             }
         }
 
-        public GameObject GetProjectile(string objectType, GameObject prefab, Transform transform)
+        public GameObject GetObject(string objectType, GameObject prefab, Transform transform)
         {
-            if (!_objectPools.ContainsKey(objectType))
+            string poolKey = objectType + "(Clone)";
+
+            if (!_objectPools.ContainsKey(poolKey))
             {
-                Debug.LogError($"No pool exists for this object type: {objectType}");
+                Debug.LogError($"No pool exists for this object type: {poolKey}");
                 return null;
             }
 
-            Queue<GameObject> pool = _objectPools[objectType];
+            Queue<GameObject> pool = _objectPools[poolKey];
 
             if (pool.Count <= 0)
             {
@@ -58,7 +79,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Services
             return projectile;
         }
 
-        public void ReturnProjectile(string objectType, GameObject obj)
+        public void ReturnObject(string objectType, GameObject obj)
         {
             if (!_objectPools.ContainsKey(objectType))
             {
