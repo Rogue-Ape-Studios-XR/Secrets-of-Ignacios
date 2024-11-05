@@ -3921,7 +3921,7 @@ GameObject:
   - component: {fileID: 8121273555303013067}
   - component: {fileID: 3919579633022511349}
   m_Layer: 0
-  m_Name: Bookholder
+  m_Name: Bookholder Moveable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
