@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.AR;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Gestures
 {
@@ -31,6 +32,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         internal event Action OnReset;
         internal event Action OnQuickCast;
         internal event Action<Gesture> OnGestureRecognised;
+        internal event Action<Gesture> OnElementValidated; 
 
         internal List<Gesture> ValidatedGestures => _validatedGestures;
 
@@ -79,6 +81,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
                     OnReset?.Invoke();
                     _sequenceStarted = true;
                     _canQuickCast = false;
+                    
+                    OnElementValidated?.Invoke(_currentGesture);
                 }
                 else if (_canQuickCast && _currentGesture._name == "Quick Cast" && _leftHandActive &&
                     _rightHandActive && _currentGesture._leftHandShape == HandShape.QuickCast &&
@@ -86,6 +90,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
                 {
                     _validatedGestures.Clear();
                     OnQuickCast?.Invoke();
+                    
+                    OnElementValidated?.Invoke(_currentGesture);
                 }
 
                 if (_sequenceStarted && _validatedGestures.Count == 0 ||
@@ -97,6 +103,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
                     OnGestureRecognised?.Invoke(_currentGesture);
                 }
 
+                if (_validatedGestures.Count == 2)
+                {
+                    OnElementValidated?.Invoke(_currentGesture);
+                }
+                
                 if (_validatedGestures.Count == 3)
                 {
                     OnSequenceCreated?.Invoke();
