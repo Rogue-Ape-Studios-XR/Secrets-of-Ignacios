@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c3d9ed3f67bfcd4283f4153121c7767, type: 3}
-  m_Name: Fire
+  m_Name: AirMid
   m_EditorClassIdentifier: 
-  _name: Fire
-  _leftHandShape: 2
-  _rightHandShape: 2
+  _name: Air Mid
+  _leftHandShape: 7
+  _rightHandShape: 7
   _xHandDistance: 2
   _yHandDistance: 2
   _zHandDistance: 2
-  _color: {r: 1, g: 0.3810822, b: 0.10849059, a: 1}
-  _visualEffectPrefab: {fileID: 5106828958462051931, guid: 39b0c97698c5ff7418e906bffe393b15, type: 3}
+  _color: {r: 0.8226415, g: 0.97770864, b: 1, a: 0.40392157}
+  _visualEffectPrefab: {fileID: 3416025197857925257, guid: b93dc6d79941fa6479fbdd9e1c5b4f05, type: 3}

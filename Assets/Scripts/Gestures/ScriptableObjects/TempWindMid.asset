@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3d9ed3f67bfcd4283f4153121c7767, type: 3}
   m_Name: TempWindMid
   m_EditorClassIdentifier: 
-  _name: Temp Wind Mid
-  _leftHandShape: 2
+  _name: Wind Mid
+  _leftHandShape: 4
   _rightHandShape: 5
   _xHandDistance: 2
   _yHandDistance: 2
   _zHandDistance: 2
-  _color: {r: 0.30789685, g: 0.5471698, b: 0.23745106, a: 0}
+  _color: {r: 0.6117647, g: 0.6849921, b: 0.69411767, a: 0.43137255}
+  _visualEffectPrefab: {fileID: 6833058934814803971, guid: 8a3d4bb1e4f734e41a7de99158fa149f, type: 3}

@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: d147d72f170c00c409535feae027ccc5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _heldFirePrefab: {fileID: 5106828958462051931, guid: 39b0c97698c5ff7418e906bffe393b15, type: 3}
+  - _heldWaterPrefab: {fileID: 7669351058872336702, guid: 131ded9cc6d59954b879944c2533cfdc, type: 3}
+  - _heldAirPrefab: {fileID: 3416025197857925257, guid: b93dc6d79941fa6479fbdd9e1c5b4f05, type: 3}
+  - _heldEarthLPrefab: {fileID: 8382951420685910006, guid: 01320560e9c523849901200a13e3c2e2, type: 3}
+  - _heldEarthRPrefab: {fileID: 5032735373115770906, guid: 11af1c64f7a94f649863112657480a26, type: 3}
+  - _prefabContainerL: {instanceID: 0}
+  - _prefabContainerR: {instanceID: 0}
+  - _magicCircleTarget: {instanceID: 0}
+  - _sequenceManager: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
