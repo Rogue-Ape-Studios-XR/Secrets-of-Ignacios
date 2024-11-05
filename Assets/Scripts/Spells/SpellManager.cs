@@ -74,8 +74,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                 _currentSpell = null;
                 SpellWrongIndication(_cancellationTokenSource.Token);
             }
-
-            OnSpellValidation?.Invoke(spellFound);
+            else
+                OnSpellValidation?.Invoke(spellFound);
         }
 
         private void SetSpell(Spell spell)
