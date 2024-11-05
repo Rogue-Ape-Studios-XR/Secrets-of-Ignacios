@@ -4,12 +4,16 @@ using RogueApeStudios.SecretsOfIgnacios.Gestures;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
+using RogueApeStudios.SecretsOfIgnacios.Gestures;
+using RogueApeStudios.SecretsOfIgnacios.Spells;
+using UnityEngine;
 using UnityEngine.VFX;
 using NUnit.Framework.Internal;
 using UnityEngine.XR.Hands;
 
-
-namespace RogueApeStudios.SecretsOfIgnacios
+namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 {
     public class HandVfxManager : MonoBehaviour
     {
@@ -50,6 +54,8 @@ namespace RogueApeStudios.SecretsOfIgnacios
             //unsubscribe
             SpellManager.OnSpellValidation -= HandleCastRecognized;
             _sequenceManager.OnGestureRecognised -= HandleElementRecognized;
+            
+            _castscript.onSpellCastComplete -= DisableHandVFX;
             //unsubscribe from cast script's cast finished event (event on cast not implemented)
         }
 
@@ -58,6 +64,8 @@ namespace RogueApeStudios.SecretsOfIgnacios
             //subscribe!
             SpellManager.OnSpellValidation += HandleCastRecognized;
             _sequenceManager.OnGestureRecognised += HandleElementRecognized;
+            
+            _castscript.onSpellCastComplete += DisableHandVFX;
             //subscribe to cast script's cast finished event (event on cast not implemented)
         }
 
