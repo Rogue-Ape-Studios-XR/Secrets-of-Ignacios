@@ -5,7 +5,7 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
     public class GrimoireUIController : MonoBehaviour
     {
-        private bool _grimoireActive = false;
+        //private bool _grimoireActive = false;
 
         [SerializeField]
         private GameObject _grimoire;
@@ -36,7 +36,6 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
             Vector3 spawnPos = playerPosition + playerDirection * 0.5f;
 
-            //_grimoire.transform.rotation = playerRotation;
             _grimoire.transform.eulerAngles = new Vector3(
                 0,
                 playerRotation.eulerAngles.y + 180,
