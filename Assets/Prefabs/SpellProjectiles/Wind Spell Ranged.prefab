@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _force: 10
-  _affectRadius: 3.94
+  _affectRadius: 2.47
   _angle: 160.2
   _pool: 3
   _ignoreLayers:
