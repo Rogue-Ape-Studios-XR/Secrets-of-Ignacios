@@ -53,18 +53,31 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
             _cancellationTokenSource.Dispose();
             //unsubscribe
             SpellManager.OnSpellValidation -= HandleCastRecognized;
-            _sequenceManager.OnGestureRecognised -= HandleElementRecognized;
+            SpellManager.OnSpellFailed -= SpellManagerOnOnSpellFailed;
+            _sequenceManager.OnElementValidated -= HandleElementRecognized;
             
             _castscript.onSpellCastComplete -= DisableHandVFX;
             //unsubscribe from cast script's cast finished event (event on cast not implemented)
+        }
+
+        private void SpellManagerOnOnSpellFailed()
+        { 
+            if(_currentEffectL != null) 
+            { 
+                _currentEffectL.Stop();
+            }
+            if(_currentEffectR != null) 
+            {
+                _currentEffectR.Stop();
+            }
         }
 
         void Start()
         {
             //subscribe!
             SpellManager.OnSpellValidation += HandleCastRecognized;
-            _sequenceManager.OnGestureRecognised += HandleElementRecognized;
-            
+            SpellManager.OnSpellFailed += SpellManagerOnOnSpellFailed;
+            _sequenceManager.OnElementValidated += HandleElementRecognized;
             _castscript.onSpellCastComplete += DisableHandVFX;
             //subscribe to cast script's cast finished event (event on cast not implemented)
         }

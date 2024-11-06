@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handpositions: []
-  _aheadValue: -0.2
+  _aheadValue: -0.3
   _upValue: 0.2
 --- !u!114 &7464679244188683982
 MonoBehaviour:
@@ -375,3 +375,4 @@ MonoBehaviour:
   _magicCircle: {fileID: 3117025215003157655}
   _boolControls: {fileID: 2684278107010345546}
   _colorControls: {fileID: 2169457918647813433}
+  _sequenceManager: {fileID: 0}
