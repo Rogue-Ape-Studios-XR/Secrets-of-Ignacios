@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: -2397331427679202286}
   m_Layer: 9
   m_Name: Wind Spell Ranged
-  m_TagString: Spell
+  m_TagString: WindSpell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _force: 10
-  _affectRadius: 3.94
+  _affectRadius: 2.47
   _angle: 160.2
   _pool: 3
   _ignoreLayers:
