@@ -20,7 +20,7 @@ MonoBehaviour:
   _duoSpell: 0
   _primaryConfig:
     _elementType: 3
-    _castType: 0
+    _castType: 2
     _position: {x: 0, y: 0, z: 0}
     _handEffect: {fileID: 0}
     _spellPrefab: {fileID: 2016962078072147876, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
