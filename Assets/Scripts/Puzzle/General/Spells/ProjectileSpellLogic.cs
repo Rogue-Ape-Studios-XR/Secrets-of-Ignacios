@@ -1,6 +1,5 @@
 using Cysharp.Threading.Tasks;
 using RogueApeStudios.SecretsOfIgnacios.Services;
-using RogueApeStudios.SecretsOfIgnacios.Spells;
 using System;
 using System.Threading;
 using UnityEngine;
@@ -21,7 +20,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.General.Spells
         [SerializeField] private Transform _impactEffectTransform;
 
         [Header("Projectile Settings")]
-        [SerializeField] private ElementType _pool;
         [SerializeField] private float _speed = 1f;
 
         private ObjectPooler _objectPooler;
@@ -67,7 +65,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.General.Spells
 
                 await UniTask.WaitUntil(() => _impactEffect.aliveParticleCount == 0, cancellationToken: token);
 
-                _objectPooler.ReturnProjectile(_pool.ToString(), gameObject);
+                _objectPooler.ReturnObject(gameObject.name, gameObject);
             }
             catch (OperationCanceledException)
             {
@@ -99,7 +97,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.General.Spells
             await UniTask.WaitForSeconds(time, cancellationToken: token);
 
             if (!_collided && gameObject.activeSelf)
-                _objectPooler.ReturnProjectile(_pool.ToString(), gameObject);
+                _objectPooler.ReturnObject(gameObject.name, gameObject);
         }
 
         private void OnCollisionEnter(Collision collision)

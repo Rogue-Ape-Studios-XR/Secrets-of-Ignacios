@@ -4,6 +4,7 @@ using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.XR.Hands;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Spells
 {
@@ -19,6 +20,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [SerializeField] private bool _timerAim = true;
         [SerializeField] private float _castTimer = 0.75f;
 
+        internal event Action<Handedness> onSpellCastComplete;
+        
         private CancellationTokenSource _cancellationTokenSource;
 
         private void Awake()
@@ -36,7 +39,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         private void OnDestroy()
         {
-            SpellManager.OnSpellValidation += HandleSpellValidation;
+            SpellManager.OnSpellValidation -= HandleSpellValidation;
 
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
@@ -53,10 +56,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             {
                 if (handData._canCast)
                 {
-                    if (_spellManager.CurrentSpell is not null && _spellManager.CurrentSpell._castType is CastTypes.SingleFire)
+                    HandConfig config = handData.GetHandConfig(_spellManager, handData == _rightHandData);
+
+                    if (config._castType == CastTypes.Charged)
                         await ChargeEffect(handData);
 
-                    ExecuteSpell(handData);
+                    ExecuteSpell(handData, config._castType);
                 }
             }
             catch (OperationCanceledException)
@@ -78,11 +83,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                 handData._lineRenderer.enabled = false;
         }
 
-        private void ExecuteSpell(HandData handData)
+        private void ExecuteSpell(HandData handData, CastTypes castType)
         {
-            switch (_spellManager.CurrentSpell._castType)
+            switch (castType)
             {
                 case CastTypes.SingleFire:
+                case CastTypes.Charged:
+                case CastTypes.Touch:
                     SingleCast(handData);
                     break;
                 case CastTypes.Automatic:
@@ -95,11 +102,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         private void SingleCast(HandData handData)
         {
-            _pooler.GetProjectile(_spellManager.CurrentSpell._elementType.ToString(),
-                    _spellManager.CurrentSpell._spellPrefab,
-                    handData._handTransform);
+            GetSpellProjectile(handData);
             handData._renderer.materials[1].SetColor("_MainColor", _spellManager.DefaultColor);
             handData._canCast = false;
+            
+            RemoveVFXFromHand(handData);
         }
 
         private async void RepeatedCast(HandData handData)
@@ -107,26 +114,47 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             handData._isCasting = true;
             while (handData._canCast)
             {
-                _pooler.GetProjectile(_spellManager.CurrentSpell._elementType.ToString(),
-                    _spellManager.CurrentSpell._spellPrefab,
-                    handData._handTransform);
-
+                GetSpellProjectile(handData);
                 await UniTask.WaitForSeconds(0.05f, cancellationToken: _cancellationTokenSource.Token);
+            }
+        }
+
+        private void GetSpellProjectile(HandData handData)
+        {
+            HandConfig spell = handData.GetHandConfig(_spellManager, handData == _rightHandData);
+
+            GameObject obj = _pooler.GetObject(spell._spellPrefab.name, spell._spellPrefab, handData._handTransform);
+
+            if (spell._castType == CastTypes.Touch)
+            {
+                obj.transform.SetParent(handData._handTransform, false);
+                obj.transform.SetLocalPositionAndRotation(spell._position, new(0, 0, 0, 0));
             }
         }
 
         private void StopCast(HandData handData)
         {
-            if (_spellManager.CurrentSpell != null &&
-                _spellManager.CurrentSpell._castType == CastTypes.Automatic &&
-                handData._isCasting)
+            if (_spellManager.CurrentSpell is not null && handData._isCasting)
             {
                 handData._isCasting = false;
                 handData._canCast = false;
                 handData._renderer.materials[1].SetColor("_MainColor", _spellManager.DefaultColor);
+                
+                RemoveVFXFromHand(handData);
             }
         }
 
+        private void RemoveVFXFromHand(HandData handData)
+        {
+            if (handData == null) return;
+            
+            Handedness handIdentifier = handData == _leftHandData ? Handedness.Left : Handedness.Right;
+
+            Debug.Log("invoking");
+            onSpellCastComplete?.Invoke(handIdentifier);
+        }
+        
+        
         private void HandleSpellValidation(bool canCast)
         {
             _rightHandData._canCast = canCast;
@@ -135,7 +163,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         public void CastNoHands(Transform transform, string objectType, GameObject spellPrefab)
         {
-            GameObject projectile = _pooler.GetProjectile(objectType, spellPrefab, transform);
+            GameObject projectile = _pooler.GetObject(objectType, spellPrefab, transform);
             projectile.transform.SetPositionAndRotation(transform.position, transform.localRotation);
         }
 
@@ -150,8 +178,22 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             [SerializeField] internal LineRenderer _lineRenderer;
             [SerializeField] internal Renderer _renderer;
 
+            internal Transform _spellPrefab;
             internal bool _canCast = false;
             internal bool _isCasting = false;
+
+            internal HandConfig GetHandConfig(SpellManager spellManager, bool isRightHand)
+            {
+                if (!spellManager.CurrentSpell._duoSpell)
+                    return spellManager.CurrentSpell._primaryConfig;
+                else
+                {
+                    if (isRightHand)
+                        return spellManager.CurrentSpell._primaryConfig;
+                    else
+                        return spellManager.CurrentSpell._secondaryConfig;
+                }
+            }
         }
     }
 }

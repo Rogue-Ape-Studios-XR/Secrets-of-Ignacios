@@ -10,29 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41b57abb06a1e4b49bdc41681f47c71f, type: 3}
-  m_Name: Water
+  m_Name: Earth
   m_EditorClassIdentifier: 
-  _name: Water Blast
+  _name: Resize
   _gestureSequence:
   - {fileID: 11400000, guid: 98105de35a6f47945a9bc17659aae264, type: 2}
-  - {fileID: 11400000, guid: 4fae163ba39953f47a92ac450dba3702, type: 2}
   - {fileID: 11400000, guid: 03b56e3cddb3bd0459a6f7ffe917a300, type: 2}
-  _duoSpell: 0
+  - {fileID: 11400000, guid: 06d7681a10ade3e4bb59fa2832f059b6, type: 2}
+  _duoSpell: 1
   _primaryConfig:
-    _elementType: 1
-    _castType: 1
-    _position: {x: 0, y: 0, z: 0}
+    _elementType: 2
+    _castType: 3
+    _position: {x: 0, y: 0, z: 0.076}
     _handEffect: {fileID: 0}
-    _spellPrefab: {fileID: 956630413854477819, guid: 3a43e5cab227d224782ff9be94498aab, type: 3}
-    _handColor: {r: 0, g: 1, b: 0.9836073, a: 1}
-    _poolSize: 160
+    _spellPrefab: {fileID: 4305491227868334602, guid: 1b15fb56c0eb73c41850af47833b078f, type: 3}
+    _handColor: {r: 0.38039216, g: 0.9607843, b: 0.6156863, a: 1}
+    _poolSize: 2
     _chargeEffect: {fileID: 0}
   _secondaryConfig:
-    _elementType: 0
-    _castType: 0
-    _position: {x: 0, y: 0, z: 0}
+    _elementType: 2
+    _castType: 3
+    _position: {x: 0, y: 0, z: 0.076}
     _handEffect: {fileID: 0}
-    _spellPrefab: {fileID: 0}
-    _handColor: {r: 0, g: 0, b: 0, a: 0}
-    _poolSize: 0
+    _spellPrefab: {fileID: 4305491227868334602, guid: f2727d85bf5b26848b11a78ffd0be4e5, type: 3}
+    _handColor: {r: 0.38039216, g: 0.9607843, b: 0.6156863, a: 1}
+    _poolSize: 2
     _chargeEffect: {fileID: 0}

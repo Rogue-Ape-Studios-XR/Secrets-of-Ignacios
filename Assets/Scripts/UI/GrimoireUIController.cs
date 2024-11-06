@@ -5,10 +5,13 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
     public class GrimoireUIController : MonoBehaviour
     {
-        private bool _grimoireActive = false;
+        //private bool _grimoireActive = false;
 
         [SerializeField]
         private GameObject _grimoire;
+
+        [SerializeField]
+        private GameObject _player; //camera offset
 
 
         [SerializeField]
@@ -26,6 +29,22 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
         public void Summongrimoire()
         {
+            Transform player = _player.transform;
+            Vector3 playerPosition = player.position;
+            Vector3 playerDirection = player.forward;
+            Quaternion playerRotation = player.rotation;
+
+            Vector3 spawnPos = playerPosition + playerDirection * 0.5f;
+
+            _grimoire.transform.eulerAngles = new Vector3(
+                0,
+                playerRotation.eulerAngles.y + 180,
+                0
+            );
+
+            _grimoire.transform.position = spawnPos;
+            
+            /*
             if (!_grimoireActive)
             {
                 _grimoireActive = true;
@@ -35,7 +54,7 @@ namespace RogueApeStudios.SecretsOfIgnacios
             {
                 _grimoireActive = false;
                 _grimoire.SetActive(false);
-            }
+            }*/
         }
     }
 }
