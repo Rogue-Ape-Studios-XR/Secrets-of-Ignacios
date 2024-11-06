@@ -26,6 +26,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private Color _defaultColor;
 
         public static event Action<bool> OnSpellValidation;
+        public static event Action OnSpellFailed;
 
         internal Spell CurrentSpell => _currentSpell;
         internal Color DefaultColor => _defaultColor;
@@ -72,6 +73,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             if (!spellFound)
             {
                 _currentSpell = null;
+                OnSpellFailed?.Invoke();
                 SpellWrongIndication(_cancellationTokenSource.Token);
             }
             else

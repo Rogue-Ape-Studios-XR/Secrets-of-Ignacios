@@ -26,6 +26,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
             //sub to the gesture recognized and spell recognized events
             _magicCircle.Stop();
             SpellManager.OnSpellValidation += HandleSpellRecognized;
+            SpellManager.OnSpellFailed += HandleSpellFailed;
             _sequenceManager.OnGestureRecognised += HandleGestureRecognized;
         }
         private void OnDestroy()
@@ -59,6 +60,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
         }
 
         void HandleSpellRecognized(bool recognized)
+        {
+            _boolControls.SetActive(false);
+        }
+
+        private void HandleSpellFailed()
         {
             _boolControls.SetActive(false);
         }

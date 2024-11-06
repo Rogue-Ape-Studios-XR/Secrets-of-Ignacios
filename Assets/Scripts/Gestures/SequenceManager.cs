@@ -32,7 +32,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         internal event Action OnReset;
         internal event Action OnQuickCast;
         internal event Action<Gesture> OnGestureRecognised;
-        internal event Action<Gesture> OnElementValidated; 
+        internal event Action<Gesture> OnElementValidated;
+        internal event Action OnSpellFailedVFX;
 
         internal List<Gesture> ValidatedGestures => _validatedGestures;
 
@@ -40,17 +41,22 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         {
             _cancellationTokenSource = new CancellationTokenSource();
             SpellManager.OnSpellValidation += HandleOnSpellValidated;
+            SpellManager.OnSpellFailed += HandleOnSpellFailed;
+            
             _defaultColor = _rightHandMaterial.materials[1].GetColor("_MainColor");
         }
 
         private void OnDestroy()
         {
+            SpellManager.OnSpellFailed -= HandleOnSpellFailed;
+            SpellManager.OnSpellValidation -= HandleOnSpellValidated;
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
         }
 
         private void FixedUpdate()
         {
+            Debug.Log(_validatedGestures.Count);
             if (_leftHandActive && _rightHandActive && !_gestureValidated && _currentGesture != null)
                 HandDistanceCheck(_currentGesture);
         }
@@ -168,6 +174,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         {
             _canQuickCast = value;
         }
+
+       private void HandleOnSpellFailed()
+       {
+           _validatedGestures.Clear(); 
+           _sequenceStarted = false; 
+           OnSpellFailedVFX?.Invoke(); // Invoke the event to disable VFX on hands
+       }
 
         public void SetRightHandShape(string handShape)
         {
