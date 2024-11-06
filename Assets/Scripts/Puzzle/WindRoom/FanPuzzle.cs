@@ -32,9 +32,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.WindRoom
                     count++;
 
             if (count >= _fans.Count)
-                _animator.SetTrigger("DoorOpen");
+                _animator.SetTrigger("DubbleIn");
             else if (_previousCount is 3 && count < _fans.Count)
-                _animator.SetTrigger("DoorClose");
+                _animator.SetTrigger("DubbleClose");
 
             _previousCount = count;
         }

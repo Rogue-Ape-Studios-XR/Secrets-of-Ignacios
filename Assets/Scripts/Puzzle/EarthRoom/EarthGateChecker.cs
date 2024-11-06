@@ -7,6 +7,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
     public class EarthGateChecker : MonoBehaviour
     {
         [SerializeField] private Resizable[] _resizableBlocks;
+        [SerializeField] private Animator _animator;
 
         private void Awake()
         {
@@ -29,7 +30,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
         private void CheckGateStatus()
         {
             if (AreAllBlocksInState(ResizeState.Grown))
-               //Later implementation of Loes' animation 
+                _animator.Play("BigGateOpen");
                 Debug.Log("Open the gate");
         }
 
