@@ -28,6 +28,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
                 if (_grimeAmountRemoved >= _grimeMax)
                 {
                     _cleaned = true;
+                    gameObject.SetActive(false);
                 }
             }
             catch (OperationCanceledException)
