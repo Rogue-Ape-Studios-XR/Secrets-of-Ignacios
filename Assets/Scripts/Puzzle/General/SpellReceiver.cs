@@ -1,15 +1,17 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Puzzle
 {
     public class SpellReceiver : MonoBehaviour
     {
+        [SerializeField] private List<string> _spellTags;
         internal event Action<string> OnSpellReceived;
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Spell"))
+            if (_spellTags.Contains(other.tag))
             {
                 var spell = other.gameObject;
                 HandleSpellReceived(spell);
