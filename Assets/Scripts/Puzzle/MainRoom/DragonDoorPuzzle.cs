@@ -12,7 +12,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
             {
                 other.gameObject.SetActive(false);
                 gameObject.SetActive(false);
-                _animator.SetTrigger("DoorOpen");
+                _animator.SetTrigger("DubbleIn");
             }
         }
     }

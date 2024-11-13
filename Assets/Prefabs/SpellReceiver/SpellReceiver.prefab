@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d36b8b857aff74d8250803d7439b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spellTags:
+  - Spell
+  - WindSpell
 --- !u!65 &4936965792756282574
 BoxCollider:
   m_ObjectHideFlags: 0
