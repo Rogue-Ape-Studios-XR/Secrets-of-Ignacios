@@ -8,7 +8,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
     {
         [SerializeField] private List<ShieldChecker> _shieldCheckers;
         [SerializeField] private bool _allShieldsFit = true;
-        [SerializeField] private UnityEvent _complatePuzzle;
+        [SerializeField] private UnityEvent _completePuzzle;
 
         private void OnEnable()
         {
@@ -42,7 +42,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
             if (_allShieldsFit)
             {
                 Debug.Log("All shields fit");
-                _complatePuzzle?.Invoke();
+                _completePuzzle?.Invoke();
             }
             else
                 Debug.Log("Not all shields fit");
