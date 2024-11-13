@@ -35,7 +35,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
             if (_waterTarget._filled && _windTarget._isBlown && _fireTarget._isOnFire)
             {
                 Debug.Log("Door opens");
-                _animator.SetTrigger("DoorOpen");
+                _animator.SetTrigger("DubbleIn");
             }
         }
     }

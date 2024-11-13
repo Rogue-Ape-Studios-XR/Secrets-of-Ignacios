@@ -36,10 +36,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
                 }
             }
 
-            if (count == 3)
+            if (count == _torches.Count)
             {
                 Debug.Log("Door opens");
-                _animator.SetTrigger("DoorOpen");
+                _animator.SetTrigger("DubbleIn");
             }
         }
     }

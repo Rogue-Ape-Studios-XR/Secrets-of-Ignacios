@@ -40,7 +40,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.WaterRoom
             if (count == 3)
             {
                 Debug.Log("Door opens");
-                _animator.SetTrigger("DoorOpen");
+                _animator.SetTrigger("DubbleIn");
             }
         }
     }
