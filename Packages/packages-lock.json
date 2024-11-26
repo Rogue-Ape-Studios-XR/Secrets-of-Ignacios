@@ -1,5 +1,18 @@
 {
   "dependencies": {
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "9057452c86079e4265228480b1439442894d5078"
+    },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.burst": {
       "version": "1.8.17",
       "depth": 2,
@@ -235,6 +248,15 @@
       "dependencies": {
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
+      }
+    },
+    "com.unity.visualeffectgraph": {
+      "version": "17.0.3",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.shadergraph": "17.0.3",
+        "com.unity.render-pipelines.core": "17.0.3"
       }
     },
     "com.unity.xr.arfoundation": {

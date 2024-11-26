@@ -73,3 +73,6 @@ crashlytics-build.properties
 
 # Sandbox Files
 /[Aa]ssets/[Ss]andbox/*
+/[Aa]ssets/[Ss]andbox.meta
+
+.utmp/

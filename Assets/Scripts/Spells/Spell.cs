@@ -1,0 +1,31 @@
+using RogueApeStudios.SecretsOfIgnacios.Gestures;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.VFX;
+
+namespace RogueApeStudios.SecretsOfIgnacios.Spells
+{
+    [Serializable]
+    public struct HandConfig
+    {
+        [SerializeField] internal ElementType _elementType;
+        [SerializeField] internal CastTypes _castType;
+        [SerializeField] internal Vector3 _position;
+        [SerializeField] internal VisualEffect _handEffect;
+        [SerializeField] internal GameObject _spellPrefab;
+        [SerializeField] internal Color _handColor;
+        [SerializeField] internal int _poolSize;
+        [SerializeField] internal VisualEffect _chargeEffect;
+    }
+
+    [CreateAssetMenu(fileName = "Spell", menuName = "Scriptable Objects/Spell")]
+    public class Spell : ScriptableObject
+    {
+        [SerializeField] internal string _name;
+        [SerializeField] internal List<Gesture> _gestureSequence;
+        [SerializeField] internal bool _duoSpell;
+        [SerializeField] internal HandConfig _primaryConfig;
+        [SerializeField] internal HandConfig _secondaryConfig;
+    }
+}

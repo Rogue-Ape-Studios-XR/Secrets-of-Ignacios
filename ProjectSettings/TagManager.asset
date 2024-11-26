@@ -3,19 +3,28 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Spell
+  - FingerTip
+  - UIButtonTab
+  - UIButtonBracelet
+  - WindSpell
+  - Ingredient
+  - Potion
+  - Joystick
+  - Shield
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Spawner Contact
   - Placeable Surface
-  - 
-  - 
-  - 
+  - Teleportable surface
+  - Spell
+  - Resizable
   - 
   - 
   - 
