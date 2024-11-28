@@ -1,5 +1,6 @@
 using RogueApeStudios.SecretsOfIgnacios.Gestures;
 using RogueApeStudios.SecretsOfIgnacios.Spells;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -23,40 +24,44 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
 
         private void Start()
         {
-            //sub to the gesture recognized and spell recognized events
             _magicCircle.Stop();
-            SpellManager.OnSpellValidation += HandleSpellRecognized;
-            SpellManager.OnSpellFailed += HandleSpellFailed;
+
+            //sub to the gesture recognized and spell recognized events
+            SpellManager.onSpellValidation += HandleSpellRecognized;
+            SpellManager.onNoSpellMatch += HandleSpellFailed;
             _sequenceManager.OnGestureRecognised += HandleGestureRecognized;
         }
         private void OnDestroy()
         {
             //unsubscribe
-            SpellManager.OnSpellValidation -= HandleSpellRecognized;
+            SpellManager.onSpellValidation -= HandleSpellRecognized;
+            SpellManager.onNoSpellMatch -= HandleSpellFailed;
             _sequenceManager.OnGestureRecognised -= HandleGestureRecognized;
-
         }
 
-        void HandleGestureRecognized(Gesture gesture)
+        void HandleGestureRecognized(List<Gesture> gesture)
         {
-            switch (gesture._rightHandShape)
+            if (gesture.Count > 0)
             {
-                case HandShape.Start:
-                    _boolControls.SetActive(true);
-                    _magicCircle.Play();
-                    break;
-                case HandShape.Fire:
-                    break;
-                case HandShape.Water:
-                    break;
-                case HandShape.Earth:
-                    break;
-                case HandShape.Air:
-                    break;
-                default:
-                    break;
+                switch (gesture[^1]._rightHandShape)
+                {
+                    case HandShape.Start:
+                        _boolControls.SetActive(true);
+                        _magicCircle.Play();
+                        break;
+                    case HandShape.Fire:
+                        break;
+                    case HandShape.Water:
+                        break;
+                    case HandShape.Earth:
+                        break;
+                    case HandShape.Air:
+                        break;
+                    default:
+                        break;
+                }
+                _colorControls.startColor = gesture[^1]._color;
             }
-            _colorControls.startColor = gesture._color;
         }
 
         void HandleSpellRecognized(bool recognized)
