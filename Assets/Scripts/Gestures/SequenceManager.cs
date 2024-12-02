@@ -15,6 +15,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         [SerializeField] private List<Gesture> _allGestures;
         [SerializeField] private bool _leftHandActive = false; // Only serialized for testing purposes
         [SerializeField] private bool _rightHandActive = false; // Only serialized for testing purposes
+        [SerializeField] private Material _defaultMaterial;
 
         private readonly List<Gesture> _validatedGestures = new();
         private CancellationTokenSource _cancellationTokenSource;
@@ -141,6 +142,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
             {
                 _rightHandMaterial.materials[1].SetColor("_MainColor", _currentGesture._color);
                 _leftHandMaterial.materials[1].SetColor("_MainColor", _currentGesture._color);
+                _rightHandMaterial.material = _defaultMaterial;
+                _leftHandMaterial.material = _defaultMaterial;
             }
         }
 
