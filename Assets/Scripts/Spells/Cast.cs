@@ -20,9 +20,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [SerializeField] private bool _timerAim = true;
         [SerializeField] private float _castTimer = 0.75f;
 
-        internal event Action<Handedness> onSpellCastComplete;
-        
         private CancellationTokenSource _cancellationTokenSource;
+        private Material _defaultMaterial;
+
+        internal event Action<Handedness> onSpellCastComplete;
 
         private void Awake()
         {
@@ -35,6 +36,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             _rightHandData._chargeEffect.Stop();
             _leftHandData._chargeEffect.Stop();
+
+            _defaultMaterial = _rightHandData._material;
         }
 
         private void OnDestroy()
@@ -104,8 +107,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             GetSpellProjectile(handData);
             handData._renderer.materials[1].SetColor("_MainColor", _spellManager.DefaultColor);
+            handData._renderer.material = _defaultMaterial;
             handData._canCast = false;
-            
+
             RemoveVFXFromHand(handData);
         }
 
@@ -139,7 +143,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                 handData._isCasting = false;
                 handData._canCast = false;
                 handData._renderer.materials[1].SetColor("_MainColor", _spellManager.DefaultColor);
-                
+                handData._renderer.material = _defaultMaterial;
+
                 RemoveVFXFromHand(handData);
             }
         }
@@ -147,14 +152,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void RemoveVFXFromHand(HandData handData)
         {
             if (handData == null) return;
-            
+
             Handedness handIdentifier = handData == _leftHandData ? Handedness.Left : Handedness.Right;
 
-            Debug.Log("invoking");
             onSpellCastComplete?.Invoke(handIdentifier);
         }
-        
-        
+
         private void HandleSpellValidation(bool canCast)
         {
             _rightHandData._canCast = canCast;
@@ -177,6 +180,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             [SerializeField] internal VisualEffect _chargeEffect;
             [SerializeField] internal LineRenderer _lineRenderer;
             [SerializeField] internal Renderer _renderer;
+            [SerializeField] internal Material _material;
 
             internal Transform _spellPrefab;
             internal bool _canCast = false;
