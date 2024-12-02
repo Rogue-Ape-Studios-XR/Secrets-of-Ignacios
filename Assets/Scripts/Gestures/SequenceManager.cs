@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks;
 using RogueApeStudios.SecretsOfIgnacios.Spells;
 using System;
 using System.Collections.Generic;
@@ -16,11 +15,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         [SerializeField] private List<Gesture> _allGestures;
         [SerializeField] private bool _leftHandActive = false; // Only serialized for testing purposes
         [SerializeField] private bool _rightHandActive = false; // Only serialized for testing purposes
+        [SerializeField] private Material _defaultMaterial;
 
         private readonly List<Gesture> _validatedGestures = new();
         private CancellationTokenSource _cancellationTokenSource;
         private Gesture _currentGesture;
-        private Color _defaultColor;
         private HandShape _leftHandShape;
         private HandShape _rightHandShape;
         private bool _gestureValidated = false;
@@ -39,10 +38,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         private void Awake()
         {
             _cancellationTokenSource = new CancellationTokenSource();
+
             SpellManager.onSpellValidation += HandleOnSpellValidated;
             SpellManager.onNoSpellMatch += HandleOnSpellFailed;
-
-            _defaultColor = _rightHandMaterial.materials[1].GetColor("_MainColor");
         }
 
         private void OnDestroy()
@@ -85,8 +83,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
                     _validatedGestures[^1] != _currentGesture)
                 {
                     _validatedGestures.Add(_currentGesture);
+                    ChangeColor();
                     OnGestureRecognised?.Invoke(_validatedGestures);
-                    ChangeColor(_cancellationTokenSource.Token);
 
                     if (_validatedGestures.Count == 2)
                         onElementValidated?.Invoke(_currentGesture);
@@ -138,26 +136,14 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
             }
         }
 
-        private async void ChangeColor(CancellationToken token)
+        private void ChangeColor()
         {
-            try
+            if (_sequenceStarted)
             {
-                if (_sequenceStarted)
-                {
-                    float delay = 1;
-
-                    _rightHandMaterial.materials[1].SetColor("_MainColor", _currentGesture._color);
-                    _leftHandMaterial.materials[1].SetColor("_MainColor", _currentGesture._color);
-
-                    await UniTask.WaitForSeconds(delay, cancellationToken: token);
-
-                    _rightHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
-                    _leftHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
-                }
-            }
-            catch (OperationCanceledException)
-            {
-                Debug.LogError("ChangeColor was canceled");
+                _rightHandMaterial.materials[1].SetColor("_MainColor", _currentGesture._color);
+                _leftHandMaterial.materials[1].SetColor("_MainColor", _currentGesture._color);
+                _rightHandMaterial.material = _defaultMaterial;
+                _leftHandMaterial.material = _defaultMaterial;
             }
         }
 

@@ -174,12 +174,16 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             {
                 if (_currentSpell._duoSpell)
                 {
+                    _rightHandMaterial.material = _currentSpell._primaryConfig._handMaterial;
                     _rightHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._primaryConfig._handColor);
+                    _leftHandMaterial.material = _currentSpell._secondaryConfig._handMaterial;
                     _leftHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._secondaryConfig._handColor);
                 }
                 else
                 {
+                    _rightHandMaterial.material = _currentSpell._primaryConfig._handMaterial;
                     _rightHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._primaryConfig._handColor);
+                    _leftHandMaterial.material = _currentSpell._primaryConfig._handMaterial;
                     _leftHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._primaryConfig._handColor);
                 }
             }
