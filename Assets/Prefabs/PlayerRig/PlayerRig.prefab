@@ -4533,7 +4533,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 06d7681a10ade3e4bb59fa2832f059b6, type: 2}
   _leftHandActive: 0
   _rightHandActive: 0
-  _canQuickCast: 0
 --- !u!114 &7230881327965378576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4573,11 +4572,13 @@ MonoBehaviour:
     _chargeEffect: {fileID: 4188001325657448324}
     _lineRenderer: {fileID: 7870111497397786493}
     _renderer: {fileID: 5190050596421826637}
+    _material: {fileID: 2100000, guid: 455ef821a5429de4baeed61fa958acbc, type: 2}
   _leftHandData:
     _handTransform: {fileID: 6592100252739011824}
     _chargeEffect: {fileID: 5225205899516816616}
     _lineRenderer: {fileID: 4282778161722499494}
     _renderer: {fileID: 6425639629858156003}
+    _material: {fileID: 2100000, guid: 455ef821a5429de4baeed61fa958acbc, type: 2}
   _timerAim: 1
   _castTimer: 0.75
 --- !u!114 &8102834240813083181
@@ -4828,7 +4829,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 595455348356296548}
-  - {fileID: 4028798923375598415}
   m_Father: {fileID: 5618319229380993974}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3581357896987327226
@@ -5069,7 +5069,6 @@ Transform:
   m_Children:
   - {fileID: 8941831253149956754}
   - {fileID: 6862731404376648539}
-  - {fileID: 6592100252739011824}
   m_Father: {fileID: 7952623078665530892}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4180800289528635574
@@ -7742,12 +7741,12 @@ Transform:
   m_GameObject: {fileID: 3955136586606529668}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: 0, y: -0.0484, z: 0.0279}
+  m_LocalPosition: {x: 0, y: -0.06, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1866656110468498408}
-  m_Father: {fileID: 6679902487617635372}
+  m_Father: {fileID: 5344318416662896057}
   m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
 --- !u!120 &7870111497397786493
 LineRenderer:
@@ -8297,12 +8296,12 @@ Transform:
   m_GameObject: {fileID: 4183157556737122194}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: 0, y: -0.0484, z: 0.0279}
+  m_LocalPosition: {x: 0, y: -0.06, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2889284628556153633}
-  m_Father: {fileID: 8827492844492106989}
+  m_Father: {fileID: 2290160100037155449}
   m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
 --- !u!120 &4282778161722499494
 LineRenderer:
@@ -13060,8 +13059,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6045096554468781504}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: -0.2, y: 0, z: 0.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13071,8 +13070,9 @@ Transform:
   - {fileID: 7243708132834303056}
   - {fileID: 8532185343920208668}
   - {fileID: 6539779339458677588}
+  - {fileID: 6592100252739011824}
   m_Father: {fileID: 7952623078665530892}
-  m_LocalEulerAnglesHint: {x: -60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6056989845015881631
 GameObject:
   m_ObjectHideFlags: 0
@@ -14952,8 +14952,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6974070878286143061}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: 0.2, y: 0, z: 0.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14963,8 +14963,9 @@ Transform:
   - {fileID: 1817903700306105645}
   - {fileID: 4059899672652674919}
   - {fileID: 3029571781359024392}
+  - {fileID: 4028798923375598415}
   m_Father: {fileID: 5618319229380993974}
-  m_LocalEulerAnglesHint: {x: -60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6999250905156631071
 GameObject:
   m_ObjectHideFlags: 0
@@ -18524,6 +18525,10 @@ PrefabInstance:
       propertyPath: _palmR
       value: 
       objectReference: {fileID: 6679902487617635372}
+    - target: {fileID: 4879730454490477013, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
+      propertyPath: _castscript
+      value: 
+      objectReference: {fileID: 8835238771455875545}
     - target: {fileID: 4879730454490477013, guid: 04b5cfcbf3b018146a2f798f9d160597, type: 3}
       propertyPath: _sequenceManager
       value: 
