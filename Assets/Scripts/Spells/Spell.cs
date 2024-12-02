@@ -27,5 +27,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [SerializeField] internal bool _duoSpell;
         [SerializeField] internal HandConfig _primaryConfig;
         [SerializeField] internal HandConfig _secondaryConfig;
+        [SerializeField] internal bool _isUnlocked;
     }
 }
