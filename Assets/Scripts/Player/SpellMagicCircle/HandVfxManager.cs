@@ -5,6 +5,8 @@ using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.VFX;
+using NUnit.Framework.Internal;
+using RogueApeStudios.SecretsOfIgnacios.Services;
 using UnityEngine.XR.Hands;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
@@ -31,7 +33,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
         private VisualEffect _currentEffectR;
         private Gesture _lastGesture;
 
-
+        private SpellManager _spellManager;
+        
         //unitask things
 
         private CancellationTokenSource _cancellationTokenSource;
@@ -73,6 +76,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
             SpellManager.onNoSpellMatch += SpellManagerOnOnSpellFailed;
             _sequenceManager.onElementValidated += HandleElementRecognized;
             _castscript.onSpellCastComplete += DisableHandVFX;
+            _spellManager = ServiceLocator.GetService<SpellManager>();
             //subscribe to cast script's cast finished event (event on cast not implemented)
         }
 
@@ -102,15 +106,22 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
                 default:
                     if (gesture._visualEffectPrefab != null)
                     {
-                        r = Instantiate(gesture._visualEffectPrefab, _prefabContainerR.transform, false);
-                        l = Instantiate(gesture._visualEffectPrefab, _prefabContainerL.transform, false);
-                        _lastGesture = gesture;
-                        SetVFXContainerPositions();
+                       if (!_spellManager.IsSpellUnlockedForGesture(gesture))
+                       {    
+                           Debug.Log($"'{gesture.name}' is not unlocked"); 
+                           return;
+                       }
+                       r = Instantiate(gesture._visualEffectPrefab, _prefabContainerR.transform, false); 
+                       l = Instantiate(gesture._visualEffectPrefab, _prefabContainerL.transform, false); 
+                       _lastGesture = gesture; 
+                       SetVFXContainerPositions();
                     }
                     break;
             }
+
             if (r != null && l != null)
-            { //This sets a timer on the visual effect to destroy when it is done playing.
+            { 
+                //This sets a timer on the visual effect to destroy when it is done playing.
                 DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, r);
                 DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, l);
 
