@@ -66,11 +66,16 @@ namespace RogueApeStudios.SecretsOfIgnacios.Teleport
 
             if (_isTeleportActive && _teleportInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
             {
-                TeleportRequest request = new()
+                int LayerIgnoreRaycast = LayerMask.NameToLayer("Teleportable surface");
+
+                if (hit.transform.gameObject.layer == LayerIgnoreRaycast)
                 {
-                    destinationPosition = hit.point,
-                };
-                _teleportationProvider.QueueTeleportRequest(request);
+                    TeleportRequest request = new()
+                    {
+                        destinationPosition = hit.point,
+                    };
+                    _teleportationProvider.QueueTeleportRequest(request);
+                }
             }
 
             _cancellationTokenSourceTeleport.Cancel();
