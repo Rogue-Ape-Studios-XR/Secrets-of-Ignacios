@@ -4533,7 +4533,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 06d7681a10ade3e4bb59fa2832f059b6, type: 2}
   _leftHandActive: 0
   _rightHandActive: 0
-  _canQuickCast: 0
 --- !u!114 &7230881327965378576
 MonoBehaviour:
   m_ObjectHideFlags: 0
