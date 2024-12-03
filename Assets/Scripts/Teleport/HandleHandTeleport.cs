@@ -72,6 +72,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Teleport
                 };
                 _teleportationProvider.QueueTeleportRequest(request);
             }
+
+            _cancellationTokenSourceTeleport.Cancel();
+            _cancellationTokenSourceTeleport.Dispose();
+            _cancellationTokenSourceTeleport = new();
+
             EnableMovement(_cancellationTokenSource.Token);
 
         }
@@ -95,10 +100,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Teleport
             {
                 await UniTask.WaitForSeconds(_timeBeforeDisable, cancellationToken: token);
                 DeactivateTeleport();
-
-                _cancellationTokenSourceTeleport.Cancel();
-                _cancellationTokenSourceTeleport.Dispose();
-                _cancellationTokenSourceTeleport = new();
             }
             catch (OperationCanceledException)
             {
