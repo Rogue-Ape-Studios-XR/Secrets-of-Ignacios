@@ -24,7 +24,8 @@ MonoBehaviour:
     _position: {x: 0, y: 0, z: 0}
     _handEffect: {fileID: 0}
     _spellPrefab: {fileID: 8070988747970441051, guid: 9f087b21d92a7ae4abe0f370dd9af610, type: 3}
-    _handColor: {r: 1, g: 0.3810822, b: 0.10849059, a: 1}
+    _handMaterial: {fileID: 2100000, guid: c0790209a017c8b468b0e521aa03a646, type: 2}
+    _handColor: {r: 1, g: 0.3810822, b: 0.10849059, a: 0.3137255}
     _poolSize: 6
     _chargeEffect: {fileID: 0}
   _secondaryConfig:
@@ -33,6 +34,7 @@ MonoBehaviour:
     _position: {x: 0, y: 0, z: 0}
     _handEffect: {fileID: 0}
     _spellPrefab: {fileID: 0}
+    _handMaterial: {fileID: 0}
     _handColor: {r: 0, g: 0, b: 0, a: 0}
     _poolSize: 0
     _chargeEffect: {fileID: 0}

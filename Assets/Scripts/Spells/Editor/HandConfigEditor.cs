@@ -34,6 +34,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.Editor
             Rect castTypeRect;
             Rect handEffectRect;
             Rect spellPrefabRect;
+            Rect handMaterialRect;
             Rect handColorRect;
             Rect poolSizeRect;
             Rect chargeEffectRect;
@@ -45,9 +46,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.Editor
                 castTypeRect = new Rect(position.x, position.y + lineHeight, position.width, lineHeight);
                 handEffectRect = new Rect(position.x, position.y + 2 * lineHeight, position.width, lineHeight);
                 spellPrefabRect = new Rect(position.x, position.y + 3 * lineHeight, position.width, lineHeight);
-                handColorRect = new Rect(position.x, position.y + 4 * lineHeight, position.width, lineHeight);
-                poolSizeRect = new Rect(position.x, position.y + 5 * lineHeight, position.width, lineHeight);
-                chargeEffectRect = new Rect(position.x, position.y + 6 * lineHeight, position.width, lineHeight);
+                handMaterialRect = new Rect(position.x, position.y + 4 * lineHeight, position.width, lineHeight);
+                handColorRect = new Rect(position.x, position.y + 5 * lineHeight, position.width, lineHeight);
+                poolSizeRect = new Rect(position.x, position.y + 6 * lineHeight, position.width, lineHeight);
+                chargeEffectRect = new Rect(position.x, position.y + 7 * lineHeight, position.width, lineHeight);
             }
             else
             {
@@ -57,9 +59,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.Editor
                 positionRect = new Rect(position.x, position.y + 2 * lineHeight, position.width, lineHeight);
                 handEffectRect = new Rect(position.x, position.y + 3 * lineHeight, position.width, lineHeight);
                 spellPrefabRect = new Rect(position.x, position.y + 4 * lineHeight, position.width, lineHeight);
-                handColorRect = new Rect(position.x, position.y + 5 * lineHeight, position.width, lineHeight);
-                poolSizeRect = new Rect(position.x, position.y + 6 * lineHeight, position.width, lineHeight);
-                chargeEffectRect = new Rect(position.x, position.y + 7 * lineHeight, position.width, lineHeight);
+                handMaterialRect = new Rect(position.x, position.y + 5 * lineHeight, position.width, lineHeight);
+                handColorRect = new Rect(position.x, position.y + 6 * lineHeight, position.width, lineHeight);
+                poolSizeRect = new Rect(position.x, position.y + 7 * lineHeight, position.width, lineHeight);
+                chargeEffectRect = new Rect(position.x, position.y + 8 * lineHeight, position.width, lineHeight);
             }
 
             // Draw each field
@@ -75,6 +78,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.Editor
 
             EditorGUI.PropertyField(handEffectRect, property.FindPropertyRelative("_handEffect"));
             EditorGUI.PropertyField(spellPrefabRect, property.FindPropertyRelative("_spellPrefab"));
+            EditorGUI.PropertyField(handMaterialRect, property.FindPropertyRelative("_handMaterial"));
             EditorGUI.PropertyField(handColorRect, property.FindPropertyRelative("_handColor"));
             EditorGUI.PropertyField(poolSizeRect, property.FindPropertyRelative("_poolSize"));
             EditorGUI.PropertyField(chargeEffectRect, property.FindPropertyRelative("_chargeEffect"));
@@ -86,7 +90,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.Editor
         {
             // Adjust height based on whether _position is shown
             CastTypes castType = (CastTypes)property.FindPropertyRelative("_castType").enumValueIndex;
-            int extraHeight = (castType == CastTypes.Touch) ? 9 : 8; // One extra line for the header
+            int extraHeight = (castType == CastTypes.Touch) ? 10 : 9; // One extra line for the header
             return (EditorGUIUtility.singleLineHeight + 4f) * extraHeight;
         }
     }

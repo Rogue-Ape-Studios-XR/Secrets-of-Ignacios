@@ -1,13 +1,8 @@
-using UnityEngine;
-using RogueApeStudios.SecretsOfIgnacios.Spells;
-using RogueApeStudios.SecretsOfIgnacios.Gestures;
 using Cysharp.Threading.Tasks;
-using System.Threading;
+using RogueApeStudios.SecretsOfIgnacios.Gestures;
+using RogueApeStudios.SecretsOfIgnacios.Spells;
 using System;
 using System.Threading;
-using Cysharp.Threading.Tasks;
-using RogueApeStudios.SecretsOfIgnacios.Gestures;
-using RogueApeStudios.SecretsOfIgnacios.Spells;
 using UnityEngine;
 using UnityEngine.VFX;
 using NUnit.Framework.Internal;
@@ -25,16 +20,16 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 
 
         [SerializeField] private GameObject _prefabContainerL; // a container for the vfx. This is the one moving. This can be turned off with the public function
-        [SerializeField] private GameObject _prefabContainerR; 
-        [SerializeField] private Transform  _palmL; 
-        [SerializeField] private Transform  _palmR; 
-        [SerializeField] private GameObject _magicCircleTarget; 
+        [SerializeField] private GameObject _prefabContainerR;
+        [SerializeField] private Transform _palmL;
+        [SerializeField] private Transform _palmR;
+        [SerializeField] private GameObject _magicCircleTarget;
 
         [SerializeField] private SequenceManager _sequenceManager;
         [SerializeField] private Cast _castscript;
 
 
-        private VisualEffect _currentEffectL; 
+        private VisualEffect _currentEffectL;
         private VisualEffect _currentEffectR;
         private Gesture _lastGesture;
 
@@ -54,21 +49,21 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
             //unsubscribe
-            SpellManager.OnSpellValidation -= HandleCastRecognized;
-            SpellManager.OnSpellFailed -= SpellManagerOnOnSpellFailed;
-            _sequenceManager.OnElementValidated -= HandleElementRecognized;
-            
+            SpellManager.onSpellValidation -= HandleCastRecognized;
+            SpellManager.onNoSpellMatch -= SpellManagerOnOnSpellFailed;
+            _sequenceManager.onElementValidated -= HandleElementRecognized;
+
             _castscript.onSpellCastComplete -= DisableHandVFX;
             //unsubscribe from cast script's cast finished event (event on cast not implemented)
         }
 
         private void SpellManagerOnOnSpellFailed()
-        { 
-            if(_currentEffectL != null) 
-            { 
+        {
+            if (_currentEffectL != null)
+            {
                 _currentEffectL.Stop();
             }
-            if(_currentEffectR != null) 
+            if (_currentEffectR != null)
             {
                 _currentEffectR.Stop();
             }
@@ -77,9 +72,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
         void Start()
         {
             //subscribe!
-            SpellManager.OnSpellValidation += HandleCastRecognized;
-            SpellManager.OnSpellFailed += SpellManagerOnOnSpellFailed;
-            _sequenceManager.OnElementValidated += HandleElementRecognized;
+            SpellManager.onSpellValidation += HandleCastRecognized;
+            SpellManager.onNoSpellMatch += SpellManagerOnOnSpellFailed;
+            _sequenceManager.onElementValidated += HandleElementRecognized;
             _castscript.onSpellCastComplete += DisableHandVFX;
             _spellManager = ServiceLocator.GetService<SpellManager>();
             //subscribe to cast script's cast finished event (event on cast not implemented)
@@ -94,11 +89,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
             {
                 case HandShape.Start:
                     //disable all hand effects
-                    if(_currentEffectL != null)
+                    if (_currentEffectL != null)
                     {
                         _currentEffectL.Stop();
                     }
-                    if(_currentEffectR != null)
+                    if (_currentEffectR != null)
                     {
                         _currentEffectR.Stop();
                     }
@@ -123,9 +118,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
                     }
                     break;
             }
-         
-            
-            if (r != null && l != null) { //This sets a timer on the visual effect to destroy when it is done playing.
+
+            if (r != null && l != null)
+            { 
+                //This sets a timer on the visual effect to destroy when it is done playing.
                 DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, r);
                 DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, l);
 
