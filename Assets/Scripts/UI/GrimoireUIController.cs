@@ -11,11 +11,27 @@ namespace RogueApeStudios.SecretsOfIgnacios
         private GameObject _grimoire;
 
         [SerializeField]
+        private GameObject _braceletbutton;
+
+        [SerializeField]
         private GameObject _player; //camera offset
 
 
         [SerializeField]
         private GameObject[] _chapters;
+
+        private bool _wristGaze = false;
+        private bool _headGaze = false;
+
+        public void WristHover(bool state)
+        {
+            _wristGaze = state;
+        }
+
+        public void HeadHover(bool state)
+        {
+            _headGaze = state;
+        }
 
         public void ActivateChapter(int chapterNum)
         {
@@ -55,6 +71,18 @@ namespace RogueApeStudios.SecretsOfIgnacios
                 _grimoireActive = false;
                 _grimoire.SetActive(false);
             }*/
+        }
+
+        private void Update()
+        {
+            if (_wristGaze && _headGaze)
+            {
+                _braceletbutton.SetActive(true);
+            }
+            else
+            {
+                _braceletbutton.SetActive(false);
+            }
         }
     }
 }
