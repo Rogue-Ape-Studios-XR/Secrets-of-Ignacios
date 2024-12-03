@@ -15,14 +15,17 @@ namespace RogueApeStudios.SecretsOfIgnacios.Teleport
         // This is the "Teleport" gameobject under the "Locomotion" gameobject in the XROrigin
         [SerializeField] private GameObject _interactorObject;
         [SerializeField] private AlternateMovement _alternateMovement;
+        [SerializeField] private float _timeBeforeDisable = 5f;
 
         private float _enableMovementDelay = 0.1f;
         private bool _isTeleportActive = false;
         private CancellationTokenSource _cancellationTokenSource;
+        private CancellationTokenSource _cancellationTokenSourceTeleport;
 
         private void Awake()
         {
             _cancellationTokenSource = new CancellationTokenSource();
+            _cancellationTokenSourceTeleport = new CancellationTokenSource();
         }
 
         private void Start()
@@ -34,6 +37,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Teleport
         {
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
+            _cancellationTokenSourceTeleport.Cancel();
+            _cancellationTokenSourceTeleport.Dispose();
         }
 
         public void ActivateTeleport()
@@ -42,6 +47,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Teleport
             {
                 _interactorObject.SetActive(true);
                 _isTeleportActive = true;
+                DisableTimer(_cancellationTokenSourceTeleport.Token);
             }
         }
 
@@ -60,12 +66,22 @@ namespace RogueApeStudios.SecretsOfIgnacios.Teleport
 
             if (_isTeleportActive && _teleportInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
             {
-                TeleportRequest request = new()
+                int LayerIgnoreRaycast = LayerMask.NameToLayer("Teleportable surface");
+
+                if (hit.transform.gameObject.layer == LayerIgnoreRaycast)
                 {
-                    destinationPosition = hit.point,
-                };
-                _teleportationProvider.QueueTeleportRequest(request);
+                    TeleportRequest request = new()
+                    {
+                        destinationPosition = hit.point,
+                    };
+                    _teleportationProvider.QueueTeleportRequest(request);
+                }
             }
+
+            _cancellationTokenSourceTeleport.Cancel();
+            _cancellationTokenSourceTeleport.Dispose();
+            _cancellationTokenSourceTeleport = new();
+
             EnableMovement(_cancellationTokenSource.Token);
 
         }
@@ -76,6 +92,19 @@ namespace RogueApeStudios.SecretsOfIgnacios.Teleport
             {
                 await UniTask.WaitForSeconds(_enableMovementDelay, cancellationToken: token);
                 _alternateMovement.enabled = true;
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.LogError("EnableMovement was canceled");
+            }
+        }
+
+        private async void DisableTimer(CancellationToken token)
+        {
+            try
+            {
+                await UniTask.WaitForSeconds(_timeBeforeDisable, cancellationToken: token);
+                DeactivateTeleport();
             }
             catch (OperationCanceledException)
             {
