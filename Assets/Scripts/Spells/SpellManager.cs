@@ -1,10 +1,10 @@
 using Cysharp.Threading.Tasks;
 using RogueApeStudios.SecretsOfIgnacios.Gestures;
+using RogueApeStudios.SecretsOfIgnacios.Progression;
+using RogueApeStudios.SecretsOfIgnacios.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using RogueApeStudios.SecretsOfIgnacios.Progression;
-using RogueApeStudios.SecretsOfIgnacios.Services;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Spells
@@ -46,23 +46,22 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void OnEnable()
         {
             _sequenceManager.OnGestureRecognised += CheckSequence;
-            _sequenceManager.OnReset += HandleReset;
-            _sequenceManager.OnQuickCast += HandleOnQuickCast;
+            _sequenceManager.onReset += HandleReset;
+            _sequenceManager.onQuickCast += HandleOnQuickCast;
             ProgressionManager.OnProgressionEvent += HandleProgressionEvent;
         }
 
         private void OnDestroy()
         {
             _sequenceManager.OnGestureRecognised -= CheckSequence;
-            _sequenceManager.OnSequenceCreated -= ValidateSequence;
-            _sequenceManager.OnReset -= HandleReset;
+            _sequenceManager.onReset -= HandleReset;
             ProgressionManager.OnProgressionEvent += HandleProgressionEvent;
 
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
         }
 
-       private void HandleProgressionEvent(ProgressionData data)
+        private void HandleProgressionEvent(ProgressionData data)
         {
             if (data.Type == ProgressionType.SpellUnlock && data.Data is SpellUnlockData spellData)
             {
@@ -73,8 +72,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             {
                 Debug.LogError("Invalid data received for SpellUnlock event.");
             }
-        } 
-        
+        }
+
         public bool IsSpellUnlockedForGesture(Gesture gesture)
         {
             foreach (var spell in _availableSpells)
@@ -86,34 +85,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             }
             return false;
         }
-        
-        public void ValidateSequence()
-        {
-            bool spellFound = false;
 
-            foreach (var spell in _availableSpells)
-            {
-                if (!spell._isUnlocked)
-                {
-                    continue;
-                }
-                if (spell._gestureSequence.Count == _sequenceManager.ValidatedGestures.Count &&
-                    spell._gestureSequence.SequenceEqual(_sequenceManager.ValidatedGestures))
-                {
-                    SetSpell(spell);
-                    spellFound = true;
-                    break;
-                }
- 
-            }
-        }
-        
         public void CheckSequence(List<Gesture> performedGestures)
         {
             Spell exactMatch = GetExactMatchingSpell(performedGestures);
             bool hasPartialMatch = HasPartialMatchingSpell(performedGestures);
 
-            if (exactMatch != null)
+            if (exactMatch != null && exactMatch._isUnlocked)
             {
                 SetSpell(exactMatch);
                 onSpellValidation?.Invoke(true);
@@ -176,8 +154,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             SetHandEffects(true);
         }
 
-       
-
         private async void SpellWrongIndication(CancellationToken token)
         {
             try
@@ -226,7 +202,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             if (!spell._isUnlocked)
                 spell._isUnlocked = true;
         }
-      
+
         private void SetHandEffects(bool isDefaultColor)
         {
             if (isDefaultColor)
