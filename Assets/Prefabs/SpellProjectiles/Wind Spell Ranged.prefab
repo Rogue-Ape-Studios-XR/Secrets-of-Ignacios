@@ -286,7 +286,7 @@ MonoBehaviour:
   _pool: 3
   _ignoreLayers:
     serializedVersion: 2
-    m_Bits: 552
+    m_Bits: 2600
 --- !u!114 &-2397331427679202286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   _speed: 3
   _ignoreLayers:
     serializedVersion: 2
-    m_Bits: 552
+    m_Bits: 2600
 --- !u!1 &7559467922833788076
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [SerializeField] internal Vector3 _position;
         [SerializeField] internal VisualEffect _handEffect;
         [SerializeField] internal GameObject _spellPrefab;
+        [SerializeField] internal Material _handMaterial;
         [SerializeField] internal Color _handColor;
         [SerializeField] internal int _poolSize;
         [SerializeField] internal VisualEffect _chargeEffect;
@@ -27,5 +28,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [SerializeField] internal bool _duoSpell;
         [SerializeField] internal HandConfig _primaryConfig;
         [SerializeField] internal HandConfig _secondaryConfig;
+        [SerializeField] internal bool _isUnlocked;
     }
 }

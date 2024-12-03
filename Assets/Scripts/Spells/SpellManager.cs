@@ -1,7 +1,9 @@
 using Cysharp.Threading.Tasks;
 using RogueApeStudios.SecretsOfIgnacios.Gestures;
+using RogueApeStudios.SecretsOfIgnacios.Progression;
+using RogueApeStudios.SecretsOfIgnacios.Services;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
@@ -11,7 +13,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
     {
         [Header("References")]
         [SerializeField] private SequenceManager _sequenceManager;
-
+        [SerializeField] private ServiceLocator _serviceLocator;
         [Header("Hand Objects")]
         [SerializeField] private Renderer _rightHandMaterial;
         [SerializeField] private Renderer _leftHandMaterial;
@@ -19,20 +21,20 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [Header("Spells")]
         [SerializeField] private Spell[] _availableSpells;
 
-
         private Spell _currentSpell;
         private Spell _lastSpell;
         private CancellationTokenSource _cancellationTokenSource;
         private Color _defaultColor;
 
-        public static event Action<bool> OnSpellValidation;
-        public static event Action OnSpellFailed;
+        public static event Action<bool> onSpellValidation;
+        public static event Action onNoSpellMatch;
 
         internal Spell CurrentSpell => _currentSpell;
         internal Color DefaultColor => _defaultColor;
 
         private void Awake()
         {
+            _serviceLocator.RegisterService(this);
             _cancellationTokenSource = new CancellationTokenSource();
         }
 
@@ -43,48 +45,112 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         private void OnEnable()
         {
-            _sequenceManager.OnSequenceCreated += ValidateSequence;
-            _sequenceManager.OnReset += HandleReset;
-            _sequenceManager.OnQuickCast += HandleOnQuickCast;
+            _sequenceManager.OnGestureRecognised += CheckSequence;
+            _sequenceManager.onReset += HandleReset;
+            _sequenceManager.onQuickCast += HandleOnQuickCast;
+            ProgressionManager.OnProgressionEvent += HandleProgressionEvent;
         }
 
         private void OnDestroy()
         {
-            _sequenceManager.OnSequenceCreated -= ValidateSequence;
-            _sequenceManager.OnReset -= HandleReset;
+            _sequenceManager.OnGestureRecognised -= CheckSequence;
+            _sequenceManager.onReset -= HandleReset;
+            ProgressionManager.OnProgressionEvent += HandleProgressionEvent;
 
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
         }
 
-        public void ValidateSequence()
+        private void HandleProgressionEvent(ProgressionData data)
         {
-            bool spellFound = false;
-
-            foreach (var spell in _availableSpells)
-                if (spell._gestureSequence.Count == _sequenceManager.ValidatedGestures.Count &&
-                    spell._gestureSequence.SequenceEqual(_sequenceManager.ValidatedGestures))
-                {
-                    SetSpell(spell);
-                    spellFound = true;
-                    break;
-                }
-
-            if (!spellFound)
+            if (data.Type == ProgressionType.SpellUnlock && data.Data is SpellUnlockData spellData)
             {
-                _currentSpell = null;
-                OnSpellFailed?.Invoke();
-                SpellWrongIndication(_cancellationTokenSource.Token);
+                Debug.Log($"Spell '{spellData.Spell.name}' has been unlocked!");
+                UnlockSpell(spellData.Spell);
             }
             else
-                OnSpellValidation?.Invoke(spellFound);
+            {
+                Debug.LogError("Invalid data received for SpellUnlock event.");
+            }
+        }
+
+        public bool IsSpellUnlockedForGesture(Gesture gesture)
+        {
+            foreach (var spell in _availableSpells)
+            {
+                if (spell._gestureSequence.Contains(gesture))
+                {
+                    return spell._isUnlocked;
+                }
+            }
+            return false;
+        }
+
+        public void CheckSequence(List<Gesture> performedGestures)
+        {
+            Spell exactMatch = GetExactMatchingSpell(performedGestures);
+            bool hasPartialMatch = HasPartialMatchingSpell(performedGestures);
+
+            if (exactMatch != null && exactMatch._isUnlocked)
+            {
+                SetSpell(exactMatch);
+                onSpellValidation?.Invoke(true);
+            }
+            else if (!hasPartialMatch)
+            {
+                _currentSpell = null;
+                SpellWrongIndication(_cancellationTokenSource.Token);
+                onNoSpellMatch?.Invoke();
+            }
+            // If there is a partial match, do nothing and wait for more gestures.
+        }
+
+        private Spell GetExactMatchingSpell(List<Gesture> performedGestures)
+        {
+            foreach (Spell spell in _availableSpells)
+                if (IsExactMatch(spell, performedGestures))
+                    return spell;
+
+            return null;
+        }
+
+        private bool HasPartialMatchingSpell(List<Gesture> performedGestures)
+        {
+            foreach (Spell spell in _availableSpells)
+                if (IsPartialMatch(spell, performedGestures))
+                    return true;
+
+            return false;
+        }
+
+        private bool IsExactMatch(Spell spell, List<Gesture> performedGestures)
+        {
+            if (performedGestures.Count != spell._gestureSequence.Count)
+                return false;
+
+            for (int i = 0; i < spell._gestureSequence.Count; i++)
+                if (spell._gestureSequence[i] != performedGestures[i])
+                    return false;
+
+            return true;
+        }
+
+        private bool IsPartialMatch(Spell spell, List<Gesture> performedGestures)
+        {
+            if (performedGestures.Count >= spell._gestureSequence.Count)
+                return false;
+
+            for (int i = 0; i < performedGestures.Count; i++)
+                if (spell._gestureSequence[i] != performedGestures[i])
+                    return false;
+
+            return true;
         }
 
         private void SetSpell(Spell spell)
         {
             _currentSpell = spell;
             _lastSpell = spell;
-
             SetHandEffects(true);
         }
 
@@ -119,7 +185,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
             SetHandEffects(false);
 
-            OnSpellValidation?.Invoke(false);
+            onSpellValidation?.Invoke(false);
         }
 
         private void HandleOnQuickCast()
@@ -128,7 +194,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
             SetHandEffects(true);
 
-            OnSpellValidation?.Invoke(true);
+            onSpellValidation?.Invoke(true);
+        }
+
+        private void UnlockSpell(Spell spell)
+        {
+            if (!spell._isUnlocked)
+                spell._isUnlocked = true;
         }
 
         private void SetHandEffects(bool isDefaultColor)
@@ -137,12 +209,16 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             {
                 if (_currentSpell._duoSpell)
                 {
+                    _rightHandMaterial.material = _currentSpell._primaryConfig._handMaterial;
                     _rightHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._primaryConfig._handColor);
+                    _leftHandMaterial.material = _currentSpell._secondaryConfig._handMaterial;
                     _leftHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._secondaryConfig._handColor);
                 }
                 else
                 {
+                    _rightHandMaterial.material = _currentSpell._primaryConfig._handMaterial;
                     _rightHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._primaryConfig._handColor);
+                    _leftHandMaterial.material = _currentSpell._primaryConfig._handMaterial;
                     _leftHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._primaryConfig._handColor);
                 }
             }
