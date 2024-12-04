@@ -4,7 +4,6 @@ using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.VFX;
-using UnityEngine.XR.Hands;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Spells
 {
@@ -23,7 +22,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private CancellationTokenSource _cancellationTokenSource;
         private Material _defaultMaterial;
 
-        internal event Action<Handedness> onSpellCastComplete;
+        internal event Action<HandData> onSpellCastComplete;
 
         private void Awake()
         {
@@ -153,9 +152,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             if (handData == null) return;
 
-            Handedness handIdentifier = handData == _leftHandData ? Handedness.Left : Handedness.Right;
-
-            onSpellCastComplete?.Invoke(handIdentifier);
+            onSpellCastComplete?.Invoke(handData);
         }
 
         private void HandleSpellValidation(bool canCast)

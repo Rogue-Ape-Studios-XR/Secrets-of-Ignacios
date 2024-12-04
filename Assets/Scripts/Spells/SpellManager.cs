@@ -1,5 +1,5 @@
-using Cysharp.Threading.Tasks;
 using RogueApeStudios.SecretsOfIgnacios.Gestures;
+using RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle;
 using RogueApeStudios.SecretsOfIgnacios.Progression;
 using RogueApeStudios.SecretsOfIgnacios.Services;
 using System;
@@ -14,6 +14,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [Header("References")]
         [SerializeField] private SequenceManager _sequenceManager;
         [SerializeField] private ServiceLocator _serviceLocator;
+        [SerializeField] private HandVfxManager _vfxManager;
         [Header("Hand Objects")]
         [SerializeField] private Renderer _rightHandMaterial;
         [SerializeField] private Renderer _leftHandMaterial;
@@ -74,18 +75,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             }
         }
 
-        public bool IsSpellUnlockedForGesture(Gesture gesture)
-        {
-            foreach (var spell in _availableSpells)
-            {
-                if (spell._gestureSequence.Contains(gesture))
-                {
-                    return spell._isUnlocked;
-                }
-            }
-            return false;
-        }
-
         public void CheckSequence(List<Gesture> performedGestures)
         {
             Spell exactMatch = GetExactMatchingSpell(performedGestures);
@@ -94,12 +83,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             if (exactMatch != null && exactMatch._isUnlocked)
             {
                 SetSpell(exactMatch);
-                onSpellValidation?.Invoke(true);
+                _vfxManager.HandleCastRecognized(true);
             }
             else if (!hasPartialMatch)
             {
                 _currentSpell = null;
-                SpellWrongIndication(_cancellationTokenSource.Token);
+                _vfxManager.SpellWrongIndication(_cancellationTokenSource.Token);
                 onNoSpellMatch?.Invoke();
             }
             // If there is a partial match, do nothing and wait for more gestures.
@@ -151,39 +140,15 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             _currentSpell = spell;
             _lastSpell = spell;
-            SetHandEffects(true);
+            _vfxManager.SetHandEffects(true, _currentSpell);
         }
 
-        private async void SpellWrongIndication(CancellationToken token)
-        {
-            try
-            {
-                float delay = 0.5f;
-                int loopAmount = 2;
-
-                for (int i = 0; i < loopAmount; i++)
-                {
-                    await UniTask.WaitForSeconds(delay, cancellationToken: token);
-
-                    _rightHandMaterial.materials[1].SetColor("_MainColor", Color.red);
-                    _leftHandMaterial.materials[1].SetColor("_MainColor", Color.red);
-
-                    await UniTask.WaitForSeconds(delay, cancellationToken: token);
-
-                    SetHandEffects(false);
-                }
-            }
-            catch (OperationCanceledException)
-            {
-                Debug.LogError("SpellWrongIndication was canceled");
-            }
-        }
 
         internal void HandleReset()
         {
             _currentSpell = null;
 
-            SetHandEffects(false);
+            _vfxManager.SetHandEffects(false, _currentSpell);
 
             onSpellValidation?.Invoke(false);
         }
@@ -192,7 +157,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             _currentSpell = _lastSpell;
 
-            SetHandEffects(true);
+            _vfxManager.SetHandEffects(true, _currentSpell);
 
             onSpellValidation?.Invoke(true);
         }
@@ -201,32 +166,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             if (!spell._isUnlocked)
                 spell._isUnlocked = true;
-        }
-
-        private void SetHandEffects(bool isDefaultColor)
-        {
-            if (isDefaultColor)
-            {
-                if (_currentSpell._duoSpell)
-                {
-                    _rightHandMaterial.material = _currentSpell._primaryConfig._handMaterial;
-                    _rightHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._primaryConfig._handColor);
-                    _leftHandMaterial.material = _currentSpell._secondaryConfig._handMaterial;
-                    _leftHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._secondaryConfig._handColor);
-                }
-                else
-                {
-                    _rightHandMaterial.material = _currentSpell._primaryConfig._handMaterial;
-                    _rightHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._primaryConfig._handColor);
-                    _leftHandMaterial.material = _currentSpell._primaryConfig._handMaterial;
-                    _leftHandMaterial.materials[1].SetColor("_MainColor", _currentSpell._primaryConfig._handColor);
-                }
-            }
-            else
-            {
-                _rightHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
-                _leftHandMaterial.materials[1].SetColor("_MainColor", _defaultColor);
-            }
         }
     }
 }

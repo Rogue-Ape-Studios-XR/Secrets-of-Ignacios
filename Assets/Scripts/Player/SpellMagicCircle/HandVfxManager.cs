@@ -5,9 +5,6 @@ using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.VFX;
-using NUnit.Framework.Internal;
-using RogueApeStudios.SecretsOfIgnacios.Services;
-using UnityEngine.XR.Hands;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 {
@@ -23,19 +20,19 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
         [SerializeField] private GameObject _prefabContainerR;
         [SerializeField] private Transform _palmL;
         [SerializeField] private Transform _palmR;
-        [SerializeField] private GameObject _magicCircleTarget;
+        [SerializeField] private Transform _magicCircleTarget;
 
         [SerializeField] private SequenceManager _sequenceManager;
         [SerializeField] private Cast _castscript;
 
+        private HandData _handDataRight;
+        private HandData _handDataLeft;
 
         private VisualEffect _currentEffectL;
         private VisualEffect _currentEffectR;
         private Gesture _lastGesture;
 
-        private SpellManager _spellManager;
-        
-        //unitask things
+        private Color _defaultColor;
 
         private CancellationTokenSource _cancellationTokenSource;
 
@@ -44,43 +41,89 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
             _cancellationTokenSource = new CancellationTokenSource();
         }
 
+        private void OnEnable()
+        {
+            SpellManager.onSpellValidation += HandleCastRecognized;
+            SpellManager.onNoSpellMatch += SpellManagerOnOnSpellFailed;
+            //_sequenceManager.onElementValidated += HandleElementRecognized;
+            //_castscript.onSpellCastComplete += DisableHandVFX;
+        }
+
         private void OnDestroy()
         {
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
-            //unsubscribe
+
             SpellManager.onSpellValidation -= HandleCastRecognized;
             SpellManager.onNoSpellMatch -= SpellManagerOnOnSpellFailed;
-            _sequenceManager.onElementValidated -= HandleElementRecognized;
+            //_sequenceManager.onElementValidated -= HandleElementRecognized;
+            //_castscript.onSpellCastComplete -= DisableHandVFX;
+        }
 
-            _castscript.onSpellCastComplete -= DisableHandVFX;
-            //unsubscribe from cast script's cast finished event (event on cast not implemented)
+        private void Start()
+        {
+            _defaultColor = _handDataRight._renderer.materials[1].GetColor("_MainColor");
         }
 
         private void SpellManagerOnOnSpellFailed()
         {
-            if (_currentEffectL != null)
-            {
-                _currentEffectL.Stop();
-            }
-            if (_currentEffectR != null)
-            {
-                _currentEffectR.Stop();
-            }
+            DisableBothHandEffects();
+            SpellWrongIndication(_cancellationTokenSource.Token);
         }
 
-        void Start()
+        internal async void SpellWrongIndication(CancellationToken token)
         {
-            //subscribe!
-            SpellManager.onSpellValidation += HandleCastRecognized;
-            SpellManager.onNoSpellMatch += SpellManagerOnOnSpellFailed;
-            _sequenceManager.onElementValidated += HandleElementRecognized;
-            _castscript.onSpellCastComplete += DisableHandVFX;
-            _spellManager = ServiceLocator.GetService<SpellManager>();
-            //subscribe to cast script's cast finished event (event on cast not implemented)
+            try
+            {
+                float delay = 0.5f;
+                int loopAmount = 2;
+
+                for (int i = 0; i < loopAmount; i++)
+                {
+                    await UniTask.WaitForSeconds(delay, cancellationToken: token);
+
+                    _handDataRight._renderer.materials[1].SetColor("_MainColor", Color.red);
+                    _handDataLeft._renderer.materials[1].SetColor("_MainColor", Color.red);
+
+                    await UniTask.WaitForSeconds(delay, cancellationToken: token);
+
+                    _handDataRight._renderer.materials[1].SetColor("_MainColor", _defaultColor);
+                    _handDataLeft._renderer.materials[1].SetColor("_MainColor", _defaultColor);
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.LogError("SpellWrongIndication was canceled");
+            }
         }
 
-        void HandleElementRecognized(Gesture gesture)
+        internal void SetHandEffects(bool isDefaultColor, Spell currentSpell)
+        {
+            if (isDefaultColor)
+            {
+                if (currentSpell._duoSpell)
+                {
+                    _handDataRight._material = currentSpell._primaryConfig._handMaterial;
+                    _handDataRight._renderer.materials[1].SetColor("_MainColor", currentSpell._primaryConfig._handColor);
+                    _handDataLeft._material = currentSpell._secondaryConfig._handMaterial;
+                    _handDataLeft._renderer.materials[1].SetColor("_MainColor", currentSpell._secondaryConfig._handColor);
+                }
+                else
+                {
+                    _handDataRight._material = currentSpell._primaryConfig._handMaterial;
+                    _handDataRight._renderer.materials[1].SetColor("_MainColor", currentSpell._primaryConfig._handColor);
+                    _handDataLeft._material = currentSpell._primaryConfig._handMaterial;
+                    _handDataLeft._renderer.materials[1].SetColor("_MainColor", currentSpell._primaryConfig._handColor);
+                }
+            }
+            else
+            {
+                _handDataRight._renderer.materials[1].SetColor("_MainColor", _defaultColor);
+                _handDataLeft._renderer.materials[1].SetColor("_MainColor", _defaultColor);
+            }
+        }
+
+        internal void HandleElementRecognized(Gesture gesture)
         {
             GameObject r = null;
             GameObject l = null;
@@ -88,16 +131,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
             switch (gesture._rightHandShape)
             {
                 case HandShape.Start:
-                    //disable all hand effects
-                    if (_currentEffectL != null)
-                    {
-                        _currentEffectL.Stop();
-                    }
-                    if (_currentEffectR != null)
-                    {
-                        _currentEffectR.Stop();
-                    }
-
+                    DisableBothHandEffects();
                     break;
                 case HandShape.QuickCast:
                     // effect should be at hands and play there instantly
@@ -106,21 +140,21 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
                 default:
                     if (gesture._visualEffectPrefab != null)
                     {
-                       if (!_spellManager.IsSpellUnlockedForGesture(gesture))
-                       {    
-                           Debug.Log($"'{gesture.name}' is not unlocked"); 
-                           return;
-                       }
-                       r = Instantiate(gesture._visualEffectPrefab, _prefabContainerR.transform, false); 
-                       l = Instantiate(gesture._visualEffectPrefab, _prefabContainerL.transform, false); 
-                       _lastGesture = gesture; 
-                       SetVFXContainerPositions();
+                        //if (!_spellManager.IsSpellUnlockedForGesture(gesture))
+                        //{
+                        //    Debug.Log($"'{gesture.name}' is not unlocked");
+                        //    return;
+                        //}
+                        r = Instantiate(gesture._visualEffectPrefab, _prefabContainerR.transform, false);
+                        l = Instantiate(gesture._visualEffectPrefab, _prefabContainerL.transform, false);
+                        _lastGesture = gesture;
+                        SetVFXContainerPositions();
                     }
                     break;
             }
 
             if (r != null && l != null)
-            { 
+            {
                 //This sets a timer on the visual effect to destroy when it is done playing.
                 DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, r);
                 DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, l);
@@ -145,7 +179,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
             }
         }
 
-        private void HandleQuickCast() //will subscribe to quick cast event
+        public void HandleQuickCast() //will subscribe to quick cast event
         {
             if (_lastGesture != null && _lastGesture._visualEffectPrefab != null)
             {
@@ -174,42 +208,57 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
                     _currentEffectL = visuall;
                 }
 
-                MoveVfxToHand(_cancellationTokenSource.Token, _prefabContainerR, _palmR);
-                MoveVfxToHand(_cancellationTokenSource.Token, _prefabContainerL, _palmL);
+                MoveVfxToHand(_cancellationTokenSource.Token,
+                    _handDataRight._prefabContainerTransform,
+                    _handDataRight._palm);
+                MoveVfxToHand(_cancellationTokenSource.Token,
+                    _handDataLeft._prefabContainerTransform,
+                    _handDataLeft._palm);
             }
         }
 
-        private void DisableHandVFX(Handedness hand)
+        private void DisableHandVFX(HandData hand)
         {
-            if (hand == Handedness.Left && _currentEffectL != null)
-            {
-                _currentEffectL.Stop();
-            }
-            else if (hand == Handedness.Right && _currentEffectR != null)
-            {
-                _currentEffectR.Stop();
-            }
+            if (hand._currentEffect != null)
+                hand._currentEffect.Stop();
         }
 
-        private async void MoveVfxToHand(CancellationToken token, GameObject effect, Transform dest)
+        private void DisableBothHandEffects()
         {
-            //remove transform so it goes to world
-            effect.transform.parent = null;
-            // loop lerp
-            for (int i = 0; i < 10; i++)
-            {
-                await UniTask.WaitForSeconds(0.03f);
-                effect.transform.position = Vector3.Lerp(effect.transform.position, dest.position, 0.45f);
-            }
-            // add new transform of hand
-            effect.transform.parent = dest;
-            effect.transform.localPosition = Vector3.zero;
+            if (_handDataRight != null)
+                _handDataRight._currentEffect.Stop();
+            if (_handDataLeft != null)
+                _handDataLeft._currentEffect.Stop();
+        }
 
-            //if last gesture was earth, stop the vfx (so the touch spell works)
-            if (_lastGesture != null && _lastGesture._rightHandShape == HandShape.Earth)
+        private async void MoveVfxToHand(CancellationToken token, Transform effect, Transform dest)
+        {
+            try
             {
-                _currentEffectL.Stop();
-                _currentEffectR.Stop();
+                float delay = 0.03f;
+
+                //remove transform so it goes to world
+                effect.parent = null;
+                // loop lerp
+                for (int i = 0; i < 10; i++)
+                {
+                    await UniTask.WaitForSeconds(delay, cancellationToken: token);
+                    effect.position = Vector3.Lerp(effect.position, dest.position, 0.45f);
+                }
+                // add new transform of hand
+                effect.parent = dest;
+                effect.localPosition = Vector3.zero;
+
+                //if last gesture was earth, stop the vfx (so the touch spell works)
+                if (_lastGesture != null && _lastGesture._rightHandShape == HandShape.Earth)
+                {
+                    _currentEffectL.Stop();
+                    _currentEffectR.Stop();
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.LogError("MoveVfxToHand was canceled");
             }
         }
 
@@ -232,24 +281,22 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 
         private void SetVFXContainerPositions()
         {
-            _prefabContainerR.transform.parent = _magicCircleTarget.transform;
-            _prefabContainerL.transform.parent = _magicCircleTarget.transform;
-            _prefabContainerR.transform.localPosition = Vector3.zero;
-            _prefabContainerL.transform.localPosition = Vector3.zero;
-            _prefabContainerR.SetActive(true);
+            _handDataRight._prefabContainerTransform.parent = _magicCircleTarget;
+            _handDataLeft._prefabContainerTransform.parent = _magicCircleTarget;
+            _handDataRight._prefabContainerTransform.localPosition = Vector3.zero;
+            _handDataLeft._prefabContainerTransform.localPosition = Vector3.zero;
+            _handDataRight._prefabContainer.SetActive(true);
         }
 
-        void HandleCastRecognized(bool recognized)
+        internal void HandleCastRecognized(bool recognized)
         {
             //activate the second vfx and move the current vfx to the hands
+            //vfx in the magic circle, make a separate vfx in the magic circle and enable both right and left container
             _prefabContainerL.SetActive(true);
 
-            MoveVfxToHand(_cancellationTokenSource.Token, _prefabContainerR, _palmR);
-            MoveVfxToHand(_cancellationTokenSource.Token, _prefabContainerL, _palmL);
-
+            MoveVfxToHand(_cancellationTokenSource.Token, _handDataRight._prefabContainerTransform, _palmR);
+            MoveVfxToHand(_cancellationTokenSource.Token, _handDataLeft._prefabContainerTransform, _palmL);
         }
-
     }
-
 }
 

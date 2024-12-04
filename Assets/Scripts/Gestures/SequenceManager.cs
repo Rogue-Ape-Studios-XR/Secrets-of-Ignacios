@@ -1,3 +1,4 @@
+using RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle;
 using RogueApeStudios.SecretsOfIgnacios.Spells;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
 {
     internal class SequenceManager : MonoBehaviour
     {
+        [SerializeField] private HandVfxManager _vfxManager;
+
         [SerializeField] private Transform _rightHand;
         [SerializeField] private Transform _leftHand;
         [SerializeField] private Renderer _rightHandMaterial;
@@ -87,7 +90,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
                     OnGestureRecognised?.Invoke(_validatedGestures);
 
                     if (_validatedGestures.Count == 2)
-                        onElementValidated?.Invoke(_currentGesture);
+                        _vfxManager.HandleElementRecognized(_currentGesture);
                 }
             }
 
