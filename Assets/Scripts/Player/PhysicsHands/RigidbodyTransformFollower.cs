@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-namespace RogueApeStudios.SecretsOfIgnacios
+namespace RogueApeStudios.SecretsOfIgnacios.Player
 {
     [System.Serializable]
     public class RigidBodyTransformConnection
@@ -54,9 +54,9 @@ namespace RogueApeStudios.SecretsOfIgnacios
             }
         }
 
-        private void UpdatePosition(Rigidbody rb,Transform ttransform)
+        private void UpdatePosition(Rigidbody rb,Transform targetTransform)
         {
-            Vector3 dir = ( ttransform.position - rb.gameObject.transform.position);
+            Vector3 dir = ( targetTransform.position - rb.gameObject.transform.position);
             float dist = Mathf.Clamp(dir.magnitude,0,0.1f);
             dir = dir.normalized;
 
@@ -66,14 +66,14 @@ namespace RogueApeStudios.SecretsOfIgnacios
             rb.linearVelocity = finalforce;
         }
 
-        private void UpdateRotation(Rigidbody rb, Transform ttransform)
+        private void UpdateRotation(Rigidbody rb, Transform targetTransform)
         {
             /*var rotation = Quaternion.FromToRotation(rb.transform.forward, ttransform.forward).eulerAngles * -0.05f;
             print(rotation);
             rb.angularVelocity = rotation;*/
             // Rotations stack right to left,
             // so first we undo our rotation, then apply the target.
-            var delta = ttransform.rotation * Quaternion.Inverse(rb.rotation);
+            var delta = targetTransform.rotation * Quaternion.Inverse(rb.rotation);
 
             float angle; Vector3 axis;
             delta.ToAngleAxis(out angle, out axis);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.XR.CoreUtils.Datums;
 using System;
 
-namespace RogueApeStudios.SecretsOfIgnacios
+namespace RogueApeStudios.SecretsOfIgnacios.Player
 {
     public class GrabLogic : MonoBehaviour
     {
@@ -47,7 +47,6 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
         public void CheckForGrabbables()
         {
-            Debug.Log("i'm gonna grab u!!!!1");
             if (_grabbedRb == null)
             {
                 //do multi sphere cast from the grabbing center, then get the closest object. This becomes _grabbedRb
@@ -61,13 +60,12 @@ namespace RogueApeStudios.SecretsOfIgnacios
                 foreach (RaycastHit hit in spherecasthits)
                 {
                     GameObject hitObject = hit.collider.gameObject;
-                    Rigidbody oldrb;
-                    if (hitObject.TryGetComponent<Rigidbody>(out oldrb))
+                    Rigidbody oldRb;
+                    if (hitObject.TryGetComponent<Rigidbody>(out oldRb))
                     {
-                        //oldrb.AddExplosionForce(800, _grabCenter.position, _grabRange);
-                        if (!oldrb.isKinematic) {
+                        if (!oldRb.isKinematic) {
 
-                            potentialRigidbodies.Add(oldrb);
+                            potentialRigidbodies.Add(oldRb);
                             
                         }
                     }
