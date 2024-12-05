@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
-namespace RogueApeStudios.SecretsOfIgnacios.Player
+namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 {
     public class MagicCirclePlayerFeedback : MonoBehaviour
     {
@@ -18,7 +18,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
          */
 
         [SerializeField] private VisualEffect _magicCircle;
-        [SerializeField] private GameObject _boolControls;
+        [SerializeField] private GameObject _propertyControls;
         [SerializeField] private LineRenderer _colorControls;
         [SerializeField] private SequenceManager _sequenceManager;
 
@@ -46,7 +46,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
                 switch (gesture[^1]._rightHandShape)
                 {
                     case HandShape.Start:
-                        _boolControls.SetActive(true);
+                        _propertyControls.SetActive(true);
                         _magicCircle.Play();
                         break;
                     case HandShape.Fire:
@@ -66,12 +66,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
 
         void HandleSpellRecognized(bool recognized)
         {
-            _boolControls.SetActive(false);
+            _propertyControls.SetActive(!recognized);
         }
 
         private void HandleSpellFailed()
         {
-            _boolControls.SetActive(false);
+            _propertyControls.SetActive(false);
         }
 
     }
