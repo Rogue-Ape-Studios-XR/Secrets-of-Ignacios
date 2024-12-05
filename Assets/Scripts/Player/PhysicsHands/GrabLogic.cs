@@ -1,26 +1,47 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils.Datums;
+using System;
 
 namespace RogueApeStudios.SecretsOfIgnacios
 {
     public class GrabLogic : MonoBehaviour
     {
         private Rigidbody _grabbedRb;
+        private int _oldGrabbableLayer;
+        private LayerMask _grabLayerMask;
+        private float _initialGrabDist;
         private ConfigurableJoint _grabbedJoint;
         [SerializeField] private float _grabRange;
         [SerializeField] private Rigidbody _grabbingRb;
-        [SerializeField] private Collider _grabTrigger;
+        [SerializeField] private List<String> _layersToIgnore;
         [SerializeField] private Transform _grabCenter;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            
+            LayerMask mask = Physics.AllLayers;
+
+            foreach (string layername in _layersToIgnore)
+            {
+                LayerMask layer = LayerMask.NameToLayer(layername);
+                mask &= ~(1 << layer);
+            }
+            _grabLayerMask = mask;
         }
 
         // Update is called once per frame
         void FixedUpdate()
         {
             //check if the grabbed object is close enough, and end grab if it is too far away
+            if (_grabbedRb != null) 
+            {
+                var dist = Vector3.Magnitude(_grabbedRb.position - _grabCenter.position) - _initialGrabDist;
+                if(dist > .5 * _grabRange)
+                {
+                    EndGrab();
+                }
+            }
+
         }
 
 
@@ -31,8 +52,11 @@ namespace RogueApeStudios.SecretsOfIgnacios
             {
                 //do multi sphere cast from the grabbing center, then get the closest object. This becomes _grabbedRb
                 RaycastHit[] spherecasthits;
-                List<Rigidbody> potentialRigidbodies = null;
-                spherecasthits = Physics.SphereCastAll(_grabCenter.position, _grabRange, Vector3.forward, _grabRange);
+                List<Rigidbody> potentialRigidbodies = new List<Rigidbody>();
+
+                
+                
+                spherecasthits = Physics.SphereCastAll(_grabCenter.position, _grabRange, Vector3.forward, _grabRange,_grabLayerMask);
 
                 foreach (RaycastHit hit in spherecasthits)
                 {
@@ -40,7 +64,6 @@ namespace RogueApeStudios.SecretsOfIgnacios
                     Rigidbody oldrb;
                     if (hitObject.TryGetComponent<Rigidbody>(out oldrb))
                     {
-                       
                         //oldrb.AddExplosionForce(800, _grabCenter.position, _grabRange);
                         if (!oldrb.isKinematic) {
 
@@ -53,7 +76,9 @@ namespace RogueApeStudios.SecretsOfIgnacios
                 if (potentialRigidbodies.Count > 0)
                 {
                     _grabbedRb = getClosestRigidbody(_grabCenter, potentialRigidbodies);
+                    _initialGrabDist = Vector3.Magnitude(_grabbedRb.position - _grabCenter.position);
                     StartGrab();
+                    Debug.Log(_grabbedRb.gameObject.name);
                 }
             }
         }
@@ -68,20 +93,51 @@ namespace RogueApeStudios.SecretsOfIgnacios
             _grabbedJoint.angularXMotion = ConfigurableJointMotion.Locked;
             _grabbedJoint.angularYMotion = ConfigurableJointMotion.Locked;
             _grabbedJoint.angularZMotion = ConfigurableJointMotion.Locked;
+            _oldGrabbableLayer = _grabbedJoint.gameObject.layer;
             _grabbedJoint.gameObject.layer = 14;
         }
 
         public void EndGrab()
         {
-            Debug.Log("i'm gonna stop grab u!!!!1");
-            Destroy(_grabbedJoint);
-            _grabbedRb = null;
-            //remove a configurable joint and configure it
+            if (_grabbedRb != null) { 
+                Debug.Log("i'm gonna stop grab u!!!!1");
+                _grabbedJoint.gameObject.layer = _oldGrabbableLayer;
+                //remove a configurable joint
+                Destroy(_grabbedJoint);
+                _grabbedRb = null;
+            }
         }
 
         private Rigidbody getClosestRigidbody(Transform point, List<Rigidbody> rigidbodies)
         {
-            return rigidbodies[0];
+            if(rigidbodies.Count == 0)
+            {
+                return null;
+            }
+
+            int bestIndex = 0;
+
+            //if there is more than one potential thing, loop through all of them until we've found the closest one
+
+            if (rigidbodies.Count > 1)
+            {
+                float furthestDistance = Mathf.Pow(_grabRange,2); //power of 2 so we can use the more performant sqrmagnitude
+                for (int i = 0; i < rigidbodies.Count; i++)
+                {
+                    Rigidbody curRb = rigidbodies[i];
+                    float distance =  Vector3.SqrMagnitude(curRb.transform.position - point.position);
+
+                    if (distance < furthestDistance) 
+                    { 
+                        furthestDistance = distance;
+                        bestIndex = i;
+                    }
+
+                }
+            }
+
+
+            return rigidbodies[bestIndex];
         }
 
     }
