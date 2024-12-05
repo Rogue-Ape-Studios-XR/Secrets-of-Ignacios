@@ -10,6 +10,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 {
     public class HandVfxManager : MonoBehaviour
     {
+        //line 71 vfx are instantiated and set for the hands, use this for quick cast
+
         // Script should have a reference to two visual effects. These should enable and swap to the correct vfx on gesture recognized.
         // This VFX is not contained in the spell data as a prefab. Therefore it checks spell type.
         // Element is recognized on gesture 1 
@@ -56,53 +58,44 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 
         internal void HandleElementRecognized(Gesture gesture)
         {
-            GameObject r = null;
-            GameObject l = null;
-
-            switch (gesture._rightHandShape)
+            if (gesture._rightHandShape == HandShape.Start)
             {
-                case HandShape.Start:
-                    DisableBothHandEffects();
-                    break;
-                case HandShape.QuickCast:
-                    // effect should be at hands and play there instantly
-                    // This doesn't work since quick cast is aparrently a seperate thing.
-                    break;
-                default:
-                    if (gesture._visualEffectPrefab != null)
-                    {
-                        //if (!_spellManager.IsSpellUnlockedForGesture(gesture))
-                        //    return;
-
-                        r = Instantiate(gesture._visualEffectPrefab, _prefabContainerR.transform, false);
-                        l = Instantiate(gesture._visualEffectPrefab, _prefabContainerL.transform, false);
-
-                        _lastGesture = gesture;
-
-                        SetVFXContainerPositions();
-                    }
-                    break;
+                DisableBothHandEffects();
+                return;
             }
 
-            if (r != null && l != null)
+            // QuickCast logic can be added here if needed.
+            if (gesture._rightHandShape == HandShape.QuickCast)
+                return;
+
+            if (gesture._visualEffectPrefab == null)
+                return;
+
+            // Instantiate visual effects for both hands
+            GameObject visualEffectRight = Instantiate(gesture._visualEffectPrefab, _handDataRight._prefabContainerTransform);
+            GameObject visualEffectLeft = Instantiate(gesture._visualEffectPrefab, _handDataLeft._prefabContainerTransform);
+
+            _lastGesture = gesture;
+            SetVFXContainerPositions();
+
+            // Handle destroying and assigning effects
+            AssignAndDestroyVisualEffect(visualEffectRight, _handDataRight);
+            AssignAndDestroyVisualEffect(visualEffectLeft, _handDataLeft);
+        }
+
+        private void AssignAndDestroyVisualEffect(GameObject visualEffect, HandData handData)
+        {
+            if (visualEffect == null)
+                return;
+
+            DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, visualEffect);
+
+            if (visualEffect.TryGetComponent<VisualEffect>(out VisualEffect visual))
             {
-                //This sets a timer on the visual effect to destroy when it is done playing.
-                DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, r);
-                DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, l);
+                if (handData._currentEffect != null)
+                    handData._currentEffect.Stop();
 
-                //assign current effect
-                if (r.TryGetComponent<VisualEffect>(out VisualEffect visualr))
-                {
-                    _handDataRight._currentEffect?.Stop();
-
-                    _handDataRight._currentEffect = visualr;
-                }
-                if (l.TryGetComponent<VisualEffect>(out VisualEffect visuall))
-                {
-                    _handDataLeft._currentEffect?.Stop();
-
-                    _handDataLeft._currentEffect = visuall;
-                }
+                handData._currentEffect = visual;
             }
         }
 
@@ -110,29 +103,27 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
         {
             if (_lastGesture != null && _lastGesture._visualEffectPrefab != null)
             {
-                GameObject rr = Instantiate(_lastGesture._visualEffectPrefab, _prefabContainerR.transform, false);
-                GameObject ll = Instantiate(_lastGesture._visualEffectPrefab, _prefabContainerL.transform, false);
+                GameObject visualEffectRight = Instantiate(_lastGesture._visualEffectPrefab, _handDataRight._prefabContainerTransform, false);
+                GameObject visualEffectLeft = Instantiate(_lastGesture._visualEffectPrefab, _handDataLeft._prefabContainerTransform, false);
                 SetVFXContainerPositions();
 
-                DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, rr);
-                DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, ll);
+                DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, visualEffectRight);
+                DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, visualEffectLeft);
 
                 //assign current effect
-                if (rr.TryGetComponent<VisualEffect>(out VisualEffect visualr))
+                if (visualEffectRight.TryGetComponent<VisualEffect>(out VisualEffect visualr))
                 {
-                    if (_currentEffectR != null)
-                    {
-                        _currentEffectR.Stop();
-                    }
-                    _currentEffectR = visualr;
+                    if (_handDataRight._currentEffect != null)
+                        _handDataRight._currentEffect.Stop();
+
+                    _handDataRight._currentEffect = visualr;
                 }
-                if (ll.TryGetComponent<VisualEffect>(out VisualEffect visuall))
+                if (visualEffectLeft.TryGetComponent<VisualEffect>(out VisualEffect visuall))
                 {
-                    if (_currentEffectL != null)
-                    {
-                        _currentEffectL.Stop();
-                    }
-                    _currentEffectL = visuall;
+                    if (_handDataLeft._currentEffect != null)
+                        _handDataLeft._currentEffect.Stop();
+
+                    _handDataLeft._currentEffect = visuall;
                 }
 
                 MoveVfxToHand(_cancellationTokenSource.Token,
@@ -189,7 +180,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
             }
         }
 
-        internal void SetHandEffects(bool isDefaultColor, Spell currentSpell)
+        internal void SetHandEffects(bool isDefaultColor, Spell currentSpell, bool usedQuickCast)
         {
             if (isDefaultColor)
             {
@@ -207,22 +198,21 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
                     _handDataLeft._renderer.material = currentSpell._primaryConfig._handMaterial;
                     _handDataLeft._renderer.materials[1].SetColor("_MainColor", currentSpell._primaryConfig._handColor);
                 }
+
+                _handDataLeft._prefabContainer.SetActive(true);
+                _handDataRight._prefabContainer.SetActive(true);
+
+                if (!usedQuickCast)
+                {
+                    MoveVfxToHand(_cancellationTokenSource.Token, _handDataRight._prefabContainerTransform, _handDataRight._palmTransform);
+                    MoveVfxToHand(_cancellationTokenSource.Token, _handDataLeft._prefabContainerTransform, _handDataLeft._palmTransform);
+                }
             }
             else
             {
                 _handDataRight._renderer.materials[1].SetColor("_MainColor", _handDataRight._defaultColor);
                 _handDataLeft._renderer.materials[1].SetColor("_MainColor", _handDataLeft._defaultColor);
             }
-        }
-
-        internal void HandleCastRecognized(bool recognized)
-        {
-            //activate the second vfx and move the current vfx to the hands
-            //vfx in the magic circle, make a separate vfx in the magic circle and enable both right and left container
-            _prefabContainerL.SetActive(true);
-
-            MoveVfxToHand(_cancellationTokenSource.Token, _handDataRight._prefabContainerTransform, _handDataRight._palmTransform);
-            MoveVfxToHand(_cancellationTokenSource.Token, _handDataLeft._prefabContainerTransform, _handDataLeft._palmTransform);
         }
 
         private async void MoveVfxToHand(CancellationToken token, Transform effect, Transform dest)
@@ -283,8 +273,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 
         private void DisableBothHandEffects()
         {
-            _handDataRight._currentEffect.Stop();
-            _handDataLeft._currentEffect.Stop();
+            if (_handDataRight._currentEffect != null)
+                _handDataRight._currentEffect.Stop();
+            if (_handDataLeft._currentEffect != null)
+                _handDataLeft._currentEffect.Stop();
         }
 
         private async void DestroyVisualEffectWhenDone(CancellationToken token, GameObject effect)

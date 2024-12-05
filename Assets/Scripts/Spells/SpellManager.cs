@@ -49,6 +49,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             _sequenceManager.onGestureRecognised -= CheckSequence;
             _sequenceManager.onReset -= HandleReset;
+            _sequenceManager.onQuickCast -= HandleOnQuickCast;
             ProgressionManager.OnProgressionEvent += HandleProgressionEvent;
 
             _cancellationTokenSource.Cancel();
@@ -71,12 +72,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             if (exactMatch != null && exactMatch._isUnlocked)
             {
                 SetSpell(exactMatch);
-                _handVfxManager.HandleCastRecognized(true);
+                onSpellValidation?.Invoke(exactMatch);
             }
             else if (!hasPartialMatch)
             {
                 _currentSpell = null;
                 _handVfxManager.HandleOnSpellFailed();
+                onNoSpellMatch?.Invoke();
             }
             // If there is a partial match, do nothing and wait for more gestures.
         }
@@ -127,7 +129,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             _currentSpell = spell;
             _lastSpell = spell;
-            _handVfxManager.SetHandEffects(true, _currentSpell);
+            _handVfxManager.SetHandEffects(true, _currentSpell, false);
         }
 
 
@@ -135,16 +137,15 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             _currentSpell = null;
 
-            _handVfxManager.SetHandEffects(false, _currentSpell);
-            _handVfxManager.HandleCastRecognized(false);
+            _handVfxManager.SetHandEffects(false, _currentSpell, false);
         }
 
         private void HandleOnQuickCast()
         {
             _currentSpell = _lastSpell;
 
-            _handVfxManager.SetHandEffects(true, _currentSpell);
-            _handVfxManager.HandleCastRecognized(true);
+            _handVfxManager.SetHandEffects(true, _currentSpell, true);
+            onSpellValidation?.Invoke(true);
         }
 
         private void UnlockSpell(Spell spell)
