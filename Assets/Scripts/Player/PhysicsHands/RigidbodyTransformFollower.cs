@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-namespace RogueApeStudios.SecretsOfIgnacios.Player
+namespace RogueApeStudios.SecretsOfIgnacios.Player.PhysicsHands
 {
     [System.Serializable]
     public class RigidBodyTransformConnection

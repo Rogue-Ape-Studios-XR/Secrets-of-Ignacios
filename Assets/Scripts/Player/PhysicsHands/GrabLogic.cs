@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.XR.CoreUtils.Datums;
 using System;
 
-namespace RogueApeStudios.SecretsOfIgnacios.Player
+namespace RogueApeStudios.SecretsOfIgnacios.Player.PhysicsHands
 {
     public class GrabLogic : MonoBehaviour
     {
