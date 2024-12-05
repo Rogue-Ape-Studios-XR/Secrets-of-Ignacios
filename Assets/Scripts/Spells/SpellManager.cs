@@ -14,7 +14,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [Header("References")]
         [SerializeField] private SequenceManager _sequenceManager;
         [SerializeField] private ServiceLocator _serviceLocator;
-        [SerializeField] private HandVfxManager _vfxManager;
+        [SerializeField] private HandVfxManager _handVfxManager;
         [Header("Hand Objects")]
         [SerializeField] private Renderer _rightHandMaterial;
         [SerializeField] private Renderer _leftHandMaterial;
@@ -25,13 +25,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private Spell _currentSpell;
         private Spell _lastSpell;
         private CancellationTokenSource _cancellationTokenSource;
-        private Color _defaultColor;
 
         public static event Action<bool> onSpellValidation;
         public static event Action onNoSpellMatch;
 
         internal Spell CurrentSpell => _currentSpell;
-        internal Color DefaultColor => _defaultColor;
 
         private void Awake()
         {
@@ -39,14 +37,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             _cancellationTokenSource = new CancellationTokenSource();
         }
 
-        private void Start()
-        {
-            _defaultColor = _rightHandMaterial.materials[1].GetColor("_MainColor");
-        }
-
         private void OnEnable()
         {
-            _sequenceManager.OnGestureRecognised += CheckSequence;
+            _sequenceManager.onGestureRecognised += CheckSequence;
             _sequenceManager.onReset += HandleReset;
             _sequenceManager.onQuickCast += HandleOnQuickCast;
             ProgressionManager.OnProgressionEvent += HandleProgressionEvent;
@@ -54,7 +47,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         private void OnDestroy()
         {
-            _sequenceManager.OnGestureRecognised -= CheckSequence;
+            _sequenceManager.onGestureRecognised -= CheckSequence;
             _sequenceManager.onReset -= HandleReset;
             ProgressionManager.OnProgressionEvent += HandleProgressionEvent;
 
@@ -65,14 +58,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void HandleProgressionEvent(ProgressionData data)
         {
             if (data.Type == ProgressionType.SpellUnlock && data.Data is SpellUnlockData spellData)
-            {
-                Debug.Log($"Spell '{spellData.Spell.name}' has been unlocked!");
                 UnlockSpell(spellData.Spell);
-            }
             else
-            {
                 Debug.LogError("Invalid data received for SpellUnlock event.");
-            }
         }
 
         public void CheckSequence(List<Gesture> performedGestures)
@@ -83,13 +71,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             if (exactMatch != null && exactMatch._isUnlocked)
             {
                 SetSpell(exactMatch);
-                _vfxManager.HandleCastRecognized(true);
+                _handVfxManager.HandleCastRecognized(true);
             }
             else if (!hasPartialMatch)
             {
                 _currentSpell = null;
-                _vfxManager.SpellWrongIndication(_cancellationTokenSource.Token);
-                onNoSpellMatch?.Invoke();
+                _handVfxManager.HandleOnSpellFailed();
             }
             // If there is a partial match, do nothing and wait for more gestures.
         }
@@ -140,7 +127,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             _currentSpell = spell;
             _lastSpell = spell;
-            _vfxManager.SetHandEffects(true, _currentSpell);
+            _handVfxManager.SetHandEffects(true, _currentSpell);
         }
 
 
@@ -148,18 +135,16 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             _currentSpell = null;
 
-            _vfxManager.SetHandEffects(false, _currentSpell);
-
-            onSpellValidation?.Invoke(false);
+            _handVfxManager.SetHandEffects(false, _currentSpell);
+            _handVfxManager.HandleCastRecognized(false);
         }
 
         private void HandleOnQuickCast()
         {
             _currentSpell = _lastSpell;
 
-            _vfxManager.SetHandEffects(true, _currentSpell);
-
-            onSpellValidation?.Invoke(true);
+            _handVfxManager.SetHandEffects(true, _currentSpell);
+            _handVfxManager.HandleCastRecognized(true);
         }
 
         private void UnlockSpell(Spell spell)

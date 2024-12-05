@@ -7,17 +7,29 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
     public class HandData : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] internal Transform _handTransform;
+        [SerializeField] internal GameObject _prefabContainer;
+        [SerializeField] internal LineRenderer _lineRenderer;
+        [SerializeField] internal Transform _prefabContainerTransform;
+        [SerializeField] internal Transform _palmTransform;
+        [SerializeField] internal Transform _spellSpawnPoint;
 
         [Header("Visual")]
-        [SerializeField] internal VisualEffect _chargeEffect;
-        [SerializeField] internal VisualEffect _currentEffect;
-        [SerializeField] internal GameObject _prefabContainer;
-        [SerializeField] internal Transform _prefabContainerTransform;
-        [SerializeField] internal Transform _palm;
-        [SerializeField] internal LineRenderer _lineRenderer;
         [SerializeField] internal Renderer _renderer;
-        [SerializeField] internal Material _material;
+        [SerializeField] internal VisualEffect _chargeEffect;
+
+        internal VisualEffect _currentEffect;
+        internal Material _defaultMaterial;
+        internal Transform _spellPrefab;
+        internal Color _defaultColor;
+        internal bool _canCast = false;
+        internal bool _isCasting = false;
+
+        private void Start()
+        {
+            _chargeEffect.Stop();
+            _defaultMaterial = _renderer.material;
+            _defaultColor = _renderer.materials[1].GetColor("_MainColor");
+        }
 
         internal HandConfig GetHandConfig(SpellManager spellManager, bool isRightHand)
         {

@@ -29,14 +29,14 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
             //sub to the gesture recognized and spell recognized events
             SpellManager.onSpellValidation += HandleSpellRecognized;
             SpellManager.onNoSpellMatch += HandleSpellFailed;
-            _sequenceManager.OnGestureRecognised += HandleGestureRecognized;
+            _sequenceManager.onGestureRecognised += HandleGestureRecognized;
         }
         private void OnDestroy()
         {
             //unsubscribe
             SpellManager.onSpellValidation -= HandleSpellRecognized;
             SpellManager.onNoSpellMatch -= HandleSpellFailed;
-            _sequenceManager.OnGestureRecognised -= HandleGestureRecognized;
+            _sequenceManager.onGestureRecognised -= HandleGestureRecognized;
         }
 
         void HandleGestureRecognized(List<Gesture> gesture)

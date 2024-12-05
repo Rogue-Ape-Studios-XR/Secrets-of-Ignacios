@@ -9,7 +9,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
 {
     internal class SequenceManager : MonoBehaviour
     {
-        [SerializeField] private HandVfxManager _vfxManager;
+        [SerializeField] private HandVfxManager _handVfxManager;
 
         [SerializeField] private Transform _rightHand;
         [SerializeField] private Transform _leftHand;
@@ -18,7 +18,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         [SerializeField] private List<Gesture> _allGestures;
         [SerializeField] private bool _leftHandActive = false; // Only serialized for testing purposes
         [SerializeField] private bool _rightHandActive = false; // Only serialized for testing purposes
-        [SerializeField] private Material _defaultMaterial;
 
         private readonly List<Gesture> _validatedGestures = new();
         private CancellationTokenSource _cancellationTokenSource;
@@ -32,7 +31,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         internal event Action onSequenceCreated;
         internal event Action onReset;
         internal event Action onQuickCast;
-        internal event Action<List<Gesture>> OnGestureRecognised;
+        internal event Action<List<Gesture>> onGestureRecognised;
         internal event Action<Gesture> onElementValidated;
         internal event Action onSpellFailedVFX;
 
@@ -86,11 +85,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
                     _validatedGestures[^1] != _currentGesture)
                 {
                     _validatedGestures.Add(_currentGesture);
-                    ChangeColor();
-                    OnGestureRecognised?.Invoke(_validatedGestures);
+                    _handVfxManager.ChangeColorOnGesture(_currentGesture);
+                    onGestureRecognised?.Invoke(_validatedGestures);
 
                     if (_validatedGestures.Count == 2)
-                        _vfxManager.HandleElementRecognized(_currentGesture);
+                        _handVfxManager.HandleElementRecognized(_currentGesture);
                 }
             }
 
@@ -108,14 +107,14 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
                         onReset?.Invoke();
                         _sequenceStarted = true;
                         _canQuickCast = false;
-                        onElementValidated?.Invoke(currentGesture);
+                        _handVfxManager.HandleElementRecognized(_currentGesture);
                         break;
                     case "Quick Cast":
                         if (_canQuickCast)
                         {
                             _validatedGestures.Clear();
                             onQuickCast?.Invoke();
-                            onElementValidated?.Invoke(currentGesture);
+                            _handVfxManager.HandleElementRecognized(_currentGesture);
                         }
                         break;
                     default:
@@ -136,17 +135,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
             {
                 _gestureValidated = true;
                 OnDistanceValidated();
-            }
-        }
-
-        private void ChangeColor()
-        {
-            if (_sequenceStarted)
-            {
-                _rightHandMaterial.materials[1].SetColor("_MainColor", _currentGesture._color);
-                _leftHandMaterial.materials[1].SetColor("_MainColor", _currentGesture._color);
-                _rightHandMaterial.material = _defaultMaterial;
-                _leftHandMaterial.material = _defaultMaterial;
             }
         }
 
