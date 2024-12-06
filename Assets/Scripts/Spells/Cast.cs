@@ -126,10 +126,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             }
         }
 
-        private void HandleSpellValidation(bool canCast)
+        private void HandleSpellValidation()
         {
-            _rightHandData._canCast = canCast;
-            _leftHandData._canCast = canCast;
+            _rightHandData._canCast = true;
+            _leftHandData._canCast = true;
         }
 
         public void CastNoHands(Transform transform, string objectType, GameObject spellPrefab)
@@ -137,35 +137,5 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             GameObject projectile = _pooler.GetObject(objectType, spellPrefab, transform);
             projectile.transform.SetPositionAndRotation(transform.position, transform.localRotation);
         }
-
-        //[Serializable]
-        //internal class HandData
-        //{
-        //    [Header("References")]
-        //    [SerializeField] internal Transform _handTransform;
-
-        //    [Header("Visual")]
-        //    [SerializeField] internal VisualEffect _chargeEffect;
-        //    [SerializeField] internal LineRenderer _lineRenderer;
-        //    [SerializeField] internal Renderer _renderer;
-        //    [SerializeField] internal Material _material;
-
-        //    internal Transform _spellPrefab;
-        //    internal bool _canCast = false;
-        //    internal bool _isCasting = false;
-
-        //    internal HandConfig GetHandConfig(SpellManager spellManager, bool isRightHand)
-        //    {
-        //        if (!spellManager.CurrentSpell._duoSpell)
-        //            return spellManager.CurrentSpell._primaryConfig;
-        //        else
-        //        {
-        //            if (isRightHand)
-        //                return spellManager.CurrentSpell._primaryConfig;
-        //            else
-        //                return spellManager.CurrentSpell._secondaryConfig;
-        //        }
-        //    }
-        //}
     }
 }

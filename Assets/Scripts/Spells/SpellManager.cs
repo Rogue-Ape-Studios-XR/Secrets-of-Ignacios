@@ -26,7 +26,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private Spell _lastSpell;
         private CancellationTokenSource _cancellationTokenSource;
 
-        public static event Action<bool> onSpellValidation;
+        public static event Action onSpellValidation;
         public static event Action onNoSpellMatch;
 
         internal Spell CurrentSpell => _currentSpell;
@@ -72,7 +72,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             if (exactMatch != null && exactMatch._isUnlocked)
             {
                 SetSpell(exactMatch);
-                onSpellValidation?.Invoke(exactMatch);
+                onSpellValidation?.Invoke();
             }
             else if (!hasPartialMatch)
             {
@@ -129,7 +129,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             _currentSpell = spell;
             _lastSpell = spell;
-            _handVfxManager.SetHandEffects(true, _currentSpell, false);
+            _handVfxManager.SetHandEffects(_currentSpell, false);
         }
 
 
@@ -137,15 +137,15 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             _currentSpell = null;
 
-            _handVfxManager.SetHandEffects(false, _currentSpell, false);
+            _handVfxManager.ResetHandColors();
         }
 
         private void HandleOnQuickCast()
         {
             _currentSpell = _lastSpell;
 
-            _handVfxManager.SetHandEffects(true, _currentSpell, true);
-            onSpellValidation?.Invoke(true);
+            _handVfxManager.SetHandEffects(_currentSpell, true);
+            onSpellValidation?.Invoke();
         }
 
         private void UnlockSpell(Spell spell)

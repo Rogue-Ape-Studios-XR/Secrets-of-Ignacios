@@ -114,7 +114,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
                         {
                             _validatedGestures.Clear();
                             onQuickCast?.Invoke();
-                            _handVfxManager.HandleElementRecognized(_currentGesture);
                         }
                         break;
                     default:
@@ -138,9 +137,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
             }
         }
 
-        private void HandleOnSpellValidated(bool value)
+        private void HandleOnSpellValidated()
         {
-            _canQuickCast = value;
+            _canQuickCast = true;
             _validatedGestures.Clear();
             _sequenceStarted = false;
         }
