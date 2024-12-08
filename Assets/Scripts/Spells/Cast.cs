@@ -121,7 +121,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                 handData._renderer.materials[1].SetColor("_MainColor", handData._defaultColor);
                 handData._renderer.material = handData._defaultMaterial;
 
-
                 _handVfxManager.DisableHandVFX(handData);
             }
         }

@@ -86,7 +86,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
                 {
                     _validatedGestures.Add(_currentGesture);
                     _handVfxManager.ChangeColorOnGesture(_currentGesture);
-                    onGestureRecognised?.Invoke(_validatedGestures);
+
+                    if (_currentGesture._name != "Quick Cast")
+                        onGestureRecognised?.Invoke(_validatedGestures);
 
                     if (_validatedGestures.Count == 2)
                         _handVfxManager.HandleElementRecognized(_currentGesture);

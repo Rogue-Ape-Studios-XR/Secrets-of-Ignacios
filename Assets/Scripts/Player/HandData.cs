@@ -17,7 +17,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
         [SerializeField] internal Renderer _renderer;
         [SerializeField] internal VisualEffect _chargeEffect;
 
-        internal VisualEffect _currentEffect;
+        internal GameObject _currentEffect;
         internal Material _defaultMaterial;
         internal Transform _spellPrefab;
         internal Color _defaultColor;
@@ -42,6 +42,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
                 else
                     return spellManager.CurrentSpell._secondaryConfig;
             }
+        }
+
+        internal void TogglePrefabContainer(bool active)
+        {
+            _prefabContainer.SetActive(active);
         }
     }
 }

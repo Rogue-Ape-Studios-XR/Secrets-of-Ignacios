@@ -9,7 +9,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 {
     public class MagicCirclePlayerFeedback : MonoBehaviour
     {
-
         /*
          This script should subscribe to the "handsign added" event, and do the following depending on the gesture
 
@@ -25,20 +24,22 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
         [SerializeField] private SequenceManager _sequenceManager;
 
         private GameObject _pooledObject;
+        private bool _usedQuickCast = false;
 
         private void Start()
         {
             _magicCircle.Stop();
 
-            //sub to the gesture recognized and spell recognized events
             SpellManager.onSpellValidation += ResetMagicCircle;
+            SpellManager.onQuickCastValidation += HandleOnQuickCastValidation;
             SpellManager.onNoSpellMatch += ResetMagicCircle;
             _sequenceManager.onGestureRecognised += HandleGestureRecognized;
         }
+
         private void OnDestroy()
         {
-            //unsubscribe
             SpellManager.onSpellValidation -= ResetMagicCircle;
+            SpellManager.onQuickCastValidation -= HandleOnQuickCastValidation;
             SpellManager.onNoSpellMatch -= ResetMagicCircle;
             _sequenceManager.onGestureRecognised -= HandleGestureRecognized;
         }
@@ -47,9 +48,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
         {
             if (gestures.Count > 0)
             {
-                switch (gestures[^1]._rightHandShape)
+                switch (gestures[^1]._name)
                 {
-                    case HandShape.Start:
+                    case "Start":
                         if (_pooledObject != null && _pooledObject.activeSelf)
                         {
                             _pooledObject.transform.parent = null;
@@ -58,6 +59,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 
                         _propertyControls.SetActive(true);
                         _magicCircle.Play();
+                        _usedQuickCast = false;
                         break;
                     default:
                         if (gestures[^1]._visualEffectPrefab != null)
@@ -77,11 +79,22 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
         private void ResetMagicCircle()
         {
             _propertyControls.SetActive(false);
-            if (_pooledObject != null)
+            ReturnPooledObject();
+        }
+
+        private void ReturnPooledObject()
+        {
+            if (_pooledObject != null && !_usedQuickCast)
             {
                 _pooledObject.transform.parent = null;
                 _objectPooler.ReturnObject(_pooledObject.name, _pooledObject);
             }
+            _usedQuickCast = false;
+        }
+
+        private void HandleOnQuickCastValidation()
+        {
+            _usedQuickCast = true;
         }
     }
 }

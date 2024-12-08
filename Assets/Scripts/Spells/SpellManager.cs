@@ -27,6 +27,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private CancellationTokenSource _cancellationTokenSource;
 
         public static event Action onSpellValidation;
+        public static event Action onQuickCastValidation;
         public static event Action onNoSpellMatch;
 
         internal Spell CurrentSpell => _currentSpell;
@@ -136,15 +137,14 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         internal void HandleReset()
         {
             _currentSpell = null;
-
             _handVfxManager.ResetHandColors();
         }
 
         private void HandleOnQuickCast()
         {
             _currentSpell = _lastSpell;
-
             _handVfxManager.SetHandEffects(_currentSpell, true);
+            onQuickCastValidation?.Invoke();
             onSpellValidation?.Invoke();
         }
 
