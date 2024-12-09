@@ -68,10 +68,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                 Debug.Log($"Spell '{spellData.Spell.name}' has been unlocked!");
                 UnlockSpell(spellData.Spell);
             }
-            else
-            {
-                Debug.LogError("Invalid data received for SpellUnlock event.");
-            }
         }
 
         public bool IsSpellUnlockedForGesture(Gesture gesture)
