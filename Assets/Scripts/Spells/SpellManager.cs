@@ -15,9 +15,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [SerializeField] private SequenceManager _sequenceManager;
         [SerializeField] private ServiceLocator _serviceLocator;
         [SerializeField] private HandVfxManager _handVfxManager;
-        [Header("Hand Objects")]
-        [SerializeField] private Renderer _rightHandMaterial;
-        [SerializeField] private Renderer _leftHandMaterial;
 
         [Header("Spells")]
         [SerializeField] private Spell[] _availableSpells;

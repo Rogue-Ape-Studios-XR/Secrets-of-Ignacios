@@ -13,8 +13,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
 
         [SerializeField] private Transform _rightHand;
         [SerializeField] private Transform _leftHand;
-        [SerializeField] private Renderer _rightHandMaterial;
-        [SerializeField] private Renderer _leftHandMaterial;
         [SerializeField] private List<Gesture> _allGestures;
         [SerializeField] private bool _leftHandActive = false; // Only serialized for testing purposes
         [SerializeField] private bool _rightHandActive = false; // Only serialized for testing purposes
