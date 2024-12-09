@@ -20,11 +20,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void FixedUpdate()
         {
             if (_cast._rightHandData._lineRenderer.enabled)
-                UpdateBeam(_cast._rightHandData._lineRenderer, _cast._rightHandData._handTransform,
+                UpdateBeam(_cast._rightHandData._lineRenderer, _cast._rightHandData._spellSpawnPoint,
                     ref _rightIsGrowing, ref _rightCurrentLength);
 
             if (_cast._leftHandData._lineRenderer.enabled)
-                UpdateBeam(_cast._leftHandData._lineRenderer, _cast._leftHandData._handTransform,
+                UpdateBeam(_cast._leftHandData._lineRenderer, _cast._leftHandData._spellSpawnPoint,
                     ref _leftIsGrowing, ref _leftCurrentLength);
         }
 

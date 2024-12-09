@@ -36,12 +36,14 @@ namespace RogueApeStudios.SecretsOfIgnacios.Services
 
         }
 
-        private void CreatePool(string objectType, GameObject prefab, int initialSize)
+        public void CreatePool(string objectType, GameObject prefab, int initialSize)
         {
-            string poolKey = objectType + "(Clone)";
+            string poolKey = objectType.Replace("(Clone)", "").Trim();
 
-            if (!_objectPools.ContainsKey(poolKey))
-                _objectPools[poolKey] = new();
+            if (_objectPools.ContainsKey(poolKey))
+                return;
+
+            _objectPools[poolKey] = new();
 
             int currentCount = _objectPools[poolKey].Count;
             int itemsToAdd = initialSize - currentCount;
@@ -54,10 +56,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Services
             }
         }
 
-        public GameObject GetObject(string objectType, GameObject prefab, Transform transform)
+        public GameObject GetObject(string poolKey, GameObject prefab, Transform transform)
         {
-            string poolKey = objectType + "(Clone)";
-
             if (!_objectPools.ContainsKey(poolKey))
             {
                 Debug.LogError($"No pool exists for this object type: {poolKey}");
@@ -81,15 +81,17 @@ namespace RogueApeStudios.SecretsOfIgnacios.Services
 
         public void ReturnObject(string objectType, GameObject obj)
         {
-            if (!_objectPools.ContainsKey(objectType))
+            string poolKey = objectType.Replace("(Clone)", "").Trim();
+
+            if (!_objectPools.ContainsKey(poolKey))
             {
-                Debug.LogError($"No pool exists for object type: {objectType}");
+                Debug.LogError($"No pool exists for object type: {poolKey}");
                 return;
             }
 
             obj.SetActive(false);
             obj.transform.position = _poolParent.position;
-            _objectPools[objectType].Enqueue(obj);
+            _objectPools[poolKey].Enqueue(obj);
         }
     }
 }
