@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using RogueApeStudios.SecretsOfIgnacios.Progression;
+using RogueApeStudios.SecretsOfIgnacios.Spells;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
@@ -8,6 +9,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private List<GameObject> _areasToUnlock;
+        [SerializeField] private Spell _spellToUnlock;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -18,6 +20,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
                 _animator.SetTrigger("DubbleIn");
                 
                 UnlockAreas();
+                //Wind spell
+                UnlockSpell();
             }
         }
         
@@ -35,6 +39,20 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
 
                     ProgressionManager.TriggerProgressionEvent(progressionData);
                 }
+            }
+        }
+
+        private void UnlockSpell()
+        {
+           if (_spellToUnlock != null)
+            {
+                ProgressionData progressionData = new ProgressionData
+                {
+                    Type = ProgressionType.SpellUnlock,
+                    Data = new SpellUnlockData() { Spell = _spellToUnlock }
+                };
+
+                ProgressionManager.TriggerProgressionEvent(progressionData);
             }
         }
     }

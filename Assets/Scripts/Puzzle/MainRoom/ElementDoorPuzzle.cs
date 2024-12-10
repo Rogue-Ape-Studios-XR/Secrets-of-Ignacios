@@ -3,6 +3,7 @@ using RogueApeStudios.SecretsOfIgnacios.Interactables.Water;
 using RogueApeStudios.SecretsOfIgnacios.Interactables.Wind;
 using System.Collections.Generic;
 using RogueApeStudios.SecretsOfIgnacios.Progression;
+using RogueApeStudios.SecretsOfIgnacios.Spells;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
@@ -18,6 +19,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
         [SerializeField] private Animator _animator;
 
         [SerializeField] private List<GameObject> _areasToUnlock;
+        [SerializeField] private Spell _spellToUnlock;
         
         private void Awake()
         {
@@ -40,6 +42,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
                 Debug.Log("Door opens");
                 _animator.SetTrigger("DubbleIn");
                 UnlockAreas();
+                UnlockSpell();
             }
         }
         
@@ -59,5 +62,20 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
                 }
             }
         }
+        
+        private void UnlockSpell()
+        {
+           if (_spellToUnlock != null)
+            {
+                ProgressionData progressionData = new ProgressionData
+                {
+                    Type = ProgressionType.SpellUnlock,
+                    Data = new SpellUnlockData() { Spell = _spellToUnlock }
+                };
+
+                ProgressionManager.TriggerProgressionEvent(progressionData);
+            }
+        }
+        
     }
 }
