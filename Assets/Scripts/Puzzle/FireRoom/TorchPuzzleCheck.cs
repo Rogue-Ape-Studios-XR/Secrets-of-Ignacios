@@ -45,25 +45,23 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
                 Debug.Log("Door opens");
                 _animator.SetTrigger("DubbleIn");
 
-                if (_areasToUnlock != null && _areasToUnlock.Count > 0)
-                {
-                    foreach (var area in _areasToUnlock)
-                    {
-                        if (area != null)
-                        {
-                            ProgressionData progressionData = new ProgressionData
-                            {
-                                Type = ProgressionType.AreaUnlock,
-                                Data = new AreaUnlockData { Area = area }
-                            };
+                UnlockAreas();
+            }
+        }
 
-                            ProgressionManager.TriggerProgressionEvent(progressionData);
-                        }
-                        else
-                        {
-                            Debug.LogWarning("An area in the list is null and will be skipped.");
-                        }
-                    }
+        private void UnlockAreas()
+        {
+            foreach (var area in _areasToUnlock)
+            {
+                if (area != null)
+                {
+                    ProgressionData progressionData = new ProgressionData
+                    {
+                        Type = ProgressionType.AreaUnlock,
+                        Data = new AreaUnlockData { Area = area }
+                    };
+
+                    ProgressionManager.TriggerProgressionEvent(progressionData);
                 }
             }
         }

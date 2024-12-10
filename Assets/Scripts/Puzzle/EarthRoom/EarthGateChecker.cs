@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using RogueApeStudios.SecretsOfIgnacios.Interactables.Earth;
+using RogueApeStudios.SecretsOfIgnacios.Progression;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
@@ -8,6 +10,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
     {
         [SerializeField] private Resizable[] _resizableBlocks;
         [SerializeField] private Animator _animator;
+
+        [SerializeField] private List<GameObject> _areasToUnlock;
 
         private void Awake()
         {
@@ -30,8 +34,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
         private void CheckGateStatus()
         {
             if (AreAllBlocksInState(ResizeState.Grown))
-                _animator.Play("BigGateOpen");
+            {
+                 _animator.Play("BigGateOpen");
                 Debug.Log("Open the gate");
+                UnlockAreas();   
+            }
         }
 
         private bool AreAllBlocksInState(ResizeState requiredState)
@@ -44,7 +51,26 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
                     return false;
                 }
             }
+
             return true;
+        }
+
+        private void UnlockAreas()
+        {
+
+            foreach (var area in _areasToUnlock)
+            {
+                if (area != null)
+                {
+                    ProgressionData progressionData = new ProgressionData
+                    {
+                        Type = ProgressionType.AreaUnlock,
+                        Data = new AreaUnlockData { Area = area }
+                    };
+
+                    ProgressionManager.TriggerProgressionEvent(progressionData);
+                }
+            }
         }
     }
 }

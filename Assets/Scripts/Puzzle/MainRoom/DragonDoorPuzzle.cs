@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RogueApeStudios.SecretsOfIgnacios.Progression;
 using UnityEngine;
 
@@ -6,7 +7,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
     public class DragonDoorPuzzle : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
-        [SerializeField] private GameObject _areaToUnlock;
+        [SerializeField] private List<GameObject> _areasToUnlock;
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Potion"))
@@ -15,21 +17,25 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
                 gameObject.SetActive(false);
                 _animator.SetTrigger("DubbleIn");
                 
-                
-            if (_areaToUnlock != null)
-            {
-                ProgressionData progressionData = new ProgressionData
-                {
-                    Type = ProgressionType.AreaUnlock,
-                    Data = new AreaUnlockData { Area = _areaToUnlock }
-                };
-
-                ProgressionManager.TriggerProgressionEvent(progressionData);
+                UnlockAreas();
             }
-            else
+        }
+        
+        private void UnlockAreas()
+        {
+            foreach (var area in _areasToUnlock)
             {
-                Debug.LogError("No area assigned to unlock");
-            }            }
+                if (area != null)
+                {
+                    ProgressionData progressionData = new ProgressionData
+                    {
+                        Type = ProgressionType.AreaUnlock,
+                        Data = new AreaUnlockData { Area = area }
+                    };
+
+                    ProgressionManager.TriggerProgressionEvent(progressionData);
+                }
+            }
         }
     }
 }

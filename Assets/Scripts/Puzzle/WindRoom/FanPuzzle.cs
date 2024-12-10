@@ -8,6 +8,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.WindRoom
     {
         [SerializeField] private List<Spinnable> _fans;
         [SerializeField] private Animator _animator;
+        
+        [SerializeField] private List<GameObject> _areasToUnlock;
 
         private int _previousCount = 0;
 

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using RogueApeStudios.SecretsOfIgnacios.Interactables.Water;
 using RogueApeStudios.SecretsOfIgnacios.Interactables.Earth;
+using RogueApeStudios.SecretsOfIgnacios.Progression;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.WaterRoom
@@ -10,6 +11,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.WaterRoom
         [SerializeField] private List<Fillable> _vases;
         [SerializeField] private List<Resizable> _resizableVases;
         [SerializeField] private Animator _animator;
+        
+        [SerializeField] private List<GameObject> _areasToUnlock;
 
         private void Awake()
         {
@@ -64,6 +67,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.WaterRoom
             {
                 Debug.Log("Gate opens");
                 _animator.SetTrigger("GateOpen");
+                UnlockAreas();
             }
         }
         
@@ -78,6 +82,23 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.WaterRoom
             }
 
             return false;
+        }
+        
+        private void UnlockAreas()
+        {
+            foreach (var area in _areasToUnlock)
+            {
+                if (area != null)
+                {
+                    ProgressionData progressionData = new ProgressionData
+                    {
+                        Type = ProgressionType.AreaUnlock,
+                        Data = new AreaUnlockData { Area = area }
+                    };
+
+                    ProgressionManager.TriggerProgressionEvent(progressionData);
+                }
+            }
         }
     }
 }
