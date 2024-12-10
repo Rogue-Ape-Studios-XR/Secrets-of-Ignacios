@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.XR.CoreUtils.Datums;
 using System;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Player.PhysicsHands
@@ -11,7 +10,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.PhysicsHands
         private int _oldGrabbableLayer;
         private LayerMask _grabLayerMask;
         private float _initialGrabDist;
-        private ConfigurableJoint _grabbedJoint;
+        private Vector3 _grabEndVelocity;
+        private Vector3 _oldGrabPosition = new Vector3(0,0,0);
+        [SerializeField] private ConfigurableJoint _grabbedJoint;
         [SerializeField] private float _grabRange;
         [SerializeField] private Rigidbody _grabbingRb;
         [SerializeField] private List<String> _layersToIgnore;
@@ -36,14 +37,20 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.PhysicsHands
             if (_grabbedRb != null) 
             {
                 var dist = Vector3.Magnitude(_grabbedRb.position - _grabCenter.position) - _initialGrabDist;
-                if(dist > .5 * _grabRange)
+                if(dist > 1.5 * _grabRange)
                 {
                     EndGrab();
                 }
+                Vector3 potentialVelocity = (transform.position - _oldGrabPosition)/Time.fixedDeltaTime;
+                if (potentialVelocity != Vector3.zero) 
+                {
+                    _grabEndVelocity = potentialVelocity;
+                }
+                _oldGrabPosition = transform.position;
+                
             }
 
         }
-
 
         public void CheckForGrabbables()
         {
@@ -82,26 +89,19 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.PhysicsHands
         }
         private void StartGrab() 
         { 
-            //attach a configurable joint to the grabbed rb and configure it
-            _grabbedJoint = _grabbedRb.gameObject.AddComponent<ConfigurableJoint>();
-            _grabbedJoint.connectedBody = _grabbingRb;
-            _grabbedJoint.xMotion = ConfigurableJointMotion.Locked;
-            _grabbedJoint.yMotion = ConfigurableJointMotion.Locked;
-            _grabbedJoint.zMotion = ConfigurableJointMotion.Locked;
-            _grabbedJoint.angularXMotion = ConfigurableJointMotion.Locked;
-            _grabbedJoint.angularYMotion = ConfigurableJointMotion.Locked;
-            _grabbedJoint.angularZMotion = ConfigurableJointMotion.Locked;
-            _oldGrabbableLayer = _grabbedJoint.gameObject.layer;
-            _grabbedJoint.gameObject.layer = 14;
+            //use the serialized grabbed joint and set its rigidbody. Then change layer
+            _grabbedJoint.connectedBody = _grabbedRb;
+            _oldGrabbableLayer = _grabbedRb.gameObject.layer;
+            _grabbedRb.gameObject.layer = 14;
+
         }
 
         public void EndGrab()
         {
             if (_grabbedRb != null) { 
-                Debug.Log("i'm gonna stop grab u!!!!1");
+                _grabbedJoint.connectedBody = null;
                 _grabbedJoint.gameObject.layer = _oldGrabbableLayer;
-                //remove a configurable joint
-                Destroy(_grabbedJoint);
+                _grabbedRb.linearVelocity = _grabEndVelocity*1;
                 _grabbedRb = null;
             }
         }
