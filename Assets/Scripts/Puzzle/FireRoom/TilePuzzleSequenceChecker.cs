@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using RogueApeStudios.SecretsOfIgnacios.Progression;
+using RogueApeStudios.SecretsOfIgnacios.Spells;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
@@ -7,12 +9,15 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
     {
         [SerializeField] private List<GameObject> _tileSequence;
         private List<GameObject> _tileCollisions = new();
+        [SerializeField] private Spell _spellToUnlock;
 
         internal void AddAndValidate(GameObject tile)
         {
             AddTileToList(tile);
             if (_tileCollisions.Count == _tileSequence.Count)
             {
+                //Fire spell
+                UnlockSpell();
                 //victory
             }
             else
@@ -38,6 +43,20 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
                 //incorrect
                 Debug.Log("Faal");
                 _tileCollisions.Clear();
+            }
+        }
+        
+        private void UnlockSpell()
+        {
+           if (_spellToUnlock != null)
+            {
+                ProgressionData progressionData = new ProgressionData
+                {
+                    Type = ProgressionType.SpellUnlock,
+                    Data = new SpellUnlockData() { Spell = _spellToUnlock }
+                };
+
+                ProgressionManager.TriggerProgressionEvent(progressionData);
             }
         }
     }

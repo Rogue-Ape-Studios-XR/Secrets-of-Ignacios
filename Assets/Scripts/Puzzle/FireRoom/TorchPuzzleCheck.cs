@@ -2,6 +2,7 @@ using RogueApeStudios.SecretsOfIgnacios.Interactables;
 using System.Collections.Generic;
 using RogueApeStudios.SecretsOfIgnacios.Interactables.Fire;
 using RogueApeStudios.SecretsOfIgnacios.Progression;
+using RogueApeStudios.SecretsOfIgnacios.Spells;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
@@ -11,7 +12,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
         [SerializeField] private List<PersistentFire> _torches;
         [SerializeField] private Animator _animator;
         [SerializeField] private List<GameObject> _areasToUnlock;
-
+        [SerializeField] private Spell _spellToUnlock;
+        
         private void Awake()
         {
 
@@ -46,6 +48,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
                 _animator.SetTrigger("DubbleIn");
 
                 UnlockAreas();
+                //Water spell
+                UnlockSpell();
             }
         }
 
@@ -63,6 +67,20 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
 
                     ProgressionManager.TriggerProgressionEvent(progressionData);
                 }
+            }
+        }
+        
+        private void UnlockSpell()
+        {
+           if (_spellToUnlock != null)
+            {
+                ProgressionData progressionData = new ProgressionData
+                {
+                    Type = ProgressionType.SpellUnlock,
+                    Data = new SpellUnlockData() { Spell = _spellToUnlock }
+                };
+
+                ProgressionManager.TriggerProgressionEvent(progressionData);
             }
         }
     }
