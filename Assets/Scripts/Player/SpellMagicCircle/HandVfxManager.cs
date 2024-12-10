@@ -1,13 +1,10 @@
 using Cysharp.Threading.Tasks;
 using RogueApeStudios.SecretsOfIgnacios.Gestures;
+using RogueApeStudios.SecretsOfIgnacios.Services;
 using RogueApeStudios.SecretsOfIgnacios.Spells;
 using System;
 using System.Threading;
 using UnityEngine;
-using UnityEngine.VFX;
-using NUnit.Framework.Internal;
-using RogueApeStudios.SecretsOfIgnacios.Services;
-using UnityEngine.XR.Hands;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 {
@@ -16,27 +13,17 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
         // Script should have a reference to two visual effects. These should enable and swap to the correct vfx on gesture recognized.
         // This VFX is not contained in the spell data as a prefab. Therefore it checks spell type.
         // Element is recognized on gesture 1 
-        // Refactor: Element prefab should be on Gesture. This allows for expandability. Earth can be overridden.
+        // Refactor: Earth can be overridden, I don't know what is the issue with the earth spell atm.
 
-
-        [SerializeField] private GameObject _prefabContainerL; // a container for the vfx. This is the one moving. This can be turned off with the public function
-        [SerializeField] private GameObject _prefabContainerR;
-        [SerializeField] private Transform _palmL;
-        [SerializeField] private Transform _palmR;
-        [SerializeField] private GameObject _magicCircleTarget;
-
+        [Header("References")]
         [SerializeField] private SequenceManager _sequenceManager;
         [SerializeField] private Cast _castscript;
+        [SerializeField] private ObjectPooler _objectPooler;
+        [SerializeField] private HandData _handDataRight;
+        [SerializeField] private HandData _handDataLeft;
+        [SerializeField] private Transform _magicCircleTarget;
 
-
-        private VisualEffect _currentEffectL;
-        private VisualEffect _currentEffectR;
         private Gesture _lastGesture;
-
-        private SpellManager _spellManager;
-        
-        //unitask things
-
         private CancellationTokenSource _cancellationTokenSource;
 
         private void Awake()
@@ -48,208 +35,254 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
         {
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
-            //unsubscribe
-            SpellManager.onSpellValidation -= HandleCastRecognized;
-            SpellManager.onNoSpellMatch -= SpellManagerOnOnSpellFailed;
-            _sequenceManager.onElementValidated -= HandleElementRecognized;
-
-            _castscript.onSpellCastComplete -= DisableHandVFX;
-            //unsubscribe from cast script's cast finished event (event on cast not implemented)
         }
 
-        private void SpellManagerOnOnSpellFailed()
+        #region SequenceManager
+
+        internal void ChangeColorOnGesture(Gesture gesture)
         {
-            if (_currentEffectL != null)
-            {
-                _currentEffectL.Stop();
-            }
-            if (_currentEffectR != null)
-            {
-                _currentEffectR.Stop();
-            }
+            _handDataRight._renderer.materials[1].SetColor("_MainColor", gesture._color);
+            _handDataLeft._renderer.materials[1].SetColor("_MainColor", gesture._color);
+            _handDataRight._renderer.material = _handDataRight._defaultMaterial;
+            _handDataLeft._renderer.material = _handDataLeft._defaultMaterial;
         }
 
-        void Start()
+        internal void HandleElementRecognized(Gesture gesture)
         {
-            //subscribe!
-            SpellManager.onSpellValidation += HandleCastRecognized;
-            SpellManager.onNoSpellMatch += SpellManagerOnOnSpellFailed;
-            _sequenceManager.onElementValidated += HandleElementRecognized;
-            _castscript.onSpellCastComplete += DisableHandVFX;
-            _spellManager = ServiceLocator.GetService<SpellManager>();
-            //subscribe to cast script's cast finished event (event on cast not implemented)
+            if (gesture._name == "Start")
+            {
+                DisableBothHandEffects();
+                return;
+            }
+
+            if (gesture._name == "Quick Cast")
+                return;
+
+            if (gesture._visualEffectPrefab == null)
+                return;
+
+            SetVFXContainerPositions();
+
+            _lastGesture = gesture;
         }
 
-        void HandleElementRecognized(Gesture gesture)
+        private void DisableBothHandEffects()
         {
-            GameObject r = null;
-            GameObject l = null;
-            Debug.Log(gesture._rightHandShape);
-            switch (gesture._rightHandShape)
+            if (_handDataRight._currentEffect != null && _handDataRight._currentEffect.activeSelf)
             {
-                case HandShape.Start:
-                    //disable all hand effects
-                    if (_currentEffectL != null)
-                    {
-                        _currentEffectL.Stop();
-                    }
-                    if (_currentEffectR != null)
-                    {
-                        _currentEffectR.Stop();
-                    }
-
-                    break;
-                case HandShape.QuickCast:
-                    // effect should be at hands and play there instantly
-                    // This doesn't work since quick cast is aparrently a seperate thing.
-                    break;
-                default:
-                    if (gesture._visualEffectPrefab != null)
-                    {
-                       if (!_spellManager.IsSpellUnlockedForGesture(gesture))
-                       {    
-                           Debug.Log($"'{gesture.name}' is not unlocked"); 
-                           return;
-                       }
-                       r = Instantiate(gesture._visualEffectPrefab, _prefabContainerR.transform, false); 
-                       l = Instantiate(gesture._visualEffectPrefab, _prefabContainerL.transform, false); 
-                       _lastGesture = gesture; 
-                       SetVFXContainerPositions();
-                    }
-                    break;
+                _handDataRight._currentEffect.transform.parent = null;
+                _objectPooler.ReturnObject(_handDataRight._currentEffect.name, _handDataRight._currentEffect);
+                _handDataRight.TogglePrefabContainer(false);
             }
-
-            if (r != null && l != null)
-            { 
-                //This sets a timer on the visual effect to destroy when it is done playing.
-                DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, r);
-                DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, l);
-
-                //assign current effect
-                if (r.TryGetComponent<VisualEffect>(out VisualEffect visualr))
-                {
-                    if (_currentEffectR != null)
-                    {
-                        _currentEffectR.Stop();
-                    }
-                    _currentEffectR = visualr;
-                }
-                if (l.TryGetComponent<VisualEffect>(out VisualEffect visuall))
-                {
-                    if (_currentEffectL != null)
-                    {
-                        _currentEffectL.Stop();
-                    }
-                    _currentEffectL = visuall;
-                }
-            }
-        }
-
-        private void HandleQuickCast() //will subscribe to quick cast event
-        {
-            if (_lastGesture != null && _lastGesture._visualEffectPrefab != null)
+            if (_handDataLeft._currentEffect != null && _handDataLeft._currentEffect.activeSelf)
             {
-                GameObject rr = Instantiate(_lastGesture._visualEffectPrefab, _prefabContainerR.transform, false);
-                GameObject ll = Instantiate(_lastGesture._visualEffectPrefab, _prefabContainerL.transform, false);
-                SetVFXContainerPositions();
-
-                DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, rr);
-                DestroyVisualEffectWhenDone(_cancellationTokenSource.Token, ll);
-
-                //assign current effect
-                if (rr.TryGetComponent<VisualEffect>(out VisualEffect visualr))
-                {
-                    if (_currentEffectR != null)
-                    {
-                        _currentEffectR.Stop();
-                    }
-                    _currentEffectR = visualr;
-                }
-                if (ll.TryGetComponent<VisualEffect>(out VisualEffect visuall))
-                {
-                    if (_currentEffectL != null)
-                    {
-                        _currentEffectL.Stop();
-                    }
-                    _currentEffectL = visuall;
-                }
-
-                MoveVfxToHand(_cancellationTokenSource.Token, _prefabContainerR, _palmR);
-                MoveVfxToHand(_cancellationTokenSource.Token, _prefabContainerL, _palmL);
-            }
-        }
-
-        private void DisableHandVFX(Handedness hand)
-        {
-            if (hand == Handedness.Left && _currentEffectL != null)
-            {
-                _currentEffectL.Stop();
-            }
-            else if (hand == Handedness.Right && _currentEffectR != null)
-            {
-                _currentEffectR.Stop();
-            }
-        }
-
-        private async void MoveVfxToHand(CancellationToken token, GameObject effect, Transform dest)
-        {
-            //remove transform so it goes to world
-            effect.transform.parent = null;
-            // loop lerp
-            for (int i = 0; i < 10; i++)
-            {
-                await UniTask.WaitForSeconds(0.03f);
-                effect.transform.position = Vector3.Lerp(effect.transform.position, dest.position, 0.45f);
-            }
-            // add new transform of hand
-            effect.transform.parent = dest;
-            effect.transform.localPosition = Vector3.zero;
-
-            //if last gesture was earth, stop the vfx (so the touch spell works)
-            if (_lastGesture != null && _lastGesture._rightHandShape == HandShape.Earth)
-            {
-                _currentEffectL.Stop();
-                _currentEffectR.Stop();
-            }
-        }
-
-        private async void DestroyVisualEffectWhenDone(CancellationToken token, GameObject effect)
-        {
-            try
-            {
-                if (effect.TryGetComponent<VisualEffect>(out VisualEffect visual))
-                {
-                    // Destroy effect after it is done playing.
-                    await UniTask.WaitUntil(() => visual.aliveParticleCount == 0, cancellationToken: token);
-                    Destroy(effect);
-                }
-            }
-            catch (OperationCanceledException)
-            {
-                Debug.LogError("Visual Effect wasn't destroyed (likely, the game went out of play mode)");
+                _handDataLeft._currentEffect.transform.parent = null;
+                _objectPooler.ReturnObject(_handDataLeft._currentEffect.name, _handDataLeft._currentEffect);
+                _handDataLeft.TogglePrefabContainer(false);
             }
         }
 
         private void SetVFXContainerPositions()
         {
-            _prefabContainerR.transform.parent = _magicCircleTarget.transform;
-            _prefabContainerL.transform.parent = _magicCircleTarget.transform;
-            _prefabContainerR.transform.localPosition = Vector3.zero;
-            _prefabContainerL.transform.localPosition = Vector3.zero;
-            _prefabContainerR.SetActive(true);
+            _handDataRight._prefabContainerTransform.parent = _magicCircleTarget;
+            _handDataLeft._prefabContainerTransform.parent = _magicCircleTarget;
+            _handDataRight._prefabContainerTransform.localPosition = Vector3.zero;
+            _handDataLeft._prefabContainerTransform.localPosition = Vector3.zero;
         }
 
-        void HandleCastRecognized(bool recognized)
+        #endregion
+
+        #region SpellManager
+
+        internal void HandleOnSpellFailed()
         {
-            //activate the second vfx and move the current vfx to the hands
-            _prefabContainerL.SetActive(true);
+            SpellWrongIndication(_cancellationTokenSource.Token);
+        }
 
-            MoveVfxToHand(_cancellationTokenSource.Token, _prefabContainerR, _palmR);
-            MoveVfxToHand(_cancellationTokenSource.Token, _prefabContainerL, _palmL);
+        internal async void SpellWrongIndication(CancellationToken token)
+        {
+            try
+            {
+                float delay = 0.5f;
+                int loopAmount = 2;
+
+                for (int i = 0; i < loopAmount; i++)
+                {
+                    await UniTask.WaitForSeconds(delay, cancellationToken: token);
+
+                    _handDataRight._renderer.materials[1].SetColor("_MainColor", Color.red);
+                    _handDataLeft._renderer.materials[1].SetColor("_MainColor", Color.red);
+
+                    await UniTask.WaitForSeconds(delay, cancellationToken: token);
+
+                    _handDataRight._renderer.materials[1].SetColor("_MainColor", _handDataRight._defaultColor);
+                    _handDataLeft._renderer.materials[1].SetColor("_MainColor", _handDataLeft._defaultColor);
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.LogError("SpellWrongIndication was canceled");
+            }
+        }
+
+        internal void SetHandEffects(Spell currentSpell, bool usedQuickCast)
+        {
+            if (AreBothVisualEffectsActive())
+                return;
+
+            if (_handDataRight._currentEffect == null && _handDataLeft._currentEffect == null)
+                SetupAllVisualEffects();
+            else
+                ReactivateInactiveEffects();
+
+            SetHandMaterials(currentSpell);
+
+            _handDataRight._currentEffect.transform.SetParent(_handDataRight._prefabContainerTransform);
+            _handDataLeft._currentEffect.transform.SetParent(_handDataLeft._prefabContainerTransform);
+
+            if (!usedQuickCast)
+            {
+                MoveVfxToHand(_cancellationTokenSource.Token,
+                    _handDataRight._prefabContainerTransform,
+                    _handDataRight._palmTransform);
+                MoveVfxToHand(_cancellationTokenSource.Token,
+                    _handDataLeft._prefabContainerTransform,
+                    _handDataLeft._palmTransform);
+            }
 
         }
 
-    }
+        private bool AreBothVisualEffectsActive()
+        {
+            return _handDataRight._currentEffect != null && _handDataLeft._currentEffect != null &&
+                   _handDataRight._currentEffect && _handDataLeft._currentEffect.activeSelf;
+        }
 
+        private void SetupAllVisualEffects()
+        {
+            _handDataRight._currentEffect = SetupVisualEffect(_handDataRight, _lastGesture);
+            _handDataLeft._currentEffect = SetupVisualEffect(_handDataLeft, _lastGesture);
+        }
+
+        private void ReactivateInactiveEffects()
+        {
+            if (_handDataRight._currentEffect != null && !_handDataRight._currentEffect.activeSelf)
+            {
+                print("setting right vfx");
+                _handDataRight._currentEffect.transform.parent = null;
+                _handDataRight._currentEffect = SetupVisualEffect(_handDataRight, _lastGesture);
+            }
+            if (_handDataLeft._currentEffect != null && !_handDataLeft._currentEffect.activeSelf)
+            {
+                print("setting left vfx");
+                _handDataLeft._currentEffect.transform.parent = null;
+                _handDataLeft._currentEffect = SetupVisualEffect(_handDataLeft, _lastGesture);
+            }
+        }
+
+        private void SetHandMaterials(Spell currentSpell)
+        {
+            ApplyMaterialAndColor(_handDataRight, currentSpell._primaryConfig);
+
+            if (currentSpell._duoSpell)
+                ApplyMaterialAndColor(_handDataLeft, currentSpell._secondaryConfig);
+            else
+                ApplyMaterialAndColor(_handDataLeft, currentSpell._primaryConfig);
+        }
+
+        private void ApplyMaterialAndColor(HandData handData, HandConfig config)
+        {
+            handData._renderer.material = config._handMaterial;
+            handData._renderer.materials[1].SetColor("_MainColor", config._handColor);
+        }
+
+        private GameObject SetupVisualEffect(HandData handData, Gesture gesture)
+        {
+            if (gesture._visualEffectPrefab != null)
+            {
+                GameObject visualEffect = _objectPooler.GetObject(gesture._visualEffectPrefab.name,
+                    gesture._visualEffectPrefab, handData._prefabContainerTransform);
+
+                handData.TogglePrefabContainer(true);
+                print(handData.gameObject.name);
+                return visualEffect;
+            }
+
+            return null;
+        }
+
+        internal void ResetHandColors()
+        {
+            _handDataRight._renderer.materials[1].SetColor("_MainColor", _handDataRight._defaultColor);
+            _handDataLeft._renderer.materials[1].SetColor("_MainColor", _handDataLeft._defaultColor);
+        }
+
+        private async void MoveVfxToHand(CancellationToken token, Transform prefabContainer, Transform dest)
+        {
+            try
+            {
+                float delay = 0.03f;
+
+                //remove transform so it goes to world
+                prefabContainer.parent = null;
+                // loop lerp
+                for (int i = 0; i < 10; i++)
+                {
+                    await UniTask.WaitForSeconds(delay, cancellationToken: token);
+                    prefabContainer.position = Vector3.Lerp(prefabContainer.position, dest.position, 0.45f);
+                }
+                // add new transform of hand
+                prefabContainer.parent = dest;
+                prefabContainer.localPosition = Vector3.zero;
+
+                //if last gesture was earth, stop the vfx (so the touch spell works)
+                if (_lastGesture != null && _lastGesture._rightHandShape == HandShape.Earth)
+                {
+                    _handDataRight._currentEffect.SetActive(false);
+                    _handDataLeft._currentEffect.SetActive(false);
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.LogError("MoveVfxToHand was canceled");
+            }
+        }
+
+        #endregion
+
+        #region Cast
+
+        internal void DisableHandVFX(HandData hand)
+        {
+            if (hand == _handDataRight)
+            {
+                _handDataRight._currentEffect.transform.parent = null;
+                _objectPooler.ReturnObject(_handDataRight._currentEffect.name, _handDataRight._currentEffect);
+            }
+            else
+            {
+                _handDataLeft._currentEffect.transform.parent = null;
+                _objectPooler.ReturnObject(_handDataLeft._currentEffect.name, _handDataLeft._currentEffect);
+            }
+
+            if (hand._prefabContainer != null)
+                hand.TogglePrefabContainer(false);
+        }
+
+        internal async UniTask ChargeEffect(HandData handData, float delay)
+        {
+            if (handData._canCast)
+            {
+                handData._lineRenderer.enabled = true;
+                handData._chargeEffect.Play();
+                await UniTask.WaitForSeconds(delay, cancellationToken: _cancellationTokenSource.Token);
+                handData._lineRenderer.enabled = false;
+            }
+            else
+                handData._lineRenderer.enabled = false;
+        }
+
+        #endregion
+    }
 }
 
