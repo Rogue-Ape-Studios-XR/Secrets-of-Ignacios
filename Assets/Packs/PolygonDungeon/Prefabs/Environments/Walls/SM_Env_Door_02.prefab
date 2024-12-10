@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2358248}
   - component: {fileID: 65325328118684746}
   - component: {fileID: 8892023987030495180}
+  - component: {fileID: 3576164486991658554}
   m_Layer: 0
   m_Name: SM_Env_Door_02
   m_TagString: Untagged
@@ -133,6 +134,19 @@ MonoBehaviour:
   _destructionEffect: {fileID: 6173544389828443239}
   _spawnObjectOnBurnt: 0
   _containedObjects: []
+--- !u!114 &3576164486991658554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a9586f4ab4f3a4db9d11244073f5be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _areaToUnlock: {fileID: 0}
 --- !u!1001 &468185461460169187
 PrefabInstance:
   m_ObjectHideFlags: 0

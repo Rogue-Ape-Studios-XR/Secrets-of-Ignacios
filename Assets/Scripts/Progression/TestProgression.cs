@@ -1,21 +1,22 @@
 using RogueApeStudios.SecretsOfIgnacios.Spells;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Progression
 {
     public class TestProgression : MonoBehaviour
     {
-        [Header("Progression Type")] [SerializeField]
-        private ProgressionType _progressionType;
+        [Header("Progression Type")]
+        [SerializeField] private ProgressionType _progressionType;
 
-        [Header("Spell Unlock Data")] [SerializeField]
-        private Spell _spell;
+        [Header("Spell Unlock Data")]
+        [SerializeField] private List<Spell> _spells;
 
-        [Header("Area Unlock Data")] [SerializeField]
-        private GameObject _area; 
+        [Header("Area Unlock Data")]
+        [SerializeField] private List<GameObject> _areas;
 
-        [Header("Trigger Event")] [SerializeField]
-        private bool triggerEvent;
+        [Header("Trigger Event")]
+        [SerializeField] private bool triggerEvent;
 
         private void OnValidate()
         {
@@ -28,23 +29,52 @@ namespace RogueApeStudios.SecretsOfIgnacios.Progression
 
         private void TriggerProgressionEvent()
         {
-            ProgressionData data = new ProgressionData { Type = _progressionType };
-
             switch (_progressionType)
             {
                 case ProgressionType.SpellUnlock:
-                    if (_spell != null)
+                    if (_spells != null && _spells.Count > 0)
                     {
-                        data.Data = new SpellUnlockData { Spell = _spell };
+                        foreach (var spell in _spells)
+                        {
+                            if (spell != null)
+                            {
+                                ProgressionData data = new ProgressionData
+                                {
+                                    Type = ProgressionType.SpellUnlock,
+                                    Data = new SpellUnlockData { Spell = spell }
+                                };
+                                ProgressionManager.TriggerProgressionEvent(data);
+                            }
+                        }
                     }
                     else
                     {
-                        Debug.LogError("No spell set for SpellUnlock progression.");
+                        Debug.LogError("No spells assigned for SpellUnlock progression.");
+                    }
+                    break;
+
+                case ProgressionType.AreaUnlock:
+                    if (_areas != null && _areas.Count > 0)
+                    {
+                        foreach (var area in _areas)
+                        {
+                            if (area != null)
+                            {
+                                ProgressionData data = new ProgressionData
+                                {
+                                    Type = ProgressionType.AreaUnlock,
+                                    Data = new AreaUnlockData { Area = area }
+                                };
+                                ProgressionManager.TriggerProgressionEvent(data);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("No areas assigned for AreaUnlock progression.");
                     }
                     break;
             }
-
-            ProgressionManager.TriggerProgressionEvent(data);
         }
     }
 }

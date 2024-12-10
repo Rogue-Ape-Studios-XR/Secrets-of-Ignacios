@@ -58,8 +58,19 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             if (data.Type == ProgressionType.SpellUnlock && data.Data is SpellUnlockData spellData)
                 UnlockSpell(spellData.Spell);
-            else
-                Debug.LogError("Invalid data received for SpellUnlock event.");
+            }
+        }
+
+        public bool IsSpellUnlockedForGesture(Gesture gesture)
+        {
+            foreach (var spell in _availableSpells)
+            {
+                if (spell._gestureSequence.Contains(gesture))
+                {
+                    return spell._isUnlocked;
+                }
+            }
+            return false;
         }
 
         public void CheckSequence(List<Gesture> performedGestures)

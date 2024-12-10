@@ -1,5 +1,6 @@
 using RogueApeStudios.SecretsOfIgnacios.Interactables.Fire;
 using System.Collections.Generic;
+using RogueApeStudios.SecretsOfIgnacios.Progression;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.WaterRoom
@@ -9,6 +10,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.WaterRoom
         [Header("References")]
         [SerializeField] private List<PersistentFire> _torches;
         [SerializeField] private Animator _animator;
+        
+        [SerializeField] private List<GameObject> _areasToUnlock;
 
         [Header("Values")]
         [SerializeField] private int _torchAmount = 2;
@@ -35,6 +38,23 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.WaterRoom
 
             if (count == _torchAmount)
                 _animator.SetTrigger("GateOpen");
+        }
+        
+        private void UnlockAreas()
+        {
+            foreach (var area in _areasToUnlock)
+            {
+                if (area != null)
+                {
+                    ProgressionData progressionData = new ProgressionData
+                    {
+                        Type = ProgressionType.AreaUnlock,
+                        Data = new AreaUnlockData { Area = area }
+                    };
+
+                    ProgressionManager.TriggerProgressionEvent(progressionData);
+                }
+            }
         }
     }
 }
