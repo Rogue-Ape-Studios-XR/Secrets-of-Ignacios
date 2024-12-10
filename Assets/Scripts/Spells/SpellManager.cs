@@ -58,7 +58,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             if (data.Type == ProgressionType.SpellUnlock && data.Data is SpellUnlockData spellData)
                 UnlockSpell(spellData.Spell);
-            }
         }
 
         public bool IsSpellUnlockedForGesture(Gesture gesture)
