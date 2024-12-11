@@ -51,7 +51,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
         {
             if (gesture._name == "Start")
             {
-                _lastGesture = null;
                 DisableBothHandEffects();
                 return;
             }
@@ -63,9 +62,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
                 return;
 
             SetVFXContainerPositions();
-
-            if (gesture._visualEffectPrefab != null)
-                _lastGesture = gesture;
+            _lastGesture = gesture;
         }
 
         private void DisableBothHandEffects()
