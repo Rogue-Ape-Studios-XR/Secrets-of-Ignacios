@@ -62,7 +62,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
                 return;
 
             SetVFXContainerPositions();
-
             _lastGesture = gesture;
         }
 

@@ -15,7 +15,6 @@ public class Inventory : MonoBehaviour
                 if (other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
                 {
                     rb.useGravity = false;
-                    rb.isKinematic = true;
                 }
             }
         }
@@ -31,7 +30,6 @@ public class Inventory : MonoBehaviour
                 if (other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
                 {
                     rb.useGravity = true;
-                    rb.isKinematic = false;
                 }
             }
         }
