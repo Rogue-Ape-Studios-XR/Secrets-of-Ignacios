@@ -64,7 +64,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 
             SetVFXContainerPositions();
 
-            _lastGesture = gesture;
+            if (gesture._visualEffectPrefab != null)
+                _lastGesture = gesture;
         }
 
         private void DisableBothHandEffects()
