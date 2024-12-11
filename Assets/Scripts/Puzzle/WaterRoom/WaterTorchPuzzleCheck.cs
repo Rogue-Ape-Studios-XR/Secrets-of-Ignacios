@@ -37,7 +37,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.WaterRoom
                     count++;
 
             if (count == _torchAmount)
+            {
                 _animator.SetTrigger("GateOpen");
+                UnlockAreas();
+            }
         }
         
         private void UnlockAreas()
@@ -46,7 +49,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.WaterRoom
             {
                 if (area != null)
                 {
-                    ProgressionData progressionData = new ProgressionData
+                    ProgressionData progressionData = new()
                     {
                         Type = ProgressionType.AreaUnlock,
                         Data = new AreaUnlockData { Area = area }
