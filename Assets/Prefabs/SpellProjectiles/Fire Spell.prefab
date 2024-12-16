@@ -126,6 +126,10 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 208103903912442765, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
     - target: {fileID: 656700148542717759, guid: f00636f4677cefe4cbe7ddc95c2f5e68, type: 3}
       propertyPath: m_Asset
       value: 

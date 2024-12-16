@@ -280,13 +280,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8171078f336a6fd42b25fd9b1146eb36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _force: 10
+  _force: 3
   _affectRadius: 2.47
   _angle: 160.2
   _pool: 3
   _ignoreLayers:
     serializedVersion: 2
-    m_Bits: 2600
+    m_Bits: 4648
 --- !u!114 &-2397331427679202286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,10 +306,10 @@ MonoBehaviour:
   _impactShouldRotate: 0
   _impactEffectTransform: {fileID: 3975665790383581164}
   _pool: 3
-  _speed: 3
+  _speed: 10
   _ignoreLayers:
     serializedVersion: 2
-    m_Bits: 2600
+    m_Bits: 4648
 --- !u!1 &7559467922833788076
 GameObject:
   m_ObjectHideFlags: 0
