@@ -40,4 +40,4 @@ MonoBehaviour:
     _poolSize: 0
     _chargeEffect: {fileID: 0}
     _audioClip: {fileID: 0}
-  _isUnlocked: 1
+  _isUnlocked: 0
