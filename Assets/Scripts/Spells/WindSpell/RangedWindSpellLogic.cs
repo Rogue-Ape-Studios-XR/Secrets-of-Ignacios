@@ -17,8 +17,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
         [SerializeField] private LayerMask _ignoreLayers; // Layers to ignore
 
         [Header("Visual")]
-        // Currently disabled, will implement this later
-        // [SerializeField] private VisualEffect _windEffect;
         private ObjectPooler _objectPooler;
         private CancellationTokenSource _cancellationTokenSource;
 
@@ -71,8 +69,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
 
         private async UniTask ApplyWindForce(CancellationToken cancellationToken)
         {
-            // _windEffect?.Play();
-
             while (!cancellationToken.IsCancellationRequested)
             {
                 var colliders = Physics.OverlapSphere(transform.position, _affectRadius);
@@ -83,10 +79,15 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
                     if (hit.TryGetComponent(out Rigidbody rb))
                     {
                         var direction = (hit.transform.position - transform.position).normalized;
-                        if (Vector3.Angle(transform.forward, direction) <= _angle)
+
+                        float angleBetween = Vector3.Angle(transform.forward, direction);
+
+                        if (angleBetween <= _angle / 2)
                         {
                             var distance = Vector3.Distance(transform.position, hit.transform.position);
-                            var forceMagnitude = _force * (1 - distance / _affectRadius);
+
+                            var forceMagnitude = Mathf.Max(0f, _force * (1 - distance / _affectRadius));
+
                             rb.AddForce(direction * forceMagnitude, ForceMode.Impulse);
                         }
                     }
@@ -95,9 +96,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
                 await UniTask.WaitForFixedUpdate(cancellationToken);
             }
 
-            // _windEffect?.Stop();
             ReturnToPool();
         }
+       
 
         private bool IsIgnoredLayer(GameObject obj)
         {
