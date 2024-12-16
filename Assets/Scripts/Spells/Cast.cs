@@ -18,6 +18,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [SerializeField] internal HandData _leftHandData;
         [SerializeField] private HandVfxManager _handVfxManager;
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioSource _audioSourceWater;
 
         [Header("Casting Mode")]
         [SerializeField] private float _castTimer = 0.75f;
@@ -96,6 +97,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         private async void RepeatedCast(HandData handData)
         {
+            _audioSourceWater.Play();
             handData._isCasting = true;
             while (handData._canCast)
             {
@@ -121,6 +123,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             if (_spellManager.CurrentSpell is not null && handData._isCasting)
             {
+                _audioSourceWater.Stop();
                 handData._isCasting = false;
                 handData._canCast = false;
                 handData._renderer.materials[1].SetColor("_MainColor", handData._defaultColor);
