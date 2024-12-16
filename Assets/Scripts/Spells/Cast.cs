@@ -19,6 +19,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [SerializeField] private HandVfxManager _handVfxManager;
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private AudioSource _audioSourceWater;
+        [SerializeField] private AudioSource _audioSourceEarth;
 
         [Header("Casting Mode")]
         [SerializeField] private float _castTimer = 0.75f;
@@ -88,6 +89,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void SingleCast(HandData handData)
         {
             GetSpellProjectile(handData);
+            _audioSourceEarth.Play();
             handData._renderer.materials[1].SetColor("_MainColor", handData._defaultColor);
             handData._renderer.material = handData._defaultMaterial;
             handData._canCast = false;
