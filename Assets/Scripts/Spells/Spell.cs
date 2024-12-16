@@ -18,6 +18,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [SerializeField] internal Color _handColor;
         [SerializeField] internal int _poolSize;
         [SerializeField] internal VisualEffect _chargeEffect;
+        [SerializeField] internal AudioClip _audioClip;
     }
 
     [CreateAssetMenu(fileName = "Spell", menuName = "Scriptable Objects/Spell")]

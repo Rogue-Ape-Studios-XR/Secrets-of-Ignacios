@@ -5,16 +5,19 @@ using RogueApeStudios.SecretsOfIgnacios.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Spells
 {
+    [RequireComponent(typeof(AudioSource))]
     internal class SpellManager : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private SequenceManager _sequenceManager;
         [SerializeField] private ServiceLocator _serviceLocator;
         [SerializeField] private HandVfxManager _handVfxManager;
+        [SerializeField] private AudioSource _audioSource;
 
         [Header("Spells")]
         [SerializeField] private Spell[] _availableSpells;
@@ -137,6 +140,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             _currentSpell = spell;
             _lastSpell = spell;
+            if (spell._primaryConfig._audioClip != null)
+            {
+                _audioSource.clip = spell._primaryConfig._audioClip;
+                _audioSource.Play();
+            }
             _handVfxManager.SetHandEffects(_currentSpell, false);
         }
 
@@ -150,6 +158,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void HandleOnQuickCast()
         {
             _currentSpell = _lastSpell;
+            if (_currentSpell._primaryConfig._audioClip != null)
+            {
+                _audioSource.clip = _currentSpell._primaryConfig._audioClip;
+                _audioSource.Play();
+            }
             _handVfxManager.SetHandEffects(_currentSpell, true);
             onQuickCastValidation?.Invoke();
             onSpellValidation?.Invoke();

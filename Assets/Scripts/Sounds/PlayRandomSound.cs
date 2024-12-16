@@ -9,7 +9,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Sounds
         [SerializeField] AudioSource _audioSource;
         [SerializeField] List<AudioClip> _audioClips;
 
-        void Start()
+        void OnEnable()
         {
             _audioSource.clip = _audioClips[Random.Range(0, _audioClips.Count)];
             _audioSource.Play();

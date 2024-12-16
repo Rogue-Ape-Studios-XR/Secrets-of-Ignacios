@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Spells
 {
+    [RequireComponent(typeof(AudioSource))]
     public class Cast : MonoBehaviour
     {
         [Header("References")]
@@ -16,6 +17,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [SerializeField] internal HandData _rightHandData;
         [SerializeField] internal HandData _leftHandData;
         [SerializeField] private HandVfxManager _handVfxManager;
+        [SerializeField] private AudioSource _audioSource;
 
         [Header("Casting Mode")]
         [SerializeField] private float _castTimer = 0.75f;
@@ -51,7 +53,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                     HandConfig config = handData.GetHandConfig(_spellManager, handData == _rightHandData);
 
                     if (config._castType == CastTypes.Charged)
+                    {
+                        _audioSource.Play();
                         await _handVfxManager.ChargeEffect(handData, _castTimer);
+                    }
 
                     ExecuteSpell(handData, config._castType);
                 }
