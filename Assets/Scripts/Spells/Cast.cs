@@ -74,9 +74,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             switch (castType)
             {
                 case CastTypes.SingleFire:
+                    SingleCast(handData, false);
+                    break;
                 case CastTypes.Charged:
+                    SingleCast(handData, false);
+                    break;
                 case CastTypes.Touch:
-                    SingleCast(handData);
+                    SingleCast(handData, true);
                     break;
                 case CastTypes.Automatic:
                     RepeatedCast(handData);
@@ -86,10 +90,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
             }
         }
 
-        private void SingleCast(HandData handData)
+        private void SingleCast(HandData handData, bool isTouch)
         {
             GetSpellProjectile(handData);
-            _audioSourceEarth.Play();
+            if (isTouch)
+            {
+                _audioSourceEarth.Play();
+            }
             handData._renderer.materials[1].SetColor("_MainColor", handData._defaultColor);
             handData._renderer.material = handData._defaultMaterial;
             handData._canCast = false;
