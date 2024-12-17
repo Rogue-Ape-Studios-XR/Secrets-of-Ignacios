@@ -28,6 +28,7 @@ MonoBehaviour:
     _handColor: {r: 0, g: 1, b: 0.9836073, a: 0.3137255}
     _poolSize: 160
     _chargeEffect: {fileID: 0}
+    _audioClip: {fileID: 8300000, guid: 0f2582bcb07a62a4c967df410148e935, type: 3}
   _secondaryConfig:
     _elementType: 0
     _castType: 0
@@ -38,3 +39,5 @@ MonoBehaviour:
     _handColor: {r: 0, g: 0, b: 0, a: 0}
     _poolSize: 0
     _chargeEffect: {fileID: 0}
+    _audioClip: {fileID: 0}
+  _isUnlocked: 0
