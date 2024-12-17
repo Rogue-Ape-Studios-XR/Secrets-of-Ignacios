@@ -99,7 +99,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.WindSpell
             ReturnToPool();
         }
        
-
         private bool IsIgnoredLayer(GameObject obj)
         {
             return (_ignoreLayers & (1 << obj.layer)) != 0;
