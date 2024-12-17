@@ -4,6 +4,7 @@ using UnityEngine.VFX;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Player
 {
+    [RequireComponent(typeof(AudioSource))]
     public class HandData : MonoBehaviour
     {
         [Header("References")]
@@ -12,6 +13,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
         [SerializeField] internal Transform _prefabContainerTransform;
         [SerializeField] internal Transform _palmTransform;
         [SerializeField] internal Transform _spellSpawnPoint;
+        [SerializeField] private AudioSource _audioSourceWater;
 
         [Header("Visual")]
         [SerializeField] internal Renderer _renderer;
@@ -42,6 +44,16 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
                 else
                     return spellManager.CurrentSpell._secondaryConfig;
             }
+        }
+
+        internal void PlaySound()
+        {
+            _audioSourceWater.Play();
+        }
+
+        internal void StopSound()
+        {
+            _audioSourceWater.Stop();
         }
 
         internal void TogglePrefabContainer(bool active)

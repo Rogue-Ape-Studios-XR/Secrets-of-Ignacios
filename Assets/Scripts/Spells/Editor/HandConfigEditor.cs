@@ -38,6 +38,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.Editor
             Rect handColorRect;
             Rect poolSizeRect;
             Rect chargeEffectRect;
+            Rect audioClipRect;
 
             if (castType != CastTypes.Touch)
             {
@@ -50,6 +51,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.Editor
                 handColorRect = new Rect(position.x, position.y + 5 * lineHeight, position.width, lineHeight);
                 poolSizeRect = new Rect(position.x, position.y + 6 * lineHeight, position.width, lineHeight);
                 chargeEffectRect = new Rect(position.x, position.y + 7 * lineHeight, position.width, lineHeight);
+                audioClipRect = new Rect(position.x, position.y + 8 * lineHeight, position.width, lineHeight);
             }
             else
             {
@@ -63,6 +65,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.Editor
                 handColorRect = new Rect(position.x, position.y + 6 * lineHeight, position.width, lineHeight);
                 poolSizeRect = new Rect(position.x, position.y + 7 * lineHeight, position.width, lineHeight);
                 chargeEffectRect = new Rect(position.x, position.y + 8 * lineHeight, position.width, lineHeight);
+                audioClipRect = new Rect(position.x, position.y + 9 * lineHeight, position.width, lineHeight);
             }
 
             // Draw each field
@@ -82,6 +85,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.Editor
             EditorGUI.PropertyField(handColorRect, property.FindPropertyRelative("_handColor"));
             EditorGUI.PropertyField(poolSizeRect, property.FindPropertyRelative("_poolSize"));
             EditorGUI.PropertyField(chargeEffectRect, property.FindPropertyRelative("_chargeEffect"));
+            EditorGUI.PropertyField(audioClipRect, property.FindPropertyRelative("_audioClip"));
 
             EditorGUI.EndProperty();
         }
@@ -90,7 +94,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.Editor
         {
             // Adjust height based on whether _position is shown
             CastTypes castType = (CastTypes)property.FindPropertyRelative("_castType").enumValueIndex;
-            int extraHeight = (castType == CastTypes.Touch) ? 10 : 9; // One extra line for the header
+            int extraHeight = (castType == CastTypes.Touch) ? 11 : 10; // One extra line for the header
             return (EditorGUIUtility.singleLineHeight + 4f) * extraHeight;
         }
     }
