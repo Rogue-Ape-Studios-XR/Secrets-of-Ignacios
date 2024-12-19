@@ -269,16 +269,15 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
                 hand.TogglePrefabContainer(false);
         }
 
-        internal async UniTask ChargeEffect(HandData handData, float delay, VisualEffect chargeEffect)
+        internal async UniTask ChargeEffect(HandData handData, float delay, VisualEffectAsset chargeEffect)
         {
             if (handData._canCast)
             {
                 handData._lineRenderer.enabled = true;
                 handData.SetChargeEffect(chargeEffect);
-                chargeEffect.Play();
+                handData._chargeEffect.Play();
                 await UniTask.WaitForSeconds(delay, cancellationToken: _cancellationTokenSource.Token);
                 handData._lineRenderer.enabled = false;
-                chargeEffect.Stop();
             }
             else
                 handData._lineRenderer.enabled = false;

@@ -61,9 +61,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player
             _prefabContainer.SetActive(active);
         }
 
-        public void SetChargeEffect(VisualEffect chargeEffect)
+        public void SetChargeEffect(VisualEffectAsset chargeEffect)
         {
-            _chargeEffect.visualEffectAsset = chargeEffect.visualEffectAsset;
+            _chargeEffect.visualEffectAsset = chargeEffect;
         }
     }
 }
