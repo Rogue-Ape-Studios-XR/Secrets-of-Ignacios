@@ -5,6 +5,7 @@ using RogueApeStudios.SecretsOfIgnacios.Spells;
 using System;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 {
@@ -268,11 +269,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
                 hand.TogglePrefabContainer(false);
         }
 
-        internal async UniTask ChargeEffect(HandData handData, float delay)
+        internal async UniTask ChargeEffect(HandData handData, float delay, VisualEffectAsset chargeEffect)
         {
             if (handData._canCast)
             {
                 handData._lineRenderer.enabled = true;
+                handData.SetChargeEffect(chargeEffect);
                 handData._chargeEffect.Play();
                 await UniTask.WaitForSeconds(delay, cancellationToken: _cancellationTokenSource.Token);
                 handData._lineRenderer.enabled = false;
