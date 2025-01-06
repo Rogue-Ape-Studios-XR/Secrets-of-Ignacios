@@ -106691,15 +106691,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.19999996
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.19999999
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.19999997
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -106740,6 +106740,10 @@ PrefabInstance:
     - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -56.392
+      objectReference: {fileID: 0}
+    - target: {fileID: 435174, guid: 35230b9677512fb4a80d28a9f766e8b6, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -118158,7 +118162,7 @@ MonoBehaviour:
   _spellReceiver: {fileID: 1876623834}
   _isGrowSpellActive: 0
   _isShrinkSpellActive: 0
-  _shrinkSize: {x: 0.2, y: 0.2, z: 0.2}
+  _shrinkSize: {x: 0.5, y: 0.5, z: 0.5}
   _defaultSize: {x: 1, y: 1, z: 1}
   _growSize: {x: 2, y: 2, z: 2}
   _targetObject: {fileID: 1221725958}
@@ -124435,11 +124439,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 465364, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.00005182624
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 465364, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 465364, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: m_LocalRotation.y
@@ -124447,7 +124451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 465364, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 465364, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -124455,7 +124459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 465364, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 179.994
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 465364, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -149913,15 +149917,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 465364, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 465364, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 465364, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 465364, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: m_LocalPosition.x
@@ -149929,7 +149933,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 465364, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.259
+      value: 0.521
       objectReference: {fileID: 0}
     - target: {fileID: 465364, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: m_LocalPosition.z
