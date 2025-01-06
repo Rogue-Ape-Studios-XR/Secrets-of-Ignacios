@@ -7,6 +7,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
     public class PotionPuzzle : MonoBehaviour
     {
         [SerializeField] private GameObject _containedObject;
+        [SerializeField] private int _ingredientAmount = 3;
         private float _count;
 
         private void OnTriggerEnter(Collider other)
@@ -16,7 +17,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
                 _count++;
                 other.gameObject.SetActive(false);
             }
-            else if (!other.gameObject.CompareTag("Ingredient") && !other.gameObject.CompareTag("Player"))
+            else if (!other.gameObject.CompareTag("Ingredient") && !other.gameObject.CompareTag("Player") && other.gameObject.CompareTag("Potion"))
             {
                 Debug.Log("Wrong!");
                 if (other.TryGetComponent<Rigidbody>(out Rigidbody rb))
@@ -31,7 +32,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
 
         private void PotionCheck()
         {
-            if (_count == 3)
+            if (_count == _ingredientAmount)
             {
                 _containedObject.SetActive(true);
             }
