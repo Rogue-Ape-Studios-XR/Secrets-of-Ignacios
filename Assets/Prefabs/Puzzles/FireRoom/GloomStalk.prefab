@@ -226,7 +226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 190932, guid: 20e0bf298681fcd4693097c822277593, type: 3}
       propertyPath: m_TagString
-      value: Potion
+      value: Ingredient
       objectReference: {fileID: 0}
     - target: {fileID: 495720, guid: 20e0bf298681fcd4693097c822277593, type: 3}
       propertyPath: m_LocalScale.x
