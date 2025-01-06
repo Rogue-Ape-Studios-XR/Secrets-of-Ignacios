@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using RogueApeStudios.SecretsOfIgnacios.Progression;
 using RogueApeStudios.SecretsOfIgnacios.Spells;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
 {
@@ -20,12 +21,25 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
 
         [SerializeField] private List<GameObject> _areasToUnlock;
         [SerializeField] private Spell _spellToUnlock;
+
+        [SerializeField] private VisualEffect _fireVisualEffect;
+        [SerializeField] private VisualEffect _waterVisualEffect;
+        [SerializeField] private VisualEffect _windVisualEffect;
+
+        private bool puzzleCompleted = false;
         
         private void Awake()
         {
             _waterTarget.onFilled += TargetCheck;
+            _waterTarget.onFilled += (bool fodder) => { _waterVisualEffect.Play(); };
             _windTarget.onBlown += TargetCheck;
+            _windTarget.onBlown += (bool fodder) => { _windVisualEffect.Play(); }; ;
             _fireTarget.OnIgnitionToggle += TargetCheck;
+            _fireTarget.OnIgnitionToggle += (bool fodder) => { _fireVisualEffect.Play(); }; ;
+
+            _fireVisualEffect.Stop();
+            _waterVisualEffect.Stop();
+            _windVisualEffect.Stop();
         }
 
         private void OnDestroy()
@@ -37,12 +51,16 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
 
         private void TargetCheck(bool hit)
         {
-            if (_waterTarget._filled && _windTarget._isBlown && _fireTarget._isOnFire)
+            if (!puzzleCompleted)
             {
-                Debug.Log("Door opens");
-                _animator.SetTrigger("DubbleIn");
-                UnlockAreas();
-                UnlockSpell();
+                if (_waterTarget._filled && _windTarget._isBlown && _fireTarget._isOnFire)
+                {
+                    Debug.Log("Door opens");
+                    _animator.SetTrigger("DubbleIn");
+                    UnlockAreas();
+                    UnlockSpell();
+                    puzzleCompleted = true;
+                }
             }
         }
         
