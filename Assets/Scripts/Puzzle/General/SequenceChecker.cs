@@ -10,6 +10,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.General
     {
         [SerializeField] private List<GameObject> _sequence;
         [SerializeField] private UnityEvent OnPuzzleCompleteUnityEvent;
+        [SerializeField] private UnityEvent<int> OnNextSequenceCorrectUnityEvent;
+        [SerializeField] private UnityEvent OnSequenceFailUnityEvent;
 
         private List<GameObject> _playerSequence = new();
 
@@ -22,17 +24,24 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.General
 
         internal void CheckSequence()
         {
-            if (_playerSequence.Count == _sequence.Count && _playerSequence.SequenceEqual(_sequence))
+            if (_playerSequence.Count <= _sequence.Count) //check if the sequence is done already
             {
-                OnPuzzleComplete?.Invoke();
-                OnPuzzleCompleteUnityEvent?.Invoke();
-            }
-            else if (_playerSequence[^1] == _sequence[_playerSequence.Count - 1])
-                Debug.Log("Correct"); //indication it was correct
-            else
-            {
-                Debug.Log("Wrong, player's sequence was cleared"); //indication it was wrong
-                _playerSequence.Clear();
+                if (_playerSequence.Count == _sequence.Count && _playerSequence.SequenceEqual(_sequence))
+                {
+                    OnPuzzleComplete?.Invoke();
+                    OnPuzzleCompleteUnityEvent?.Invoke();
+                }
+                else if (_playerSequence[^1] == _sequence[_playerSequence.Count - 1])
+                { 
+                    OnNextSequenceCorrectUnityEvent?.Invoke(_playerSequence.Count-1);
+                    Debug.Log($"Answer {_playerSequence.Count - 1} correct"); //indication it was correct
+                }  
+                else
+                {
+                    Debug.Log("Wrong, player's sequence was cleared"); //indication it was wrong
+                    _playerSequence.Clear();
+                    OnSequenceFailUnityEvent?.Invoke();
+                }
             }
         }
     }

@@ -13,11 +13,30 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
         //Each shield is different so you should add the correct shield here
         [SerializeField] private GameObject _targetShield;
         [SerializeField] private Resizable _targetResizable;
+        [SerializeField] private LineRenderer _correctLine;
 
         public bool ShieldFits => _shieldFits;
         //Action so it doesn't need to constantly verify in update
 
         public event Action onShieldFitChanged;
+
+        private void Start()
+        {
+            _shieldFits = IsShieldInRequiredState();
+        }
+        private void Update()
+        {
+            if (IsShieldInRequiredState() && _targetShield.activeSelf) 
+            {
+                _correctLine.enabled = true;
+                _correctLine.SetPosition(0,transform.position);
+                _correctLine.SetPosition(1,_targetResizable.transform.position);
+            }
+            else
+            {
+                _correctLine.enabled = false;
+            }
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -35,6 +54,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
                     //Just disable for now, could have an extra statement checking if the user still has it grabbed
                 {
                     _targetShield.SetActive(false);
+                    _correctLine.enabled=false;
                     Debug.Log("Shield fits and is disabled");
                 }
                 else

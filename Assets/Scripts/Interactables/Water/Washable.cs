@@ -21,7 +21,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Water
                 for (int i = 0; i < _grimeMax && !_cleaned && _isSplashed; i++)
                 {
                     //something with _noise
+
                     _grimeAmountRemoved++;
+                    _noise.material.SetFloat("_Fade_Amount", 1 - ((_grimeMax-_grimeAmountRemoved)/_grimeMax));
+
                     await UniTask.WaitForSeconds(_spellInterval, cancellationToken: token);
                     _isSplashed = false;
                 }
