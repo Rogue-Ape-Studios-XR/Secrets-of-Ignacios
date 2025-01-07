@@ -26,7 +26,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
         }
         private void Update()
         {
-            if (_shieldFits) 
+            if (IsShieldInRequiredState() && _targetShield.activeSelf) 
             {
                 _correctLine.enabled = true;
                 _correctLine.SetPosition(0,transform.position);
@@ -54,6 +54,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
                     //Just disable for now, could have an extra statement checking if the user still has it grabbed
                 {
                     _targetShield.SetActive(false);
+                    _correctLine.enabled=false;
                     Debug.Log("Shield fits and is disabled");
                 }
                 else
