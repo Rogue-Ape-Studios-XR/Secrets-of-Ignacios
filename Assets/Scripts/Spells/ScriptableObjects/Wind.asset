@@ -16,7 +16,7 @@ MonoBehaviour:
   _gestureSequence:
   - {fileID: 11400000, guid: 98105de35a6f47945a9bc17659aae264, type: 2}
   - {fileID: 11400000, guid: 77bbacdb0a9e3fc4dbb35a030fd13737, type: 2}
-  - {fileID: 11400000, guid: 4fae163ba39953f47a92ac450dba3702, type: 2}
+  - {fileID: 11400000, guid: 721de8335e99c8b42b0813ba9574f6b8, type: 2}
   _duoSpell: 0
   _primaryConfig:
     _elementType: 3
@@ -38,3 +38,4 @@ MonoBehaviour:
     _handColor: {r: 0, g: 0, b: 0, a: 0}
     _poolSize: 0
     _chargeEffect: {fileID: 0}
+  _isUnlocked: 0
