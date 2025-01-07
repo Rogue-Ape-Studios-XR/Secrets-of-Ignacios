@@ -16,7 +16,7 @@ MonoBehaviour:
   _gestureSequence:
   - {fileID: 11400000, guid: 98105de35a6f47945a9bc17659aae264, type: 2}
   - {fileID: 11400000, guid: 6c6e9117b77522e48bf8288bb53e515c, type: 2}
-  - {fileID: 11400000, guid: 4fae163ba39953f47a92ac450dba3702, type: 2}
+  - {fileID: 11400000, guid: 721de8335e99c8b42b0813ba9574f6b8, type: 2}
   _duoSpell: 0
   _primaryConfig:
     _elementType: 0
