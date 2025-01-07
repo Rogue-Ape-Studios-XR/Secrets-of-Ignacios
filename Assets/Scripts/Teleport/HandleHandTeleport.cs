@@ -16,6 +16,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Teleport
         [SerializeField] private GameObject _interactorObject;
         [SerializeField] private AlternateMovement _alternateMovement;
         [SerializeField] private float _timeBeforeDisable = 5f;
+        [SerializeField] private AudioSource _audioSource;
 
         private float _enableMovementDelay = 0.1f;
         private bool _isTeleportActive = false;
@@ -70,6 +71,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Teleport
 
                 if (hit.transform.gameObject.layer == LayerIgnoreRaycast)
                 {
+                    _audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+                    _audioSource.Play();
                     TeleportRequest request = new()
                     {
                         destinationPosition = hit.point,
