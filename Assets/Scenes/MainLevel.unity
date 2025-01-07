@@ -93168,7 +93168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 178538, guid: d6267d2e6296e7946afb915ef648ed67, type: 3}
       propertyPath: m_TagString
-      value: Ingredient
+      value: Item
       objectReference: {fileID: 0}
     - target: {fileID: 451930, guid: d6267d2e6296e7946afb915ef648ed67, type: 3}
       propertyPath: m_LocalScale.x
