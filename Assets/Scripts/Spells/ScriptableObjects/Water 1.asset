@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41b57abb06a1e4b49bdc41681f47c71f, type: 3}
-  m_Name: Water
+  m_Name: Water 1
   m_EditorClassIdentifier: 
   _name: Water Blast
   _gestureSequence:
   - {fileID: 11400000, guid: 98105de35a6f47945a9bc17659aae264, type: 2}
-  - {fileID: 11400000, guid: 4fae163ba39953f47a92ac450dba3702, type: 2}
+  - {fileID: 11400000, guid: 4862e98fb48a7494cb2e1ba81c18bf89, type: 2}
   - {fileID: 11400000, guid: 63a13e95692e3c74891ba3402f80ccfa, type: 2}
   _duoSpell: 0
   _primaryConfig:
