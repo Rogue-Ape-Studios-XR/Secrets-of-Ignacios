@@ -116,6 +116,15 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
                             onQuickCast?.Invoke();
                         }
                         break;
+                    case "Cancel":
+                        if (_validatedGestures.Count > 0)
+                        {
+                            _validatedGestures.Clear();
+                            onReset?.Invoke();
+                            _canQuickCast = false;
+                            _handVfxManager.HandleElementRecognized(_currentGesture);
+                        }
+                        break;
                     default:
                         return;
                 }
