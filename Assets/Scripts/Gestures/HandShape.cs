@@ -9,6 +9,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         Earth,
         Air,
         Touch,
-        Projectile
+        Projectile,
+        Stream,
+        Cancel
     }
 }

@@ -10,25 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41b57abb06a1e4b49bdc41681f47c71f, type: 3}
-  m_Name: Wind
+  m_Name: Water 1
   m_EditorClassIdentifier: 
-  _name: Wind Blast
+  _name: Water Blast
   _gestureSequence:
   - {fileID: 11400000, guid: 98105de35a6f47945a9bc17659aae264, type: 2}
-  - {fileID: 11400000, guid: 77bbacdb0a9e3fc4dbb35a030fd13737, type: 2}
-  - {fileID: 11400000, guid: 721de8335e99c8b42b0813ba9574f6b8, type: 2}
+  - {fileID: 11400000, guid: 4862e98fb48a7494cb2e1ba81c18bf89, type: 2}
+  - {fileID: 11400000, guid: 63a13e95692e3c74891ba3402f80ccfa, type: 2}
   _duoSpell: 0
   _primaryConfig:
-    _elementType: 3
-    _castType: 2
+    _elementType: 1
+    _castType: 1
     _position: {x: 0, y: 0, z: 0}
     _handEffect: {fileID: 0}
-    _spellPrefab: {fileID: 2016962078072147876, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
-    _handMaterial: {fileID: -876546973899608171, guid: 682449b27d1db024aa354aa2d583de54, type: 3}
-    _handColor: {r: 0, g: 1, b: 0.7221482, a: 0.3137255}
-    _poolSize: 6
-    _chargeEffect: {fileID: 8926484042661614526, guid: 1b9b78b638cb9ac45bf1bdd8ae265fe7, type: 3}
-    _audioClip: {fileID: 8300000, guid: a951e4deb2361c94cb6545d671e81a3a, type: 3}
+    _spellPrefab: {fileID: 956630413854477819, guid: 3a43e5cab227d224782ff9be94498aab, type: 3}
+    _handMaterial: {fileID: 2100000, guid: 5bb97124fe0360944a976398229320f4, type: 2}
+    _handColor: {r: 0, g: 1, b: 0.9836073, a: 0.3137255}
+    _poolSize: 160
+    _chargeEffect: {fileID: 0}
   _secondaryConfig:
     _elementType: 0
     _castType: 0
@@ -39,5 +38,4 @@ MonoBehaviour:
     _handColor: {r: 0, g: 0, b: 0, a: 0}
     _poolSize: 0
     _chargeEffect: {fileID: 0}
-    _audioClip: {fileID: 0}
   _isUnlocked: 0

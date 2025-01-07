@@ -50,7 +50,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 
         internal void HandleElementRecognized(Gesture gesture)
         {
-            if (gesture._name == "Start")
+            if (gesture._name is "Start" or "Cancel")
             {
                 DisableBothHandEffects();
                 return;
