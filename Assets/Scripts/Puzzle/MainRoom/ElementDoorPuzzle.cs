@@ -51,16 +51,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
 
         private void TargetCheck(bool hit)
         {
-            if (!puzzleCompleted)
+            if (_waterTarget._filled && _windTarget._isBlown && _fireTarget._isOnFire)
             {
-                if (_waterTarget._filled && _windTarget._isBlown && _fireTarget._isOnFire)
-                {
-                    Debug.Log("Door opens");
-                    _animator.SetTrigger("DubbleIn");
-                    UnlockAreas();
-                    UnlockSpell();
-                    puzzleCompleted = true;
-                }
+                Debug.Log("Door opens");
+                _animator.SetTrigger("DubbleIn");
+                UnlockAreas();
+                UnlockSpell();
+                puzzleCompleted = true;
             }
         }
         
