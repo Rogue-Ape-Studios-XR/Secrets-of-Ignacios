@@ -54,8 +54,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
                     if (config._castType == CastTypes.Charged)
                     {
+                        HandConfig spell = handData.GetHandConfig(_spellManager, handData == _rightHandData);
                         _audioSource.Play();
-                        await _handVfxManager.ChargeEffect(handData, _castTimer);
+                        await _handVfxManager.ChargeEffect(handData, _castTimer, spell._chargeEffect);
                     }
 
                     ExecuteSpell(handData, config._castType);

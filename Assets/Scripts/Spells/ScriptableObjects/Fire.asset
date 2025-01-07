@@ -27,7 +27,7 @@ MonoBehaviour:
     _handMaterial: {fileID: 2100000, guid: c0790209a017c8b468b0e521aa03a646, type: 2}
     _handColor: {r: 1, g: 0.3810822, b: 0.10849059, a: 0.3137255}
     _poolSize: 6
-    _chargeEffect: {fileID: 0}
+    _chargeEffect: {fileID: 8926484042661614526, guid: 1b9b78b638cb9ac45bf1bdd8ae265fe7, type: 3}
     _audioClip: {fileID: 8300000, guid: c30d553f7efcc8443a40064e1e5a55e2, type: 3}
   _secondaryConfig:
     _elementType: 0

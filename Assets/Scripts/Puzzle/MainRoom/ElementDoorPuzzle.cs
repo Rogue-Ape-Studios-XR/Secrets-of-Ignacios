@@ -1,9 +1,9 @@
 using RogueApeStudios.SecretsOfIgnacios.Interactables.Fire;
 using RogueApeStudios.SecretsOfIgnacios.Interactables.Water;
 using RogueApeStudios.SecretsOfIgnacios.Interactables.Wind;
-using System.Collections.Generic;
 using RogueApeStudios.SecretsOfIgnacios.Progression;
 using RogueApeStudios.SecretsOfIgnacios.Spells;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -26,8 +26,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
         [SerializeField] private VisualEffect _waterVisualEffect;
         [SerializeField] private VisualEffect _windVisualEffect;
 
-        private bool puzzleCompleted = false;
-        
+        private bool _opened = false;
+
         private void Awake()
         {
             _waterTarget.onFilled += TargetCheck;
@@ -51,16 +51,16 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
 
         private void TargetCheck(bool hit)
         {
-            if (_waterTarget._filled && _windTarget._isBlown && _fireTarget._isOnFire)
+            if (_waterTarget._filled && _windTarget._isBlown && _fireTarget._isOnFire && !_opened)
             {
+                _opened = true;
                 Debug.Log("Door opens");
                 _animator.SetTrigger("DubbleIn");
                 UnlockAreas();
                 UnlockSpell();
-                puzzleCompleted = true;
             }
         }
-        
+
         private void UnlockAreas()
         {
             foreach (var area in _areasToUnlock)
@@ -77,10 +77,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
                 }
             }
         }
-        
+
         private void UnlockSpell()
         {
-           if (_spellToUnlock != null)
+            if (_spellToUnlock != null)
             {
                 ProgressionData progressionData = new ProgressionData
                 {
@@ -91,6 +91,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
                 ProgressionManager.TriggerProgressionEvent(progressionData);
             }
         }
-        
+
     }
 }
