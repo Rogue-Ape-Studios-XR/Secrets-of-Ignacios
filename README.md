@@ -1,1 +1,2 @@
-# Secrets-of-Ignacios
+# Secrets of Ignacios
+Secrets of Ignacios is a VR puzzle game that makes use of hand tracking to create an engaging and magical experience. Players take on the role of a pupil spellcaster, using hand gestures to cast a variety of spells and solve puzzles. The game combines problem solving, and spellcasting to overcome challenges in an interactive, fantasy inspired world. With dynamic environment interactions and a custom designed hand tracking control scheme, Secrets of Ignacios pushes the boundaries of VR gaming to deliver an immersive experience.
