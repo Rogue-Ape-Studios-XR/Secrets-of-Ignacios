@@ -24,12 +24,14 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
         [SerializeField] private SequenceManager _sequenceManager;
 
         private GameObject _pooledObject;
+        private SpellManager _spellManager;
         private bool _usedQuickCast = false;
 
         private void Start()
         {
             _magicCircle.Stop();
 
+            _spellManager = ServiceLocator.GetService<SpellManager>();
             SpellManager.onSpellValidation += ResetMagicCircle;
             SpellManager.onQuickCastValidation += HandleOnQuickCastValidation;
             SpellManager.onNoSpellMatch += ResetMagicCircle;
@@ -44,7 +46,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
             _sequenceManager.onGestureRecognised -= HandleGestureRecognized;
         }
 
-        void HandleGestureRecognized(List<Gesture> gestures)
+        private void HandleGestureRecognized(List<Gesture> gestures)
         {
             if (gestures.Count > 0)
             {
@@ -64,11 +66,14 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
                     default:
                         if (gestures[^1]._visualEffectPrefab != null)
                         {
-                            _objectPooler.CreatePool(gestures[^1]._visualEffectPrefab.name, gestures[^1]._visualEffectPrefab, 3);
-                            _pooledObject = _objectPooler.GetObject(gestures[^1]._visualEffectPrefab.name,
-                                gestures[^1]._visualEffectPrefab,
-                                transform);
-                            _pooledObject.transform.parent = transform;
+                            if (_spellManager.IsSpellUnlockedForGesture(gestures[^1]))
+                            {
+                                _objectPooler.CreatePool(gestures[^1]._visualEffectPrefab.name, gestures[^1]._visualEffectPrefab, 3);
+                                _pooledObject = _objectPooler.GetObject(gestures[^1]._visualEffectPrefab.name,
+                                    gestures[^1]._visualEffectPrefab,
+                                    transform);
+                                _pooledObject.transform.parent = transform;    
+                            }
                         }
                         break;
                 }
