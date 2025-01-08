@@ -14707,6 +14707,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 953721726}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 958201050070032889, guid: 485c0381e5e1cbe48ab6caba70d8f44b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 521130308}
+    - targetCorrespondingSourceObject: {fileID: 958201050070032889, guid: 485c0381e5e1cbe48ab6caba70d8f44b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 521130307}
     - targetCorrespondingSourceObject: {fileID: 977723793559061185, guid: 485c0381e5e1cbe48ab6caba70d8f44b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 185296133}
@@ -15892,7 +15898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 131315732479452069, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.56
+      value: 14.18
       objectReference: {fileID: 0}
     - target: {fileID: 131315732479452069, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15926,9 +15932,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 661814894019528572, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6ce5a26bba3adf64dae46a9a69239338, type: 2}
     - target: {fileID: 3162398353802701640, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162398353802954124, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162398353802954124, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162398353802954124, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162398353802954124, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9132904276750562430, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
       propertyPath: m_Name
@@ -15941,6 +15967,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1232395564}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9132904276750562430, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1756115923}
+    - targetCorrespondingSourceObject: {fileID: 9132904276750562430, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1756115924}
     - targetCorrespondingSourceObject: {fileID: 3162398353802701640, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 198753490}
@@ -38579,6 +38611,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1877020931}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8384120203111899041, guid: 8f98ba963ed59c94aa8a46905d1e31c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1708590310}
+    - targetCorrespondingSourceObject: {fileID: 8384120203111899041, guid: 8f98ba963ed59c94aa8a46905d1e31c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1708590311}
     - targetCorrespondingSourceObject: {fileID: 1863699881800748491, guid: 8f98ba963ed59c94aa8a46905d1e31c5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 428853506}
@@ -45636,6 +45674,77 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 450008, guid: 9830f561f80768b4f92139c1c15bc835, type: 3}
   m_PrefabInstance: {fileID: 520703719}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &521130305 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 958201050070032889, guid: 485c0381e5e1cbe48ab6caba70d8f44b, type: 3}
+  m_PrefabInstance: {fileID: 185296128}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &521130306 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9163081005658759381, guid: 485c0381e5e1cbe48ab6caba70d8f44b, type: 3}
+  m_PrefabInstance: {fileID: 185296128}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &521130307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521130305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2978aeb70148f464093bcc5e0f18147f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resizable: {fileID: 185296132}
+  _fillable: {fileID: 185296133}
+  _isWaterPuzzle: 1
+  wantedSize: 2
+  onChainHeavy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 521130308}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.ChainPuzzleAnimation,
+          Assembly-CSharp
+        m_MethodName: HandleChainWeighedDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onChainUnheavy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 521130308}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.ChainPuzzleAnimation,
+          Assembly-CSharp
+        m_MethodName: HandleChainLighter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &521130308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521130305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4019a4648ff4a1a42856ebf7ebffb353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chainAnimator: {fileID: 521130306}
 --- !u!4 &522841247 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 468554, guid: 6e329ba57c2f99b41acb3584d0cb8da5, type: 3}
@@ -79336,7 +79445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 131315732479452069, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.56
+      value: 14.18
       objectReference: {fileID: 0}
     - target: {fileID: 131315732479452069, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -79370,6 +79479,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 661814894019528572, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6ce5a26bba3adf64dae46a9a69239338, type: 2}
     - target: {fileID: 3162398353802701640, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -79385,6 +79498,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1832954272}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9132904276750562430, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1042523264}
+    - targetCorrespondingSourceObject: {fileID: 9132904276750562430, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1042523265}
     - targetCorrespondingSourceObject: {fileID: 3162398353802701640, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 837263553}
@@ -86407,6 +86526,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 450008, guid: 9830f561f80768b4f92139c1c15bc835, type: 3}
   m_PrefabInstance: {fileID: 921661930}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &921755702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8384120203111899041, guid: 8f98ba963ed59c94aa8a46905d1e31c5, type: 3}
+  m_PrefabInstance: {fileID: 1654289490}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &921772953
 PrefabInstance:
@@ -102319,6 +102443,77 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400616, guid: 3095eed88e39bec4bb5a519dac88fed9, type: 3}
   m_PrefabInstance: {fileID: 1042344530}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1042523262 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9132904276750562430, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
+  m_PrefabInstance: {fileID: 837263549}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1042523263 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 661814894019528572, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
+  m_PrefabInstance: {fileID: 837263549}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1042523264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042523262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4019a4648ff4a1a42856ebf7ebffb353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chainAnimator: {fileID: 1042523263}
+--- !u!114 &1042523265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042523262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2978aeb70148f464093bcc5e0f18147f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resizable: {fileID: 837263553}
+  _fillable: {fileID: 0}
+  _isWaterPuzzle: 0
+  wantedSize: 2
+  onChainHeavy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1042523264}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.ChainPuzzleAnimation,
+          Assembly-CSharp
+        m_MethodName: HandleChainWeighedDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onChainUnheavy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1042523264}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.ChainPuzzleAnimation,
+          Assembly-CSharp
+        m_MethodName: HandleChainLighter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1043291365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106612,6 +106807,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2116162338}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 958201050070032889, guid: 485c0381e5e1cbe48ab6caba70d8f44b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1378651991}
+    - targetCorrespondingSourceObject: {fileID: 958201050070032889, guid: 485c0381e5e1cbe48ab6caba70d8f44b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1378651990}
     - targetCorrespondingSourceObject: {fileID: 977723793559061185, guid: 485c0381e5e1cbe48ab6caba70d8f44b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1092402873}
@@ -135806,6 +136007,77 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400616, guid: 3095eed88e39bec4bb5a519dac88fed9, type: 3}
   m_PrefabInstance: {fileID: 1378323626}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1378651988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 958201050070032889, guid: 485c0381e5e1cbe48ab6caba70d8f44b, type: 3}
+  m_PrefabInstance: {fileID: 1092402868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1378651989 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9163081005658759381, guid: 485c0381e5e1cbe48ab6caba70d8f44b, type: 3}
+  m_PrefabInstance: {fileID: 1092402868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1378651990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378651988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2978aeb70148f464093bcc5e0f18147f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resizable: {fileID: 1092402872}
+  _fillable: {fileID: 1092402873}
+  _isWaterPuzzle: 1
+  wantedSize: 2
+  onChainHeavy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1378651991}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.ChainPuzzleAnimation,
+          Assembly-CSharp
+        m_MethodName: HandleChainWeighedDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onChainUnheavy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1378651991}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.ChainPuzzleAnimation,
+          Assembly-CSharp
+        m_MethodName: HandleChainLighter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1378651991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378651988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4019a4648ff4a1a42856ebf7ebffb353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chainAnimator: {fileID: 1378651989}
 --- !u!1001 &1379203759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -168074,6 +168346,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 933372426}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8384120203111899041, guid: 8f98ba963ed59c94aa8a46905d1e31c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1654289496}
+    - targetCorrespondingSourceObject: {fileID: 8384120203111899041, guid: 8f98ba963ed59c94aa8a46905d1e31c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1654289497}
     - targetCorrespondingSourceObject: {fileID: 1863699881800748491, guid: 8f98ba963ed59c94aa8a46905d1e31c5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1654289494}
@@ -168114,6 +168392,72 @@ MonoBehaviour:
   _filled: 0
   _contentMax: 10
   _contentFilled: 0
+--- !u!95 &1654289495 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8542656712502263907, guid: 8f98ba963ed59c94aa8a46905d1e31c5, type: 3}
+  m_PrefabInstance: {fileID: 1654289490}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1654289496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921755702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4019a4648ff4a1a42856ebf7ebffb353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chainAnimator: {fileID: 1654289495}
+--- !u!114 &1654289497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921755702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2978aeb70148f464093bcc5e0f18147f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resizable: {fileID: 1654289498}
+  _fillable: {fileID: 1654289494}
+  _isWaterPuzzle: 1
+  wantedSize: 2
+  onChainHeavy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1654289496}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.ChainPuzzleAnimation,
+          Assembly-CSharp
+        m_MethodName: HandleChainWeighedDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onChainUnheavy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1654289496}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.ChainPuzzleAnimation,
+          Assembly-CSharp
+        m_MethodName: HandleChainLighter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1654289498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172067,6 +172411,77 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 427962, guid: e2f6b94a6a616c64db9403bafd31e00a, type: 3}
   m_PrefabInstance: {fileID: 1707174507}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1708590308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8384120203111899041, guid: 8f98ba963ed59c94aa8a46905d1e31c5, type: 3}
+  m_PrefabInstance: {fileID: 428853502}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1708590309 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8542656712502263907, guid: 8f98ba963ed59c94aa8a46905d1e31c5, type: 3}
+  m_PrefabInstance: {fileID: 428853502}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1708590310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708590308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4019a4648ff4a1a42856ebf7ebffb353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chainAnimator: {fileID: 1708590309}
+--- !u!114 &1708590311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708590308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2978aeb70148f464093bcc5e0f18147f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resizable: {fileID: 428853510}
+  _fillable: {fileID: 428853506}
+  _isWaterPuzzle: 1
+  wantedSize: 2
+  onChainHeavy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1708590310}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.ChainPuzzleAnimation,
+          Assembly-CSharp
+        m_MethodName: HandleChainWeighedDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onChainUnheavy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1708590310}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.ChainPuzzleAnimation,
+          Assembly-CSharp
+        m_MethodName: HandleChainLighter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1709147473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -177208,6 +177623,77 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.55
   m_Center: {x: 0, y: 0.38, z: 0}
+--- !u!1 &1756115921 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9132904276750562430, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
+  m_PrefabInstance: {fileID: 198753486}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1756115922 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 661814894019528572, guid: 78931fee896bfbd4fbd59ef485d4dedd, type: 3}
+  m_PrefabInstance: {fileID: 198753486}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1756115923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756115921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4019a4648ff4a1a42856ebf7ebffb353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chainAnimator: {fileID: 1756115922}
+--- !u!114 &1756115924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756115921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2978aeb70148f464093bcc5e0f18147f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resizable: {fileID: 198753490}
+  _fillable: {fileID: 0}
+  _isWaterPuzzle: 0
+  wantedSize: 2
+  onChainHeavy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1756115923}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.ChainPuzzleAnimation,
+          Assembly-CSharp
+        m_MethodName: HandleChainWeighedDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onChainUnheavy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1756115923}
+        m_TargetAssemblyTypeName: RogueApeStudios.SecretsOfIgnacios.ChainPuzzleAnimation,
+          Assembly-CSharp
+        m_MethodName: HandleChainLighter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1757252905 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 149828, guid: 3095eed88e39bec4bb5a519dac88fed9, type: 3}
