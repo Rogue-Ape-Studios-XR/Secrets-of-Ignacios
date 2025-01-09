@@ -11,7 +11,7 @@ public class InventoryButton : MonoBehaviour
         {
             Inventory.SetActive(!Inventory.activeInHierarchy);
             Inventory.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
-            Inventory.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.3f);
+            Inventory.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.4f);
         }
     }
 }

@@ -14,6 +14,8 @@ public class Inventory : MonoBehaviour
                 other.transform.parent = transform;
                 if (other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
                 {
+                    rb.linearDamping = 1000;
+                    rb.angularDamping = 1000;
                     rb.useGravity = false;
                 }
             }
@@ -29,6 +31,8 @@ public class Inventory : MonoBehaviour
                 other.transform.parent = null;
                 if (other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
                 {
+                    rb.linearDamping = 0;
+                    rb.angularDamping = 0.05f;
                     rb.useGravity = true;
                 }
             }
