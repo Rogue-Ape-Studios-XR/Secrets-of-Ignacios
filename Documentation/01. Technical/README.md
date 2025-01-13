@@ -11,4 +11,9 @@ Here explainations and class diagrams of the code can be found (It might not be 
   - `Gesture.cs`
   - `SequenceManager.cs`  
 - [Spell Casting](02.%20Spell%20Casting.md) contains:
-  - 
+  - `Spell.cs`
+    - `HandConfig`
+  - `SpellManager.cs`
+  - `Cast.cs`
+  - `ElementType.cs`
+  - `CastTypes.cs`
