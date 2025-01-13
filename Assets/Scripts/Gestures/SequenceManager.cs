@@ -25,6 +25,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         private bool _gestureValidated = false;
         private bool _sequenceStarted = false;
         private bool _canQuickCast = false;
+        private bool _finalSpellAvailable;
 
         internal event Action onSequenceCreated;
         internal event Action onReset;
@@ -33,6 +34,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         internal event Action<Gesture> onElementValidated;
         internal event Action onSpellFailedVFX;
 
+        public static event Action onFinalSpellValidation;
         internal List<Gesture> ValidatedGestures => _validatedGestures;
 
         private void Awake()
@@ -41,11 +43,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
 
             SpellManager.onSpellValidation += HandleOnSpellValidated;
             SpellManager.onNoSpellMatch += HandleOnSpellFailed;
+            FinalSpellTrigger.onFinalSpellUnlockStateChange += HandleFinalSpellUnlockState;
         }
 
         private void OnDestroy()
         {
             SpellManager.onSpellValidation -= HandleOnSpellValidated;
+            FinalSpellTrigger.onFinalSpellUnlockStateChange -= HandleFinalSpellUnlockState;
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
         }
@@ -79,24 +83,42 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
 
             if (_sequenceStarted)
             {
-                if (_validatedGestures.Count == 0 ||
-                    _validatedGestures[^1] != _currentGesture)
+                if (_finalSpellAvailable && 
+                    (_validatedGestures.Count == 0 || _validatedGestures[^1] != _currentGesture))
                 {
+                    onFinalSpellValidation?.Invoke();
                     _validatedGestures.Add(_currentGesture);
                     _handVfxManager.ChangeColorOnGesture(_currentGesture);
-
-                    if (_currentGesture._name != "Quick Cast")
-                        onGestureRecognised?.Invoke(_validatedGestures);
-
-                    if (_validatedGestures.Count == 2)
-                        _handVfxManager.HandleElementRecognized(_currentGesture);
                 }
+                else
+                {
+                    if (_validatedGestures.Count == 0 ||
+                        _validatedGestures[^1] != _currentGesture)
+                    {
+                        _validatedGestures.Add(_currentGesture);
+                        _handVfxManager.ChangeColorOnGesture(_currentGesture);
+
+                        if (_currentGesture._name != "Quick Cast")
+                            onGestureRecognised?.Invoke(_validatedGestures);
+
+                        if (_validatedGestures.Count == 2)
+                            _handVfxManager.HandleElementRecognized(_currentGesture);
+                    }    
+                }
+                
+                
             }
 
             _currentGesture = null;
             _gestureValidated = false;
         }
-
+        
+        private void HandleFinalSpellUnlockState(bool available)
+        {
+            _finalSpellAvailable = available;
+            print("final spell is now " + _finalSpellAvailable);
+        }
+        
         private void HandleGesture(Gesture currentGesture)
         {
             if (_leftHandActive && _rightHandActive)
