@@ -73,7 +73,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3039164561857900347
 Transform:
   m_ObjectHideFlags: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
   check: 0
   m_Property:
     m_Name: Should Be Alive
-  Target: {fileID: 0}
+  Target: {fileID: 3306832803915207418}
 --- !u!114 &695906775650853696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,7 +415,7 @@ MonoBehaviour:
   check: 0
   m_Property:
     m_Name: Should Be Alive
-  Target: {fileID: 0}
+  Target: {fileID: 3306832803915207418}
 --- !u!114 &1560019953572580526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -586,7 +586,7 @@ MonoBehaviour:
   check: 0
   m_Property:
     m_Name: Should Be Alive
-  Target: {fileID: 0}
+  Target: {fileID: 3306832803915207418}
 --- !u!114 &2439577116895855574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,7 +682,7 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array:
-      - m_Value: 1
+      - m_Value: 0
         m_Name: Should Be Alive
         m_Overridden: 1
 --- !u!73398921 &7258053699120776181
@@ -853,7 +853,7 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array:
-      - m_Value: 1
+      - m_Value: 0
         m_Name: Should Be Alive
         m_Overridden: 1
 --- !u!73398921 &4243299667529913471
