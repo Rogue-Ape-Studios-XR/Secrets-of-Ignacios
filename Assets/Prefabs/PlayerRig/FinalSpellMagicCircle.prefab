@@ -133,7 +133,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4225390992599088835}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: b20f580bea7e45841bf5148ca5a7ccca, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 82574a2ee889d7c4785a3da305e2ca30, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -149,7 +149,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 1, y: 1, z: 1, w: 1}
+      - m_Value: {x: 0.8226415, y: 0.97770864, z: 1, w: 0.40392157}
         m_Name: Circle Color
         m_Overridden: 1
     m_Uint:
@@ -304,7 +304,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5818764962698046984}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: b20f580bea7e45841bf5148ca5a7ccca, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 82574a2ee889d7c4785a3da305e2ca30, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -320,7 +320,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 1, y: 1, z: 1, w: 1}
+      - m_Value: {x: 0.09056493, y: 0.5773585, z: 0, w: 0}
         m_Name: Circle Color
         m_Overridden: 1
     m_Uint:
@@ -475,7 +475,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5979588591165514323}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: b20f580bea7e45841bf5148ca5a7ccca, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 82574a2ee889d7c4785a3da305e2ca30, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -491,7 +491,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 1, y: 1, z: 1, w: 1}
+      - m_Value: {x: 0, y: 1, z: 0.9836073, w: 1}
         m_Name: Circle Color
         m_Overridden: 1
     m_Uint:
@@ -820,7 +820,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8211427431698312308}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: b20f580bea7e45841bf5148ca5a7ccca, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 82574a2ee889d7c4785a3da305e2ca30, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -836,7 +836,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 1, y: 1, z: 1, w: 1}
+      - m_Value: {x: 1, y: 0.3810822, z: 0.10849059, w: 1}
         m_Name: Circle Color
         m_Overridden: 1
     m_Uint:
