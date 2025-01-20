@@ -26,6 +26,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         private bool _sequenceStarted = false;
         private bool _canQuickCast = false;
         private bool _finalSpellAvailable;
+        private bool _finalSpellCast;
 
         internal event Action onSequenceCreated;
         internal event Action onReset;
@@ -35,6 +36,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         internal event Action onSpellFailedVFX;
 
         public static event Action onFinalSpellValidation;
+        //ignacios model will subscribe to this
+        public static event Action onFinalSpellCompleted;
         internal List<Gesture> ValidatedGestures => _validatedGestures;
 
         private void Awake()
@@ -170,6 +173,19 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
 
         private void HandleOnSpellValidated()
         {
+            if (_finalSpellAvailable)
+            {
+                _canQuickCast = false;
+                _validatedGestures.Clear();
+                _sequenceStarted = false;
+                if (!_finalSpellCast)
+                {
+                    // Ignacios
+                    onFinalSpellCompleted?.Invoke();
+                    _finalSpellCast = true;
+                }
+                return;
+            }
             _canQuickCast = true;
             _validatedGestures.Clear();
             _sequenceStarted = false;
