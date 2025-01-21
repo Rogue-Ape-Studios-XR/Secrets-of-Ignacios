@@ -12,8 +12,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
         [SerializeField] private List<VisualEffect> _magicCircles;
         [SerializeField] private float _yOffset = 0.5f;
         [SerializeField] private GameObject _magicCircleController;
+        [SerializeField] private SequenceManager _sequenceManager;
         
         private int _currentCircleIndex = 0;
+        private bool _wasWrong = false;
+        private bool _finalSpellUnlocked;
         private Camera _mainCamera;
 
         private void Start()
@@ -25,24 +28,39 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
                 magicCircle.Stop();
             }
             PositionMagicCircles();
-
+            _sequenceManager.onReset += StopAllMagicCircles;
+            _sequenceManager.onSpellFailedVFX += StopAllMagicCircles;
+            SequenceManager.onFinalSpellCompleted += HandleFinalSpellCompletion;
+            FinalSpellTrigger.onFinalSpellLock += StopAllMagicCircles;
+            FinalSpellTrigger.onFinalSpellUnlocked += HandleFinalSpellUnlock;
             SequenceManager.onFinalSpellValidation += HandleOnFinalSpellValidation;
             SpellManager.onNoSpellMatch += StopAllMagicCircles;
         }
 
         private void OnDestroy()
         {
+            _sequenceManager.onReset -= StopAllMagicCircles;
+            _sequenceManager.onSpellFailedVFX -= StopAllMagicCircles;
+            FinalSpellTrigger.onFinalSpellLock -= StopAllMagicCircles;
+            FinalSpellTrigger.onFinalSpellUnlocked -= HandleFinalSpellUnlock;
+            SequenceManager.onFinalSpellCompleted -= HandleFinalSpellCompletion;
             SequenceManager.onFinalSpellValidation -= HandleOnFinalSpellValidation;
             SpellManager.onNoSpellMatch -= StopAllMagicCircles;
         }
 
         private void HandleOnFinalSpellValidation()
         {
+            if (_wasWrong)
+            {
+                _wasWrong = false;
+                return;
+            }
             if (!_magicCircleController.activeSelf)
                 _magicCircleController.SetActive(true);
             
             if (_currentCircleIndex < _magicCircles.Count)
             {
+                Debug.LogWarning("Magic circle count" + _currentCircleIndex);
                 _magicCircles[_currentCircleIndex].Play();
                 _currentCircleIndex++;
             }
@@ -50,11 +68,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 
         private void StopAllMagicCircles()
         {
-            _currentCircleIndex = 0;
-            foreach (var magicCircle in _magicCircles)
+            if (_finalSpellUnlocked)
             {
-                magicCircle.Stop();
+                _wasWrong = true;
             }
+            Debug.LogWarning("stopping circles");
+            _currentCircleIndex = 0;
             _magicCircleController.SetActive(false);
         }
 
@@ -70,6 +89,17 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
                     _magicCircles[i].transform.position = magicCirclePosition;
                 }
             }
+        }
+
+        private void HandleFinalSpellUnlock()
+        {
+            _finalSpellUnlocked = true;
+        }
+
+        private void HandleFinalSpellCompletion()
+        {
+            _wasWrong = true;
+            StopAllMagicCircles();
         }
     }
 }

@@ -7,6 +7,7 @@ namespace RogueApeStudios.SecretsOfIgnacios
     public class GodSpawner : MonoBehaviour
     {
         [SerializeField] private GameObject _ignacios;
+        [SerializeField] private CapsuleCollider _collider;
         [SerializeField] private bool _testBool;
         private void Start()
         {
@@ -30,6 +31,7 @@ namespace RogueApeStudios.SecretsOfIgnacios
         private void HandleIgnaciosSpawning()
         {
             _ignacios.SetActive(true);
+            _collider.enabled = true;
         }
     }
 }

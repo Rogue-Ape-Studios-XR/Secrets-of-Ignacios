@@ -41,6 +41,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void OnEnable()
         {
             _sequenceManager.onGestureRecognised += CheckSequence;
+            _sequenceManager.onFinalGestureRecognised += CheckSequence;
             _sequenceManager.onReset += HandleReset;
             _sequenceManager.onQuickCast += HandleOnQuickCast;
             ProgressionManager.OnProgressionEvent += HandleProgressionEvent;
@@ -49,6 +50,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void OnDestroy()
         {
             _sequenceManager.onGestureRecognised -= CheckSequence;
+            _sequenceManager.onFinalGestureRecognised += CheckSequence;
             _sequenceManager.onReset -= HandleReset;
             _sequenceManager.onQuickCast -= HandleOnQuickCast;
             ProgressionManager.OnProgressionEvent += HandleProgressionEvent;

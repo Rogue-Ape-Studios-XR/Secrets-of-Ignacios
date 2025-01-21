@@ -21,14 +21,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 03b56e3cddb3bd0459a6f7ffe917a300, type: 2}
   _duoSpell: 0
   _primaryConfig:
-    _elementType: 0
+    _elementType: 2
     _castType: 0
     _position: {x: 0, y: 0, z: 0}
     _handEffect: {fileID: 0}
-    _spellPrefab: {fileID: 0}
-    _handMaterial: {fileID: 0}
+    _spellPrefab: {fileID: 45103247334139236, guid: c7eb60de9f4009441abeed26030fd702, type: 3}
+    _handMaterial: {fileID: 2100000, guid: 53c16fb5d5c516b40a1f6a8fc34132f3, type: 2}
     _handColor: {r: 0, g: 0, b: 0, a: 0}
-    _poolSize: 0
+    _poolSize: 10
     _chargeEffect: {fileID: 0}
     _audioClip: {fileID: 0}
   _secondaryConfig:
@@ -42,4 +42,4 @@ MonoBehaviour:
     _poolSize: 0
     _chargeEffect: {fileID: 0}
     _audioClip: {fileID: 0}
-  _isUnlocked: 1
+  _isUnlocked: 0

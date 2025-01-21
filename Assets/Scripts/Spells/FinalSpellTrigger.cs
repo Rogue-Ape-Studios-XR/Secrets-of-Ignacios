@@ -11,6 +11,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
     public class FinalSpellTrigger : MonoBehaviour
     {
         public static event Action<bool> onFinalSpellUnlockStateChange;
+        public static event Action onFinalSpellLock;
+        public static event Action onFinalSpellUnlocked;
 
         [SerializeField] private List<string> _tags;
         [SerializeField] private List<Spell> _finalSpells;
@@ -44,6 +46,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                         };
 
                         ProgressionManager.TriggerProgressionEvent(progressionData);
+                        onFinalSpellUnlocked?.Invoke();
                     }
                 }
                 Debug.Log("Unlocked the final spell");
@@ -66,6 +69,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
                         };
 
                         ProgressionManager.TriggerProgressionEvent(progressionData);
+                        onFinalSpellLock?.Invoke();
                     }
                 }
                 Debug.Log("Player exited the area, locking the spell");
