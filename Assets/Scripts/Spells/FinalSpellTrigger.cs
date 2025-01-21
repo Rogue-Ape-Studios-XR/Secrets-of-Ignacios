@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using RogueApeStudios.SecretsOfIgnacios.FinalSpellPages;
 using RogueApeStudios.SecretsOfIgnacios.Progression;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.VFX;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Spells
 {
@@ -18,10 +20,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         [SerializeField] private List<Spell> _finalSpells;
         // serializing the bool so you can just enable it for testing
         [SerializeField] private bool _allPagesCollected;
+        [SerializeField] private VisualEffect _burningVisual;
 
         private void Start()
         {
             FinalSpellPageCounter.onAllPagesCollected += HandleAllPagesCollected;
+            _burningVisual.Stop();
         }
 
         private void OnDestroy()
@@ -79,6 +83,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void HandleAllPagesCollected()
         {
             _allPagesCollected = true;
+            _burningVisual.Play();
         }
     }
 }
