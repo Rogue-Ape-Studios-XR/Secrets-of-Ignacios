@@ -12,11 +12,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.FinalSpellPages
         [SerializeField] private VisualEffect _poofEffect;
 
         private CancellationTokenSource _cancellationTokenSource;
+        private bool _triggered;
 
         public static event Action onPagePickup;
         private void Awake()
         {
             _cancellationTokenSource = new CancellationTokenSource();
+            _poofEffect.Stop();
         }
 
         private void OnDestroy()
@@ -30,23 +32,23 @@ namespace RogueApeStudios.SecretsOfIgnacios.FinalSpellPages
         {
             // 14 is the layer the grab logic sets grabbed objects to
             // so by abusing this we can circumvent an event. The update only runs on 5 pages anyways so who cares
+            if (_triggered) return;
             if (gameObject.layer == 14)
             {
                 _poofEffect.Play();
                 onPagePickup?.Invoke();
                 // first just disable mesh renderer so its gone to the player, but won't mess with the vfx
                 _meshRenderer.enabled = false;
+                _triggered = true;
                 HandlePagePickupAsync(_cancellationTokenSource.Token).Forget();   
             }
         }
+        
         private async UniTaskVoid HandlePagePickupAsync(CancellationToken token)
         {
             try
             {
-                while (_poofEffect.aliveParticleCount > 0)
-                {
-                    await UniTask.Yield(PlayerLoopTiming.Update, token);
-                }
+                await UniTask.WaitUntil(() => _poofEffect.aliveParticleCount == 0, cancellationToken: token);
 
                 Destroy(gameObject);
             }
