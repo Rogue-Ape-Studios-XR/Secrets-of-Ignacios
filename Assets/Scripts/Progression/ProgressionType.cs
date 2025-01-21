@@ -4,5 +4,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Progression
 	{
 		SpellUnlock,
 		AreaUnlock,
+		SpellLock
 	}
 }

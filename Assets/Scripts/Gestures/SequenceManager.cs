@@ -25,14 +25,20 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
         private bool _gestureValidated = false;
         private bool _sequenceStarted = false;
         private bool _canQuickCast = false;
+        private bool _finalSpellAvailable;
+        private bool _finalSpellCast = false;
 
         internal event Action onSequenceCreated;
         internal event Action onReset;
         internal event Action onQuickCast;
         internal event Action<List<Gesture>> onGestureRecognised;
+        internal event Action<List<Gesture>> onFinalGestureRecognised;
         internal event Action<Gesture> onElementValidated;
         internal event Action onSpellFailedVFX;
 
+        public static event Action onFinalSpellValidation;
+        //ignacios model will subscribe to this
+        public static event Action onFinalSpellCompleted;
         internal List<Gesture> ValidatedGestures => _validatedGestures;
 
         private void Awake()
@@ -41,11 +47,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
 
             SpellManager.onSpellValidation += HandleOnSpellValidated;
             SpellManager.onNoSpellMatch += HandleOnSpellFailed;
+            FinalSpellTrigger.onFinalSpellUnlockStateChange += HandleFinalSpellUnlockState;
         }
 
         private void OnDestroy()
         {
             SpellManager.onSpellValidation -= HandleOnSpellValidated;
+            FinalSpellTrigger.onFinalSpellUnlockStateChange -= HandleFinalSpellUnlockState;
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
         }
@@ -79,32 +87,61 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
 
             if (_sequenceStarted)
             {
-                if (_validatedGestures.Count == 0 ||
-                    _validatedGestures[^1] != _currentGesture)
+                if (_finalSpellAvailable && !_finalSpellCast &&
+                    (_validatedGestures.Count == 0 || _validatedGestures[^1] != _currentGesture))
                 {
+                    if (_currentGesture.name == "Cancel")
+                    {
+                        //Not pretty but otherwise for some reason it overrides the magic circles due to order I can't really change
+                        _currentGesture = null;
+                        _gestureValidated = false;
+                        return;
+                    }
+                    Debug.LogWarning(_validatedGestures.Count);
                     _validatedGestures.Add(_currentGesture);
+                    //won't let me do touch
+                    onFinalGestureRecognised?.Invoke(_validatedGestures);
                     _handVfxManager.ChangeColorOnGesture(_currentGesture);
-
-                    if (_currentGesture._name != "Quick Cast")
-                        onGestureRecognised?.Invoke(_validatedGestures);
-
                     if (_validatedGestures.Count == 2)
+                    {
                         _handVfxManager.HandleElementRecognized(_currentGesture);
+                    }
+                    onFinalSpellValidation?.Invoke();
                 }
+                else
+                {
+                    if (_validatedGestures.Count == 0 ||
+                        _validatedGestures[^1] != _currentGesture)
+                    {
+                        _validatedGestures.Add(_currentGesture);
+                        _handVfxManager.ChangeColorOnGesture(_currentGesture);
+
+                        if (_currentGesture._name != "Quick Cast")
+                            onGestureRecognised?.Invoke(_validatedGestures);
+
+                        if (_validatedGestures.Count == 2)
+                            _handVfxManager.HandleElementRecognized(_currentGesture);
+                    }
+                }
+
             }
 
             _currentGesture = null;
             _gestureValidated = false;
         }
-
+        
+        private void HandleFinalSpellUnlockState(bool available)
+        {
+            _finalSpellAvailable = available;
+            print("final spell is now " + _finalSpellAvailable);
+        }
+        
         private void HandleGesture(Gesture currentGesture)
         {
             if (_leftHandActive && _rightHandActive)
                 switch (currentGesture._name)
                 {
                     case "Start":
-                        _validatedGestures.Clear();
-                        onReset?.Invoke();
                         _sequenceStarted = true;
                         _canQuickCast = false;
                         _handVfxManager.HandleElementRecognized(_currentGesture);
@@ -148,6 +185,22 @@ namespace RogueApeStudios.SecretsOfIgnacios.Gestures
 
         private void HandleOnSpellValidated()
         {
+            if (_finalSpellAvailable)
+            {
+                _canQuickCast = false;
+                _validatedGestures.Clear();
+                _sequenceStarted = false;
+                Debug.LogWarning("triggered final spell validation");
+                if (!_finalSpellCast)
+                {
+                    // Ignacios
+                    
+                    onFinalSpellCompleted?.Invoke();
+                    _finalSpellCast = true;
+                    return;
+                }
+            }
+            Debug.LogWarning("spell validation");
             _canQuickCast = true;
             _validatedGestures.Clear();
             _sequenceStarted = false;

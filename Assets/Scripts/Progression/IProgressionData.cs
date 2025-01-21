@@ -10,6 +10,11 @@ namespace RogueApeStudios.SecretsOfIgnacios.Progression
         public Spell Spell { get; set; }
     }
 
+    public class SpellLockData : IProgressionData
+    {
+        public Spell Spell { get; set; }
+    }
+
     public class AreaUnlockData : IProgressionData
     {
         public GameObject Area { get; set; }

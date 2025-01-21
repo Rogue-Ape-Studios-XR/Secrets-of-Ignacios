@@ -1,0 +1,89 @@
+using System;
+using System.Collections.Generic;
+using RogueApeStudios.SecretsOfIgnacios.FinalSpellPages;
+using RogueApeStudios.SecretsOfIgnacios.Progression;
+using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.VFX;
+
+namespace RogueApeStudios.SecretsOfIgnacios.Spells
+{
+    
+    //Add this to an empty object or just a new trigger collider of that big satan rune in the middle
+    public class FinalSpellTrigger : MonoBehaviour
+    {
+        public static event Action<bool> onFinalSpellUnlockStateChange;
+        public static event Action onFinalSpellLock;
+        public static event Action onFinalSpellUnlocked;
+
+        [SerializeField] private List<string> _tags;
+        [SerializeField] private List<Spell> _finalSpells;
+        // serializing the bool so you can just enable it for testing
+        [SerializeField] private bool _allPagesCollected;
+        [SerializeField] private VisualEffect _burningVisual;
+
+        private void Start()
+        {
+            FinalSpellPageCounter.onAllPagesCollected += HandleAllPagesCollected;
+            _burningVisual.Stop();
+        }
+
+        private void OnDestroy()
+        {
+            FinalSpellPageCounter.onAllPagesCollected -= HandleAllPagesCollected;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            Debug.Log(other.name);
+            if (_tags.Contains(other.tag) && _allPagesCollected)
+            {
+                onFinalSpellUnlockStateChange?.Invoke(true);
+                foreach (var finalSpell in _finalSpells)
+                {
+                    if (finalSpell != null)
+                    {
+                        ProgressionData progressionData = new ProgressionData
+                        {
+                            Type = ProgressionType.SpellUnlock,
+                            Data = new SpellUnlockData() { Spell = finalSpell }
+                        };
+
+                        ProgressionManager.TriggerProgressionEvent(progressionData);
+                        onFinalSpellUnlocked?.Invoke();
+                    }
+                }
+                Debug.Log("Unlocked the final spell");
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (_tags.Contains(other.tag) && _allPagesCollected)
+            {
+                onFinalSpellUnlockStateChange?.Invoke(false);
+                foreach (var finalSpell in _finalSpells)
+                {
+                    if (finalSpell != null)
+                    {
+                        ProgressionData progressionData = new ProgressionData
+                        {
+                            Type = ProgressionType.SpellLock,
+                            Data = new SpellLockData() { Spell = finalSpell }
+                        };
+
+                        ProgressionManager.TriggerProgressionEvent(progressionData);
+                        onFinalSpellLock?.Invoke();
+                    }
+                }
+                Debug.Log("Player exited the area, locking the spell");
+            }
+        }
+
+        private void HandleAllPagesCollected()
+        {
+            _allPagesCollected = true;
+            _burningVisual.Play();
+        }
+    }
+}

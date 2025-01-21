@@ -41,6 +41,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void OnEnable()
         {
             _sequenceManager.onGestureRecognised += CheckSequence;
+            _sequenceManager.onFinalGestureRecognised += CheckSequence;
             _sequenceManager.onReset += HandleReset;
             _sequenceManager.onQuickCast += HandleOnQuickCast;
             ProgressionManager.OnProgressionEvent += HandleProgressionEvent;
@@ -49,6 +50,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private void OnDestroy()
         {
             _sequenceManager.onGestureRecognised -= CheckSequence;
+            _sequenceManager.onFinalGestureRecognised += CheckSequence;
             _sequenceManager.onReset -= HandleReset;
             _sequenceManager.onQuickCast -= HandleOnQuickCast;
             ProgressionManager.OnProgressionEvent += HandleProgressionEvent;
@@ -59,8 +61,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         private void HandleProgressionEvent(ProgressionData data)
         {
-            if (data.Type == ProgressionType.SpellUnlock && data.Data is SpellUnlockData spellData)
-                UnlockSpell(spellData.Spell);
+            if (data.Type == ProgressionType.SpellUnlock && data.Data is SpellUnlockData unlockData)
+                UnlockSpell(unlockData.Spell);
+            else if (data.Type == ProgressionType.SpellLock && data.Data is SpellLockData lockData)
+                LockSpell(lockData.Spell);
         }
 
         public bool IsSpellUnlockedForGesture(Gesture gesture)
@@ -172,6 +176,12 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         {
             if (!spell._isUnlocked)
                 spell._isUnlocked = true;
+        }
+
+        private void LockSpell(Spell spell)
+        {
+            if (spell._isUnlocked)
+                spell._isUnlocked = false;
         }
     }
 }
