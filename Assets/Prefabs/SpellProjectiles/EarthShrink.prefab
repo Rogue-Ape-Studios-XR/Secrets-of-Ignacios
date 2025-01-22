@@ -108,7 +108,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 1073742847
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider: {fileID: 7513516850691447866}
   _impactEffect: {fileID: 8799410578308788817}
-  _deactivationTime: 10
+  _deactivationTime: 3
 --- !u!114 &6141514323501153051
 MonoBehaviour:
   m_ObjectHideFlags: 0
