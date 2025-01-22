@@ -64,7 +64,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.MainRoom
                 
                 other.gameObject.SetActive(false);
             }
-            else if (!other.gameObject.CompareTag("Ingredient") && !other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Potion"))
+            else if (!other.gameObject.CompareTag("Ingredient") && !other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Potion") && !other.gameObject.CompareTag("Grimoire"))
             {
                 Debug.Log("Wrong!");
                 if (other.TryGetComponent<Rigidbody>(out Rigidbody rb))
