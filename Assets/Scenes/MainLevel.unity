@@ -43319,7 +43319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2113318330598716745, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       propertyPath: _timeBeforeDisable
-      value: 5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2133198828471883597, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       propertyPath: _castscript
@@ -43383,7 +43383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2749839224552765565, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       propertyPath: _timeBeforeDisable
-      value: 5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2766772237426723078, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       propertyPath: m_Layer
