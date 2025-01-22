@@ -62880,7 +62880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 435612, guid: f603e679ecd9b594c86dfd105ec8ca17, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -8.004
       objectReference: {fileID: 0}
     - target: {fileID: 435612, guid: f603e679ecd9b594c86dfd105ec8ca17, type: 3}
       propertyPath: m_LocalPosition.z
@@ -62921,7 +62921,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 166100, guid: f603e679ecd9b594c86dfd105ec8ca17, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1856551950}
   m_SourcePrefab: {fileID: 100100000, guid: f603e679ecd9b594c86dfd105ec8ca17, type: 3}
 --- !u!1 &673703443 stripped
 GameObject:
@@ -81843,6 +81846,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Rug_02
       objectReference: {fileID: 0}
+    - target: {fileID: 127254, guid: b1a171888b1be0e4db1a5638cad8f997, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 430460, guid: b1a171888b1be0e4db1a5638cad8f997, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0177
@@ -81861,7 +81868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 430460, guid: b1a171888b1be0e4db1a5638cad8f997, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.059717
+      value: 4.993
       objectReference: {fileID: 0}
     - target: {fileID: 430460, guid: b1a171888b1be0e4db1a5638cad8f997, type: 3}
       propertyPath: m_LocalPosition.z
@@ -96328,7 +96335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 415588, guid: 7a216d45184954f4f8fdad696d7ab71b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.5
+      value: 21.409
       objectReference: {fileID: 0}
     - target: {fileID: 415588, guid: 7a216d45184954f4f8fdad696d7ab71b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -129780,7 +129787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4405603536429234111, guid: 6eb7ce97aa630b547b765322164c1772, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 125.317
+      value: 123.08
       objectReference: {fileID: 0}
     - target: {fileID: -3509818673871243008, guid: 6eb7ce97aa630b547b765322164c1772, type: 3}
       propertyPath: m_TagString
@@ -187029,13 +187036,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Rug_01
       objectReference: {fileID: 0}
+    - target: {fileID: 104138, guid: 785e40498aac69e4aae4bc7b5cbbc7c4, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 469428, guid: 785e40498aac69e4aae4bc7b5cbbc7c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5497808
       objectReference: {fileID: 0}
     - target: {fileID: 469428, guid: 785e40498aac69e4aae4bc7b5cbbc7c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.059717
+      value: 4.993
       objectReference: {fileID: 0}
     - target: {fileID: 469428, guid: 785e40498aac69e4aae4bc7b5cbbc7c4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -194722,6 +194733,38 @@ MonoBehaviour:
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
+--- !u!1 &1856551945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 166100, guid: f603e679ecd9b594c86dfd105ec8ca17, type: 3}
+  m_PrefabInstance: {fileID: 673393611}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1856551950
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856551945}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1857065287
 PrefabInstance:
   m_ObjectHideFlags: 0
