@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Fire
 {
 	internal class PersistentFire : FireInteractable
 	{
 		[SerializeField] private bool _startsOnFire;
+		[SerializeField] private UnityEvent _disableLights;
 
 		private void Start()
 		{
@@ -25,6 +27,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Fire
         {
             _isOnFire = false;
 			_burningEffect.Stop();
+			_disableLights?.Invoke();
 			//_dousingEffect.Play();
         }
     }

@@ -215,6 +215,9 @@ MonoBehaviour:
   _burningEffect: {fileID: 1345815135}
   _dousingEffect: {fileID: 0}
   _startsOnFire: 0
+  _disableLights:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &3119849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32398,7 +32401,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8358234770496217762, guid: 30e462d522073e04e93948d31ab42b8c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1498181020}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30e462d522073e04e93948d31ab42b8c, type: 3}
 --- !u!4 &329382878 stripped
@@ -75278,6 +75284,9 @@ MonoBehaviour:
   _burningEffect: {fileID: 548066991}
   _dousingEffect: {fileID: 0}
   _startsOnFire: 0
+  _disableLights:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!64 &749753018
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -79597,6 +79606,9 @@ MonoBehaviour:
   _burningEffect: {fileID: 182457879}
   _dousingEffect: {fileID: 0}
   _startsOnFire: 0
+  _disableLights:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!64 &800799237
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -118093,11 +118105,11 @@ Transform:
   m_GameObject: {fileID: 1156973686}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.70710665, z: -0, w: 0.70710695}
-  m_LocalPosition: {x: 0.0000054836273, y: 0.748, z: -0.041}
-  m_LocalScale: {x: -0.57331, y: -0.57331, z: -0.57331}
+  m_LocalPosition: {x: 0, y: 0.61666703, z: -0.13666788}
+  m_LocalScale: {x: -1.9110334, y: -1.9110334, z: -1.9110334}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1857065288}
+  m_Father: {fileID: 1701745325}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &1156973688
 MonoBehaviour:
@@ -149143,6 +149155,9 @@ MonoBehaviour:
   _burningEffect: {fileID: 1307243210}
   _dousingEffect: {fileID: 0}
   _startsOnFire: 0
+  _disableLights:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1461416132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -149895,9 +149910,6 @@ PrefabInstance:
       addedObject: {fileID: 1292320982}
     - targetCorrespondingSourceObject: {fileID: 461008, guid: 184f44cf58e82434ab30e27aaaf9b05f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1498181020}
-    - targetCorrespondingSourceObject: {fileID: 461008, guid: 184f44cf58e82434ab30e27aaaf9b05f, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 397128090}
     - targetCorrespondingSourceObject: {fileID: 461008, guid: 184f44cf58e82434ab30e27aaaf9b05f, type: 3}
       insertIndex: -1
@@ -149930,6 +149942,21 @@ MonoBehaviour:
   _burningEffect: {fileID: 329382879}
   _dousingEffect: {fileID: 0}
   _startsOnFire: 1
+  _disableLights:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1498181019}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1467065299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153349,11 +153376,11 @@ Transform:
   m_GameObject: {fileID: 1498181019}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.70710665, z: -0, w: 0.70710695}
-  m_LocalPosition: {x: 0.0000054836273, y: 0.748, z: -0.041}
-  m_LocalScale: {x: -0.57331, y: -0.57331, z: -0.57331}
+  m_LocalPosition: {x: 0, y: 0.61666644, z: 1.0433336}
+  m_LocalScale: {x: -1.9110334, y: -1.9110334, z: -1.9110334}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1466242802}
+  m_Father: {fileID: 329382878}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &1498181021
 MonoBehaviour:
@@ -158537,6 +158564,9 @@ MonoBehaviour:
   _burningEffect: {fileID: 1681687288}
   _dousingEffect: {fileID: 0}
   _startsOnFire: 0
+  _disableLights:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1546818107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -178188,7 +178218,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8358234770496217762, guid: 30e462d522073e04e93948d31ab42b8c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1156973687}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30e462d522073e04e93948d31ab42b8c, type: 3}
 --- !u!4 &1701745325 stripped
@@ -181531,6 +181564,9 @@ MonoBehaviour:
   _burningEffect: {fileID: 165561213}
   _dousingEffect: {fileID: 0}
   _startsOnFire: 0
+  _disableLights:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!64 &1733310393
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -194933,9 +194969,6 @@ PrefabInstance:
       addedObject: {fileID: 267685566}
     - targetCorrespondingSourceObject: {fileID: 461008, guid: 184f44cf58e82434ab30e27aaaf9b05f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1156973687}
-    - targetCorrespondingSourceObject: {fileID: 461008, guid: 184f44cf58e82434ab30e27aaaf9b05f, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1338939728}
     - targetCorrespondingSourceObject: {fileID: 461008, guid: 184f44cf58e82434ab30e27aaaf9b05f, type: 3}
       insertIndex: -1
@@ -194968,6 +195001,21 @@ MonoBehaviour:
   _burningEffect: {fileID: 1701745326}
   _dousingEffect: {fileID: 0}
   _startsOnFire: 1
+  _disableLights:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1156973686}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1857087254 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 195876, guid: 672ee923d7f567d4999ca9b98280f884, type: 3}
