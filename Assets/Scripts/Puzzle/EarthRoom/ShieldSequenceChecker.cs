@@ -8,24 +8,21 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
     {
         [SerializeField] private List<ShieldChecker> _shieldCheckers;
         [SerializeField] private bool _allShieldsFit = true;
+        [SerializeField] private int _correctShieldAmount = 0;
         [SerializeField] private UnityEvent _completePuzzle;
 
         private void OnEnable()
         {
-            foreach (var shieldChecker in _shieldCheckers)
-            {
-                shieldChecker.onShieldFitChanged += CheckAllShields;
-            }
+            ShieldChecker.onShieldFitChanged += CheckAllShields;
+            ShieldChecker.onShieldFitIncrementCounter += IncrementShieldCounter;
             //Do an initial check
             CheckAllShields();
         }
 
         private void OnDisable()
         {
-            foreach (var shieldChecker in _shieldCheckers)
-            {
-                shieldChecker.onShieldFitChanged -= CheckAllShields;
-            }
+            ShieldChecker.onShieldFitChanged -= CheckAllShields;
+            ShieldChecker.onShieldFitIncrementCounter -= IncrementShieldCounter;
         }
 
         private void CheckAllShields()
@@ -46,6 +43,15 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
             }
             else
                 Debug.Log("Not all shields fit");
+        }
+
+        private void IncrementShieldCounter()
+        {
+            _correctShieldAmount++;
+            if (_correctShieldAmount >= 5)
+            {
+                _completePuzzle?.Invoke();
+            }
         }
     }
 }
