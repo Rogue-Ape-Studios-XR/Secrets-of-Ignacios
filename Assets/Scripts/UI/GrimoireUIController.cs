@@ -47,7 +47,7 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
         private void Update()
         {
-            if (_wristGaze && _headGaze)
+            if (_headGaze)
             {
                 _braceletbutton.SetActive(true);
             }
