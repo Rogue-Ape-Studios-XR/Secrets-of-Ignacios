@@ -55,6 +55,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
                 {
                     _targetShield.SetActive(false);
                     _correctLine.enabled=false;
+                    onShieldFitChanged?.Invoke();
                     Debug.Log("Shield fits and is disabled");
                 }
                 else
