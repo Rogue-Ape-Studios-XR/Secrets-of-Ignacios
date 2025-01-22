@@ -43316,6 +43316,14 @@ PrefabInstance:
       propertyPath: _timeBeforeDisable
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3612751110403967225, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+      propertyPath: m_MinimumHoldTime
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3612751110403967225, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+      propertyPath: m_GestureDetectionInterval
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 3663282735619828170, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       propertyPath: m_Velocity
       value: 10
@@ -43395,6 +43403,14 @@ PrefabInstance:
     - target: {fileID: 5281501172693036710, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566758130611152677, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+      propertyPath: m_MinimumHoldTime
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566758130611152677, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+      propertyPath: m_GestureDetectionInterval
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6547142483493635368, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       propertyPath: m_Name
