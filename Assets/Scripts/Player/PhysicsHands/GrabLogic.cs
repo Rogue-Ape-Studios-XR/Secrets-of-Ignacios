@@ -37,10 +37,6 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.PhysicsHands
             if (_grabbedRb != null) 
             {
                 var dist = Vector3.Magnitude(_grabbedRb.position - _grabCenter.position) - _initialGrabDist;
-                if(dist > 1.5 * _grabRange)
-                {
-                    EndGrab();
-                }
                 Vector3 potentialVelocity = (transform.position - _oldGrabPosition)/Time.fixedDeltaTime;
                 if (potentialVelocity != Vector3.zero) 
                 {
