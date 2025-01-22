@@ -17,3 +17,21 @@ Here explainations and class diagrams of the code can be found (It might not be 
   - `Cast.cs`
   - `ElementType.cs`
   - `CastTypes.cs`
+- [Services](03.%20Services)
+  - `Services.cs`
+  - `ObjectPooler.cs`
+- [Interactable System](04.%20Interactable%20System.md)
+  - `Interactable.cs`
+  - `FireInteratable.cs`
+    - `PersistentFire.cs`
+    - `DestructiveBurning.cs`
+  - `WaterInteractable.cs`
+    - `Fillable.cs`
+    - `Washable.cs`
+  - `WindInteractable.cs`
+    - `Blowable.cs`
+    - `Turnable.cs`
+    - `Spinnable.cs`
+  - `EarthInteractable.cs`
+    - `Resizable.cs`
+    - `ResizeState.cs`
