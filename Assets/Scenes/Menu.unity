@@ -2857,6 +2857,10 @@ PrefabInstance:
       propertyPath: m_RaycastTriggerInteraction
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4625109233600587368, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+      propertyPath: Inventory
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4987009282848154603, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       propertyPath: _tags.Array.size
       value: 3
@@ -2967,6 +2971,11 @@ PrefabInstance:
     - {fileID: 567452985850610199, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
     - {fileID: 8824040424763057824, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
     - {fileID: 4920361910650166883, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+    - {fileID: 5625133818369039883, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+    - {fileID: 3663282735619828166, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+    - {fileID: 180711831496649244, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+    - {fileID: 5648728390519040496, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+    - {fileID: 8532275576113794034, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2425556804164981335, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       insertIndex: 3
