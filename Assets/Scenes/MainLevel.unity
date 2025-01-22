@@ -34376,7 +34376,9 @@ MonoBehaviour:
   - {fileID: 1979326876}
   - {fileID: 663450685}
   - {fileID: 465153261}
-  _spellToUnlock: {fileID: 11400000, guid: b5cf79cb31aa9ab47a2729a448a8cc9f, type: 2}
+  _spellsToUnlock:
+  - {fileID: 11400000, guid: b5cf79cb31aa9ab47a2729a448a8cc9f, type: 2}
+  - {fileID: 11400000, guid: f3ddc9c9ceaebf545bc46b843dc8f2e3, type: 2}
 --- !u!95 &358807629 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6401847118719913387, guid: 763315ebc13352045b4ef6389828e52f, type: 3}
@@ -152394,7 +152396,7 @@ MonoBehaviour:
   - {fileID: 800799236}
   _animator: {fileID: 1489156760}
   _areasToUnlock: []
-  _spellToUnlock: {fileID: 0}
+  _spellsToUnlock: []
 --- !u!1001 &1490396627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -219389,7 +219391,7 @@ MonoBehaviour:
   _areasToUnlock:
   - {fileID: 1953281185}
   - {fileID: 1450302060}
-  _spellToUnlock: {fileID: 0}
+  _spellsToUnlock: []
 --- !u!1001 &2071193809
 PrefabInstance:
   m_ObjectHideFlags: 0
