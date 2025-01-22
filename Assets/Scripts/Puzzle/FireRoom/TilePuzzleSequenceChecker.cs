@@ -46,7 +46,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
             }
         }
         
-        private void UnlockSpell()
+        public void UnlockSpell()
         {
            if (_spellToUnlock != null)
             {
