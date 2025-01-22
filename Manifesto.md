@@ -3,8 +3,8 @@
 This document serves as a reference point for rules, roles and tasks for all to reference.
 
 ## Roles
-- Davey: Scrum Monkey, Environmental Monkey
-- Loes: Game Design Monkey, Communication Monkey
+- Davey: Scrum Monkey (before role change), Environmental Monkey
+- Loes: Game Design Monkey, Communication Monkey, Scrum Monkey (after role change)
 - Rick: Puzzle/ Level Design Monkey, Art Monkey
 - Tim: Code Monkey King (focus on hand tracking)
 - Luc: UI/UX Monkey, Code Monkey
@@ -53,6 +53,7 @@ MS Teams
     - PR title: 
         - Gitmoji
         - Branch name
+        - Example: ✨ Player movement or 🐛 Fix dash bug
     - Fill out the description template
     - Merge title:
         - 🔀 Merge feature/branch-name into develop (pull request #1)
@@ -66,8 +67,8 @@ MS Teams
 - Code Review
 
 - Bug or Feature
-    - Create Issue
-    - Create card
+    - Create a ticket
+    - Convert to issue
     - Link
 
 ## Definition of Done
@@ -79,7 +80,7 @@ MS Teams
     - Approved by all group members (pitch design)
 - Total:
     - Approved by the Product Owner
-    - Merge from dev to main has been approved by 2 group members
+    - Merge from dev to main has been approved by 1 group member
     - Playtested thoroughly
 
 ## Agile
