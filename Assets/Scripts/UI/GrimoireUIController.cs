@@ -1,12 +1,13 @@
+using RogueApeStudios.SecretsOfIgnacios.FinalSpellPages;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace RogueApeStudios.SecretsOfIgnacios
 {
 
     public class GrimoireUIController : MonoBehaviour
     {
-        //private bool _grimoireActive = false;
-
         [SerializeField]
         private GameObject _grimoire;
 
@@ -16,12 +17,45 @@ namespace RogueApeStudios.SecretsOfIgnacios
         [SerializeField]
         private GameObject _player; //camera offset
 
-
         [SerializeField]
         private GameObject[] _chapters;
 
+        [SerializeField]
+        private GameObject[] _finalSpellPages;
+
+        [SerializeField]
+        private TextMeshProUGUI _finalSpellCounter;
+
+        [SerializeField]
+        private GameObject _finalSpellTab;
+
         private bool _wristGaze = false;
         private bool _headGaze = false;
+
+        private int _currentPageCounter;
+
+        private void Start()
+        {
+            FinalSpellPageScript.onPagePickup += UpdateCounter;
+            _currentPageCounter = -1;
+        }
+
+        private void OnDestroy()
+        {
+            FinalSpellPageScript.onPagePickup -= UpdateCounter;
+        }
+
+        private void Update()
+        {
+            if (_wristGaze && _headGaze)
+            {
+                _braceletbutton.SetActive(true);
+            }
+            else
+            {
+                _braceletbutton.SetActive(false);
+            }
+        }
 
         public void WristHover(bool state)
         {
@@ -59,30 +93,17 @@ namespace RogueApeStudios.SecretsOfIgnacios
             );
 
             _grimoire.transform.position = spawnPos;
-            
-            /*
-            if (!_grimoireActive)
-            {
-                _grimoireActive = true;
-                _grimoire.SetActive(true);
-            }
-            else if (_grimoireActive) 
-            {
-                _grimoireActive = false;
-                _grimoire.SetActive(false);
-            }*/
         }
 
-        private void Update()
+        private void UpdateCounter()
         {
-            if (_wristGaze && _headGaze)
+            _currentPageCounter++;
+            if ( _currentPageCounter == 0)
             {
-                _braceletbutton.SetActive(true);
+                _finalSpellTab.SetActive(true);
             }
-            else
-            {
-                _braceletbutton.SetActive(false);
-            }
+            _finalSpellPages[_currentPageCounter].SetActive(true);
+            _finalSpellCounter.SetText((_currentPageCounter + 1).ToString());
         }
     }
 }
