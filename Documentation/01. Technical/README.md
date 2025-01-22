@@ -1,9 +1,9 @@
 # Technical Documentation
 Here explainations and class diagrams of the code can be found (It might not be complete due to this being done at the end of the project). In this `README` you can see where to find info on specific scripts if you look [here.](#where-can-scripts-be-found)
 
-|Complete system|
+|Complete system (as far as I got)|
 |-|
-||
+|![image](https://github.com/user-attachments/assets/fdf12c90-ddf9-440a-9ea4-74e58613d9d3)|
 
 ## Where can scripts be found
 - [Gesture Recognition](01.%20Gesture%20Recognition.md) contains:
