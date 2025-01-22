@@ -32,6 +32,10 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Fire
 		{
 			_burningEffect.Stop();
 			//_dousingEffect.Stop();
+			
+			if (_destructionEffect == null)
+				return;
+			
 			_destructionEffect.Stop();
 		}
 

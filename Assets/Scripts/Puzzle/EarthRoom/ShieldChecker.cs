@@ -18,7 +18,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
         public bool ShieldFits => _shieldFits;
         //Action so it doesn't need to constantly verify in update
 
-        public event Action onShieldFitChanged;
+        public static event Action onShieldFitChanged;
+        public static event Action onShieldFitIncrementCounter;
 
         private void Start()
         {
@@ -55,6 +56,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.EarthRoom
                 {
                     _targetShield.SetActive(false);
                     _correctLine.enabled=false;
+                    onShieldFitChanged?.Invoke();
+                    onShieldFitIncrementCounter?.Invoke();
                     Debug.Log("Shield fits and is disabled");
                 }
                 else

@@ -86,7 +86,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.Earth
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider other)
         {
             _collided = true;
             ReturnAfterDone(_cancellationTokenSource.Token);
