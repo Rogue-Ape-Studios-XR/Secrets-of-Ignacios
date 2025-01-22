@@ -38285,7 +38285,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 468176, guid: c55ee685bfc996649b14f14e08783def, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1960541983}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 122248, guid: c55ee685bfc996649b14f14e08783def, type: 3}
       insertIndex: -1
@@ -109070,6 +109073,75 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.178291, y: 5.1280828, z: 0.6}
   m_Center: {x: -2.471897, y: 2.5222666, z: 0.13320184}
+--- !u!1001 &1078197457
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 407031680}
+    m_Modifications:
+    - target: {fileID: 971953684708612094, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016962078072147876, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+      propertyPath: m_Name
+      value: Wind Spell Ranged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016962078072147876, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152031694130924286, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378829054953767781, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378829054953767781, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.666
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378829054953767781, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.831
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378829054953767781, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710695
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378829054953767781, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.70710665
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378829054953767781, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378829054953767781, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378829054953767781, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378829054953767781, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378829054953767781, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
 --- !u!1001 &1078344170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -181011,7 +181083,19 @@ MonoBehaviour:
   - {fileID: 1490572192}
   OnPuzzleCompleteUnityEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1960541982}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnNextSequenceCorrectUnityEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -207190,6 +207274,16 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 436592, guid: ee5004b267742a64aa2093fb4bb3d9c4, type: 3}
   m_PrefabInstance: {fileID: 1960237492}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1960541982 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2016962078072147876, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+  m_PrefabInstance: {fileID: 1078197457}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1960541983 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3378829054953767781, guid: e80c77b6e5480a043ade1c3eaa7ef2fe, type: 3}
+  m_PrefabInstance: {fileID: 1078197457}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1961037919 stripped
 GameObject:
