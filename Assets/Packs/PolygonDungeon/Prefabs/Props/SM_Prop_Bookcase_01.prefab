@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spellReceiver: {fileID: 4649519209955192823}
-  _getsDestroyed: 0
+  _getsDestroyed: 1
   _isOnFire: 0
   _burningEffect: {fileID: 1943752152978366778}
   _dousingEffect: {fileID: 0}
