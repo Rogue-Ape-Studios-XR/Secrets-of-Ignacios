@@ -1,4 +1,4 @@
-# Documentation
+# Documentation 
 ## [Technical](01.%20Technical)
 In this directory, you will find technical documentation that provides in depth information about the system's architecture and implementation details. This documentation includes class diagrams that visually represent the relationships between different components and their interactions. Additionally, it contains thorough documentation of the scripts used, explaining their purpose, functionality, and how they contribute to the overall system.
 
