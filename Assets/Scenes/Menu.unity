@@ -2833,14 +2833,22 @@ PrefabInstance:
       propertyPath: _castscript
       value: 
       objectReference: {fileID: 762518776}
+    - target: {fileID: 2133198828471883597, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+      propertyPath: _objectPooler
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133198828471883597, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+      propertyPath: _magicCircleTarget
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2195321514442957150, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       propertyPath: m_LeftController
       value: 
-      objectReference: {fileID: 762518778}
+      objectReference: {fileID: 0}
     - target: {fileID: 2195321514442957150, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       propertyPath: m_RightController
       value: 
-      objectReference: {fileID: 762518775}
+      objectReference: {fileID: 0}
     - target: {fileID: 2206119915425468259, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       propertyPath: m_TagString
       value: Player
@@ -2984,17 +2992,13 @@ PrefabInstance:
     - {fileID: 180711831496649244, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
     - {fileID: 5648728390519040496, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
     - {fileID: 8532275576113794034, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+    - {fileID: 4492881687763513474, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2425556804164981335, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       insertIndex: 3
       addedObject: {fileID: 1845996823}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
---- !u!1 &762518775 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5471477702207520689, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
-  m_PrefabInstance: {fileID: 762518774}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &762518776 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8835238771455875545, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
@@ -3009,11 +3013,6 @@ MonoBehaviour:
 --- !u!4 &762518777 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2425556804164981335, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
-  m_PrefabInstance: {fileID: 762518774}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &762518778 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 326016420069256752, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
   m_PrefabInstance: {fileID: 762518774}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &764554912 stripped
