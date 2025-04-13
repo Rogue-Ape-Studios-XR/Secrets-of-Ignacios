@@ -28,6 +28,19 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
         [SerializeField]
         private GameObject _finalSpellTab;
+        
+        [SerializeField]
+        private float grimoireTeleportDistance = 100f;
+        
+        [SerializeField]
+        private float summonCooldown = 0.5f;
+        
+        [SerializeField]
+        private int startPage = 0;
+
+        private bool _hasOpenedOnce = false;
+
+        private float _lastSummonTime;
 
         private bool _wristGaze = false;
         private bool _headGaze = false;
@@ -79,22 +92,51 @@ namespace RogueApeStudios.SecretsOfIgnacios
 
         public void Summongrimoire()
         {
+            if (Time.time - _lastSummonTime < summonCooldown) return;
+
+            _lastSummonTime = Time.time;
+
             Transform player = _player.transform;
             Vector3 playerPosition = player.position;
             Vector3 playerDirection = player.forward;
             Quaternion playerRotation = player.rotation;
 
-            Vector3 spawnPos = playerPosition + playerDirection * 0.5f;
+            float distance = Vector3.Distance(playerPosition, _grimoire.transform.position);
 
-            _grimoire.transform.eulerAngles = new Vector3(
-                0,
-                playerRotation.eulerAngles.y + 180,
-                0
-            );
+            if (_grimoire.activeSelf)
+            {
+                if (distance >= grimoireTeleportDistance)
+                {
+                    Vector3 spawnPos = playerPosition + playerDirection * 0.5f;
 
-            _grimoire.transform.position = spawnPos;
+                    _grimoire.transform.eulerAngles = new Vector3(
+                        0,
+                        playerRotation.eulerAngles.y + 180,
+                        0
+                    );
+
+                    _grimoire.transform.position = spawnPos;
+                }
+                else
+                {
+                    _grimoire.SetActive(false);
+                }
+            }
+            else
+            {
+                Vector3 spawnPos = playerPosition + playerDirection * 0.5f;
+
+                _grimoire.transform.eulerAngles = new Vector3(
+                    0,
+                    playerRotation.eulerAngles.y + 180,
+                    0
+                );
+
+                _grimoire.transform.position = spawnPos;
+                _grimoire.SetActive(true);
+            }
         }
-
+     
         private void UpdateCounter()
         {
             _currentPageCounter++;
