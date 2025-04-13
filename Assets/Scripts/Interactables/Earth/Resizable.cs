@@ -29,6 +29,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
             {
                 switch (_currentState)
                 {
+                    case ResizeState.Grown :
+                        break;
                     case ResizeState.Default:
                         ChangeState(ResizeState.Grown, _growSize);
                         break;
@@ -43,6 +45,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Interactables.Earth
             {
                 switch (_currentState)
                 {
+                    case ResizeState.Shrunk :
+                        break;
                     case ResizeState.Default:
                         ChangeState(ResizeState.Shrunk, _shrinkSize);
                         break;

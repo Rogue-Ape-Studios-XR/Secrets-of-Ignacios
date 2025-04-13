@@ -8,7 +8,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Puzzle.FireRoom
         //Drag in teleport plane (not the parent object, but 1 of the planes, the one behind the door basically)
         [SerializeField] private GameObject _areaToUnlock;
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             if (_areaToUnlock != null)
             {

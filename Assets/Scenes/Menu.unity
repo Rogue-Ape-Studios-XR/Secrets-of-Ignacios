@@ -2833,6 +2833,22 @@ PrefabInstance:
       propertyPath: _castscript
       value: 
       objectReference: {fileID: 762518776}
+    - target: {fileID: 2133198828471883597, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+      propertyPath: _objectPooler
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133198828471883597, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+      propertyPath: _magicCircleTarget
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195321514442957150, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+      propertyPath: m_LeftController
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195321514442957150, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+      propertyPath: m_RightController
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2206119915425468259, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       propertyPath: m_TagString
       value: Player
@@ -2895,7 +2911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5281501172693036710, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.576
+      value: -1.313
       objectReference: {fileID: 0}
     - target: {fileID: 5281501172693036710, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2976,6 +2992,7 @@ PrefabInstance:
     - {fileID: 180711831496649244, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
     - {fileID: 5648728390519040496, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
     - {fileID: 8532275576113794034, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
+    - {fileID: 4492881687763513474, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2425556804164981335, guid: 2690193d279c0d04b9144cb1d077f68e, type: 3}
       insertIndex: 3
