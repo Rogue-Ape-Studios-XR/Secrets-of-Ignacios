@@ -17,6 +17,13 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
         private float _rightCurrentLength = 0f;
         private float _leftCurrentLength = 0f;
 
+        private static Indicator _instance;
+
+        private void Awake()
+        {
+            _instance = this;
+        }
+
         private void FixedUpdate()
         {
             if (_cast._rightHandData._lineRenderer.enabled)
@@ -45,17 +52,9 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
         private void HandleHit(LineRenderer lineRenderer, RaycastHit hit, ref bool isGrowing, ref float currentLength)
         {
-            if (isGrowing)
-            {
-                currentLength = Vector3.Distance(lineRenderer.GetPosition(0), hit.point);
-                lineRenderer.SetPosition(1, hit.point);
-                isGrowing = false;
-            }
-            else
-            {
-                currentLength = Vector3.Distance(lineRenderer.GetPosition(0), hit.point);
-                lineRenderer.SetPosition(1, hit.point);
-            }
+            currentLength = Vector3.Distance(lineRenderer.GetPosition(0), hit.point);
+            lineRenderer.SetPosition(1, hit.point);
+            isGrowing = false;
         }
 
         private void ResumeGrowthIfNeeded(ref bool isGrowing)
@@ -96,6 +95,29 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells
 
                 if (!active)
                     _leftCurrentLength = 0f;
+            }
+        }
+
+        // It just needs to work
+        public static void DisableAllIndicators()
+        {
+            if (_instance == null || _instance._cast == null)
+                return;
+
+            var cast = _instance._cast;
+
+            if (cast._rightHandData._lineRenderer != null)
+            {
+                cast._rightHandData._lineRenderer.enabled = false;
+                _instance._rightIsGrowing = false;
+                _instance._rightCurrentLength = 0f;
+            }
+
+            if (cast._leftHandData._lineRenderer != null)
+            {
+                cast._leftHandData._lineRenderer.enabled = false;
+                _instance._leftIsGrowing = false;
+                _instance._leftCurrentLength = 0f;
             }
         }
     }

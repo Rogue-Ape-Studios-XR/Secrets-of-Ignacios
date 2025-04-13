@@ -53,6 +53,7 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
             if (gesture._name is "Start" or "Cancel")
             {
                 DisableBothHandEffects();
+                Indicator.DisableAllIndicators();
                 return;
             }
 
@@ -68,17 +69,19 @@ namespace RogueApeStudios.SecretsOfIgnacios.Player.SpellMagicCircle
 
         private void DisableBothHandEffects()
         {
-            if (_handDataRight._currentEffect != null && _handDataRight._currentEffect.activeSelf)
+            DisableEffect(_handDataRight);
+            DisableEffect(_handDataLeft);
+        }
+
+        private void DisableEffect(HandData hand)
+        {
+            if (hand._currentEffect != null)
             {
-                _handDataRight._currentEffect.transform.parent = null;
-                _objectPooler.ReturnObject(_handDataRight._currentEffect.name, _handDataRight._currentEffect);
-                _handDataRight.TogglePrefabContainer(false);
-            }
-            if (_handDataLeft._currentEffect != null && _handDataLeft._currentEffect.activeSelf)
-            {
-                _handDataLeft._currentEffect.transform.parent = null;
-                _objectPooler.ReturnObject(_handDataLeft._currentEffect.name, _handDataLeft._currentEffect);
-                _handDataLeft.TogglePrefabContainer(false);
+                hand._currentEffect.SetActive(false);
+                hand._currentEffect.transform.parent = null;
+                _objectPooler.ReturnObject(hand._currentEffect.name, hand._currentEffect);
+                hand._currentEffect = null;
+                hand.TogglePrefabContainer(false);
             }
         }
 

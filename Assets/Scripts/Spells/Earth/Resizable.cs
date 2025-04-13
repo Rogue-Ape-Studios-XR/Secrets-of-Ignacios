@@ -86,7 +86,8 @@ namespace RogueApeStudios.SecretsOfIgnacios.Spells.Earth
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        // Should trigger even if the object is instantiated within the object itself
+        private void OnTriggerStay(Collider other)
         {
             _collided = true;
             ReturnAfterDone(_cancellationTokenSource.Token);
